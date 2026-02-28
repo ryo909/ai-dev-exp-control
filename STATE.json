@@ -1,6 +1,6 @@
 {
   "target_day": 100,
-  "next_day": 7,
+  "next_day": 8,
   "batch_size_default": 7,
   "posts": {
     "fixed_tags": [
@@ -49,6 +49,12 @@
       "core_action": "generate",
       "twist": "30秒で遊べるミニお題を即時に複数提案",
       "one_sentence": "気分転換用の短いお題をすぐ作るライトな遊びツール。"
+    },
+    {
+      "day": "007",
+      "core_action": "plan",
+      "twist": "開始時刻つきでそのまま実行できるタイムスロットを提示",
+      "one_sentence": "作業時間から集中と休憩の実行順を自動で作る生産性ツール。"
     }
   ],
   "days": {
@@ -219,6 +225,34 @@
         "minimal": "Day006|Tiny Prompt Play\nhttps://ryo909.github.io/ai-dev-day-006/\n#個人開発 #100日開発"
       },
       "status": "done"
+    },
+    "007": {
+      "repo_name": "ai-dev-day-007",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-007",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-007/",
+      "meta": {
+        "tool_name": "Focus Slot Composer",
+        "title": "Focus Slot Composer",
+        "description": "タスク時間を入力すると、集中ブロックと休憩を自動配置する。",
+        "genre": "productivity",
+        "theme": "Noir",
+        "story_summary": "時間管理の迷いをなくすため、実行順を即決できる構成にした。",
+        "core_action": "plan",
+        "twist": "開始時刻つきでそのまま実行できるタイムスロットを提示",
+        "one_sentence": "作業時間から集中と休憩の実行順を自動で作る生産性ツール。",
+        "keywords": [
+          "focus",
+          "pomodoro",
+          "timebox",
+          "productivity"
+        ]
+      },
+      "post_texts": {
+        "standard": "Day007｜Focus Slot Composer\n作業時間から集中と休憩の実行順を自動で作る生産性ツール。\nhttps://ryo909.github.io/ai-dev-day-007/\n#個人開発 #100日開発",
+        "compact": "Day007|Focus Slot Compo\n作業時間から集中\nhttps://ryo909.github.io/ai-dev-day-007/\n#個人開発 #100日開発",
+        "minimal": "Day007|Focus Slot Compo\nhttps://ryo909.github.io/ai-dev-day-007/\n#個人開発 #100日開発"
+      },
+      "status": "done"
     }
   },
   "catalog": {
@@ -330,13 +364,28 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-02-28T05:55:19Z",
+      "day": "007",
+      "repo_name": "ai-dev-day-007",
+      "genre": "productivity",
+      "theme": "Noir",
+      "steps": [
+        "planning",
+        "implementation",
+        "build",
+        "publish",
+        "state_update"
+      ],
+      "status": "done"
     }
   ],
   "recent_genres": [
-    "learning",
     "health",
-    "fun"
+    "fun",
+    "productivity"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-02-28T05:54:59Z"
+  "last_run_at": "2026-02-28T05:55:19Z"
 }
