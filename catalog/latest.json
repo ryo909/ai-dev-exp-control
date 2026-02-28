@@ -1,1 +1,58 @@
-[]
+[
+  {
+    "day": "001",
+    "tool_name": "Day001 transform helper",
+    "one_sentence": "Day001の作業を30秒で進めるためのtransformツール。",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-001/",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-001",
+    "status": "posted"
+  },
+  {
+    "day": "002",
+    "tool_name": "Day002 compare helper",
+    "one_sentence": "Day002の作業を30秒で進めるためのcompareツール。",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-002/",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-002",
+    "status": "posted"
+  },
+  {
+    "day": "003",
+    "tool_name": "Day003 classify helper",
+    "one_sentence": "Day003の作業を30秒で進めるためのclassifyツール。",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-003/",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-003",
+    "status": "posted"
+  },
+  {
+    "day": "004",
+    "tool_name": "Day004 extract helper",
+    "one_sentence": "Day004の作業を30秒で進めるためのextractツール。",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-004/",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-004",
+    "status": "posted"
+  },
+  {
+    "day": "005",
+    "tool_name": "Day005 schedule helper",
+    "one_sentence": "Day005の作業を30秒で進めるためのscheduleツール。",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-005/",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-005",
+    "status": "posted"
+  },
+  {
+    "day": "006",
+    "tool_name": "Day006 analyze helper",
+    "one_sentence": "Day006の作業を30秒で進めるためのanalyzeツール。",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-006/",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-006",
+    "status": "posted"
+  },
+  {
+    "day": "007",
+    "tool_name": "Day007 summarize helper",
+    "one_sentence": "Day007の作業を30秒で進めるためのsummarizeツール。",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-007/",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-007",
+    "status": "posted"
+  }
+]

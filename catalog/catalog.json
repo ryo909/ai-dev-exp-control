@@ -1,1 +1,114 @@
-[]
+[
+  {
+    "day": "001",
+    "tool_name": "Day001 transform helper",
+    "one_sentence": "Day001の作業を30秒で進めるためのtransformツール。",
+    "core_action": "transform",
+    "twist": "day001向けに最短手順で使える形式にする",
+    "keywords": [
+      "transform",
+      "automation",
+      "day001"
+    ],
+    "repo_name": "ai-dev-day-001",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-001",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-001/",
+    "status": "posted"
+  },
+  {
+    "day": "002",
+    "tool_name": "Day002 compare helper",
+    "one_sentence": "Day002の作業を30秒で進めるためのcompareツール。",
+    "core_action": "compare",
+    "twist": "day002向けに最短手順で使える形式にする",
+    "keywords": [
+      "compare",
+      "automation",
+      "day002"
+    ],
+    "repo_name": "ai-dev-day-002",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-002",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-002/",
+    "status": "posted"
+  },
+  {
+    "day": "003",
+    "tool_name": "Day003 classify helper",
+    "one_sentence": "Day003の作業を30秒で進めるためのclassifyツール。",
+    "core_action": "classify",
+    "twist": "day003向けに最短手順で使える形式にする",
+    "keywords": [
+      "classify",
+      "automation",
+      "day003"
+    ],
+    "repo_name": "ai-dev-day-003",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-003",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-003/",
+    "status": "posted"
+  },
+  {
+    "day": "004",
+    "tool_name": "Day004 extract helper",
+    "one_sentence": "Day004の作業を30秒で進めるためのextractツール。",
+    "core_action": "extract",
+    "twist": "day004向けに最短手順で使える形式にする",
+    "keywords": [
+      "extract",
+      "automation",
+      "day004"
+    ],
+    "repo_name": "ai-dev-day-004",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-004",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-004/",
+    "status": "posted"
+  },
+  {
+    "day": "005",
+    "tool_name": "Day005 schedule helper",
+    "one_sentence": "Day005の作業を30秒で進めるためのscheduleツール。",
+    "core_action": "schedule",
+    "twist": "day005向けに最短手順で使える形式にする",
+    "keywords": [
+      "schedule",
+      "automation",
+      "day005"
+    ],
+    "repo_name": "ai-dev-day-005",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-005",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-005/",
+    "status": "posted"
+  },
+  {
+    "day": "006",
+    "tool_name": "Day006 analyze helper",
+    "one_sentence": "Day006の作業を30秒で進めるためのanalyzeツール。",
+    "core_action": "analyze",
+    "twist": "day006向けに最短手順で使える形式にする",
+    "keywords": [
+      "analyze",
+      "automation",
+      "day006"
+    ],
+    "repo_name": "ai-dev-day-006",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-006",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-006/",
+    "status": "posted"
+  },
+  {
+    "day": "007",
+    "tool_name": "Day007 summarize helper",
+    "one_sentence": "Day007の作業を30秒で進めるためのsummarizeツール。",
+    "core_action": "summarize",
+    "twist": "day007向けに最短手順で使える形式にする",
+    "keywords": [
+      "summarize",
+      "automation",
+      "day007"
+    ],
+    "repo_name": "ai-dev-day-007",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-007",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-007/",
+    "status": "posted"
+  }
+]
