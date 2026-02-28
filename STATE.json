@@ -1,6 +1,6 @@
 {
   "target_day": 100,
-  "next_day": 9,
+  "next_day": 1,
   "batch_size_default": 7,
   "posts": {
     "fixed_tags": [
@@ -13,241 +13,14 @@
       "minimal": "Day{DAY}|{TOOL_NAME_SHORT}\n{URL}\n#個人開発 #100日開発"
     }
   },
-  "recent_meta": [
-    {
-      "day": "001",
-      "core_action": "transform",
-      "twist": "day001向けに最短手順で使える形式にする",
-      "one_sentence": "Day001の作業を30秒で進めるためのtransformツール。"
-    },
-    {
-      "day": "002",
-      "core_action": "compare",
-      "twist": "day002向けに最短手順で使える形式にする",
-      "one_sentence": "Day002の作業を30秒で進めるためのcompareツール。"
-    },
-    {
-      "day": "003",
-      "core_action": "classify",
-      "twist": "day003向けに最短手順で使える形式にする",
-      "one_sentence": "Day003の作業を30秒で進めるためのclassifyツール。"
-    },
-    {
-      "day": "004",
-      "core_action": "extract",
-      "twist": "day004向けに最短手順で使える形式にする",
-      "one_sentence": "Day004の作業を30秒で進めるためのextractツール。"
-    },
-    {
-      "day": "005",
-      "core_action": "schedule",
-      "twist": "day005向けに最短手順で使える形式にする",
-      "one_sentence": "Day005の作業を30秒で進めるためのscheduleツール。"
-    },
-    {
-      "day": "006",
-      "core_action": "analyze",
-      "twist": "day006向けに最短手順で使える形式にする",
-      "one_sentence": "Day006の作業を30秒で進めるためのanalyzeツール。"
-    },
-    {
-      "day": "007",
-      "core_action": "summarize",
-      "twist": "day007向けに最短手順で使える形式にする",
-      "one_sentence": "Day007の作業を30秒で進めるためのsummarizeツール。"
-    },
-    {
-      "day": "008",
-      "core_action": "plan",
-      "twist": "所要時間を入力すると25分集中+休憩を自動配列し、そのままコピーできる実行タイムラインを作る",
-      "one_sentence": "作業時間を入力するだけで、開始時刻つきのポモドーロ実行タイムラインを生成するツール。"
-    }
-  ],
-  "days": {
-    "001": {
-      "repo_name": "ai-dev-day-001",
-      "repo_url": "https://github.com/ryo909/ai-dev-day-001",
-      "pages_url": "https://ryo909.github.io/ai-dev-day-001/",
-      "meta": {
-        "tool_name": "Day001 transform helper",
-        "core_action": "transform",
-        "twist": "day001向けに最短手順で使える形式にする",
-        "one_sentence": "Day001の作業を30秒で進めるためのtransformツール。",
-        "keywords": [
-          "transform",
-          "automation",
-          "day001"
-        ]
-      },
-      "post_texts": {
-        "standard": "Day001｜Day001 transform helper\nDay001の作業を30秒で進めるためのtransformツール。\nhttps://ryo909.github.io/ai-dev-day-001/\n#個人開発 #100日開発",
-        "compact": "Day001|Day001 transform\nDay001の作業を30秒�\nhttps://ryo909.github.io/ai-dev-day-001/\n#個人開発 #100日開発",
-        "minimal": "Day001|Day001 transform\nhttps://ryo909.github.io/ai-dev-day-001/\n#個人開発 #100日開発"
-      },
-      "status": "posted"
-    },
-    "002": {
-      "repo_name": "ai-dev-day-002",
-      "repo_url": "https://github.com/ryo909/ai-dev-day-002",
-      "pages_url": "https://ryo909.github.io/ai-dev-day-002/",
-      "meta": {
-        "tool_name": "Day002 compare helper",
-        "core_action": "compare",
-        "twist": "day002向けに最短手順で使える形式にする",
-        "one_sentence": "Day002の作業を30秒で進めるためのcompareツール。",
-        "keywords": [
-          "compare",
-          "automation",
-          "day002"
-        ]
-      },
-      "post_texts": {
-        "standard": "Day002｜Day002 compare helper\nDay002の作業を30秒で進めるためのcompareツール。\nhttps://ryo909.github.io/ai-dev-day-002/\n#個人開発 #100日開発",
-        "compact": "Day002|Day002 compare h\nDay002の作業を30秒�\nhttps://ryo909.github.io/ai-dev-day-002/\n#個人開発 #100日開発",
-        "minimal": "Day002|Day002 compare h\nhttps://ryo909.github.io/ai-dev-day-002/\n#個人開発 #100日開発"
-      },
-      "status": "posted"
-    },
-    "003": {
-      "repo_name": "ai-dev-day-003",
-      "repo_url": "https://github.com/ryo909/ai-dev-day-003",
-      "pages_url": "https://ryo909.github.io/ai-dev-day-003/",
-      "meta": {
-        "tool_name": "Day003 classify helper",
-        "core_action": "classify",
-        "twist": "day003向けに最短手順で使える形式にする",
-        "one_sentence": "Day003の作業を30秒で進めるためのclassifyツール。",
-        "keywords": [
-          "classify",
-          "automation",
-          "day003"
-        ]
-      },
-      "post_texts": {
-        "standard": "Day003｜Day003 classify helper\nDay003の作業を30秒で進めるためのclassifyツール。\nhttps://ryo909.github.io/ai-dev-day-003/\n#個人開発 #100日開発",
-        "compact": "Day003|Day003 classify \nDay003の作業を30秒�\nhttps://ryo909.github.io/ai-dev-day-003/\n#個人開発 #100日開発",
-        "minimal": "Day003|Day003 classify \nhttps://ryo909.github.io/ai-dev-day-003/\n#個人開発 #100日開発"
-      },
-      "status": "posted"
-    },
-    "004": {
-      "repo_name": "ai-dev-day-004",
-      "repo_url": "https://github.com/ryo909/ai-dev-day-004",
-      "pages_url": "https://ryo909.github.io/ai-dev-day-004/",
-      "meta": {
-        "tool_name": "Day004 extract helper",
-        "core_action": "extract",
-        "twist": "day004向けに最短手順で使える形式にする",
-        "one_sentence": "Day004の作業を30秒で進めるためのextractツール。",
-        "keywords": [
-          "extract",
-          "automation",
-          "day004"
-        ]
-      },
-      "post_texts": {
-        "standard": "Day004｜Day004 extract helper\nDay004の作業を30秒で進めるためのextractツール。\nhttps://ryo909.github.io/ai-dev-day-004/\n#個人開発 #100日開発",
-        "compact": "Day004|Day004 extract h\nDay004の作業を30秒�\nhttps://ryo909.github.io/ai-dev-day-004/\n#個人開発 #100日開発",
-        "minimal": "Day004|Day004 extract h\nhttps://ryo909.github.io/ai-dev-day-004/\n#個人開発 #100日開発"
-      },
-      "status": "posted"
-    },
-    "005": {
-      "repo_name": "ai-dev-day-005",
-      "repo_url": "https://github.com/ryo909/ai-dev-day-005",
-      "pages_url": "https://ryo909.github.io/ai-dev-day-005/",
-      "meta": {
-        "tool_name": "Day005 schedule helper",
-        "core_action": "schedule",
-        "twist": "day005向けに最短手順で使える形式にする",
-        "one_sentence": "Day005の作業を30秒で進めるためのscheduleツール。",
-        "keywords": [
-          "schedule",
-          "automation",
-          "day005"
-        ]
-      },
-      "post_texts": {
-        "standard": "Day005｜Day005 schedule helper\nDay005の作業を30秒で進めるためのscheduleツール。\nhttps://ryo909.github.io/ai-dev-day-005/\n#個人開発 #100日開発",
-        "compact": "Day005|Day005 schedule \nDay005の作業を30秒�\nhttps://ryo909.github.io/ai-dev-day-005/\n#個人開発 #100日開発",
-        "minimal": "Day005|Day005 schedule \nhttps://ryo909.github.io/ai-dev-day-005/\n#個人開発 #100日開発"
-      },
-      "status": "posted"
-    },
-    "006": {
-      "repo_name": "ai-dev-day-006",
-      "repo_url": "https://github.com/ryo909/ai-dev-day-006",
-      "pages_url": "https://ryo909.github.io/ai-dev-day-006/",
-      "meta": {
-        "tool_name": "Day006 analyze helper",
-        "core_action": "analyze",
-        "twist": "day006向けに最短手順で使える形式にする",
-        "one_sentence": "Day006の作業を30秒で進めるためのanalyzeツール。",
-        "keywords": [
-          "analyze",
-          "automation",
-          "day006"
-        ]
-      },
-      "post_texts": {
-        "standard": "Day006｜Day006 analyze helper\nDay006の作業を30秒で進めるためのanalyzeツール。\nhttps://ryo909.github.io/ai-dev-day-006/\n#個人開発 #100日開発",
-        "compact": "Day006|Day006 analyze h\nDay006の作業を30秒�\nhttps://ryo909.github.io/ai-dev-day-006/\n#個人開発 #100日開発",
-        "minimal": "Day006|Day006 analyze h\nhttps://ryo909.github.io/ai-dev-day-006/\n#個人開発 #100日開発"
-      },
-      "status": "posted"
-    },
-    "007": {
-      "repo_name": "ai-dev-day-007",
-      "repo_url": "https://github.com/ryo909/ai-dev-day-007",
-      "pages_url": "https://ryo909.github.io/ai-dev-day-007/",
-      "meta": {
-        "tool_name": "Day007 summarize helper",
-        "core_action": "summarize",
-        "twist": "day007向けに最短手順で使える形式にする",
-        "one_sentence": "Day007の作業を30秒で進めるためのsummarizeツール。",
-        "keywords": [
-          "summarize",
-          "automation",
-          "day007"
-        ]
-      },
-      "post_texts": {
-        "standard": "Day007｜Day007 summarize helper\nDay007の作業を30秒で進めるためのsummarizeツール。\nhttps://ryo909.github.io/ai-dev-day-007/\n#個人開発 #100日開発",
-        "compact": "Day007|Day007 summarize\nDay007の作業を30秒�\nhttps://ryo909.github.io/ai-dev-day-007/\n#個人開発 #100日開発",
-        "minimal": "Day007|Day007 summarize\nhttps://ryo909.github.io/ai-dev-day-007/\n#個人開発 #100日開発"
-      },
-      "status": "posted"
-    },
-    "008": {
-      "repo_name": "ai-dev-day-008",
-      "repo_url": "https://github.com/ryo909/ai-dev-day-008",
-      "pages_url": "https://ryo909.github.io/ai-dev-day-008/",
-      "meta": {
-        "tool_name": "Pomodoro Slice Planner",
-        "core_action": "plan",
-        "twist": "所要時間を入力すると25分集中+休憩を自動配列し、そのままコピーできる実行タイムラインを作る",
-        "one_sentence": "作業時間を入力するだけで、開始時刻つきのポモドーロ実行タイムラインを生成するツール。",
-        "keywords": [
-          "pomodoro",
-          "planner",
-          "timeline",
-          "productivity"
-        ]
-      },
-      "post_texts": {
-        "standard": "Day008｜Pomodoro Slice Planner\n作業時間を入力するだけで、開始時刻つきのポモドーロ実行タイムラインを生成するツール。\nhttps://ryo909.github.io/ai-dev-day-008/\n#個人開発 #100日開発",
-        "compact": "Day008|Pomodoro Slice Pl\nポモドーロ実行タイムライン生成\nhttps://ryo909.github.io/ai-dev-day-008/\n#個人開発 #100日開発",
-        "minimal": "Day008|Pomodoro Slice Pl\nhttps://ryo909.github.io/ai-dev-day-008/\n#個人開発 #100日開発"
-      },
-      "status": "posted"
-    }
-  },
+  "recent_meta": [],
+  "days": {},
   "catalog": {
     "pages_enabled": true,
     "catalog_json_path": "catalog/catalog.json",
     "catalog_html_path": "catalog/index.html"
   },
-  "last_run": "2026-02-28T03:16:54Z",
+  "last_run": null,
   "integrations": {
     "buffer_mode": "queue",
     "make_webhook_env": "MAKE_WEBHOOK_URL"
@@ -255,31 +28,13 @@
   "notes": "",
   "post_pending": null,
   "last_make_webhook": {
-    "batch_id": "single-20260228T031654Z-Day008",
-    "sent_at": "2026-02-28T03:16:54Z",
-    "posted_count": 1,
-    "posted_days": [
-      "008"
-    ]
+    "batch_id": null,
+    "sent_at": null,
+    "posted_count": 0,
+    "posted_days": []
   },
-  "execution_logs": [
-    {
-      "executed_at": "2026-02-28T03:16:54Z",
-      "day": "008",
-      "repo_name": "ai-dev-day-008",
-      "steps": [
-        "planning",
-        "implementation",
-        "publish",
-        "catalog",
-        "buffer"
-      ],
-      "make_webhook": {
-        "batch_id": "single-20260228T031654Z-Day008",
-        "status": "accepted",
-        "response_body": "Accepted"
-      },
-      "reservation_note": "Bufferの既存曜日スケジュールの次回枠に投入"
-    }
-  ]
+  "execution_logs": [],
+  "recent_genres": [],
+  "theme_mode": "seeded",
+  "last_run_at": null
 }
