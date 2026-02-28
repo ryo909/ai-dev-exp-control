@@ -1,6 +1,6 @@
 {
   "target_day": 100,
-  "next_day": 4,
+  "next_day": 5,
   "batch_size_default": 7,
   "posts": {
     "fixed_tags": [
@@ -31,6 +31,12 @@
       "core_action": "schedule",
       "twist": "逆算の根拠を1行で示して計画の納得感を上げる",
       "one_sentence": "締切から逆算した実行計画を即作成するプランニングツール。"
+    },
+    {
+      "day": "004",
+      "core_action": "generate",
+      "twist": "初回学習日から次回復習日を同時表示する",
+      "one_sentence": "学習内容の復習タイミングを自動で組み立てる学習支援ツール。"
     }
   ],
   "days": {
@@ -117,6 +123,34 @@
         "minimal": "Day003|Backward Milesto\nhttps://ryo909.github.io/ai-dev-day-003/\n#個人開発 #100日開発"
       },
       "status": "done"
+    },
+    "004": {
+      "repo_name": "ai-dev-day-004",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-004",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-004/",
+      "meta": {
+        "tool_name": "Recall Loop Builder",
+        "title": "Recall Loop Builder",
+        "description": "学習トピックから復習間隔つきのチェックリストを生成する。",
+        "genre": "learning",
+        "theme": "Mono",
+        "story_summary": "覚えたつもりを防ぐため、復習日を先に決める導線にした。",
+        "core_action": "generate",
+        "twist": "初回学習日から次回復習日を同時表示する",
+        "one_sentence": "学習内容の復習タイミングを自動で組み立てる学習支援ツール。",
+        "keywords": [
+          "learning",
+          "review",
+          "memory",
+          "study"
+        ]
+      },
+      "post_texts": {
+        "standard": "Day004｜Recall Loop Builder\n学習内容の復習タイミングを自動で組み立てる学習支援ツール。\nhttps://ryo909.github.io/ai-dev-day-004/\n#個人開発 #100日開発",
+        "compact": "Day004|Recall Loop Buil\n学習内容の復習タ\nhttps://ryo909.github.io/ai-dev-day-004/\n#個人開発 #100日開発",
+        "minimal": "Day004|Recall Loop Buil\nhttps://ryo909.github.io/ai-dev-day-004/\n#個人開発 #100日開発"
+      },
+      "status": "done"
     }
   },
   "catalog": {
@@ -183,13 +217,28 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-02-28T05:54:19Z",
+      "day": "004",
+      "repo_name": "ai-dev-day-004",
+      "genre": "learning",
+      "theme": "Mono",
+      "steps": [
+        "planning",
+        "implementation",
+        "build",
+        "publish",
+        "state_update"
+      ],
+      "status": "done"
     }
   ],
   "recent_genres": [
-    "writing",
     "devtools",
-    "planning"
+    "planning",
+    "learning"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-02-28T05:53:59Z"
+  "last_run_at": "2026-02-28T05:54:19Z"
 }
