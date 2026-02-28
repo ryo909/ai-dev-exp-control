@@ -380,7 +380,10 @@ jq --arg day "$DAY_STR" \
 CATALOG_LINE="| Day${DAY_STR} | ${TOOL_NAME} | ${ONE_SENTENCE} | [Demo](${PAGES_URL}) | [Repo](${REPO_URL}) | ✅ |"
 # テーブルの「— |」行の前に挿入
 if grep -q "^| — |" "$CONTROL_DIR/CATALOG.md"; then
-  sed -i "s/^| — |.*/${CATALOG_LINE}\n| — | — | — | — | — | — |/" "$CONTROL_DIR/CATALOG.md"
+  awk -v line="$CATALOG_LINE" '
+    !inserted && /^| — \|/ { print line; inserted=1 }
+    { print }
+  ' "$CONTROL_DIR/CATALOG.md" > "$CONTROL_DIR/CATALOG.md.tmp" && mv "$CONTROL_DIR/CATALOG.md.tmp" "$CONTROL_DIR/CATALOG.md"
 else
   echo "$CATALOG_LINE" >> "$CONTROL_DIR/CATALOG.md"
 fi
