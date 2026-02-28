@@ -1,6 +1,6 @@
 {
   "target_day": 100,
-  "next_day": 6,
+  "next_day": 7,
   "batch_size_default": 7,
   "posts": {
     "fixed_tags": [
@@ -43,6 +43,12 @@
       "core_action": "track",
       "twist": "勤務時間に合わせて飲水タイミングを均等化する",
       "one_sentence": "目標水分量を無理なく達成するための配分プランナー。"
+    },
+    {
+      "day": "006",
+      "core_action": "generate",
+      "twist": "30秒で遊べるミニお題を即時に複数提案",
+      "one_sentence": "気分転換用の短いお題をすぐ作るライトな遊びツール。"
     }
   ],
   "days": {
@@ -185,6 +191,34 @@
         "minimal": "Day005|Hydration Pace P\nhttps://ryo909.github.io/ai-dev-day-005/\n#個人開発 #100日開発"
       },
       "status": "done"
+    },
+    "006": {
+      "repo_name": "ai-dev-day-006",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-006",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-006/",
+      "meta": {
+        "tool_name": "Tiny Prompt Play",
+        "title": "Tiny Prompt Play",
+        "description": "気分を選ぶと短いお題を3つ返す遊びツール。",
+        "genre": "fun",
+        "theme": "Paper",
+        "story_summary": "作業の合間に使える短時間の遊び体験を目指した。",
+        "core_action": "generate",
+        "twist": "30秒で遊べるミニお題を即時に複数提案",
+        "one_sentence": "気分転換用の短いお題をすぐ作るライトな遊びツール。",
+        "keywords": [
+          "fun",
+          "prompt",
+          "game",
+          "idea"
+        ]
+      },
+      "post_texts": {
+        "standard": "Day006｜Tiny Prompt Play\n気分転換用の短いお題をすぐ作るライトな遊びツール。\nhttps://ryo909.github.io/ai-dev-day-006/\n#個人開発 #100日開発",
+        "compact": "Day006|Tiny Prompt Play\n気分転換用の短い\nhttps://ryo909.github.io/ai-dev-day-006/\n#個人開発 #100日開発",
+        "minimal": "Day006|Tiny Prompt Play\nhttps://ryo909.github.io/ai-dev-day-006/\n#個人開発 #100日開発"
+      },
+      "status": "done"
     }
   },
   "catalog": {
@@ -281,13 +315,28 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-02-28T05:54:59Z",
+      "day": "006",
+      "repo_name": "ai-dev-day-006",
+      "genre": "fun",
+      "theme": "Paper",
+      "steps": [
+        "planning",
+        "implementation",
+        "build",
+        "publish",
+        "state_update"
+      ],
+      "status": "done"
     }
   ],
   "recent_genres": [
-    "planning",
     "learning",
-    "health"
+    "health",
+    "fun"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-02-28T05:54:39Z"
+  "last_run_at": "2026-02-28T05:54:59Z"
 }
