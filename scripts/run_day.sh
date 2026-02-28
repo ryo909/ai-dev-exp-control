@@ -293,10 +293,26 @@ gh api -X PUT "repos/${GH_USER}/${REPO_NAME}/pages" -f "build_type=workflow" >/d
 gh api -X PUT "repos/${GH_USER}/${REPO_NAME}/pages" -f "build_type=workflow" >/dev/null 2>&1 || true
 
 echo "  [6/6] STATE更新..."
-POST_STANDARD="${DAY_LABEL}｜${TITLE}
+POST_STANDARD_LEGACY="${DAY_LABEL}｜${TITLE}
 ${ONE_SENTENCE}
 ${PAGES_URL}
 #個人開発 #100日開発"
+
+POST_STANDARD="$POST_STANDARD_LEGACY"
+if command -v python3 >/dev/null 2>&1 && [ -f "$SCRIPT_DIR/render_post_text.py" ]; then
+  if POST_STANDARD_RENDERED=$(python3 "$SCRIPT_DIR/render_post_text.py" \
+    --day "$DAY_STR" \
+    --tool-name "$TITLE" \
+    --pages-url "$PAGES_URL" \
+    --body-id "A" \
+    --one-liner "$ONE_SENTENCE" \
+    --use-case "用途: ${DESCRIPTION}" 2>/dev/null); then
+    POST_STANDARD="$POST_STANDARD_RENDERED"
+    echo "  ℹ 投稿テンプレ適用: templates/posts (body_A)"
+  else
+    echo "  ℹ 投稿テンプレ未適用: 従来方式にフォールバック"
+  fi
+fi
 
 TITLE_SHORT=$(echo "$TITLE" | cut -c1-16)
 DESC_SHORT=$(echo "$ONE_SENTENCE" | cut -c1-24)
