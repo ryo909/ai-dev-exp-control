@@ -1,1 +1,58 @@
-[]
+[
+  {
+    "day": "001",
+    "tool_name": "Draft Tightener",
+    "one_sentence": "文章を短く整えて、投稿しやすい形に圧縮するライティングツール。",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-001/",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-001",
+    "status": "posted"
+  },
+  {
+    "day": "002",
+    "tool_name": "JSON Key Lens",
+    "one_sentence": "JSONの構造を素早く把握するための開発者向けビューア。",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-002/",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-002",
+    "status": "posted"
+  },
+  {
+    "day": "003",
+    "tool_name": "Backward Milestone Mapper",
+    "one_sentence": "締切から逆算した実行計画を即作成するプランニングツール。",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-003/",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-003",
+    "status": "posted"
+  },
+  {
+    "day": "004",
+    "tool_name": "Recall Loop Builder",
+    "one_sentence": "学習内容の復習タイミングを自動で組み立てる学習支援ツール。",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-004/",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-004",
+    "status": "posted"
+  },
+  {
+    "day": "005",
+    "tool_name": "Hydration Pace Planner",
+    "one_sentence": "目標水分量を無理なく達成するための配分プランナー。",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-005/",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-005",
+    "status": "posted"
+  },
+  {
+    "day": "006",
+    "tool_name": "Tiny Prompt Play",
+    "one_sentence": "気分転換用の短いお題をすぐ作るライトな遊びツール。",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-006/",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-006",
+    "status": "posted"
+  },
+  {
+    "day": "007",
+    "tool_name": "Focus Slot Composer",
+    "one_sentence": "作業時間から集中と休憩の実行順を自動で作る生産性ツール。",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-007/",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-007",
+    "status": "posted"
+  }
+]
