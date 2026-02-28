@@ -1,6 +1,6 @@
 {
   "target_day": 100,
-  "next_day": 2,
+  "next_day": 3,
   "batch_size_default": 7,
   "posts": {
     "fixed_tags": [
@@ -19,6 +19,12 @@
       "core_action": "rewrite",
       "twist": "文字数の目安を表示してSNS向けの短文化を支援",
       "one_sentence": "文章を短く整えて、投稿しやすい形に圧縮するライティングツール。"
+    },
+    {
+      "day": "002",
+      "core_action": "inspect",
+      "twist": "深いネストでもパス一覧を一気に展開できる",
+      "one_sentence": "JSONの構造を素早く把握するための開発者向けビューア。"
     }
   ],
   "days": {
@@ -47,6 +53,34 @@
         "standard": "Day001｜Draft Tightener\n文章を短く整えて、投稿しやすい形に圧縮するライティングツール。\nhttps://ryo909.github.io/ai-dev-day-001/\n#個人開発 #100日開発",
         "compact": "Day001|Draft Tightener\n文章を短く整えて\nhttps://ryo909.github.io/ai-dev-day-001/\n#個人開発 #100日開発",
         "minimal": "Day001|Draft Tightener\nhttps://ryo909.github.io/ai-dev-day-001/\n#個人開発 #100日開発"
+      },
+      "status": "done"
+    },
+    "002": {
+      "repo_name": "ai-dev-day-002",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-002",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-002/",
+      "meta": {
+        "tool_name": "JSON Key Lens",
+        "title": "JSON Key Lens",
+        "description": "JSON文字列からキー構造を抽出して読みやすく表示する。",
+        "genre": "devtools",
+        "theme": "RetroTerminal",
+        "story_summary": "APIレスポンス調査を速くするため、構造確認に特化した。",
+        "core_action": "inspect",
+        "twist": "深いネストでもパス一覧を一気に展開できる",
+        "one_sentence": "JSONの構造を素早く把握するための開発者向けビューア。",
+        "keywords": [
+          "json",
+          "devtools",
+          "inspect",
+          "debug"
+        ]
+      },
+      "post_texts": {
+        "standard": "Day002｜JSON Key Lens\nJSONの構造を素早く把握するための開発者向けビューア。\nhttps://ryo909.github.io/ai-dev-day-002/\n#個人開発 #100日開発",
+        "compact": "Day002|JSON Key Lens\nJSONの構造を素早�\nhttps://ryo909.github.io/ai-dev-day-002/\n#個人開発 #100日開発",
+        "minimal": "Day002|JSON Key Lens\nhttps://ryo909.github.io/ai-dev-day-002/\n#個人開発 #100日開発"
       },
       "status": "done"
     }
@@ -85,11 +119,27 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-02-28T05:53:39Z",
+      "day": "002",
+      "repo_name": "ai-dev-day-002",
+      "genre": "devtools",
+      "theme": "RetroTerminal",
+      "steps": [
+        "planning",
+        "implementation",
+        "build",
+        "publish",
+        "state_update"
+      ],
+      "status": "done"
     }
   ],
   "recent_genres": [
-    "writing"
+    "writing",
+    "devtools"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-02-28T05:53:21Z"
+  "last_run_at": "2026-02-28T05:53:39Z"
 }
