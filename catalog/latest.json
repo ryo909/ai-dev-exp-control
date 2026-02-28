@@ -1,13 +1,5 @@
 [
   {
-    "day": "001",
-    "tool_name": "Day001 transform helper",
-    "one_sentence": "Day001の作業を30秒で進めるためのtransformツール。",
-    "pages_url": "https://ryo909.github.io/ai-dev-day-001/",
-    "repo_url": "https://github.com/ryo909/ai-dev-day-001",
-    "status": "posted"
-  },
-  {
     "day": "002",
     "tool_name": "Day002 compare helper",
     "one_sentence": "Day002の作業を30秒で進めるためのcompareツール。",
@@ -53,6 +45,14 @@
     "one_sentence": "Day007の作業を30秒で進めるためのsummarizeツール。",
     "pages_url": "https://ryo909.github.io/ai-dev-day-007/",
     "repo_url": "https://github.com/ryo909/ai-dev-day-007",
+    "status": "posted"
+  },
+  {
+    "day": "008",
+    "tool_name": "Pomodoro Slice Planner",
+    "one_sentence": "作業時間を入力するだけで、開始時刻つきのポモドーロ実行タイムラインを生成するツール。",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-008/",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-008",
     "status": "posted"
   }
 ]

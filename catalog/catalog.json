@@ -110,5 +110,22 @@
     "repo_url": "https://github.com/ryo909/ai-dev-day-007",
     "pages_url": "https://ryo909.github.io/ai-dev-day-007/",
     "status": "posted"
+  },
+  {
+    "day": "008",
+    "tool_name": "Pomodoro Slice Planner",
+    "one_sentence": "作業時間を入力するだけで、開始時刻つきのポモドーロ実行タイムラインを生成するツール。",
+    "core_action": "plan",
+    "twist": "所要時間を入力すると25分集中+休憩を自動配列し、そのままコピーできる実行タイムラインを作る",
+    "keywords": [
+      "pomodoro",
+      "planner",
+      "timeline",
+      "productivity"
+    ],
+    "repo_name": "ai-dev-day-008",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-008",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-008/",
+    "status": "posted"
   }
 ]
