@@ -18,6 +18,7 @@ bash scripts/resume.sh
 これだけで:
 - STATE.json から `next_day` を読み取り
 - 7本分のDay repoを生成・ビルド・デプロイ
+- 各Day repoに `STORY.md` を自動生成（READMEから参照）
 - X投稿テキストを生成
 - Buffer投入（連携済みなら）
 - カタログページを更新
