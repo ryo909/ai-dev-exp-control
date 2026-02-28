@@ -134,6 +134,20 @@ generate_plan() {
   esac
 }
 
+sync_template_files() {
+  local tmp_template
+  tmp_template=$(mktemp -d "${WORK_ROOT}/template-XXXXXX")
+  gh repo clone "${GH_USER}/${TEMPLATE_REPO}" "$tmp_template" >/dev/null
+  (
+    cd "$tmp_template"
+    tar --exclude='.git' --exclude='node_modules' --exclude='dist' -cf - .
+  ) | (
+    cd "$WORK_DIR"
+    tar -xf -
+  )
+  rm -rf "$tmp_template"
+}
+
 write_story_file() {
   local story_path="$1"
   cat > "$story_path" <<STORY
@@ -197,6 +211,7 @@ mkdir -p "$WORK_ROOT"
 WORK_DIR=$(mktemp -d "$WORK_ROOT/${REPO_NAME}-XXXXXX")
 gh repo clone "${GH_USER}/${REPO_NAME}" "$WORK_DIR" >/dev/null
 cd "$WORK_DIR"
+sync_template_files
 
 echo "  [3/6] 実装..."
 jq -n \
