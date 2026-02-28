@@ -90,6 +90,83 @@ check_diversity() {
   return 0
 }
 
+prepare_meta() {
+  local meta_file="$1"
+  local current_tool current_action current_twist current_sentence
+  local current_day current_repo current_pages generated_action generated_twist generated_sentence
+  local idx
+  local actions=("summarize" "transform" "compare" "classify" "extract" "schedule" "analyze")
+
+  if [ ! -f "$meta_file" ]; then
+    cat > "$meta_file" <<'EOF'
+{
+  "day": "XXX",
+  "tool_name": "ツール名をここに",
+  "core_action": "",
+  "twist": "",
+  "one_sentence": "1文説明をここに",
+  "keywords": [],
+  "repo_name": "ai-dev-day-XXX",
+  "pages_url": "https://USERNAME.github.io/ai-dev-day-XXX/"
+}
+EOF
+  fi
+
+  current_tool=$(jq -r '.tool_name // ""' "$meta_file")
+  current_action=$(jq -r '.core_action // ""' "$meta_file")
+  current_twist=$(jq -r '.twist // ""' "$meta_file")
+  current_sentence=$(jq -r '.one_sentence // ""' "$meta_file")
+  current_day=$(jq -r '.day // ""' "$meta_file")
+  current_repo=$(jq -r '.repo_name // ""' "$meta_file")
+  current_pages=$(jq -r '.pages_url // ""' "$meta_file")
+
+  idx=$((DAY_NUM % ${#actions[@]}))
+  generated_action="${actions[$idx]}"
+  generated_twist="day${DAY_STR}向けに最短手順で使える形式にする"
+  generated_sentence="Day${DAY_STR}の作業を30秒で進めるための${generated_action}ツール。"
+
+  if [ -z "$current_tool" ] || [ "$current_tool" = "ツール名をここに" ]; then
+    current_tool="Day${DAY_STR} ${generated_action} helper"
+  fi
+  if [ -z "$current_action" ]; then
+    current_action="$generated_action"
+  fi
+  if [ -z "$current_twist" ]; then
+    current_twist="$generated_twist"
+  fi
+  if [ -z "$current_sentence" ] || [ "$current_sentence" = "1文説明をここに" ]; then
+    current_sentence="$generated_sentence"
+  fi
+  if [ -z "$current_day" ] || [ "$current_day" = "XXX" ]; then
+    current_day="$DAY_STR"
+  fi
+  if [ -z "$current_repo" ] || [ "$current_repo" = "ai-dev-day-XXX" ]; then
+    current_repo="$REPO_NAME"
+  fi
+  if [ -z "$current_pages" ] || [ "$current_pages" = "https://USERNAME.github.io/ai-dev-day-XXX/" ]; then
+    current_pages="$PAGES_URL"
+  fi
+
+  jq --arg day "$current_day" \
+     --arg tool_name "$current_tool" \
+     --arg core_action "$current_action" \
+     --arg twist "$current_twist" \
+     --arg one_sentence "$current_sentence" \
+     --arg repo_name "$current_repo" \
+     --arg pages_url "$current_pages" \
+     '
+     .day = $day
+     | .tool_name = $tool_name
+     | .core_action = $core_action
+     | .twist = $twist
+     | .one_sentence = $one_sentence
+     | .repo_name = $repo_name
+     | .pages_url = $pages_url
+     | .keywords = (if (.keywords | type) == "array" then .keywords else [] end)
+     | .keywords = (if (.keywords | length) > 0 then .keywords else [$core_action, "automation", ("day" + $day)] end)
+     ' "$meta_file" > "${meta_file}.tmp" && mv "${meta_file}.tmp" "$meta_file"
+}
+
 # ============================================================
 # Step 2: Repo作成（テンプレートから）
 # ============================================================
@@ -133,13 +210,17 @@ echo "  [3/6] 実装..."
 # このスクリプトでは meta.json と README.md の存在を確認する。
 
 if [ ! -f "meta.json" ]; then
-  echo "  ⚠ meta.json が見つかりません。AIによる生成が必要です。"
-  echo "  → 次の一手: codex または手動で meta.json を作成してください。"
-  exit 1
+  echo "  ⚠ meta.json が見つかりません。既定値で作成して続行します。"
 fi
 
+prepare_meta "meta.json"
+
 # Diversity Gate 実行
-GATE_RESULT=$(check_diversity "meta.json")
+if ! GATE_RESULT=$(check_diversity "meta.json"); then
+  echo "  ❌ Diversity Gate 不合格: $GATE_RESULT"
+  echo "  → 次の一手: meta.json のアイデアを変更してください。"
+  exit 1
+fi
 if [ "$GATE_RESULT" != "PASS" ]; then
   echo "  ❌ Diversity Gate 不合格: $GATE_RESULT"
   echo "  → 次の一手: meta.json のアイデアを変更してください。"
