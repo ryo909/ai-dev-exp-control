@@ -1,0 +1,234 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "STATE.json Schema",
+    "description": "AI個人開発実験パイプラインの進捗管理ファイルのスキーマ",
+    "type": "object",
+    "required": [
+        "target_day",
+        "next_day",
+        "batch_size_default",
+        "posts",
+        "recent_meta",
+        "days",
+        "catalog",
+        "integrations"
+    ],
+    "properties": {
+        "target_day": {
+            "type": "integer",
+            "const": 100,
+            "description": "目標Day数"
+        },
+        "next_day": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 101,
+            "description": "次に生成すべきDay番号"
+        },
+        "batch_size_default": {
+            "type": "integer",
+            "const": 7,
+            "description": "バッチサイズ（固定）"
+        },
+        "posts": {
+            "type": "object",
+            "required": [
+                "fixed_tags",
+                "templates"
+            ],
+            "properties": {
+                "fixed_tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "固定ハッシュタグ"
+                },
+                "templates": {
+                    "type": "object",
+                    "required": [
+                        "standard",
+                        "compact",
+                        "minimal"
+                    ],
+                    "properties": {
+                        "standard": {
+                            "type": "string"
+                        },
+                        "compact": {
+                            "type": "string"
+                        },
+                        "minimal": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "recent_meta": {
+            "type": "array",
+            "maxItems": 20,
+            "items": {
+                "type": "object",
+                "required": [
+                    "day",
+                    "core_action",
+                    "twist",
+                    "one_sentence"
+                ],
+                "properties": {
+                    "day": {
+                        "type": "string"
+                    },
+                    "core_action": {
+                        "type": "string"
+                    },
+                    "twist": {
+                        "type": "string"
+                    },
+                    "one_sentence": {
+                        "type": "string"
+                    },
+                    "keywords": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "description": "直近20本のmeta要約（Diversity Gate用）"
+        },
+        "days": {
+            "type": "object",
+            "patternProperties": {
+                "^[0-9]{3}$": {
+                    "type": "object",
+                    "required": [
+                        "repo_name",
+                        "repo_url",
+                        "pages_url",
+                        "meta",
+                        "post_texts",
+                        "status"
+                    ],
+                    "properties": {
+                        "repo_name": {
+                            "type": "string"
+                        },
+                        "repo_url": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "pages_url": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "meta": {
+                            "type": "object",
+                            "required": [
+                                "core_action",
+                                "twist",
+                                "one_sentence"
+                            ],
+                            "properties": {
+                                "core_action": {
+                                    "type": "string"
+                                },
+                                "twist": {
+                                    "type": "string"
+                                },
+                                "one_sentence": {
+                                    "type": "string"
+                                },
+                                "keywords": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        },
+                        "post_texts": {
+                            "type": "object",
+                            "required": [
+                                "standard",
+                                "compact",
+                                "minimal"
+                            ],
+                            "properties": {
+                                "standard": {
+                                    "type": "string"
+                                },
+                                "compact": {
+                                    "type": "string"
+                                },
+                                "minimal": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "status": {
+                            "type": "string",
+                            "enum": [
+                                "pending",
+                                "building",
+                                "built",
+                                "deployed",
+                                "posted",
+                                "done",
+                                "failed"
+                            ]
+                        }
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "catalog": {
+            "type": "object",
+            "required": [
+                "pages_enabled",
+                "catalog_json_path",
+                "catalog_html_path"
+            ],
+            "properties": {
+                "pages_enabled": {
+                    "type": "boolean"
+                },
+                "catalog_json_path": {
+                    "type": "string"
+                },
+                "catalog_html_path": {
+                    "type": "string"
+                }
+            }
+        },
+        "last_run": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "description": "直近実行日時（ISO 8601）"
+        },
+        "integrations": {
+            "type": "object",
+            "properties": {
+                "buffer_mode": {
+                    "type": "string",
+                    "enum": [
+                        "queue",
+                        "disabled"
+                    ]
+                },
+                "make_webhook_env": {
+                    "type": "string"
+                }
+            }
+        },
+        "notes": {
+            "type": "string",
+            "description": "任意メモ（障害メモ等）"
+        }
+    }
+}

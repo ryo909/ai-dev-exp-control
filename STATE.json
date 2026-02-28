@@ -1,0 +1,26 @@
+{
+  "target_day": 100,
+  "next_day": 1,
+  "batch_size_default": 7,
+  "posts": {
+    "fixed_tags": ["#個人開発", "#100日開発"],
+    "templates": {
+      "standard": "Day{DAY}｜{TOOL_NAME}\n{DESCRIPTION}\n{URL}\n#個人開発 #100日開発",
+      "compact": "Day{DAY}|{TOOL_NAME_SHORT}\n{DESCRIPTION_SHORT}\n{URL}\n#個人開発 #100日開発",
+      "minimal": "Day{DAY}|{TOOL_NAME_SHORT}\n{URL}\n#個人開発 #100日開発"
+    }
+  },
+  "recent_meta": [],
+  "days": {},
+  "catalog": {
+    "pages_enabled": true,
+    "catalog_json_path": "catalog/catalog.json",
+    "catalog_html_path": "catalog/index.html"
+  },
+  "last_run": null,
+  "integrations": {
+    "buffer_mode": "queue",
+    "make_webhook_env": "MAKE_WEBHOOK_URL"
+  },
+  "notes": ""
+}

@@ -1,0 +1,57 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "meta.json Schema",
+    "description": "各Day repoのmeta.jsonスキーマ（品質ゲート用）",
+    "type": "object",
+    "required": [
+        "day",
+        "tool_name",
+        "core_action",
+        "twist",
+        "one_sentence"
+    ],
+    "properties": {
+        "day": {
+            "type": "string",
+            "pattern": "^[0-9]{3}$",
+            "description": "Day番号（3桁ゼロ埋め）"
+        },
+        "tool_name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "ツール名"
+        },
+        "core_action": {
+            "type": "string",
+            "minLength": 1,
+            "description": "何をするか（convert/compare/generate/track/visualize/format等）"
+        },
+        "twist": {
+            "type": "string",
+            "minLength": 1,
+            "description": "差別化ポイント（保存/エクスポート/可視化/ショートカット/スキン/履歴/プリセット等）"
+        },
+        "one_sentence": {
+            "type": "string",
+            "minLength": 5,
+            "description": "1文説明"
+        },
+        "keywords": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "検索用キーワード（任意）"
+        },
+        "repo_name": {
+            "type": "string",
+            "pattern": "^ai-dev-day-[0-9]{3}$",
+            "description": "リポジトリ名"
+        },
+        "pages_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "GitHub Pages URL"
+        }
+    }
+}
