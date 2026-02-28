@@ -1,6 +1,6 @@
 {
   "target_day": 100,
-  "next_day": 1,
+  "next_day": 2,
   "batch_size_default": 7,
   "posts": {
     "fixed_tags": [
@@ -13,8 +13,44 @@
       "minimal": "Day{DAY}|{TOOL_NAME_SHORT}\n{URL}\n#個人開発 #100日開発"
     }
   },
-  "recent_meta": [],
-  "days": {},
+  "recent_meta": [
+    {
+      "day": "001",
+      "core_action": "rewrite",
+      "twist": "文字数の目安を表示してSNS向けの短文化を支援",
+      "one_sentence": "文章を短く整えて、投稿しやすい形に圧縮するライティングツール。"
+    }
+  ],
+  "days": {
+    "001": {
+      "repo_name": "ai-dev-day-001",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-001",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-001/",
+      "meta": {
+        "tool_name": "Draft Tightener",
+        "title": "Draft Tightener",
+        "description": "下書きを貼ると、冗長表現を減らした短文案を作る。",
+        "genre": "writing",
+        "theme": "Soft",
+        "story_summary": "長い文章を公開前に圧縮する一手間を最小化した。",
+        "core_action": "rewrite",
+        "twist": "文字数の目安を表示してSNS向けの短文化を支援",
+        "one_sentence": "文章を短く整えて、投稿しやすい形に圧縮するライティングツール。",
+        "keywords": [
+          "writing",
+          "edit",
+          "summary",
+          "copy"
+        ]
+      },
+      "post_texts": {
+        "standard": "Day001｜Draft Tightener\n文章を短く整えて、投稿しやすい形に圧縮するライティングツール。\nhttps://ryo909.github.io/ai-dev-day-001/\n#個人開発 #100日開発",
+        "compact": "Day001|Draft Tightener\n文章を短く整えて\nhttps://ryo909.github.io/ai-dev-day-001/\n#個人開発 #100日開発",
+        "minimal": "Day001|Draft Tightener\nhttps://ryo909.github.io/ai-dev-day-001/\n#個人開発 #100日開発"
+      },
+      "status": "done"
+    }
+  },
   "catalog": {
     "pages_enabled": true,
     "catalog_json_path": "catalog/catalog.json",
@@ -33,8 +69,26 @@
     "posted_count": 0,
     "posted_days": []
   },
-  "execution_logs": [],
-  "recent_genres": [],
+  "execution_logs": [
+    {
+      "executed_at": "2026-02-28T05:50:44Z",
+      "day": "001",
+      "repo_name": "ai-dev-day-001",
+      "genre": "writing",
+      "theme": "Soft",
+      "steps": [
+        "planning",
+        "implementation",
+        "build",
+        "publish",
+        "state_update"
+      ],
+      "status": "done"
+    }
+  ],
+  "recent_genres": [
+    "writing"
+  ],
   "theme_mode": "seeded",
-  "last_run_at": null
+  "last_run_at": "2026-02-28T05:50:44Z"
 }
