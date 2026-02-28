@@ -1,6 +1,6 @@
 {
   "target_day": 100,
-  "next_day": 8,
+  "next_day": 9,
   "batch_size_default": 7,
   "posts": {
     "fixed_tags": [
@@ -55,6 +55,12 @@
       "core_action": "summarize",
       "twist": "day007向けに最短手順で使える形式にする",
       "one_sentence": "Day007の作業を30秒で進めるためのsummarizeツール。"
+    },
+    {
+      "day": "008",
+      "core_action": "plan",
+      "twist": "所要時間を入力すると25分集中+休憩を自動配列し、そのままコピーできる実行タイムラインを作る",
+      "one_sentence": "作業時間を入力するだけで、開始時刻つきのポモドーロ実行タイムラインを生成するツール。"
     }
   ],
   "days": {
@@ -211,6 +217,29 @@
         "minimal": "Day007|Day007 summarize\nhttps://ryo909.github.io/ai-dev-day-007/\n#個人開発 #100日開発"
       },
       "status": "posted"
+    },
+    "008": {
+      "repo_name": "ai-dev-day-008",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-008",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-008/",
+      "meta": {
+        "tool_name": "Pomodoro Slice Planner",
+        "core_action": "plan",
+        "twist": "所要時間を入力すると25分集中+休憩を自動配列し、そのままコピーできる実行タイムラインを作る",
+        "one_sentence": "作業時間を入力するだけで、開始時刻つきのポモドーロ実行タイムラインを生成するツール。",
+        "keywords": [
+          "pomodoro",
+          "planner",
+          "timeline",
+          "productivity"
+        ]
+      },
+      "post_texts": {
+        "standard": "Day008｜Pomodoro Slice Planner\n作業時間を入力するだけで、開始時刻つきのポモドーロ実行タイムラインを生成するツール。\nhttps://ryo909.github.io/ai-dev-day-008/\n#個人開発 #100日開発",
+        "compact": "Day008|Pomodoro Slice Pl\nポモドーロ実行タイムライン生成\nhttps://ryo909.github.io/ai-dev-day-008/\n#個人開発 #100日開発",
+        "minimal": "Day008|Pomodoro Slice Pl\nhttps://ryo909.github.io/ai-dev-day-008/\n#個人開発 #100日開発"
+      },
+      "status": "posted"
     }
   },
   "catalog": {
@@ -218,7 +247,7 @@
     "catalog_json_path": "catalog/catalog.json",
     "catalog_html_path": "catalog/index.html"
   },
-  "last_run": "2026-02-28T01:50:02Z",
+  "last_run": "2026-02-28T03:16:54Z",
   "integrations": {
     "buffer_mode": "queue",
     "make_webhook_env": "MAKE_WEBHOOK_URL"
@@ -226,17 +255,31 @@
   "notes": "",
   "post_pending": null,
   "last_make_webhook": {
-    "batch_id": "batch-20260228T015001Z-Day001-Day007",
-    "sent_at": "2026-02-28T01:50:02Z",
-    "posted_count": 7,
+    "batch_id": "single-20260228T031654Z-Day008",
+    "sent_at": "2026-02-28T03:16:54Z",
+    "posted_count": 1,
     "posted_days": [
-      "007",
-      "006",
-      "005",
-      "004",
-      "003",
-      "002",
-      "001"
+      "008"
     ]
-  }
+  },
+  "execution_logs": [
+    {
+      "executed_at": "2026-02-28T03:16:54Z",
+      "day": "008",
+      "repo_name": "ai-dev-day-008",
+      "steps": [
+        "planning",
+        "implementation",
+        "publish",
+        "catalog",
+        "buffer"
+      ],
+      "make_webhook": {
+        "batch_id": "single-20260228T031654Z-Day008",
+        "status": "accepted",
+        "response_body": "Accepted"
+      },
+      "reservation_note": "Bufferの既存曜日スケジュールの次回枠に投入"
+    }
+  ]
 }
