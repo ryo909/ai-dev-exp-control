@@ -1,0 +1,2 @@
+実験ログ：{{EXPERIMENT_NAME}}
+観測：{{OBSERVED_RESULT}}

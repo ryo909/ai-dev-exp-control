@@ -33,6 +33,8 @@ echo "=========================================="
 echo "  次のDay:     Day$(printf '%03d' "$NEXT_DAY")"
 echo "  目標:        Day$(printf '%03d' "$TARGET_DAY")"
 echo "  バッチサイズ: $BATCH_SIZE"
+echo "  契約:        system/contract.md を参照"
+echo "  投稿テンプレ: templates/posts（header/body/footer固定分離）"
 echo "=========================================="
 
 # ---- 完了チェック ----
