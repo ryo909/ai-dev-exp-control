@@ -48,7 +48,7 @@
         "compact": "Day001|Draft Tightener\n文章を短く整えて\nhttps://ryo909.github.io/ai-dev-day-001/\n#個人開発 #100日開発",
         "minimal": "Day001|Draft Tightener\nhttps://ryo909.github.io/ai-dev-day-001/\n#個人開発 #100日開発"
       },
-      "status": "done"
+      "status": "posted"
     }
   },
   "catalog": {
@@ -56,7 +56,7 @@
     "catalog_json_path": "catalog/catalog.json",
     "catalog_html_path": "catalog/index.html"
   },
-  "last_run": null,
+  "last_run": "2026-02-28T05:51:13Z",
   "integrations": {
     "buffer_mode": "queue",
     "make_webhook_env": "MAKE_WEBHOOK_URL"
@@ -64,10 +64,14 @@
   "notes": "",
   "post_pending": null,
   "last_make_webhook": {
-    "batch_id": null,
-    "sent_at": null,
-    "posted_count": 0,
-    "posted_days": []
+    "batch_id": "batch-20260228T055111Z-Day001-Day007",
+    "sent_at": "2026-02-28T05:51:12Z",
+    "posted_count": 1,
+    "posted_days": [
+      "001"
+    ],
+    "schedule_preview": [],
+    "response_body": "Accepted"
   },
   "execution_logs": [
     {
@@ -84,11 +88,21 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-02-28T05:51:12Z",
+      "phase": "buffer",
+      "batch_id": "batch-20260228T055111Z-Day001-Day007",
+      "posted_count": 1,
+      "posted_days": [
+        "001"
+      ],
+      "schedule_preview": []
     }
   ],
   "recent_genres": [
     "writing"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-02-28T05:50:44Z"
+  "last_run_at": "2026-02-28T05:51:12Z"
 }
