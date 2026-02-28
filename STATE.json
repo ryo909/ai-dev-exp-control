@@ -1,6 +1,6 @@
 {
   "target_day": 100,
-  "next_day": 3,
+  "next_day": 4,
   "batch_size_default": 7,
   "posts": {
     "fixed_tags": [
@@ -25,6 +25,12 @@
       "core_action": "inspect",
       "twist": "深いネストでもパス一覧を一気に展開できる",
       "one_sentence": "JSONの構造を素早く把握するための開発者向けビューア。"
+    },
+    {
+      "day": "003",
+      "core_action": "schedule",
+      "twist": "逆算の根拠を1行で示して計画の納得感を上げる",
+      "one_sentence": "締切から逆算した実行計画を即作成するプランニングツール。"
     }
   ],
   "days": {
@@ -83,6 +89,34 @@
         "minimal": "Day002|JSON Key Lens\nhttps://ryo909.github.io/ai-dev-day-002/\n#個人開発 #100日開発"
       },
       "status": "done"
+    },
+    "003": {
+      "repo_name": "ai-dev-day-003",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-003",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-003/",
+      "meta": {
+        "tool_name": "Backward Milestone Mapper",
+        "title": "Backward Milestone Mapper",
+        "description": "締切から逆算して、中間マイルストーンを自動分割する。",
+        "genre": "planning",
+        "theme": "Candy",
+        "story_summary": "期限直前の混乱を減らすため、逆算起点の設計を採用した。",
+        "core_action": "schedule",
+        "twist": "逆算の根拠を1行で示して計画の納得感を上げる",
+        "one_sentence": "締切から逆算した実行計画を即作成するプランニングツール。",
+        "keywords": [
+          "planning",
+          "milestone",
+          "schedule",
+          "roadmap"
+        ]
+      },
+      "post_texts": {
+        "standard": "Day003｜Backward Milestone Mapper\n締切から逆算した実行計画を即作成するプランニングツール。\nhttps://ryo909.github.io/ai-dev-day-003/\n#個人開発 #100日開発",
+        "compact": "Day003|Backward Milesto\n締切から逆算した\nhttps://ryo909.github.io/ai-dev-day-003/\n#個人開発 #100日開発",
+        "minimal": "Day003|Backward Milesto\nhttps://ryo909.github.io/ai-dev-day-003/\n#個人開発 #100日開発"
+      },
+      "status": "done"
     }
   },
   "catalog": {
@@ -134,12 +168,28 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-02-28T05:53:59Z",
+      "day": "003",
+      "repo_name": "ai-dev-day-003",
+      "genre": "planning",
+      "theme": "Candy",
+      "steps": [
+        "planning",
+        "implementation",
+        "build",
+        "publish",
+        "state_update"
+      ],
+      "status": "done"
     }
   ],
   "recent_genres": [
     "writing",
-    "devtools"
+    "devtools",
+    "planning"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-02-28T05:53:39Z"
+  "last_run_at": "2026-02-28T05:53:59Z"
 }
