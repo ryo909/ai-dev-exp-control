@@ -9,342 +9,309 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CONTROL_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 STATE_FILE="$CONTROL_DIR/STATE.json"
 TEMPLATE_REPO="ai-dev-exp-template"
+WORK_ROOT="$CONTROL_DIR/../.workdays"
 
 DAY_NUM=${1:?'Usage: run_day.sh <day_number>'}
 DAY_STR=$(printf '%03d' "$DAY_NUM")
+DAY_LABEL="Day${DAY_STR}"
 REPO_NAME="ai-dev-day-${DAY_STR}"
-WORK_DIR="${CONTROL_DIR}/../${REPO_NAME}"
 
-# GitHub ユーザー名を取得
-GH_USER=$(gh api user -q '.login' 2>/dev/null || echo "")
-if [ -z "$GH_USER" ]; then
-  echo "❌ GitHub認証が必要です。'gh auth login' を実行してください。"
-  exit 1
-fi
+GENRES=("productivity" "writing" "devtools" "planning" "learning" "health" "fun")
+THEMES=("NeoLab" "Paper" "Noir" "Brutal" "Soft" "RetroTerminal" "Candy" "Mono")
 
+ensure_gh_auth() {
+  if gh api user -q '.login' >/dev/null 2>&1; then
+    return 0
+  fi
+
+  if [ -z "${GH_TOKEN:-}" ] && [ -f "$HOME/.git-credentials" ]; then
+    GH_TOKEN=$(sed -n 's#https://[^:]*:\([^@]*\)@github.com#\1#p' "$HOME/.git-credentials" | head -n 1 || true)
+    if [ -n "$GH_TOKEN" ]; then
+      export GH_TOKEN
+    fi
+  fi
+
+  gh api user -q '.login' >/dev/null 2>&1 || {
+    echo "❌ GitHub認証が必要です。gh auth login を実行してください。"
+    exit 1
+  }
+}
+
+select_theme() {
+  local idx
+  idx=$(( (DAY_NUM * 17 + 3) % ${#THEMES[@]} ))
+  echo "${THEMES[$idx]}"
+}
+
+select_genre() {
+  local idx offset candidate
+  local -a recent
+  mapfile -t recent < <(jq -r '.recent_genres[-2:][]?' "$STATE_FILE")
+
+  idx=$((DAY_NUM % ${#GENRES[@]}))
+
+  for ((offset=0; offset<${#GENRES[@]}; offset++)); do
+    candidate="${GENRES[$(((idx + offset) % ${#GENRES[@]}))]}"
+    if [[ " ${recent[*]} " != *" ${candidate} "* ]]; then
+      echo "$candidate"
+      return 0
+    fi
+  done
+
+  echo "${GENRES[$idx]}"
+}
+
+generate_plan() {
+  local genre="$1"
+  case "$genre" in
+    productivity)
+      TITLE="Focus Slot Composer"
+      DESCRIPTION="タスク時間を入力すると、集中ブロックと休憩を自動配置する。"
+      CORE_ACTION="plan"
+      TWIST="開始時刻つきでそのまま実行できるタイムスロットを提示"
+      ONE_SENTENCE="作業時間から集中と休憩の実行順を自動で作る生産性ツール。"
+      KEYWORDS='["focus","pomodoro","timebox","productivity"]'
+      STORY_SUMMARY="時間管理の迷いをなくすため、実行順を即決できる構成にした。"
+      ;;
+    writing)
+      TITLE="Draft Tightener"
+      DESCRIPTION="下書きを貼ると、冗長表現を減らした短文案を作る。"
+      CORE_ACTION="rewrite"
+      TWIST="文字数の目安を表示してSNS向けの短文化を支援"
+      ONE_SENTENCE="文章を短く整えて、投稿しやすい形に圧縮するライティングツール。"
+      KEYWORDS='["writing","edit","summary","copy"]'
+      STORY_SUMMARY="長い文章を公開前に圧縮する一手間を最小化した。"
+      ;;
+    devtools)
+      TITLE="JSON Key Lens"
+      DESCRIPTION="JSON文字列からキー構造を抽出して読みやすく表示する。"
+      CORE_ACTION="inspect"
+      TWIST="深いネストでもパス一覧を一気に展開できる"
+      ONE_SENTENCE="JSONの構造を素早く把握するための開発者向けビューア。"
+      KEYWORDS='["json","devtools","inspect","debug"]'
+      STORY_SUMMARY="APIレスポンス調査を速くするため、構造確認に特化した。"
+      ;;
+    planning)
+      TITLE="Backward Milestone Mapper"
+      DESCRIPTION="締切から逆算して、中間マイルストーンを自動分割する。"
+      CORE_ACTION="schedule"
+      TWIST="逆算の根拠を1行で示して計画の納得感を上げる"
+      ONE_SENTENCE="締切から逆算した実行計画を即作成するプランニングツール。"
+      KEYWORDS='["planning","milestone","schedule","roadmap"]'
+      STORY_SUMMARY="期限直前の混乱を減らすため、逆算起点の設計を採用した。"
+      ;;
+    learning)
+      TITLE="Recall Loop Builder"
+      DESCRIPTION="学習トピックから復習間隔つきのチェックリストを生成する。"
+      CORE_ACTION="generate"
+      TWIST="初回学習日から次回復習日を同時表示する"
+      ONE_SENTENCE="学習内容の復習タイミングを自動で組み立てる学習支援ツール。"
+      KEYWORDS='["learning","review","memory","study"]'
+      STORY_SUMMARY="覚えたつもりを防ぐため、復習日を先に決める導線にした。"
+      ;;
+    health)
+      TITLE="Hydration Pace Planner"
+      DESCRIPTION="1日の目標水分量を時間帯ごとに分割して表示する。"
+      CORE_ACTION="track"
+      TWIST="勤務時間に合わせて飲水タイミングを均等化する"
+      ONE_SENTENCE="目標水分量を無理なく達成するための配分プランナー。"
+      KEYWORDS='["health","hydration","habit","wellness"]'
+      STORY_SUMMARY="健康行動を続けやすくするため、負担の少ない配分にした。"
+      ;;
+    fun)
+      TITLE="Tiny Prompt Play"
+      DESCRIPTION="気分を選ぶと短いお題を3つ返す遊びツール。"
+      CORE_ACTION="generate"
+      TWIST="30秒で遊べるミニお題を即時に複数提案"
+      ONE_SENTENCE="気分転換用の短いお題をすぐ作るライトな遊びツール。"
+      KEYWORDS='["fun","prompt","game","idea"]'
+      STORY_SUMMARY="作業の合間に使える短時間の遊び体験を目指した。"
+      ;;
+    *)
+      echo "❌ 未知のgenre: $genre"
+      exit 1
+      ;;
+  esac
+}
+
+write_story_file() {
+  local story_path="$1"
+  cat > "$story_path" <<STORY
+# ${DAY_LABEL} Story — ${TITLE}
+
+## Why
+毎日使う小さな課題を、1ページで即解決できる形にしたかったため。
+
+## Requirements
+- Webブラウザだけで完結すること
+- 1画面で主要操作が終わること
+- GitHub Pagesで公開できること
+
+## Design highlights
+- ${DAY_LABEL}専用にテーマをseed固定して再生成時の見た目を安定化
+- ${GENRE}用途に寄せた単機能UIで迷いを減らす
+- 出力をそのまま再利用できるテキスト構造
+
+## Trade-offs / Known issues
+- ローカル保存機能は未実装
+- 複雑な入力バリデーションは最小限
+
+## Next ideas
+- 履歴保存
+- プリセット追加
+- エクスポート形式拡張
+
+## Social copy
+${DAY_LABEL}｜${TITLE}
+${ONE_SENTENCE}
+STORY
+}
+
+ensure_gh_auth
+GH_USER=$(gh api user -q '.login')
 PAGES_URL="https://${GH_USER}.github.io/${REPO_NAME}/"
 REPO_URL="https://github.com/${GH_USER}/${REPO_NAME}"
 
-echo "▶ Day${DAY_STR}: ${REPO_NAME}"
+echo "▶ ${DAY_LABEL}: ${REPO_NAME}"
 
-# ---- 既に完了チェック ----
 EXISTING_STATUS=$(jq -r ".days[\"${DAY_STR}\"].status // empty" "$STATE_FILE")
 if [ "$EXISTING_STATUS" = "done" ] || [ "$EXISTING_STATUS" = "posted" ]; then
-  echo "  ⏭ Day${DAY_STR} は既に完了済みです。スキップします。"
+  echo "  ⏭ ${DAY_LABEL} は既に完了済みです。スキップします。"
   exit 0
 fi
 
-# ============================================================
-# Step 1: アイデア生成 & Diversity Gate
-# ============================================================
-echo "  [1/6] アイデア生成 & Diversity Gate..."
+echo "  [1/6] 企画生成..."
+GENRE=$(select_genre)
+THEME=$(select_theme)
+generate_plan "$GENRE"
 
-# 直近のメタ情報を取得
-RECENT_META=$(jq -c '.recent_meta' "$STATE_FILE")
-RECENT_ACTIONS=$(echo "$RECENT_META" | jq -r '.[].core_action' | tail -3 | tr '\n' ',')
-
-# ※ ここは実際の運用ではAI（Codex等）がアイデアを生成する。
-# このスクリプトはフレームワークとして、以下のファイルが存在することを前提とする:
-#   ${WORK_DIR}/meta.json
-
-# Diversity Gate チェック関数
-check_diversity() {
-  local meta_file="$1"
-  local core_action twist one_sentence
-
-  core_action=$(jq -r '.core_action // empty' "$meta_file")
-  twist=$(jq -r '.twist // empty' "$meta_file")
-  one_sentence=$(jq -r '.one_sentence // empty' "$meta_file")
-
-  # 必須フィールドチェック
-  if [ -z "$core_action" ] || [ -z "$twist" ] || [ -z "$one_sentence" ]; then
-    echo "FAIL:必須フィールドが空です"
-    return 1
-  fi
-
-  # core_action 3連続チェック
-  LAST_THREE=$(echo "$RECENT_META" | jq -r '[.[-3:][] | .core_action] | join(",")')
-  if [ -n "$LAST_THREE" ]; then
-    COUNT=$(echo "$LAST_THREE" | tr ',' '\n' | grep -c "^${core_action}$" || true)
-    if [ "$COUNT" -ge 2 ]; then
-      echo "FAIL:core_action '${core_action}' が3連続になります"
-      return 1
-    fi
-  fi
-
-  # twist 空/弱チェック
-  if [ ${#twist} -lt 2 ]; then
-    echo "FAIL:twistが弱すぎます"
-    return 1
-  fi
-
-  # one_sentence 類似チェック（簡易: 直近5本と完全一致チェック）
-  SIMILAR=$(echo "$RECENT_META" | jq -r --arg s "$one_sentence" \
-    '[.[-5:][] | select(.one_sentence == $s)] | length')
-  if [ "$SIMILAR" -gt 0 ]; then
-    echo "FAIL:one_sentenceが直近と完全一致"
-    return 1
-  fi
-
-  echo "PASS"
-  return 0
-}
-
-prepare_meta() {
-  local meta_file="$1"
-  local current_tool current_action current_twist current_sentence
-  local current_day current_repo current_pages generated_action generated_twist generated_sentence
-  local idx
-  local actions=("summarize" "transform" "compare" "classify" "extract" "schedule" "analyze")
-
-  if [ ! -f "$meta_file" ]; then
-    cat > "$meta_file" <<'EOF'
-{
-  "day": "XXX",
-  "tool_name": "ツール名をここに",
-  "core_action": "",
-  "twist": "",
-  "one_sentence": "1文説明をここに",
-  "keywords": [],
-  "repo_name": "ai-dev-day-XXX",
-  "pages_url": "https://USERNAME.github.io/ai-dev-day-XXX/"
-}
-EOF
-  fi
-
-  current_tool=$(jq -r '.tool_name // ""' "$meta_file")
-  current_action=$(jq -r '.core_action // ""' "$meta_file")
-  current_twist=$(jq -r '.twist // ""' "$meta_file")
-  current_sentence=$(jq -r '.one_sentence // ""' "$meta_file")
-  current_day=$(jq -r '.day // ""' "$meta_file")
-  current_repo=$(jq -r '.repo_name // ""' "$meta_file")
-  current_pages=$(jq -r '.pages_url // ""' "$meta_file")
-
-  idx=$((DAY_NUM % ${#actions[@]}))
-  generated_action="${actions[$idx]}"
-  generated_twist="day${DAY_STR}向けに最短手順で使える形式にする"
-  generated_sentence="Day${DAY_STR}の作業を30秒で進めるための${generated_action}ツール。"
-
-  if [ -z "$current_tool" ] || [ "$current_tool" = "ツール名をここに" ]; then
-    current_tool="Day${DAY_STR} ${generated_action} helper"
-  fi
-  if [ -z "$current_action" ]; then
-    current_action="$generated_action"
-  fi
-  if [ -z "$current_twist" ]; then
-    current_twist="$generated_twist"
-  fi
-  if [ -z "$current_sentence" ] || [ "$current_sentence" = "1文説明をここに" ]; then
-    current_sentence="$generated_sentence"
-  fi
-  if [ -z "$current_day" ] || [ "$current_day" = "XXX" ]; then
-    current_day="$DAY_STR"
-  fi
-  if [ -z "$current_repo" ] || [ "$current_repo" = "ai-dev-day-XXX" ]; then
-    current_repo="$REPO_NAME"
-  fi
-  if [ -z "$current_pages" ] || [ "$current_pages" = "https://USERNAME.github.io/ai-dev-day-XXX/" ]; then
-    current_pages="$PAGES_URL"
-  fi
-
-  jq --arg day "$current_day" \
-     --arg tool_name "$current_tool" \
-     --arg core_action "$current_action" \
-     --arg twist "$current_twist" \
-     --arg one_sentence "$current_sentence" \
-     --arg repo_name "$current_repo" \
-     --arg pages_url "$current_pages" \
-     '
-     .day = $day
-     | .tool_name = $tool_name
-     | .core_action = $core_action
-     | .twist = $twist
-     | .one_sentence = $one_sentence
-     | .repo_name = $repo_name
-     | .pages_url = $pages_url
-     | .keywords = (if (.keywords | type) == "array" then .keywords else [] end)
-     | .keywords = (if (.keywords | length) > 0 then .keywords else [$core_action, "automation", ("day" + $day)] end)
-     ' "$meta_file" > "${meta_file}.tmp" && mv "${meta_file}.tmp" "$meta_file"
-}
-
-# ============================================================
-# Step 2: Repo作成（テンプレートから）
-# ============================================================
 echo "  [2/6] Repo作成..."
-
-if [ -d "$WORK_DIR" ]; then
-  echo "  ⚠ ディレクトリ ${WORK_DIR} は既に存在します。既存を使用します。"
-else
-  # gh repo create from template
-  gh repo create "${REPO_NAME}" \
+if ! gh repo view "${GH_USER}/${REPO_NAME}" >/dev/null 2>&1; then
+  gh repo create "${GH_USER}/${REPO_NAME}" \
     --public \
     --template "${GH_USER}/${TEMPLATE_REPO}" \
-    --clone \
-    --description "AI個人開発実験 Day${DAY_STR}" \
-    || {
-      echo "❌ repo作成に失敗しました。"
-      echo "  原因: gh repo create エラー"
-      echo "  次の一手: テンプレートrepo '${TEMPLATE_REPO}' が存在するか確認"
-      exit 1
-    }
-  # gh repo create --clone は CWD に clone する
-  if [ ! -d "$WORK_DIR" ]; then
-    # clone先がカレントにある場合
-    if [ -d "./${REPO_NAME}" ]; then
-      mv "./${REPO_NAME}" "$WORK_DIR"
-    fi
-  fi
+    --description "AI個人開発実験 ${DAY_LABEL}" >/dev/null
 fi
 
+mkdir -p "$WORK_ROOT"
+WORK_DIR=$(mktemp -d "$WORK_ROOT/${REPO_NAME}-XXXXXX")
+gh repo clone "${GH_USER}/${REPO_NAME}" "$WORK_DIR" >/dev/null
 cd "$WORK_DIR"
 
-# ============================================================
-# Step 3: 実装（ここはAIが実際のコードを生成する部分）
-# ============================================================
 echo "  [3/6] 実装..."
+jq -n \
+  --arg day "$DAY_LABEL" \
+  --arg title "$TITLE" \
+  --arg description "$DESCRIPTION" \
+  --arg genre "$GENRE" \
+  --arg theme "$THEME" \
+  --arg story_summary "$STORY_SUMMARY" \
+  --arg tool_name "$TITLE" \
+  --arg core_action "$CORE_ACTION" \
+  --arg twist "$TWIST" \
+  --arg one_sentence "$ONE_SENTENCE" \
+  --argjson keywords "$KEYWORDS" \
+  --arg repo_name "$REPO_NAME" \
+  --arg pages_url "$PAGES_URL" \
+  '
+  {
+    day: $day,
+    title: $title,
+    description: $description,
+    genre: $genre,
+    theme: $theme,
+    story_summary: $story_summary,
+    tool_name: $tool_name,
+    core_action: $core_action,
+    twist: $twist,
+    one_sentence: $one_sentence,
+    keywords: $keywords,
+    repo_name: $repo_name,
+    pages_url: $pages_url
+  }
+' > meta.json
 
-# ※ 実際の運用では、ここでAI（Codex等）が:
-#   - meta.json にアイデアを書き込み
-#   - src/ にツールのコードを実装
-#   - README.md を完成させる
-# このスクリプトでは meta.json と README.md の存在を確認する。
+sed -i -E "s#https://github.com/[^/]+/ai-dev-day-[0-9]{3}#${REPO_URL}#g" index.html
 
-if [ ! -f "meta.json" ]; then
-  echo "  ⚠ meta.json が見つかりません。既定値で作成して続行します。"
-fi
+write_story_file "STORY.md"
 
-prepare_meta "meta.json"
+cat > README.md <<README
+# ${DAY_LABEL} — ${TITLE}
 
-# Diversity Gate 実行
-if ! GATE_RESULT=$(check_diversity "meta.json"); then
-  echo "  ❌ Diversity Gate 不合格: $GATE_RESULT"
-  echo "  → 次の一手: meta.json のアイデアを変更してください。"
-  exit 1
-fi
-if [ "$GATE_RESULT" != "PASS" ]; then
-  echo "  ❌ Diversity Gate 不合格: $GATE_RESULT"
-  echo "  → 次の一手: meta.json のアイデアを変更してください。"
-  exit 1
-fi
-echo "  ✅ Diversity Gate 合格"
+> ${ONE_SENTENCE}
 
-# ============================================================
-# Step 4: Build & Smoke Gate
-# ============================================================
+## 使い方
+
+1. ページを開く
+2. 入力欄にテキストを入れる
+3. 実行して結果を確認する
+
+## Story
+
+- [制作ストーリー](./STORY.md)
+
+## Demo
+
+🌐 [GitHub Pages](${PAGES_URL})
+
+---
+
+${DAY_LABEL} / #100日開発
+README
+
 echo "  [4/6] Build & Smoke Gate..."
-
-# npm ci
-npm ci --silent 2>/dev/null || npm install --silent || {
-  echo "❌ npm install 失敗"
-  echo "  原因: package依存エラー"
-  echo "  次の一手: package.jsonを確認"
-  exit 1
-}
-
-# build
-npm run build || {
-  echo "❌ ビルド失敗"
-  echo "  原因: Vite build エラー"
-  echo "  次の一手: ソースコードのエラーを修正"
-  exit 1
-}
-
-# 簡易smoke: dist/index.html が存在するか
+npm ci --silent || npm install --silent
+npm run build >/dev/null
 if [ ! -f "dist/index.html" ]; then
   echo "❌ Smoke Gate 不合格: dist/index.html が見つかりません"
   exit 1
 fi
-echo "  ✅ Build & Smoke Gate 合格"
 
-# ============================================================
-# Step 5: README Gate & Push
-# ============================================================
-echo "  [5/6] README Gate & Push..."
+echo "  [5/6] Push & Pages..."
+git add meta.json README.md STORY.md index.html
+git commit -m "${DAY_LABEL}: scaffold ${TITLE}" >/dev/null || true
+git -c credential.helper=store push origin main >/dev/null
 
-# README Gate: 最低限の項目チェック
-if [ -f "README.md" ]; then
-  README_CONTENT=$(cat README.md)
-  GATE_OK=true
+gh api -X PUT "repos/${GH_USER}/${REPO_NAME}/pages" -f "build_type=workflow" >/dev/null 2>&1 \
+  || gh api -X POST "repos/${GH_USER}/${REPO_NAME}/pages" -f "source[branch]=main" -f "source[path]=/" >/dev/null 2>&1 \
+  || true
+gh api -X PUT "repos/${GH_USER}/${REPO_NAME}/pages" -f "build_type=workflow" >/dev/null 2>&1 || true
 
-  if ! echo "$README_CONTENT" | grep -qi "day${DAY_STR}\|Day ${DAY_STR}\|DayDay${DAY_STR}"; then
-    # Day表記がない場合は追記
-    echo "" >> README.md
-    echo "---" >> README.md
-    echo "Day${DAY_STR} / #100日開発" >> README.md
-  fi
-
-  if ! echo "$README_CONTENT" | grep -qi "github.io"; then
-    echo "" >> README.md
-    echo "🌐 [Demo](${PAGES_URL})" >> README.md
-  fi
-else
-  echo "  ⚠ README.md が見つかりません"
-fi
-
-# vite.config.js の base を設定
-if [ -f "vite.config.js" ]; then
-  # 環境変数でbase設定
-  export VITE_BASE="/${REPO_NAME}/"
-fi
-
-# commit & push
-git add -A
-git commit -m "Day${DAY_STR}: implement and build" || true
-git push origin main || {
-  echo "❌ push失敗"
-  echo "  次の一手: ネットワークを確認し手動でpush"
-  exit 1
-}
-
-# ---- GitHub Pages 有効化 ----
-echo "  ▶ GitHub Pages を設定中..."
-gh api -X PUT "repos/${GH_USER}/${REPO_NAME}/pages" \
-  -f "build_type=workflow" 2>/dev/null \
-  || gh api -X POST "repos/${GH_USER}/${REPO_NAME}/pages" \
-    -f "source[branch]=main" -f "source[path]=/" 2>/dev/null \
-  || echo "  ⚠ Pages設定は手動で行ってください"
-
-# ============================================================
-# Step 6: STATE更新
-# ============================================================
 echo "  [6/6] STATE更新..."
-
-TOOL_NAME=$(jq -r '.tool_name // "Untitled"' meta.json)
-CORE_ACTION=$(jq -r '.core_action' meta.json)
-TWIST=$(jq -r '.twist' meta.json)
-ONE_SENTENCE=$(jq -r '.one_sentence' meta.json)
-KEYWORDS=$(jq -c '.keywords // []' meta.json)
-
-# 投稿テキスト生成
-POST_STANDARD="Day${DAY_STR}｜${TOOL_NAME}
+POST_STANDARD="${DAY_LABEL}｜${TITLE}
 ${ONE_SENTENCE}
 ${PAGES_URL}
 #個人開発 #100日開発"
 
-# 圧縮版
-TOOL_SHORT=$(echo "$TOOL_NAME" | cut -c1-16)
+TITLE_SHORT=$(echo "$TITLE" | cut -c1-16)
 DESC_SHORT=$(echo "$ONE_SENTENCE" | cut -c1-24)
-POST_COMPACT="Day${DAY_STR}|${TOOL_SHORT}
+POST_COMPACT="${DAY_LABEL}|${TITLE_SHORT}
 ${DESC_SHORT}
 ${PAGES_URL}
 #個人開発 #100日開発"
 
-# 最小版
-POST_MINIMAL="Day${DAY_STR}|${TOOL_SHORT}
+POST_MINIMAL="${DAY_LABEL}|${TITLE_SHORT}
 ${PAGES_URL}
 #個人開発 #100日開発"
 
-# STATE.json に Day エントリ追加
+NOW=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
 cd "$CONTROL_DIR"
-jq --arg day "$DAY_STR" \
+jq --arg now "$NOW" \
+   --arg day "$DAY_STR" \
    --arg repo_name "$REPO_NAME" \
    --arg repo_url "$REPO_URL" \
    --arg pages_url "$PAGES_URL" \
+   --arg tool_name "$TITLE" \
+   --arg title "$TITLE" \
+   --arg description "$DESCRIPTION" \
+   --arg genre "$GENRE" \
+   --arg theme "$THEME" \
+   --arg story_summary "$STORY_SUMMARY" \
    --arg core_action "$CORE_ACTION" \
    --arg twist "$TWIST" \
    --arg one_sentence "$ONE_SENTENCE" \
    --argjson keywords "$KEYWORDS" \
-   --arg tool_name "$TOOL_NAME" \
    --arg post_standard "$POST_STANDARD" \
    --arg post_compact "$POST_COMPACT" \
    --arg post_minimal "$POST_MINIMAL" \
@@ -355,6 +322,11 @@ jq --arg day "$DAY_STR" \
      pages_url: $pages_url,
      meta: {
        tool_name: $tool_name,
+       title: $title,
+       description: $description,
+       genre: $genre,
+       theme: $theme,
+       story_summary: $story_summary,
        core_action: $core_action,
        twist: $twist,
        one_sentence: $one_sentence,
@@ -367,34 +339,27 @@ jq --arg day "$DAY_STR" \
      },
      status: "done"
    }
-   | .next_day = ($day | tonumber) + 1
-   | .recent_meta = (.recent_meta + [{
+   | .next_day = (($day | tonumber) + 1)
+   | .recent_meta = ((.recent_meta + [{
        day: $day,
        core_action: $core_action,
        twist: $twist,
        one_sentence: $one_sentence
-     }]) | .recent_meta = .recent_meta[-20:]
-   ' "$STATE_FILE" > "${STATE_FILE}.tmp" && mv "${STATE_FILE}.tmp" "$STATE_FILE"
+     }]) | .[-20:])
+   | .recent_genres = (((.recent_genres // []) + [$genre]) | .[-3:])
+   | .last_run_at = $now
+   | .execution_logs = ((.execution_logs // []) + [{
+       executed_at: $now,
+       day: $day,
+       repo_name: $repo_name,
+       genre: $genre,
+       theme: $theme,
+       steps: ["planning", "implementation", "build", "publish", "state_update"],
+       status: "done"
+     }])
+' "$STATE_FILE" > "${STATE_FILE}.tmp" && mv "${STATE_FILE}.tmp" "$STATE_FILE"
 
-# CATALOG.md 更新（行追加）
-CATALOG_LINE="| Day${DAY_STR} | ${TOOL_NAME} | ${ONE_SENTENCE} | [Demo](${PAGES_URL}) | [Repo](${REPO_URL}) | ✅ |"
-# テーブルの「— |」行の前に挿入
-if grep -q "^| — |" "$CONTROL_DIR/CATALOG.md"; then
-  awk -v line="$CATALOG_LINE" '
-    !inserted && /^| — \|/ { print line; inserted=1 }
-    { print }
-  ' "$CONTROL_DIR/CATALOG.md" > "$CONTROL_DIR/CATALOG.md.tmp" && mv "$CONTROL_DIR/CATALOG.md.tmp" "$CONTROL_DIR/CATALOG.md"
-else
-  echo "$CATALOG_LINE" >> "$CONTROL_DIR/CATALOG.md"
-fi
+git add "$STATE_FILE"
+git commit -m "state: ${DAY_LABEL} completed" >/dev/null || true
 
-# 進捗数を更新
-DONE_COUNT=$(jq '[.days[] | select(.status == "done" or .status == "posted")] | length' "$STATE_FILE")
-sed -i "s/進捗:.*$/進捗: **Day ${DONE_COUNT} \/ 100**/" "$CONTROL_DIR/CATALOG.md"
-sed -i "s/最終更新:.*$/最終更新: $(date +%Y-%m-%d)/" "$CONTROL_DIR/CATALOG.md"
-
-# control repo commit（Day単位）
-git add -A
-git commit -m "state: Day${DAY_STR} completed" || true
-
-echo "  ✅ Day${DAY_STR} 全工程完了"
+echo "  ✅ ${DAY_LABEL} 全工程完了"

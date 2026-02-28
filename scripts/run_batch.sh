@@ -20,6 +20,8 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 
 COMPLETED=0
 FAILED=0
+WEBHOOK_RESPONSE_BODY=""
+WEBHOOK_SCHEDULE_PREVIEW="[]"
 
 load_env_file() {
   if [ -f "$ENV_FILE" ]; then
@@ -79,11 +81,15 @@ save_post_pending() {
 mark_posts_as_posted() {
   local batch_id="$1"
   local posts_json="$2"
+  local response_body="$3"
+  local schedule_preview="$4"
   local now
   now=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
   jq --arg now "$now" \
      --arg batch_id "$batch_id" \
      --argjson posts "$posts_json" \
+     --arg response_body "$response_body" \
+     --argjson schedule_preview "$schedule_preview" \
      '
      reduce $posts[] as $p (.;
        if .days[$p.day] then .days[$p.day].status = "posted" else . end
@@ -93,8 +99,19 @@ mark_posts_as_posted() {
          batch_id: $batch_id,
          sent_at: $now,
          posted_count: ($posts | length),
-         posted_days: ($posts | map(.day))
+         posted_days: ($posts | map(.day)),
+         schedule_preview: $schedule_preview,
+         response_body: ($response_body | .[0:400])
        }
+     | .last_run_at = $now
+     | .execution_logs = ((.execution_logs // []) + [{
+         executed_at: $now,
+         phase: "buffer",
+         batch_id: $batch_id,
+         posted_count: ($posts | length),
+         posted_days: ($posts | map(.day)),
+         schedule_preview: $schedule_preview
+       }])
      ' "$STATE_FILE" > "${STATE_FILE}.tmp" && mv "${STATE_FILE}.tmp" "$STATE_FILE"
 }
 
@@ -112,6 +129,20 @@ push_make_webhook() {
     -H "x-make-apikey: $MAKE_WEBHOOK_APIKEY" \
     -H "Content-Type: application/json; charset=utf-8" \
     --data-binary "$payload" || true)
+  WEBHOOK_RESPONSE_BODY=$(cat "$response_file")
+
+  if jq -e . >/dev/null 2>&1 <<<"$WEBHOOK_RESPONSE_BODY"; then
+    WEBHOOK_SCHEDULE_PREVIEW=$(jq -c '
+      [
+        .. | objects
+        | (.scheduled_at? // .scheduled_time? // .schedule_at? // .scheduledAt? // empty)
+        | select(type == "string")
+      ] | unique | .[:3]
+    ' <<<"$WEBHOOK_RESPONSE_BODY")
+  else
+    WEBHOOK_SCHEDULE_PREVIEW="[]"
+  fi
+
   rm -f "$response_file"
 
   if [[ "$http_status" =~ ^2[0-9][0-9]$ ]]; then
@@ -185,7 +216,7 @@ else
 
   echo "▶ Make Webhookへ${POST_COUNT}件を送信します（逆順）。"
   if push_make_webhook "$BATCH_ID" "$POSTS_JSON"; then
-    mark_posts_as_posted "$BATCH_ID" "$POSTS_JSON"
+    mark_posts_as_posted "$BATCH_ID" "$POSTS_JSON" "$WEBHOOK_RESPONSE_BODY" "$WEBHOOK_SCHEDULE_PREVIEW"
     echo "✅ Make Webhook送信成功: ${POST_COUNT}件"
   else
     save_post_pending "$BATCH_ID" "$POSTS_JSON" "make_webhook_request_failed"
@@ -209,7 +240,7 @@ echo "▶ control repo を commit & push..."
 cd "$CONTROL_DIR"
 git add -A
 git commit -m "batch: Day$(printf '%03d' "$START_DAY")-Day$(printf '%03d' $((START_DAY + COMPLETED - 1))) completed" || true
-git push origin main || {
+git -c credential.helper=store push origin main || {
   echo "⚠ git push失敗。手動でpushしてください。"
 }
 

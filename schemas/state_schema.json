@@ -99,6 +99,21 @@
             },
             "description": "直近20本のmeta要約（Diversity Gate用）"
         },
+        "recent_genres": {
+            "type": "array",
+            "maxItems": 3,
+            "items": {
+                "type": "string"
+            },
+            "description": "直近ジャンル（同ジャンル連続防止用）"
+        },
+        "theme_mode": {
+            "type": "string",
+            "enum": [
+                "seeded"
+            ],
+            "description": "テーマ決定モード"
+        },
         "days": {
             "type": "object",
             "patternProperties": {
@@ -139,6 +154,21 @@
                                     "type": "string"
                                 },
                                 "one_sentence": {
+                                    "type": "string"
+                                },
+                                "genre": {
+                                    "type": "string"
+                                },
+                                "theme": {
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "story_summary": {
                                     "type": "string"
                                 },
                                 "keywords": {
@@ -210,6 +240,20 @@
                 "null"
             ],
             "description": "直近実行日時（ISO 8601）"
+        },
+        "last_run_at": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "description": "安全弁用の最終実行日時（ISO 8601）"
+        },
+        "execution_logs": {
+            "type": "array",
+            "items": {
+                "type": "object"
+            },
+            "description": "実行ログ"
         },
         "integrations": {
             "type": "object",
