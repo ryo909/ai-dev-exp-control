@@ -84,7 +84,7 @@
         "compact": "Day001|Draft Tightener\n文章を短く整えて\nhttps://ryo909.github.io/ai-dev-day-001/\n#個人開発 #100日開発",
         "minimal": "Day001|Draft Tightener\nhttps://ryo909.github.io/ai-dev-day-001/\n#個人開発 #100日開発"
       },
-      "status": "done"
+      "status": "posted"
     },
     "002": {
       "repo_name": "ai-dev-day-002",
@@ -112,7 +112,7 @@
         "compact": "Day002|JSON Key Lens\nJSONの構造を素早�\nhttps://ryo909.github.io/ai-dev-day-002/\n#個人開発 #100日開発",
         "minimal": "Day002|JSON Key Lens\nhttps://ryo909.github.io/ai-dev-day-002/\n#個人開発 #100日開発"
       },
-      "status": "done"
+      "status": "posted"
     },
     "003": {
       "repo_name": "ai-dev-day-003",
@@ -140,7 +140,7 @@
         "compact": "Day003|Backward Milesto\n締切から逆算した\nhttps://ryo909.github.io/ai-dev-day-003/\n#個人開発 #100日開発",
         "minimal": "Day003|Backward Milesto\nhttps://ryo909.github.io/ai-dev-day-003/\n#個人開発 #100日開発"
       },
-      "status": "done"
+      "status": "posted"
     },
     "004": {
       "repo_name": "ai-dev-day-004",
@@ -168,7 +168,7 @@
         "compact": "Day004|Recall Loop Buil\n学習内容の復習タ\nhttps://ryo909.github.io/ai-dev-day-004/\n#個人開発 #100日開発",
         "minimal": "Day004|Recall Loop Buil\nhttps://ryo909.github.io/ai-dev-day-004/\n#個人開発 #100日開発"
       },
-      "status": "done"
+      "status": "posted"
     },
     "005": {
       "repo_name": "ai-dev-day-005",
@@ -196,7 +196,7 @@
         "compact": "Day005|Hydration Pace P\n目標水分量を無理\nhttps://ryo909.github.io/ai-dev-day-005/\n#個人開発 #100日開発",
         "minimal": "Day005|Hydration Pace P\nhttps://ryo909.github.io/ai-dev-day-005/\n#個人開発 #100日開発"
       },
-      "status": "done"
+      "status": "posted"
     },
     "006": {
       "repo_name": "ai-dev-day-006",
@@ -224,7 +224,7 @@
         "compact": "Day006|Tiny Prompt Play\n気分転換用の短い\nhttps://ryo909.github.io/ai-dev-day-006/\n#個人開発 #100日開発",
         "minimal": "Day006|Tiny Prompt Play\nhttps://ryo909.github.io/ai-dev-day-006/\n#個人開発 #100日開発"
       },
-      "status": "done"
+      "status": "posted"
     },
     "007": {
       "repo_name": "ai-dev-day-007",
@@ -252,7 +252,7 @@
         "compact": "Day007|Focus Slot Compo\n作業時間から集中\nhttps://ryo909.github.io/ai-dev-day-007/\n#個人開発 #100日開発",
         "minimal": "Day007|Focus Slot Compo\nhttps://ryo909.github.io/ai-dev-day-007/\n#個人開発 #100日開発"
       },
-      "status": "done"
+      "status": "posted"
     }
   },
   "catalog": {
@@ -260,7 +260,7 @@
     "catalog_json_path": "catalog/catalog.json",
     "catalog_html_path": "catalog/index.html"
   },
-  "last_run": null,
+  "last_run": "2026-02-28T05:55:20Z",
   "integrations": {
     "buffer_mode": "queue",
     "make_webhook_env": "MAKE_WEBHOOK_URL"
@@ -268,11 +268,20 @@
   "notes": "",
   "post_pending": null,
   "last_make_webhook": {
-    "batch_id": null,
-    "sent_at": null,
-    "posted_count": 0,
-    "posted_days": [],
-    "schedule_preview": []
+    "batch_id": "batch-20260228T055519Z-Day001-Day007",
+    "sent_at": "2026-02-28T05:55:19Z",
+    "posted_count": 7,
+    "posted_days": [
+      "007",
+      "006",
+      "005",
+      "004",
+      "003",
+      "002",
+      "001"
+    ],
+    "schedule_preview": [],
+    "response_body": "Accepted"
   },
   "execution_logs": [
     {
@@ -379,6 +388,22 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-02-28T05:55:19Z",
+      "phase": "buffer",
+      "batch_id": "batch-20260228T055519Z-Day001-Day007",
+      "posted_count": 7,
+      "posted_days": [
+        "007",
+        "006",
+        "005",
+        "004",
+        "003",
+        "002",
+        "001"
+      ],
+      "schedule_preview": []
     }
   ],
   "recent_genres": [
