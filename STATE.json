@@ -1,6 +1,6 @@
 {
   "target_day": 100,
-  "next_day": 5,
+  "next_day": 6,
   "batch_size_default": 7,
   "posts": {
     "fixed_tags": [
@@ -37,6 +37,12 @@
       "core_action": "generate",
       "twist": "初回学習日から次回復習日を同時表示する",
       "one_sentence": "学習内容の復習タイミングを自動で組み立てる学習支援ツール。"
+    },
+    {
+      "day": "005",
+      "core_action": "track",
+      "twist": "勤務時間に合わせて飲水タイミングを均等化する",
+      "one_sentence": "目標水分量を無理なく達成するための配分プランナー。"
     }
   ],
   "days": {
@@ -151,6 +157,34 @@
         "minimal": "Day004|Recall Loop Buil\nhttps://ryo909.github.io/ai-dev-day-004/\n#個人開発 #100日開発"
       },
       "status": "done"
+    },
+    "005": {
+      "repo_name": "ai-dev-day-005",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-005",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-005/",
+      "meta": {
+        "tool_name": "Hydration Pace Planner",
+        "title": "Hydration Pace Planner",
+        "description": "1日の目標水分量を時間帯ごとに分割して表示する。",
+        "genre": "health",
+        "theme": "NeoLab",
+        "story_summary": "健康行動を続けやすくするため、負担の少ない配分にした。",
+        "core_action": "track",
+        "twist": "勤務時間に合わせて飲水タイミングを均等化する",
+        "one_sentence": "目標水分量を無理なく達成するための配分プランナー。",
+        "keywords": [
+          "health",
+          "hydration",
+          "habit",
+          "wellness"
+        ]
+      },
+      "post_texts": {
+        "standard": "Day005｜Hydration Pace Planner\n目標水分量を無理なく達成するための配分プランナー。\nhttps://ryo909.github.io/ai-dev-day-005/\n#個人開発 #100日開発",
+        "compact": "Day005|Hydration Pace P\n目標水分量を無理\nhttps://ryo909.github.io/ai-dev-day-005/\n#個人開発 #100日開発",
+        "minimal": "Day005|Hydration Pace P\nhttps://ryo909.github.io/ai-dev-day-005/\n#個人開発 #100日開発"
+      },
+      "status": "done"
     }
   },
   "catalog": {
@@ -232,13 +266,28 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-02-28T05:54:39Z",
+      "day": "005",
+      "repo_name": "ai-dev-day-005",
+      "genre": "health",
+      "theme": "NeoLab",
+      "steps": [
+        "planning",
+        "implementation",
+        "build",
+        "publish",
+        "state_update"
+      ],
+      "status": "done"
     }
   ],
   "recent_genres": [
-    "devtools",
     "planning",
-    "learning"
+    "learning",
+    "health"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-02-28T05:54:19Z"
+  "last_run_at": "2026-02-28T05:54:39Z"
 }
