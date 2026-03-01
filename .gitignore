@@ -1,1 +1,4 @@
 .env.local
+tools/capture/node_modules/
+tools/capture/out/
+tools/capture/.runtime/
