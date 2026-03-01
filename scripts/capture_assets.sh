@@ -1,5 +1,17 @@
 #!/usr/bin/env bash
 set -euo pipefail
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# Keep PATH Linux-first while recovering user-managed Node installs when needed.
+if ! command -v node >/dev/null 2>&1; then
+  for extra_bin in "$HOME/.volta/bin" "$HOME/.local/bin" "$HOME/.npm-global/bin" "$HOME/.fnm"/*/bin "$HOME/.nvm/versions/node"/*/bin; do
+    [ -d "$extra_bin" ] || continue
+    case ":$PATH:" in
+      *":$extra_bin:"*) ;;
+      *) PATH="$PATH:$extra_bin" ;;
+    esac
+  done
+fi
 
 WORK_DIR=${1:?"Usage: capture_assets.sh <work_dir>"}
 
