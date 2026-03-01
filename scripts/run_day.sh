@@ -282,8 +282,12 @@ if [ ! -f "dist/index.html" ]; then
   exit 1
 fi
 
+echo "  [4.5/6] Capture demo (optional)..."
+bash "$CONTROL_DIR/scripts/capture_assets.sh" "$WORK_DIR" || echo "⚠ capture skipped"
+
 echo "  [5/6] Push & Pages..."
-git add meta.json README.md STORY.md index.html
+git add meta.json README.md STORY.md index.html public/media 2>/dev/null \
+  || git add meta.json README.md STORY.md index.html
 git commit -m "${DAY_LABEL}: scaffold ${TITLE}" >/dev/null || true
 git -c credential.helper=store push origin main >/dev/null
 
