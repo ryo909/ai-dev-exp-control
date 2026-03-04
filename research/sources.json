@@ -1,0 +1,9 @@
+[
+  {"name":"HN Frontpage","type":"rss","url":"https://hnrss.org/frontpage","weight":1.0,"tags":["startup","dev","product"]},
+  {"name":"GitHub Trending (All daily)","type":"rss","url":"https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml","weight":0.9,"tags":["oss","tools"]},
+  {"name":"Zenn Feed","type":"rss","url":"https://zenn.dev/feed","weight":0.8,"tags":["jp","dev"]},
+  {"name":"Hatena Hotentry IT","type":"rss","url":"http://b.hatena.ne.jp/hotentry/it.rss","weight":0.7,"tags":["jp","trend"]},
+  {"name":"Qiita tag:automation","type":"rss","url":"https://qiita.com/tags/automation/feed","weight":0.6,"tags":["jp","automation"]},
+  {"name":"GoogleNews site:note 個人開発","type":"rss","url":"https://news.google.com/rss/search?q=site:note.com%20%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA&hl=ja&gl=JP&ceid=JP:ja","weight":0.7,"tags":["note","competitor"]},
+  {"name":"GoogleNews site:note 自動化 Make Buffer","type":"rss","url":"https://news.google.com/rss/search?q=site:note.com%20%E8%87%AA%E5%8B%95%E5%8C%96%20Make%20Buffer&hl=ja&gl=JP&ceid=JP:ja","weight":0.7,"tags":["note","automation"]}
+]

@@ -8,6 +8,16 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CONTROL_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 STATE_FILE="$CONTROL_DIR/STATE.json"
+HOOK_DIR="$SCRIPT_DIR/hooks"
+
+run_hook() {
+  local hook_name="$1"
+  local hook_path="$HOOK_DIR/${hook_name}.sh"
+  if [ -x "$hook_path" ]; then
+    echo "▶ hook: ${hook_name}"
+    bash "$hook_path" || true
+  fi
+}
 
 # ---- 依存チェック ----
 for cmd in jq gh node npm; do
@@ -54,7 +64,13 @@ echo ""
 echo "▶ バッチ処理を開始します（${ACTUAL_BATCH}本）..."
 echo ""
 
+run_hook pre_resume
+set +e
 bash "$SCRIPT_DIR/run_batch.sh" "$NEXT_DAY" "$ACTUAL_BATCH"
+BATCH_EXIT=$?
+set -e
+run_hook post_resume
+[ $BATCH_EXIT -eq 0 ] || exit $BATCH_EXIT
 
 echo ""
 echo "✅ resume 完了。次回は再度 resume.sh を実行してください。"

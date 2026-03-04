@@ -10,6 +10,7 @@ CONTROL_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 STATE_FILE="$CONTROL_DIR/STATE.json"
 TEMPLATE_REPO="ai-dev-exp-template"
 WORK_ROOT="$CONTROL_DIR/../.workdays"
+SHORTLIST_FILE="$CONTROL_DIR/idea_bank/shortlist.json"
 
 DAY_NUM=${1:?'Usage: run_day.sh <day_number>'}
 DAY_STR=$(printf '%03d' "$DAY_NUM")
@@ -134,6 +135,31 @@ generate_plan() {
   esac
 }
 
+apply_shortlist_injection() {
+  [ -f "$SHORTLIST_FILE" ] || return 0
+  local items_len idx source title stags source_short title_short
+
+  items_len=$(jq -r '[.items[]? | select((.tags // []) | index("collector_error") | not)] | length' "$SHORTLIST_FILE" 2>/dev/null || echo "0")
+  [[ "$items_len" =~ ^[0-9]+$ ]] || return 0
+  [ "$items_len" -gt 0 ] || return 0
+
+  idx=$((DAY_NUM % items_len))
+  source=$(jq -r --argjson i "$idx" '[.items[]? | select((.tags // []) | index("collector_error") | not)] | .[$i].source // empty' "$SHORTLIST_FILE" 2>/dev/null || true)
+  title=$(jq -r --argjson i "$idx" '[.items[]? | select((.tags // []) | index("collector_error") | not)] | .[$i].title // empty' "$SHORTLIST_FILE" 2>/dev/null || true)
+  stags=$(jq -c --argjson i "$idx" '[.items[]? | select((.tags // []) | index("collector_error") | not)] | .[$i].tags // []' "$SHORTLIST_FILE" 2>/dev/null || echo "[]")
+
+  [ -n "$source" ] || return 0
+  [ -n "$title" ] || return 0
+
+  source_short=$(printf '%s' "$source" | tr '\n' ' ' | cut -c1-18 | sed 's/[[:space:]]*$//')
+  title_short=$(printf '%s' "$title" | tr '\n' ' ' | cut -c1-24 | sed 's/[[:space:]]*$//')
+
+  TWIST="${TWIST} / Signal:${source_short}「${title_short}」"
+  ONE_SENTENCE="${ONE_SENTENCE}（話題:${source_short}）"
+  STORY_SUMMARY="${STORY_SUMMARY}｜Signal:${source_short}"
+  KEYWORDS=$(jq -nc --argjson base "$KEYWORDS" --argjson extra "$stags" '$base + $extra + ["trend"] | unique')
+}
+
 sync_template_files() {
   local tmp_template
   tmp_template=$(mktemp -d "${WORK_ROOT}/template-XXXXXX")
@@ -198,6 +224,7 @@ echo "  [1/6] 企画生成..."
 GENRE=$(select_genre)
 THEME=$(select_theme)
 generate_plan "$GENRE"
+apply_shortlist_injection || true
 
 echo "  [2/6] Repo作成..."
 if ! gh repo view "${GH_USER}/${REPO_NAME}" >/dev/null 2>&1; then
@@ -245,6 +272,8 @@ jq -n \
     pages_url: $pages_url
   }
 ' > meta.json
+
+bash "$CONTROL_DIR/scripts/validate_json.sh" "$CONTROL_DIR/schemas/meta_schema.json" "meta.json"
 
 sed -i -E "s#https://github.com/[^/]+/ai-dev-day-[0-9]{3}#${REPO_URL}#g" index.html
 

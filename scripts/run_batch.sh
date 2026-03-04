@@ -9,6 +9,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CONTROL_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 STATE_FILE="$CONTROL_DIR/STATE.json"
 ENV_FILE="$CONTROL_DIR/.env.local"
+LOG_DIR="$CONTROL_DIR/logs"
 
 START_DAY=${1:?'Usage: run_batch.sh <start_day> <batch_size>'}
 BATCH_SIZE=${2:-7}
@@ -18,10 +19,29 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 echo "  run_batch: Day$(printf '%03d' "$START_DAY") 〜 Day$(printf '%03d' "$END_DAY")"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
+mkdir -p "$LOG_DIR"
+
 COMPLETED=0
 FAILED=0
 WEBHOOK_RESPONSE_BODY=""
 WEBHOOK_SCHEDULE_PREVIEW="[]"
+
+write_failure_summary() {
+  local day_str="$1"
+  local log_file="$2"
+  local summary_file="$LOG_DIR/Day${day_str}.summary.md"
+  {
+    echo "# Day${day_str} failure summary"
+    echo ""
+    echo "generated_at: $(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+    echo ""
+    echo "## Error-like lines"
+    grep -Ein "error|failed|❌|traceback|exception" "$log_file" | tail -n 120 || true
+    echo ""
+    echo "## Log tail (last 120 lines)"
+    tail -n 120 "$log_file" || true
+  } > "$summary_file"
+}
 
 load_env_file() {
   if [ -f "$ENV_FILE" ]; then
@@ -154,16 +174,18 @@ push_make_webhook() {
 for i in $(seq 0 $((BATCH_SIZE - 1))); do
   DAY_NUM=$((START_DAY + i))
   DAY_STR=$(printf '%03d' "$DAY_NUM")
+  LOG_FILE="$LOG_DIR/Day${DAY_STR}.log"
 
   echo ""
   echo "──── Day${DAY_STR} [$((i + 1))/${BATCH_SIZE}] ────"
 
-  if bash "$SCRIPT_DIR/run_day.sh" "$DAY_NUM"; then
+  if bash "$SCRIPT_DIR/run_day.sh" "$DAY_NUM" 2>&1 | tee "$LOG_FILE"; then
     COMPLETED=$((COMPLETED + 1))
     echo "✅ Day${DAY_STR} 完了"
   else
     FAILED=$((FAILED + 1))
     echo "❌ Day${DAY_STR} 失敗 — 後続Dayを続行します"
+    write_failure_summary "$DAY_STR" "$LOG_FILE"
     echo ""
     echo "⚠ 失敗詳細:"
     echo "  - 完了済み: ${COMPLETED}本"
@@ -227,8 +249,16 @@ fi
 
 # ---- カタログ更新 ----
 echo ""
+echo "▶ coverageレポートを更新..."
+bash "$SCRIPT_DIR/report_coverage.sh" || true
+
+echo ""
 echo "▶ カタログを更新..."
 bash "$SCRIPT_DIR/build_catalog.sh"
+
+echo ""
+echo "▶ STATE schema検証..."
+bash "$SCRIPT_DIR/validate_json.sh" "$CONTROL_DIR/schemas/state_schema.json" "$STATE_FILE"
 
 # ---- last_run 更新 ----
 NOW=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
