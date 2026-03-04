@@ -1,8 +1,8 @@
 # Weekly Digest (2026-03-04)
 
-- generated_at: 2026-03-04T15:08:53Z
+- generated_at: 2026-03-04T15:25:06Z
 - branch: sys-self-improve-pack
-- head: e90c084
+- head: 198cb33
 - STATE.last_run: 2026-02-28T05:55:20Z
 
 ## Signals (top)

@@ -181,11 +181,13 @@ for i in $(seq 0 $((BATCH_SIZE - 1))); do
 
   if bash "$SCRIPT_DIR/run_day.sh" "$DAY_NUM" 2>&1 | tee "$LOG_FILE"; then
     COMPLETED=$((COMPLETED + 1))
+    bash "$CONTROL_DIR/scripts/log_daily.sh" "$DAY_STR" "success" "" || true
     echo "✅ Day${DAY_STR} 完了"
   else
     FAILED=$((FAILED + 1))
     echo "❌ Day${DAY_STR} 失敗 — 後続Dayを続行します"
     write_failure_summary "$DAY_STR" "$LOG_FILE"
+    bash "$CONTROL_DIR/scripts/log_daily.sh" "$DAY_STR" "fail" "logs/Day${DAY_STR}.summary.md" || true
     echo ""
     echo "⚠ 失敗詳細:"
     echo "  - 完了済み: ${COMPLETED}本"

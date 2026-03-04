@@ -5,3 +5,5 @@ CONTROL_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 echo "post_resume: done"
 echo "post_resume: generating weekly digest..."
 bash "$CONTROL_DIR/scripts/report_weekly_digest.sh" || true
+echo "post_resume: updating source stats..."
+bash "$CONTROL_DIR/scripts/update_sources_stats.sh" || true
