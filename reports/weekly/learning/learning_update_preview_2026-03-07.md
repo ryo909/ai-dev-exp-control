@@ -1,0 +1,47 @@
+# Learning Update Preview (2026-03-07)
+
+## 今週の学びサマリ
+- weekly_run_report: reports/weekly/weekly_run_report_2026-03-07.json
+- control_tower: reports/control_tower/weekly_control_tower_2026-03-07.json
+- competitor_scan: reports/competitors/competitor_scan_2026-03-07_shortlist.json
+
+## memory 候補
+- 次バッチの推奨 complexity mix は small=4 / medium=3 / large=0 を基準にする。
+  - why: control tower recommendation
+  - confidence: 0.82
+
+## feedback 候補
+- day decision では enhance が 8/8 を占めるため、次週は enhancement candidate の採用条件を先に確認する。
+  - why: day-level decision summary bias
+  - confidence: 0.76
+- 競合共通パターンを反映: 冒頭で主張や問題設定を先に提示する構成が多い
+  - why: latest competitor common_patterns
+  - confidence: 0.74
+- 競合共通パターンを反映: CTAは購読・続きを読む・議論参加など次行動を明示する形式が中心
+  - why: latest competitor common_patterns
+  - confidence: 0.74
+- 競合共通パターンを反映: 見出しは媒体依存だがH1段階で論点を断定する傾向がある
+  - why: latest competitor common_patterns
+  - confidence: 0.74
+
+## source note 候補
+- blocked domain は www.science.org。verification 系応答は本文抽出せず skip して success_target を優先する。
+  - why: competitor scan blocked targets
+  - confidence: 0.9
+- 成功率の高い抽出元（blog.katanaquant.com, buttondown.com, github.com）を次週の初期候補で優先する。
+  - why: successful domains in competitor scan
+  - confidence: 0.79
+
+## learned rules 候補
+- Cloudflare/verification 応答を検知したURLは推定補完せず blocked と記録し、分析根拠から除外する。
+  - why: blocked handling rule
+  - confidence: 0.92
+- 週次の採用は profile と env flag を report に記録し、再現できない変更を避ける。
+  - why: weekly run report adoption trace
+  - confidence: 0.86
+
+## 今回は何を adopt すべきか（推奨）
+- memory: True
+- feedback: True
+- sources: True
+- rules: True
