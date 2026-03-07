@@ -13,6 +13,7 @@ WORK_ROOT="$CONTROL_DIR/../.workdays"
 SHORTLIST_FILE="$CONTROL_DIR/idea_bank/shortlist.json"
 COMPLEXITY_PROFILES_FILE="$CONTROL_DIR/system/complexity_profiles.json"
 COMPONENT_PACKS_FILE="$CONTROL_DIR/system/component_packs.json"
+NEXT_BATCH_PLAN_FILE="$CONTROL_DIR/plans/next_batch_plan.json"
 
 DAY_NUM=${1:?'Usage: run_day.sh <day_number>'}
 DAY_STR=$(printf '%03d' "$DAY_NUM")
@@ -105,6 +106,42 @@ resolve_selected_components() {
       COMPLEXITY_PROMPT_HINT="Create a showpiece version by adding around 3 safe enhancement components from selected_components, but avoid risky architecture changes."
       ;;
   esac
+}
+
+load_next_batch_recommendation() {
+  NEXT_BATCH_REC_JSON="{}"
+  NEXT_BATCH_SLOT_JSON="null"
+  NEXT_BATCH_PLAN_SOURCE=""
+  NEXT_BATCH_RECOMMENDED_COMPONENTS_JSON="[]"
+  NEXT_BATCH_RECOMMENDED_ENHANCEMENT="false"
+  NEXT_BATCH_RECOMMENDED_COUNT=0
+  NEXT_BATCH_RECOMMENDED_COMPLEXITY=""
+
+  if [ "${USE_NEXT_BATCH_PLAN:-0}" != "1" ]; then
+    return 0
+  fi
+
+  if [ ! -x "$CONTROL_DIR/scripts/read_next_batch_plan.sh" ]; then
+    echo "  ℹ next_batch recommendation skipped: reader script missing"
+    return 0
+  fi
+
+  NEXT_BATCH_REC_JSON=$(bash "$CONTROL_DIR/scripts/read_next_batch_plan.sh" --day "$DAY_STR" --plan "$NEXT_BATCH_PLAN_FILE" 2>/dev/null || echo "{}")
+  if ! jq -e 'type=="object"' >/dev/null 2>&1 <<<"$NEXT_BATCH_REC_JSON"; then
+    NEXT_BATCH_REC_JSON="{}"
+  fi
+  if [ "$(jq -r 'keys | length' <<<"$NEXT_BATCH_REC_JSON")" -eq 0 ]; then
+    echo "  ℹ next_batch recommendation skipped: no slot recommendation"
+    return 0
+  fi
+
+  NEXT_BATCH_PLAN_SOURCE="plans/next_batch_plan.json"
+  NEXT_BATCH_SLOT_JSON=$(jq -c '.slot // null' <<<"$NEXT_BATCH_REC_JSON")
+  NEXT_BATCH_RECOMMENDED_COMPONENTS_JSON=$(jq -c '.recommended_components // []' <<<"$NEXT_BATCH_REC_JSON")
+  NEXT_BATCH_RECOMMENDED_ENHANCEMENT=$(jq -r '.adopt_competitor_enhancement // false | tostring' <<<"$NEXT_BATCH_REC_JSON")
+  NEXT_BATCH_RECOMMENDED_COUNT=$(jq -r '.recommended_component_count // 0' <<<"$NEXT_BATCH_REC_JSON")
+  NEXT_BATCH_RECOMMENDED_COMPLEXITY=$(jq -r '.recommended_complexity_tier // empty' <<<"$NEXT_BATCH_REC_JSON")
+  echo "  ℹ next_batch recommendation loaded: slot=$(jq -r '.slot' <<<"$NEXT_BATCH_REC_JSON"), tier=${NEXT_BATCH_RECOMMENDED_COMPLEXITY:-none}"
 }
 
 generate_plan() {
@@ -274,7 +311,40 @@ THEME=$(select_theme)
 COMPLEXITY_TIER=$(select_complexity_tier)
 generate_plan "$GENRE"
 apply_shortlist_injection || true
+
+ADOPTED_NEXT_BATCH_COMPLEXITY="false"
+ADOPTED_NEXT_BATCH_COMPONENTS="false"
+ADOPTED_NEXT_BATCH_ENHANCEMENT="false"
+NEXT_BATCH_PLAN_SOURCE_META=""
+NEXT_BATCH_SLOT_META_JSON="null"
+NEXT_BATCH_RECOMMENDED_COMPONENTS_META_JSON="[]"
+NEXT_BATCH_RECOMMENDED_ENHANCEMENT_META="false"
+
+load_next_batch_recommendation
+
+if [ -n "${NEXT_BATCH_RECOMMENDED_COMPLEXITY:-}" ] && [ "${ADOPT_NEXT_BATCH_COMPLEXITY:-0}" = "1" ]; then
+  COMPLEXITY_TIER="$NEXT_BATCH_RECOMMENDED_COMPLEXITY"
+  ADOPTED_NEXT_BATCH_COMPLEXITY="true"
+  NEXT_BATCH_PLAN_SOURCE_META="$NEXT_BATCH_PLAN_SOURCE"
+  NEXT_BATCH_SLOT_META_JSON="$NEXT_BATCH_SLOT_JSON"
+  echo "  ℹ next_batch complexity adopted: ${COMPLEXITY_TIER}"
+fi
+
 resolve_selected_components "$COMPLEXITY_TIER"
+
+if [ "${ADOPT_NEXT_BATCH_COMPONENTS:-0}" = "1" ] && [ "$(jq -r 'length' <<<"$NEXT_BATCH_RECOMMENDED_COMPONENTS_JSON")" -gt 0 ]; then
+  if [ "$NEXT_BATCH_RECOMMENDED_COUNT" -le 0 ]; then
+    NEXT_BATCH_RECOMMENDED_COUNT=$(jq -r 'length' <<<"$NEXT_BATCH_RECOMMENDED_COMPONENTS_JSON")
+  fi
+  SELECTED_COMPONENTS_JSON=$(jq -c --argjson arr "$NEXT_BATCH_RECOMMENDED_COMPONENTS_JSON" --argjson n "$NEXT_BATCH_RECOMMENDED_COUNT" '$arr[:$n]' 2>/dev/null || echo "[]")
+  ADOPTED_NEXT_BATCH_COMPONENTS="true"
+  NEXT_BATCH_PLAN_SOURCE_META="${NEXT_BATCH_PLAN_SOURCE_META:-$NEXT_BATCH_PLAN_SOURCE}"
+  NEXT_BATCH_SLOT_META_JSON="${NEXT_BATCH_SLOT_META_JSON:-$NEXT_BATCH_SLOT_JSON}"
+  NEXT_BATCH_RECOMMENDED_COMPONENTS_META_JSON="$SELECTED_COMPONENTS_JSON"
+  echo "  ℹ next_batch components adopted: $(jq -r 'join(\", \")' <<<"$SELECTED_COMPONENTS_JSON")"
+fi
+
+NEXT_BATCH_RECOMMENDED_ENHANCEMENT_META="$NEXT_BATCH_RECOMMENDED_ENHANCEMENT"
 SELECTED_COMPONENTS_TEXT=$(jq -r 'if length == 0 then "none" else join(", ") end' <<<"$SELECTED_COMPONENTS_JSON")
 
 ORIGINAL_TWIST="$TWIST"
@@ -295,7 +365,14 @@ fi
 
 if [ -f "$ENHANCED_CANDIDATES_FILE" ]; then
   echo "  ℹ enhanced plan candidates found: plans/candidates/day${DAY_STR}_enhanced_candidates.json"
+  ENHANCEMENT_ALLOW=0
   if [ "${ADOPT_ENHANCED_PLAN:-0}" = "1" ]; then
+    ENHANCEMENT_ALLOW=1
+  fi
+  if [ "${ADOPT_NEXT_BATCH_ENHANCEMENT:-0}" = "1" ] && [ "$NEXT_BATCH_RECOMMENDED_ENHANCEMENT" = "true" ]; then
+    ENHANCEMENT_ALLOW=1
+  fi
+  if [ "$ENHANCEMENT_ALLOW" -eq 1 ]; then
     REC_ID=$(jq -r '.recommended_candidate_id // empty' "$ENHANCED_CANDIDATES_FILE" 2>/dev/null || true)
     if [ -n "$REC_ID" ]; then
       CAND_TWIST=$(jq -r --arg id "$REC_ID" '.candidates[]? | select(.id == $id) | .twist // empty' "$ENHANCED_CANDIDATES_FILE" 2>/dev/null || true)
@@ -307,6 +384,11 @@ if [ -f "$ENHANCED_CANDIDATES_FILE" ]; then
         ENHANCEMENT_ADOPTED="true"
         ENHANCEMENT_SOURCE="$CAND_SOURCE"
         ENHANCEMENT_CANDIDATE_ID="$REC_ID"
+        if [ "${ADOPT_NEXT_BATCH_ENHANCEMENT:-0}" = "1" ] && [ "$NEXT_BATCH_RECOMMENDED_ENHANCEMENT" = "true" ]; then
+          ADOPTED_NEXT_BATCH_ENHANCEMENT="true"
+          NEXT_BATCH_PLAN_SOURCE_META="${NEXT_BATCH_PLAN_SOURCE_META:-$NEXT_BATCH_PLAN_SOURCE}"
+          NEXT_BATCH_SLOT_META_JSON="${NEXT_BATCH_SLOT_META_JSON:-$NEXT_BATCH_SLOT_JSON}"
+        fi
         echo "  ℹ enhanced plan adopted: ${REC_ID}"
       else
         echo "  ℹ enhanced plan not adopted: recommended candidate incomplete"
@@ -315,6 +397,10 @@ if [ -f "$ENHANCED_CANDIDATES_FILE" ]; then
       echo "  ℹ enhanced plan not adopted: recommended candidate missing"
     fi
   fi
+fi
+
+if [ "${USE_NEXT_BATCH_PLAN:-0}" = "1" ] && [ "$ADOPTED_NEXT_BATCH_COMPLEXITY" != "true" ] && [ "$ADOPTED_NEXT_BATCH_COMPONENTS" != "true" ] && [ "$ADOPTED_NEXT_BATCH_ENHANCEMENT" != "true" ]; then
+  echo "  ℹ next_batch recommendation loaded but not adopted (flags off or conditions unmet)"
 fi
 
 echo "  [2/6] Repo作成..."
@@ -350,6 +436,13 @@ jq -n \
   --arg enhancement_source "$ENHANCEMENT_SOURCE" \
   --arg enhancement_candidate_id "$ENHANCEMENT_CANDIDATE_ID" \
   --arg enhancement_adopted "$ENHANCEMENT_ADOPTED" \
+  --arg adopted_next_batch_complexity "$ADOPTED_NEXT_BATCH_COMPLEXITY" \
+  --arg adopted_next_batch_components "$ADOPTED_NEXT_BATCH_COMPONENTS" \
+  --arg adopted_next_batch_enhancement "$ADOPTED_NEXT_BATCH_ENHANCEMENT" \
+  --arg next_batch_plan_source "$NEXT_BATCH_PLAN_SOURCE_META" \
+  --arg next_batch_recommended_enhancement "$NEXT_BATCH_RECOMMENDED_ENHANCEMENT_META" \
+  --argjson next_batch_slot "$NEXT_BATCH_SLOT_META_JSON" \
+  --argjson next_batch_recommended_components "$NEXT_BATCH_RECOMMENDED_COMPONENTS_META_JSON" \
   --argjson selected_components "$SELECTED_COMPONENTS_JSON" \
   --argjson keywords "$KEYWORDS" \
   --arg repo_name "$REPO_NAME" \
@@ -374,6 +467,13 @@ jq -n \
     enhancement_source: $enhancement_source,
     enhancement_candidate_id: $enhancement_candidate_id,
     enhancement_adopted: ($enhancement_adopted == "true"),
+    adopted_next_batch_complexity: ($adopted_next_batch_complexity == "true"),
+    adopted_next_batch_components: ($adopted_next_batch_components == "true"),
+    adopted_next_batch_enhancement: ($adopted_next_batch_enhancement == "true"),
+    next_batch_plan_source: $next_batch_plan_source,
+    next_batch_slot: $next_batch_slot,
+    next_batch_recommended_components: $next_batch_recommended_components,
+    next_batch_recommended_enhancement: ($next_batch_recommended_enhancement == "true"),
     keywords: $keywords,
     repo_name: $repo_name,
     pages_url: $pages_url
@@ -494,6 +594,13 @@ jq --arg now "$NOW" \
    --arg enhancement_source "$ENHANCEMENT_SOURCE" \
    --arg enhancement_candidate_id "$ENHANCEMENT_CANDIDATE_ID" \
    --arg enhancement_adopted "$ENHANCEMENT_ADOPTED" \
+   --arg adopted_next_batch_complexity "$ADOPTED_NEXT_BATCH_COMPLEXITY" \
+   --arg adopted_next_batch_components "$ADOPTED_NEXT_BATCH_COMPONENTS" \
+   --arg adopted_next_batch_enhancement "$ADOPTED_NEXT_BATCH_ENHANCEMENT" \
+   --arg next_batch_plan_source "$NEXT_BATCH_PLAN_SOURCE_META" \
+   --arg next_batch_recommended_enhancement "$NEXT_BATCH_RECOMMENDED_ENHANCEMENT_META" \
+   --argjson next_batch_slot "$NEXT_BATCH_SLOT_META_JSON" \
+   --argjson next_batch_recommended_components "$NEXT_BATCH_RECOMMENDED_COMPONENTS_META_JSON" \
    --argjson selected_components "$SELECTED_COMPONENTS_JSON" \
    --argjson keywords "$KEYWORDS" \
    --arg post_standard "$POST_STANDARD" \
@@ -522,6 +629,13 @@ jq --arg now "$NOW" \
        enhancement_source: $enhancement_source,
        enhancement_candidate_id: $enhancement_candidate_id,
        enhancement_adopted: ($enhancement_adopted == "true"),
+       adopted_next_batch_complexity: ($adopted_next_batch_complexity == "true"),
+       adopted_next_batch_components: ($adopted_next_batch_components == "true"),
+       adopted_next_batch_enhancement: ($adopted_next_batch_enhancement == "true"),
+       next_batch_plan_source: $next_batch_plan_source,
+       next_batch_slot: $next_batch_slot,
+       next_batch_recommended_components: $next_batch_recommended_components,
+       next_batch_recommended_enhancement: ($next_batch_recommended_enhancement == "true"),
        keywords: $keywords
      },
      post_texts: {
