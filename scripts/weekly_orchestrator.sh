@@ -67,6 +67,7 @@ stage_preflight() {
     "$CONTROL_DIR/scripts/idea_shortlist.sh"
     "$CONTROL_DIR/scripts/build_control_tower_digest.sh"
     "$CONTROL_DIR/scripts/build_next_batch_plan.sh"
+    "$CONTROL_DIR/scripts/build_showcase_plan.sh"
   )
   for f in "${req[@]}"; do
     if [ -e "$f" ]; then
@@ -89,7 +90,8 @@ stage_intel() {
   run_best_effort bash "$CONTROL_DIR/scripts/idea_shortlist.sh"
   run_best_effort bash "$CONTROL_DIR/scripts/build_control_tower_digest.sh"
   run_best_effort bash "$CONTROL_DIR/scripts/build_next_batch_plan.sh"
-  log "artifacts: shared-context/SIGNALS.md, idea_bank/shortlist.json, reports/control_tower/*, plans/next_batch_plan.json"
+  run_best_effort bash "$CONTROL_DIR/scripts/build_showcase_plan.sh"
+  log "artifacts: shared-context/SIGNALS.md, idea_bank/shortlist.json, reports/control_tower/*, plans/next_batch_plan.json, plans/showcase_plan.json"
 }
 
 stage_thesis() {
