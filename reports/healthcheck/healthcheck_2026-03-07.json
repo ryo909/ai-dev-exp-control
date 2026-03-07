@@ -1,0 +1,85 @@
+{
+  "generated_at": "2026-03-07T12:13:22.865861+00:00",
+  "summary": {
+    "overall_status": "attention",
+    "repo_cleanliness": "dirty",
+    "artifact_freshness": "warn",
+    "launch_chain_status": "warn",
+    "feedback_status": "warn",
+    "manual_attention_count": 5
+  },
+  "checks": {
+    "repo_status": {
+      "status": "warn",
+      "repo_cleanliness": "dirty",
+      "notes": [
+        "dirty_count=7",
+        "untracked_count=20",
+        "working tree has tracked modifications",
+        "large untracked backlog"
+      ],
+      "git_status": "## sys-self-improve-pack...origin/sys-self-improve-pack [ahead 2]\n M AGENTS.md\n M reports/control_tower/weekly_control_tower_2026-03-07.json\n M reports/control_tower/weekly_control_tower_2026-03-07.md\n M scripts/build_control_tower_digest.py\n M scripts/build_launch_pack.py\n M scripts/build_weekly_run_report.py\n M scripts/weekly_orchestrator.sh\n?? data/\n?? exports/\n?? imports/\n?? reports/feedback/\n?? reports/healthcheck/\n?? reports/launch/launch_pack_2026-03-07.json\n?? reports/launch/launch_pack_2026-03-07.md\n?? scripts/build_healthcheck_report.py\n?? scripts/build_healthcheck_report.sh\n?? scripts/build_launch_exports.py\n?? scripts/build_launch_exports.sh\n?? scripts/build_post_launch_feedback_digest.py\n?? scripts/build_post_launch_feedback_digest.sh\n?? scripts/collect_post_launch_feedback.py\n?? scripts/collect_post_launch_feedback.sh\n?? scripts/id_utils.py\n?? system/healthcheck_policy.md\n?? system/id_schema_policy.md\n?? system/launch_export_policy.md\n?? system/post_launch_feedback_policy.md"
+    },
+    "required_paths": {
+      "status": "ok",
+      "missing": [],
+      "notes": [
+        "required path check complete"
+      ]
+    },
+    "artifact_freshness": {
+      "status": "warn",
+      "latest_found": {
+        "strategy": "",
+        "growth": "",
+        "portfolio": "",
+        "evidence": "",
+        "reality": "",
+        "launch": "reports/launch/launch_pack_2026-03-07.json",
+        "export": "exports/launch/launch_export_2026-03-07.json",
+        "feedback": "reports/feedback/post_launch_feedback_2026-03-07.json",
+        "healthcheck": "reports/healthcheck/healthcheck_2026-03-07.json"
+      },
+      "notes": [
+        "missing artifact: strategy",
+        "missing artifact: growth",
+        "missing artifact: portfolio",
+        "missing artifact: evidence",
+        "missing artifact: reality"
+      ]
+    },
+    "launch_chain": {
+      "status": "warn",
+      "notes": [
+        "tool_id coverage is incomplete across launch/export/feedback"
+      ]
+    },
+    "imports_backlog": {
+      "status": "ok",
+      "pending_files": [],
+      "notes": []
+    },
+    "feedback_continuity": {
+      "status": "warn",
+      "notes": [
+        "normalized jsonl exists but currently empty"
+      ]
+    },
+    "browser_dependency": {
+      "status": "warn",
+      "notes": [
+        "python playwright not installed; use manual import fallback"
+      ]
+    },
+    "pending_operational_risks": {
+      "status": "ok",
+      "notes": []
+    }
+  },
+  "manual_actions": [],
+  "recommended_next_steps": [
+    "launch/export/feedback の ID 充足率を上げる",
+    "feedback raw->normalized->digest chain を再生成する",
+    "Playwright 依存回収が難しい場合は manual import 運用を先に固定する"
+  ]
+}

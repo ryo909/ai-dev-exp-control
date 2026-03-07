@@ -33,6 +33,10 @@
 - Skills は task-specific capability として使い、人格ロールの代替にしない。
 - specialized work は可能な限り report artifact を残す（例: quality/portfolio/growth/strategy/evidence/reality）。
 - Launch Pack は Studio Producer / Growth / Portfolio / Reality Checker の交点にある集約artifactとして扱う。
+- Launch Export Layer は Launch Pack 後段の handoff artifact generator として扱う（外部送信は行わない）。
+- Post-Launch Feedback Layer は Launch後の実績を回収し、Strategy/Growth/Launch に返す learning input generator として扱う。
+- Launch / Export / Feedback は `tool_id / launch_id / post_id` の整合を優先し、横断追跡可能性を維持する。
+- weekly preflight では healthcheck を先に確認し、warn/attention の原因を見てから本実行へ進む。
 - personality より deliverable（入力契約・出力契約・判定基準）を優先する。
 - Whimsy Injector は showcase 専用でのみ許可する。通常dayでは適用しない。
 - 大量ロール常駐化はしない。multi-agent は局所利用に限定する。

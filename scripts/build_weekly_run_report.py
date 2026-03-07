@@ -56,6 +56,10 @@ def main() -> int:
     evidence_report = latest(os.path.join(cdir, "reports", "evidence", "evidence_*.json"))
     reality_gate = latest(os.path.join(cdir, "reports", "reality", "reality_gate_*.json"))
     launch_pack = latest(os.path.join(cdir, "reports", "launch", "launch_pack_*.json"))
+    launch_export = latest(os.path.join(cdir, "exports", "launch", "launch_export_*.json"))
+    feedback_raw = latest(os.path.join(cdir, "data", "feedback", "raw", "buffer_metrics_*.json"))
+    feedback_digest = latest(os.path.join(cdir, "reports", "feedback", "post_launch_feedback_*.json"))
+    healthcheck = latest(os.path.join(cdir, "reports", "healthcheck", "healthcheck_*.json"))
 
     quality_reports = sorted(glob.glob(os.path.join(cdir, "reports", "quality", "day*_quality.json")))
     fallback_plans = sorted(glob.glob(os.path.join(cdir, "plans", "candidates", "day*_fallback_plan.json")))
@@ -94,6 +98,11 @@ def main() -> int:
         "evidence_report": rel(evidence_report, cdir),
         "reality_gate": rel(reality_gate, cdir),
         "launch_pack": rel(launch_pack, cdir),
+        "launch_export": rel(launch_export, cdir),
+        "feedback_raw": rel(feedback_raw, cdir),
+        "feedback_digest": rel(feedback_digest, cdir),
+        "healthcheck": rel(healthcheck, cdir),
+        "id_linked_chain_present": bool(rel(launch_pack, cdir) and rel(launch_export, cdir) and rel(feedback_digest, cdir)),
         "quality_reports": [rel(p, cdir) for p in quality_reports],
         "fallback_plans": [rel(p, cdir) for p in fallback_plans],
         "enhanced_candidates": [rel(p, cdir) for p in enhanced_candidates],

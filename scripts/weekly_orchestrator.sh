@@ -73,6 +73,10 @@ stage_preflight() {
     "$CONTROL_DIR/scripts/build_evidence_report.sh"
     "$CONTROL_DIR/scripts/build_reality_gate.sh"
     "$CONTROL_DIR/scripts/build_launch_pack.sh"
+    "$CONTROL_DIR/scripts/build_launch_exports.sh"
+    "$CONTROL_DIR/scripts/build_healthcheck_report.sh"
+    "$CONTROL_DIR/scripts/collect_post_launch_feedback.sh"
+    "$CONTROL_DIR/scripts/build_post_launch_feedback_digest.sh"
   )
   for f in "${req[@]}"; do
     if [ -e "$f" ]; then
@@ -83,6 +87,12 @@ stage_preflight() {
   done
   (cd "$CONTROL_DIR" && git status -sb || true)
   (cd "$CONTROL_DIR" && git branch --show-current || true)
+  run_best_effort bash "$CONTROL_DIR/scripts/build_healthcheck_report.sh" --date "$TODAY"
+  if [ -f "$CONTROL_DIR/reports/healthcheck/healthcheck_${TODAY}.json" ]; then
+    local hstatus
+    hstatus=$(jq -r '.summary.overall_status // "n/a"' "$CONTROL_DIR/reports/healthcheck/healthcheck_${TODAY}.json" 2>/dev/null || echo "n/a")
+    log "healthcheck overall_status=${hstatus}"
+  fi
   if [ "$DRY_RUN" = "1" ]; then
     log "planned stages: preflight -> intel -> thesis -> preview -> adopt -> run -> report -> learn_preview -> learn_adopt"
   fi
@@ -176,6 +186,9 @@ stage_report() {
   run_best_effort bash "$CONTROL_DIR/scripts/build_evidence_report.sh"
   run_best_effort bash "$CONTROL_DIR/scripts/build_reality_gate.sh"
   run_best_effort bash "$CONTROL_DIR/scripts/build_launch_pack.sh"
+  run_best_effort bash "$CONTROL_DIR/scripts/build_launch_exports.sh"
+  run_best_effort bash "$CONTROL_DIR/scripts/collect_post_launch_feedback.sh"
+  run_best_effort bash "$CONTROL_DIR/scripts/build_post_launch_feedback_digest.sh"
 
   local stages_csv
   stages_csv=$(IFS=,; echo "${STAGES_RUN[*]}")

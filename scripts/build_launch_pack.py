@@ -4,6 +4,7 @@ import glob
 import json
 import os
 from datetime import date, datetime, timezone
+from id_utils import build_launch_id, normalize_tool_id
 
 
 def read_json(path):
@@ -84,6 +85,7 @@ def main():
     args = parser.parse_args()
 
     cdir = os.path.abspath(args.control_dir)
+    launch_id = build_launch_id(args.date)
 
     state = read_json(os.path.join(cdir, "STATE.json")) if os.path.exists(os.path.join(cdir, "STATE.json")) else {}
     catalog = read_json(os.path.join(cdir, "catalog", "catalog.json")) if os.path.exists(os.path.join(cdir, "catalog", "catalog.json")) else []
@@ -166,9 +168,11 @@ def main():
         by_day.append(
             {
                 "day": day,
+                "tool_id": normalize_tool_id(day),
                 "repo_name": repo_name,
                 "launch_readiness": readiness,
                 "decision": decision,
+                "decision_source": "launch_pack",
                 "one_line_positioning": one_line or title,
                 "recommended_channels": channels,
                 "hook_candidates": hooks,
@@ -243,11 +247,13 @@ def main():
     launch_decisions = {
         "hero_tool": {
             "day": hero.get("day", ""),
+            "tool_id": hero.get("tool_id", ""),
             "repo_name": hero.get("repo_name", ""),
             "title": hero.get("title", ""),
             "pages_url": hero.get("pages_url", ""),
             "repo_url": hero.get("repo_url", ""),
             "decision": hero_decision,
+            "decision_source": "launch_pack",
             "why": [
                 "launch_readiness が相対的に高い",
                 "channel fit と one-line positioning が揃っている",
@@ -259,8 +265,10 @@ def main():
         "secondary_tools": [
             {
                 "day": x.get("day"),
+                "tool_id": x.get("tool_id", ""),
                 "repo_name": x.get("repo_name"),
                 "decision": x.get("decision"),
+                "decision_source": "launch_pack",
                 "preferred_channels": x.get("recommended_channels", [])[:2],
             }
             for x in secondary
@@ -268,8 +276,10 @@ def main():
         "hold_candidates": [
             {
                 "day": x.get("day"),
+                "tool_id": x.get("tool_id", ""),
                 "repo_name": x.get("repo_name"),
                 "reason": x.get("issues", [])[:3],
+                "decision_source": "launch_pack",
             }
             for x in hold_candidates
         ],
@@ -289,6 +299,7 @@ def main():
 
     payload = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
+        "launch_id": launch_id,
         "summary": {
             "launch_readiness": launch_readiness,
             "primary_showcase_slot": showcase_slot,

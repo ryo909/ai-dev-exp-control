@@ -132,6 +132,12 @@ def main():
     reality = read_json(latest_reality) if latest_reality else {}
     latest_launch = latest_file(os.path.join(cdir, "reports", "launch", "launch_pack_*.json"))
     launch = read_json(latest_launch) if latest_launch else {}
+    latest_launch_export = latest_file(os.path.join(cdir, "exports", "launch", "launch_export_*.json"))
+    launch_export = read_json(latest_launch_export) if latest_launch_export else {}
+    latest_post_feedback = latest_file(os.path.join(cdir, "reports", "feedback", "post_launch_feedback_*.json"))
+    post_feedback = read_json(latest_post_feedback) if latest_post_feedback else {}
+    latest_healthcheck = latest_file(os.path.join(cdir, "reports", "healthcheck", "healthcheck_*.json"))
+    healthcheck = read_json(latest_healthcheck) if latest_healthcheck else {}
 
     quality_files = sorted(glob.glob(os.path.join(cdir, "reports", "quality", "day*_quality.json")))
     enh_files = sorted(glob.glob(os.path.join(cdir, "plans", "candidates", "day*_enhanced_candidates.json")))
@@ -310,6 +316,11 @@ def main():
             "evidence_hotspots": (evidence.get("portfolio_relevant_findings") or [])[:5],
             "reality_hotspots": (reality.get("release_hotspots") or [])[:5],
             "launch_hotspots": (launch.get("recommended_launch_actions") or [])[:5],
+            "launch_export_hotspots": (launch_export.get("recommended_export_actions") or [])[:5],
+            "post_launch_hotspots": (post_feedback.get("recommended_feedback_actions") or [])[:5],
+            "healthcheck_overall_status": ((healthcheck.get("summary") or {}).get("overall_status", "")),
+            "healthcheck_manual_actions": (healthcheck.get("manual_actions") or [])[:5],
+            "id_traceability_hotspots": ((healthcheck.get("checks") or {}).get("launch_chain", {}) or {}).get("notes", [])[:5],
         },
         "day_decisions": day_decisions,
         "next_batch_recommendations": {
@@ -344,6 +355,21 @@ def main():
                 "align proof points with first-view clarity",
                 "increase channel-fit differentiation",
                 "improve secondary tool packaging",
+                "improve handoff-ready launch packaging",
+                "reduce hero-tool export friction",
+                "strengthen quiet-catalog packaging clarity",
+                "align launch decisions with channel-ready assets",
+                "reduce manual rewrite burden for social copy",
+                "reinforce winning hook families",
+                "reduce underperforming hero launch patterns",
+                "tighten CTA choices for X posts",
+                "align showcase bets with observed engagement",
+                "improve channel-fit packaging for secondary tools",
+                "tighten launch-to-feedback traceability",
+                "reduce missing ID fields in launch/export/feedback chain",
+                "reduce manual import backlog",
+                "improve weekly run readiness",
+                "stabilize browser-dependent feedback collection",
             ],
         },
     }
@@ -433,6 +459,34 @@ def main():
     else:
         lines.append("- なし")
     lines.append("")
+    lines.append("## launch export hotspots")
+    leh = payload["improvement_signals"].get("launch_export_hotspots", [])
+    if leh:
+        for x in leh:
+            lines.append(f"- {x}")
+    else:
+        lines.append("- なし")
+    lines.append("")
+    lines.append("## post-launch feedback hotspots")
+    plh = payload["improvement_signals"].get("post_launch_hotspots", [])
+    if plh:
+        for x in plh:
+            lines.append(f"- {x}")
+    else:
+        lines.append("- なし")
+    lines.append("")
+    lines.append("## healthcheck / ID traceability")
+    hs = payload["improvement_signals"].get("healthcheck_overall_status", "")
+    lines.append(f"- healthcheck: {hs or 'n/a'}")
+    hma = payload["improvement_signals"].get("healthcheck_manual_actions", [])
+    if hma:
+        for x in hma:
+            lines.append(f"- manual_action: {x}")
+    idh = payload["improvement_signals"].get("id_traceability_hotspots", [])
+    if idh:
+        for x in idh:
+            lines.append(f"- id_trace: {x}")
+    lines.append("")
     lines.append("## dayごとの decision summary")
     for dd in day_decisions[-10:]:
         lines.append(
@@ -452,7 +506,7 @@ def main():
         lines.append(f"- {r}")
     lines.append("")
     lines.append("## Context sources")
-    for p in [signals_path, coverage_path, latest_comp, latest_showcase, latest_portfolio, latest_growth, latest_strategy, latest_evidence, latest_reality, latest_launch, memory_path, feedback_path, sources_path]:
+    for p in [signals_path, coverage_path, latest_comp, latest_showcase, latest_portfolio, latest_growth, latest_strategy, latest_evidence, latest_reality, latest_launch, latest_launch_export, latest_post_feedback, latest_healthcheck, memory_path, feedback_path, sources_path]:
         if p and os.path.exists(p):
             lines.append(f"- {os.path.relpath(p, cdir)}")
 
