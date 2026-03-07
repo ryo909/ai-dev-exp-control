@@ -50,6 +50,7 @@ def main() -> int:
     learning_preview = latest(os.path.join(cdir, "reports", "weekly", "learning", "learning_update_preview_*.json"))
     learning_adoption_report = latest(os.path.join(cdir, "reports", "weekly", "learning", "learning_adoption_report_*.json"))
     weekly_digest = os.path.join(cdir, "reports", "weekly_digest.md")
+    portfolio_eval = latest(os.path.join(cdir, "reports", "portfolio", "portfolio_eval_*.json"))
 
     quality_reports = sorted(glob.glob(os.path.join(cdir, "reports", "quality", "day*_quality.json")))
     fallback_plans = sorted(glob.glob(os.path.join(cdir, "plans", "candidates", "day*_fallback_plan.json")))
@@ -82,6 +83,7 @@ def main() -> int:
         "learning_preview": rel(learning_preview, cdir),
         "learning_adoption_report": rel(learning_adoption_report, cdir),
         "weekly_digest": rel(weekly_digest, cdir),
+        "portfolio_eval": rel(portfolio_eval, cdir),
         "quality_reports": [rel(p, cdir) for p in quality_reports],
         "fallback_plans": [rel(p, cdir) for p in fallback_plans],
         "enhanced_candidates": [rel(p, cdir) for p in enhanced_candidates],

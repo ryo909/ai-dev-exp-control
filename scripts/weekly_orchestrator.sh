@@ -165,6 +165,7 @@ stage_report() {
   log "stage=report"
   run_best_effort bash "$CONTROL_DIR/scripts/build_control_tower_digest.sh"
   run_best_effort bash "$CONTROL_DIR/scripts/build_next_batch_plan.sh"
+  run_best_effort bash "$CONTROL_DIR/scripts/evaluate_portfolio.sh"
 
   local stages_csv
   stages_csv=$(IFS=,; echo "${STAGES_RUN[*]}")
