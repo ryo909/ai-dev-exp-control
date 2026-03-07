@@ -122,6 +122,8 @@ def main():
     showcase = read_json(latest_showcase) if latest_showcase else {}
     latest_portfolio = latest_file(os.path.join(cdir, "reports", "portfolio", "portfolio_eval_*.json"))
     portfolio = read_json(latest_portfolio) if latest_portfolio else {}
+    latest_growth = latest_file(os.path.join(cdir, "reports", "growth", "growth_brief_*.json"))
+    growth = read_json(latest_growth) if latest_growth else {}
 
     quality_files = sorted(glob.glob(os.path.join(cdir, "reports", "quality", "day*_quality.json")))
     enh_files = sorted(glob.glob(os.path.join(cdir, "plans", "candidates", "day*_enhanced_candidates.json")))
@@ -294,6 +296,7 @@ def main():
             "dont_copy": (comp.get("dont_copy") or [])[:5],
             "missing_components_hotspots": missing_hotspots,
             "portfolio_hotspots": (portfolio.get("portfolio_hotspots") or [])[:5],
+            "growth_hotspots": (growth.get("growth_hotspots") or [])[:5],
         },
         "day_decisions": day_decisions,
         "next_batch_recommendations": {
@@ -310,6 +313,10 @@ def main():
                 "reduce broken or missing live demo links",
                 "strengthen showcase-ready presentation for standout tools",
                 "improve one-line positioning for portfolio browsing",
+                "strengthen one-line positioning for audience-facing messaging",
+                "improve showcase launch narrative before weekly release",
+                "align README and demo clarity with social hooks",
+                "generate more distinct audience-facing value propositions",
             ],
         },
     }
@@ -371,6 +378,14 @@ def main():
     else:
         lines.append("- なし")
     lines.append("")
+    lines.append("## growth hotspots")
+    gh = payload["improvement_signals"].get("growth_hotspots", [])
+    if gh:
+        for x in gh:
+            lines.append(f"- {x}")
+    else:
+        lines.append("- なし")
+    lines.append("")
     lines.append("## dayごとの decision summary")
     for dd in day_decisions[-10:]:
         lines.append(
@@ -390,7 +405,7 @@ def main():
         lines.append(f"- {r}")
     lines.append("")
     lines.append("## Context sources")
-    for p in [signals_path, coverage_path, latest_comp, latest_showcase, latest_portfolio, memory_path, feedback_path, sources_path]:
+    for p in [signals_path, coverage_path, latest_comp, latest_showcase, latest_portfolio, latest_growth, memory_path, feedback_path, sources_path]:
         if p and os.path.exists(p):
             lines.append(f"- {os.path.relpath(p, cdir)}")
 
