@@ -9,3 +9,4 @@
   - `downgrade`: complexityを一段落として再挑戦
   - `retry_later`: 失敗ログが重く、先に安定化が必要
 - `next_batch_plan` の実運用は `system/next_batch_adoption_policy.md` の段階フラグで行い、初期は opt-in のみ。
+- 週次の実行順は `scripts/weekly_orchestrator.sh` を使い、stage分割で安全に進める。

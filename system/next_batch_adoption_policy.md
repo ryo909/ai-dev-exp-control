@@ -11,3 +11,4 @@
   1) complexity だけ採用
   2) components を採用
   3) enhancement を採用
+- 週次運用では `scripts/weekly_orchestrator.sh` の adoption profile を通して段階適用する。

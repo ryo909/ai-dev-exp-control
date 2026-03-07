@@ -1,0 +1,29 @@
+{
+  "generated_at": "2026-03-07T06:29:52.633153+00:00",
+  "adoption_profile": "safe",
+  "dry_run": false,
+  "stages_run": [
+    "report"
+  ],
+  "artifacts": {
+    "signals": "shared-context/SIGNALS.md",
+    "shortlist": "idea_bank/shortlist.json",
+    "control_tower": "reports/control_tower/weekly_control_tower_2026-03-07.json",
+    "next_batch_plan": "plans/next_batch_plan.json",
+    "thesis_update_draft": "reports/weekly/thesis_update_draft_2026-03-07.md",
+    "weekly_digest": "reports/weekly_digest.md",
+    "quality_reports": [],
+    "fallback_plans": [],
+    "enhanced_candidates": []
+  },
+  "adoption_flags": {
+    "USE_NEXT_BATCH_PLAN": "1",
+    "ADOPT_NEXT_BATCH_COMPLEXITY": "1",
+    "ADOPT_NEXT_BATCH_COMPONENTS": "0",
+    "ADOPT_NEXT_BATCH_ENHANCEMENT": "0"
+  },
+  "summary": {
+    "resume_executed": false,
+    "notes": []
+  }
+}
