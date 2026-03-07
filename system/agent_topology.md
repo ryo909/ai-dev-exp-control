@@ -14,10 +14,10 @@
 ## 2) Strategist
 - 目的: 週次の勝ち筋・重点を定義し、次バッチ方針を揃える。
 - 主な入力: control tower, THESIS, shortlist, showcase/portfolio/growth briefs。
-- 主な出力: `shared-context/THESIS.md`, thesis draft/preview。
-- 対応実装: `build_control_tower_digest.py`, `build_thesis_update_draft.py`。
+- 主な出力: `reports/strategy/strategy_brief_*.json|md`, `shared-context/THESIS.md`, thesis draft/preview。
+- 対応実装: `build_strategy_brief.py`, `build_control_tower_digest.py`, `build_thesis_update_draft.py`。
 - 実装状態: 明示実装済み。
-- 弱点/未実装: 戦略比較（A/B方針）を明示的に比較する層は未実装。
+- 弱点/未実装: 戦略比較（A/B方針）の定量比較は未実装。
 
 ## 3) Architect
 - 目的: 7本の complexity/component/fallback 配分を安全に設計する。
@@ -58,6 +58,22 @@
 - 対応実装: `build_growth_brief.py`（report stage 接続）。
 - 実装状態: 今回明示実装。
 - 弱点/未実装: 自動投稿連携やチャネル別自動最適化は未実装（計画層のみ）。
+
+## 8) Evidence Collector
+- 目的: 視覚的な証拠（above-the-fold/CTA視認性/崩れ）を収集する。
+- 主な入力: `STATE.json`, `catalog/catalog.json`, `.workdays` artifacts。
+- 主な出力: `reports/evidence/evidence_*.json|md`。
+- 対応実装: `build_evidence_report.py`。
+- 実装状態: 今回明示実装（best-effort）。
+- 弱点/未実装: Playwrightによる自動スクリーンショット収集は限定的。
+
+## 9) Reality Checker
+- 目的: quality/portfolio/evidenceを統合して release gate を提示する。
+- 主な入力: `reports/quality/*`, `reports/portfolio/*`, `reports/evidence/*`。
+- 主な出力: `reports/reality/reality_gate_*.json|md`。
+- 対応実装: `build_reality_gate.py`。
+- 実装状態: 今回明示実装（意思決定支援）。
+- 弱点/未実装: 自動ブロック連携は未実装（推奨のみ）。
 
 ## Topology運用メモ
 - `weekly_orchestrator.sh` は role 間の handoff を担うランナーであり、各 role は best-effort artifact を優先生成する。

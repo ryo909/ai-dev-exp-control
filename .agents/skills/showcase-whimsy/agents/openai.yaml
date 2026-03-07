@@ -1,0 +1,5 @@
+interface:
+  display_name: "Showcase Whimsy"
+  short_description: "showcase-only delight ideas"
+policy:
+  allow_implicit_invocation: false

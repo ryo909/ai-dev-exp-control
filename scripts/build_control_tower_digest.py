@@ -124,6 +124,12 @@ def main():
     portfolio = read_json(latest_portfolio) if latest_portfolio else {}
     latest_growth = latest_file(os.path.join(cdir, "reports", "growth", "growth_brief_*.json"))
     growth = read_json(latest_growth) if latest_growth else {}
+    latest_strategy = latest_file(os.path.join(cdir, "reports", "strategy", "strategy_brief_*.json"))
+    strategy = read_json(latest_strategy) if latest_strategy else {}
+    latest_evidence = latest_file(os.path.join(cdir, "reports", "evidence", "evidence_*.json"))
+    evidence = read_json(latest_evidence) if latest_evidence else {}
+    latest_reality = latest_file(os.path.join(cdir, "reports", "reality", "reality_gate_*.json"))
+    reality = read_json(latest_reality) if latest_reality else {}
 
     quality_files = sorted(glob.glob(os.path.join(cdir, "reports", "quality", "day*_quality.json")))
     enh_files = sorted(glob.glob(os.path.join(cdir, "plans", "candidates", "day*_enhanced_candidates.json")))
@@ -297,6 +303,10 @@ def main():
             "missing_components_hotspots": missing_hotspots,
             "portfolio_hotspots": (portfolio.get("portfolio_hotspots") or [])[:5],
             "growth_hotspots": (growth.get("growth_hotspots") or [])[:5],
+            "strategy_primary_modes": ((strategy.get("summary") or {}).get("primary_modes") or [])[:5],
+            "strategy_avoidance_modes": ((strategy.get("summary") or {}).get("avoidance_modes") or [])[:5],
+            "evidence_hotspots": (evidence.get("portfolio_relevant_findings") or [])[:5],
+            "reality_hotspots": (reality.get("release_hotspots") or [])[:5],
         },
         "day_decisions": day_decisions,
         "next_batch_recommendations": {
@@ -317,6 +327,15 @@ def main():
                 "improve showcase launch narrative before weekly release",
                 "align README and demo clarity with social hooks",
                 "generate more distinct audience-facing value propositions",
+                "reinforce instant-use clarity as strategic default",
+                "reduce over-complex novelty bets unless portfolio impact is explicit",
+                "bias showcase toward portfolio-visible impact",
+                "align component selection with strategic thesis",
+                "improve above-the-fold clarity",
+                "reduce release-hold visual issues",
+                "improve CTA discoverability",
+                "strengthen showcase-visible first impression",
+                "avoid shipping unclear demos",
             ],
         },
     }
@@ -386,6 +405,18 @@ def main():
     else:
         lines.append("- なし")
     lines.append("")
+    lines.append("## strategy signals")
+    sp = payload["improvement_signals"].get("strategy_primary_modes", [])
+    sa = payload["improvement_signals"].get("strategy_avoidance_modes", [])
+    lines.append(f"- primary_modes: {', '.join(sp) if sp else 'なし'}")
+    lines.append(f"- avoidance_modes: {', '.join(sa) if sa else 'なし'}")
+    lines.append("")
+    lines.append("## evidence/reality hotspots")
+    eh = payload["improvement_signals"].get("evidence_hotspots", [])
+    rh = payload["improvement_signals"].get("reality_hotspots", [])
+    lines.append(f"- evidence: {', '.join(eh) if eh else 'なし'}")
+    lines.append(f"- reality: {', '.join(rh) if rh else 'なし'}")
+    lines.append("")
     lines.append("## dayごとの decision summary")
     for dd in day_decisions[-10:]:
         lines.append(
@@ -405,7 +436,7 @@ def main():
         lines.append(f"- {r}")
     lines.append("")
     lines.append("## Context sources")
-    for p in [signals_path, coverage_path, latest_comp, latest_showcase, latest_portfolio, latest_growth, memory_path, feedback_path, sources_path]:
+    for p in [signals_path, coverage_path, latest_comp, latest_showcase, latest_portfolio, latest_growth, latest_strategy, latest_evidence, latest_reality, memory_path, feedback_path, sources_path]:
         if p and os.path.exists(p):
             lines.append(f"- {os.path.relpath(p, cdir)}")
 

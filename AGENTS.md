@@ -27,3 +27,14 @@
 ## MCP Safety
 - MCPは必要なときだけ呼ぶ（増やしすぎない）
 - 外部認証や秘密情報が必要なMCPは repo同梱しない（別途手順化して人間認可が必要）
+
+## Agent Cards / Skills
+- 役割分担は `system/agents/*.md` の Agent Card を参照する（詳細はカード側、AGENTS.mdは憲法に留める）。
+- Skills は task-specific capability として使い、人格ロールの代替にしない。
+- specialized work は可能な限り report artifact を残す（例: quality/portfolio/growth/strategy/evidence/reality）。
+- personality より deliverable（入力契約・出力契約・判定基準）を優先する。
+- Whimsy Injector は showcase 専用でのみ許可する。通常dayでは適用しない。
+- 大量ロール常駐化はしない。multi-agent は局所利用に限定する。
+- 推奨 multi-agent 利用箇所:
+  - pre-build: Scout + Strategist + Architect
+  - post-build: Evidence Collector + Portfolio + Growth + Reality Checker

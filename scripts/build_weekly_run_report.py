@@ -52,6 +52,9 @@ def main() -> int:
     weekly_digest = os.path.join(cdir, "reports", "weekly_digest.md")
     portfolio_eval = latest(os.path.join(cdir, "reports", "portfolio", "portfolio_eval_*.json"))
     growth_brief = latest(os.path.join(cdir, "reports", "growth", "growth_brief_*.json"))
+    strategy_brief = latest(os.path.join(cdir, "reports", "strategy", "strategy_brief_*.json"))
+    evidence_report = latest(os.path.join(cdir, "reports", "evidence", "evidence_*.json"))
+    reality_gate = latest(os.path.join(cdir, "reports", "reality", "reality_gate_*.json"))
 
     quality_reports = sorted(glob.glob(os.path.join(cdir, "reports", "quality", "day*_quality.json")))
     fallback_plans = sorted(glob.glob(os.path.join(cdir, "plans", "candidates", "day*_fallback_plan.json")))
@@ -86,6 +89,9 @@ def main() -> int:
         "weekly_digest": rel(weekly_digest, cdir),
         "portfolio_eval": rel(portfolio_eval, cdir),
         "growth_brief": rel(growth_brief, cdir),
+        "strategy_brief": rel(strategy_brief, cdir),
+        "evidence_report": rel(evidence_report, cdir),
+        "reality_gate": rel(reality_gate, cdir),
         "quality_reports": [rel(p, cdir) for p in quality_reports],
         "fallback_plans": [rel(p, cdir) for p in fallback_plans],
         "enhanced_candidates": [rel(p, cdir) for p in enhanced_candidates],
