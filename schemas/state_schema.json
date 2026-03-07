@@ -97,6 +97,15 @@
                             "large"
                         ]
                     },
+                    "selected_components": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "complexity_prompt_hint": {
+                        "type": "string"
+                    },
                     "keywords": {
                         "type": "array",
                         "items": {
@@ -171,6 +180,15 @@
                                         "medium",
                                         "large"
                                     ]
+                                },
+                                "selected_components": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "complexity_prompt_hint": {
+                                    "type": "string"
                                 },
                                 "original_twist": {
                                     "type": "string"

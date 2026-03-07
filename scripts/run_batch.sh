@@ -182,6 +182,11 @@ for i in $(seq 0 $((BATCH_SIZE - 1))); do
   if bash "$SCRIPT_DIR/run_day.sh" "$DAY_NUM" 2>&1 | tee "$LOG_FILE"; then
     COMPLETED=$((COMPLETED + 1))
     bash "$CONTROL_DIR/scripts/log_daily.sh" "$DAY_STR" "success" "" || true
+    QUALITY_OUT="$CONTROL_DIR/reports/quality/day${DAY_STR}_quality.json"
+    if [ -x "$CONTROL_DIR/scripts/evaluate_build_quality.sh" ]; then
+      bash "$CONTROL_DIR/scripts/evaluate_build_quality.sh" --day "$DAY_STR" || true
+      [ -f "$QUALITY_OUT" ] && echo "  ℹ quality report: reports/quality/day${DAY_STR}_quality.json"
+    fi
     echo "✅ Day${DAY_STR} 完了"
   else
     FAILED=$((FAILED + 1))

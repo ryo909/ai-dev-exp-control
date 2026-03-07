@@ -4,6 +4,8 @@
     "required_parts": ["single_flow", "basic_result"],
     "optional_parts": ["copy_button"],
     "forbidden_parts": ["history_panel", "comparison_view", "multi_step_wizard", "export_suite"],
+    "preferred_components": ["reason_panel"],
+    "recommended_count": 1,
     "fallback_to": null
   },
   "medium": {
@@ -11,6 +13,8 @@
     "required_parts": ["single_flow", "basic_result", "copy_button", "reason_panel"],
     "optional_parts": ["history_panel", "sample_inputs", "comparison_view", "local_storage"],
     "forbidden_parts": ["multi_page_state_machine"],
+    "preferred_components": ["reason_panel", "sample_inputs", "local_storage", "comparison_view", "history_panel"],
+    "recommended_count": 2,
     "fallback_to": "small"
   },
   "large": {
@@ -18,6 +22,8 @@
     "required_parts": ["single_flow", "basic_result", "copy_button", "reason_panel", "comparison_view"],
     "optional_parts": ["history_panel", "sample_inputs", "local_storage", "export_suite", "step_ui"],
     "forbidden_parts": [],
+    "preferred_components": ["reason_panel", "sample_inputs", "local_storage", "comparison_view", "history_panel", "export_suite", "step_ui"],
+    "recommended_count": 3,
     "fallback_to": "medium"
   }
 }

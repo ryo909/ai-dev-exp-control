@@ -11,6 +11,8 @@ STATE_FILE="$CONTROL_DIR/STATE.json"
 TEMPLATE_REPO="ai-dev-exp-template"
 WORK_ROOT="$CONTROL_DIR/../.workdays"
 SHORTLIST_FILE="$CONTROL_DIR/idea_bank/shortlist.json"
+COMPLEXITY_PROFILES_FILE="$CONTROL_DIR/system/complexity_profiles.json"
+COMPONENT_PACKS_FILE="$CONTROL_DIR/system/component_packs.json"
 
 DAY_NUM=${1:?'Usage: run_day.sh <day_number>'}
 DAY_STR=$(printf '%03d' "$DAY_NUM")
@@ -73,6 +75,36 @@ select_complexity_tier() {
   else
     echo "large"
   fi
+}
+
+resolve_selected_components() {
+  local tier="$1"
+  SELECTED_COMPONENTS_JSON="[]"
+  COMPLEXITY_PROMPT_HINT="Keep the tool single-purpose and stable."
+
+  if [ -f "$COMPLEXITY_PROFILES_FILE" ] && [ -f "$COMPONENT_PACKS_FILE" ]; then
+    SELECTED_COMPONENTS_JSON=$(jq -nc \
+      --arg tier "$tier" \
+      --argfile profiles "$COMPLEXITY_PROFILES_FILE" \
+      --argfile packs "$COMPONENT_PACKS_FILE" '
+      ($profiles[$tier].preferred_components // []) as $pref
+      | ($profiles[$tier].recommended_count // ($pref | length)) as $n
+      | [$pref[] | select($packs[.] != null)]
+      | .[:$n]
+    ' 2>/dev/null || echo "[]")
+  fi
+
+  case "$tier" in
+    small)
+      COMPLEXITY_PROMPT_HINT="Keep the tool single-purpose and stable. Add at most one safe enhancement component."
+      ;;
+    medium)
+      COMPLEXITY_PROMPT_HINT="Add 2 safe enhancement components from selected_components while keeping the app single-page and stable."
+      ;;
+    large)
+      COMPLEXITY_PROMPT_HINT="Create a showpiece version by adding around 3 safe enhancement components from selected_components, but avoid risky architecture changes."
+      ;;
+  esac
 }
 
 generate_plan() {
@@ -205,6 +237,8 @@ write_story_file() {
 - ${GENRE}用途に寄せた単機能UIで迷いを減らす
 - 出力をそのまま再利用できるテキスト構造
 - Complexity Tier: ${COMPLEXITY_TIER}
+- Selected components: ${SELECTED_COMPONENTS_TEXT}
+- Complexity hint: ${COMPLEXITY_PROMPT_HINT}
 
 ## Trade-offs / Known issues
 - ローカル保存機能は未実装
@@ -240,6 +274,8 @@ THEME=$(select_theme)
 COMPLEXITY_TIER=$(select_complexity_tier)
 generate_plan "$GENRE"
 apply_shortlist_injection || true
+resolve_selected_components "$COMPLEXITY_TIER"
+SELECTED_COMPONENTS_TEXT=$(jq -r 'if length == 0 then "none" else join(", ") end' <<<"$SELECTED_COMPONENTS_JSON")
 
 ORIGINAL_TWIST="$TWIST"
 ORIGINAL_ONE_SENTENCE="$ONE_SENTENCE"
@@ -304,6 +340,7 @@ jq -n \
   --arg theme "$THEME" \
   --arg story_summary "$STORY_SUMMARY" \
   --arg complexity_tier "$COMPLEXITY_TIER" \
+  --arg complexity_prompt_hint "$COMPLEXITY_PROMPT_HINT" \
   --arg tool_name "$TITLE" \
   --arg core_action "$CORE_ACTION" \
   --arg twist "$TWIST" \
@@ -313,6 +350,7 @@ jq -n \
   --arg enhancement_source "$ENHANCEMENT_SOURCE" \
   --arg enhancement_candidate_id "$ENHANCEMENT_CANDIDATE_ID" \
   --arg enhancement_adopted "$ENHANCEMENT_ADOPTED" \
+  --argjson selected_components "$SELECTED_COMPONENTS_JSON" \
   --argjson keywords "$KEYWORDS" \
   --arg repo_name "$REPO_NAME" \
   --arg pages_url "$PAGES_URL" \
@@ -324,6 +362,8 @@ jq -n \
     genre: $genre,
     theme: $theme,
     complexity_tier: $complexity_tier,
+    selected_components: $selected_components,
+    complexity_prompt_hint: $complexity_prompt_hint,
     story_summary: $story_summary,
     tool_name: $tool_name,
     core_action: $core_action,
@@ -352,6 +392,8 @@ cat > README.md <<README
 > ${ONE_SENTENCE}
 >
 > Complexity Tier: ${COMPLEXITY_TIER}
+>
+> Selected Components: ${SELECTED_COMPONENTS_TEXT}
 
 ## 使い方
 
@@ -362,6 +404,7 @@ cat > README.md <<README
 ## Story
 
 - [制作ストーリー](./STORY.md)
+- Complexity hint: ${COMPLEXITY_PROMPT_HINT}
 
 ## Demo
 
@@ -442,6 +485,7 @@ jq --arg now "$NOW" \
    --arg theme "$THEME" \
    --arg story_summary "$STORY_SUMMARY" \
    --arg complexity_tier "$COMPLEXITY_TIER" \
+   --arg complexity_prompt_hint "$COMPLEXITY_PROMPT_HINT" \
    --arg core_action "$CORE_ACTION" \
    --arg twist "$TWIST" \
    --arg one_sentence "$ONE_SENTENCE" \
@@ -450,6 +494,7 @@ jq --arg now "$NOW" \
    --arg enhancement_source "$ENHANCEMENT_SOURCE" \
    --arg enhancement_candidate_id "$ENHANCEMENT_CANDIDATE_ID" \
    --arg enhancement_adopted "$ENHANCEMENT_ADOPTED" \
+   --argjson selected_components "$SELECTED_COMPONENTS_JSON" \
    --argjson keywords "$KEYWORDS" \
    --arg post_standard "$POST_STANDARD" \
    --arg post_compact "$POST_COMPACT" \
@@ -466,6 +511,8 @@ jq --arg now "$NOW" \
        genre: $genre,
        theme: $theme,
        complexity_tier: $complexity_tier,
+       selected_components: $selected_components,
+       complexity_prompt_hint: $complexity_prompt_hint,
        story_summary: $story_summary,
        core_action: $core_action,
        twist: $twist,
@@ -492,6 +539,8 @@ jq --arg now "$NOW" \
        one_sentence: $one_sentence
      }]) | .[-20:])
    | .recent_meta[-1].complexity_tier = $complexity_tier
+   | .recent_meta[-1].selected_components = $selected_components
+   | .recent_meta[-1].complexity_prompt_hint = $complexity_prompt_hint
    | .recent_genres = (((.recent_genres // []) + [$genre]) | .[-3:])
    | .last_run_at = $now
    | .execution_logs = ((.execution_logs // []) + [{

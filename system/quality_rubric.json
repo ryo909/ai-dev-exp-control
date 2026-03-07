@@ -1,0 +1,11 @@
+{
+  "criteria": [
+    "has_local_storage",
+    "has_history_panel_like_ui",
+    "has_comparison_view_like_ui",
+    "has_export_like_feature",
+    "has_reason_panel_like_text",
+    "has_sample_input_like_ui",
+    "has_step_ui_like_structure"
+  ]
+}

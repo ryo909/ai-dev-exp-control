@@ -65,6 +65,17 @@
       ],
       "description": "複雑度ティア"
     },
+    "selected_components": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "選択された安全コンポーネント"
+    },
+    "complexity_prompt_hint": {
+      "type": "string",
+      "description": "complexity tierに応じた生成ヒント"
+    },
     "story_summary": {
       "type": "string",
       "minLength": 1,
