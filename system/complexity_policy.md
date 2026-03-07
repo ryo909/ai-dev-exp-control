@@ -25,3 +25,4 @@
 
 ## Control Tower連携
 - tier配分は固定値を起点にしつつ、control tower が quality/fallback 実績から次バッチ推奨配分を出す。
+- showcase tier は固定で large にせず、showcase planner が quality/competitor/fallback の状況から slot と target tier を推奨する。

@@ -19,6 +19,14 @@ def latest_tower(cdir):
     return files[0]
 
 
+def latest_showcase(cdir):
+    files = glob.glob(os.path.join(cdir, "reports", "showcase", "showcase_plan_*.json"))
+    if not files:
+        return None
+    files.sort(key=lambda p: os.path.getmtime(p), reverse=True)
+    return files[0]
+
+
 def tier_slots(mix):
     seq = []
     seq += ["small"] * int(mix.get("small", 0))
@@ -27,6 +35,35 @@ def tier_slots(mix):
     while len(seq) < 7:
         seq.append("small")
     return seq[:7]
+
+
+def apply_showcase_annotations(payload, showcase):
+    if not isinstance(showcase, dict):
+        return payload
+
+    selected_slot = int(showcase.get("selected_showcase_slot", 0) or 0)
+    selected = showcase.get("selected_showcase_plan", {}) or {}
+    candidate_map = {}
+    for c in showcase.get("candidate_slots", []):
+        slot = int(c.get("slot", 0) or 0)
+        candidate_map[slot] = c
+
+    if selected_slot > 0:
+        payload["showcase_slot"] = selected_slot
+        payload["showcase_goal"] = selected.get("showcase_goal", "")
+        payload["showcase_component_bias"] = selected.get("component_bias", [])
+        payload["showcase_adopt_competitor_enhancement"] = bool(selected.get("adopt_competitor_enhancement", False))
+        payload["showcase_fallback_tier"] = selected.get("fallback_tier_if_needed", "")
+
+    for day in payload.get("days", []):
+        slot = int(day.get("slot", 0) or 0)
+        cand = candidate_map.get(slot)
+        day["is_showcase_candidate"] = bool(cand)
+        day["is_selected_showcase"] = slot == selected_slot
+        if cand:
+            day["showcase_score"] = (cand.get("scores", {}) or {}).get("total", 0.0)
+
+    return payload
 
 
 def main():
@@ -68,6 +105,15 @@ def main():
         "recommended_tier_mix": mix,
         "days": days,
     }
+
+    showcase_path = latest_showcase(cdir)
+    if showcase_path:
+        try:
+            showcase = read_json(showcase_path)
+            payload = apply_showcase_annotations(payload, showcase)
+            payload["source_showcase_plan"] = os.path.relpath(showcase_path, cdir)
+        except Exception:
+            pass
 
     out_path = os.path.join(cdir, "plans", "next_batch_plan.json")
     os.makedirs(os.path.dirname(out_path), exist_ok=True)

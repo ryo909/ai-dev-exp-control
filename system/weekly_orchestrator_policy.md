@@ -8,4 +8,4 @@
 - THESIS は `reports/weekly/thesis_update_draft_<YYYY-MM-DD>.md` と `reports/weekly/thesis_preview_<YYYY-MM-DD>.md` を見て採用判断する。
 - 判断順序は `control_tower -> next_batch_plan -> thesis_update_draft -> weekly_run_report` を推奨。
 - learning loop も同様に `learn_preview -> learn_adopt` を採用し、まずは `balanced`（MEMORY/FEEDBACKまで）で運用する。
-- showcase planner は intel stage で `plans/showcase_plan.json` を best-effort 生成し、採用は人手判断で行う。
+- showcase planner は intel stage で `reports/showcase/showcase_plan_<YYYY-MM-DD>.json|md` を best-effort 生成し、採用は人手判断で行う。

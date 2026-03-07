@@ -11,3 +11,4 @@
 - `next_batch_plan` の実運用は `system/next_batch_adoption_policy.md` の段階フラグで行い、初期は opt-in のみ。
 - 週次の実行順は `scripts/weekly_orchestrator.sh` を使い、stage分割で安全に進める。
 - quality evaluator v2 の `confidence` と `missing_components` 集計を tier_performance/improvement_signals に反映し、次週の component 強化優先度を決める。
+- showcase は `reports/showcase/showcase_plan_<YYYY-MM-DD>.json` を参照し、`next_batch_recommendations.recommended_showcase_slot` を推奨として扱う（自動採用しない）。

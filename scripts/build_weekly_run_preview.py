@@ -50,6 +50,10 @@ def main() -> int:
     mix = (tower_json.get("next_batch_recommendations") or {}).get("recommended_tier_mix", {"small": 4, "medium": 2, "large": 1})
     src_bias = (tower_json.get("next_batch_recommendations") or {}).get("recommended_source_bias", [])
     comp_bias = (tower_json.get("next_batch_recommendations") or {}).get("recommended_component_bias", [])
+    showcase_slot = int(next_json.get("showcase_slot", 0) or 0)
+    showcase_goal = next_json.get("showcase_goal", "") or ""
+    showcase_fallback = next_json.get("showcase_fallback_tier", "") or ""
+    showcase_enhancement = bool(next_json.get("showcase_adopt_competitor_enhancement", False))
 
     rec_profile = "safe"
     tp = tower_json.get("tier_performance", {})
@@ -76,6 +80,14 @@ def main() -> int:
     out.append("## 推奨 component bias")
     out.extend([f"- {c}" for c in comp_bias[:5]] or ["- なし"])
     out.append("")
+    out.append("## 今週の見せ玉スロット")
+    if showcase_slot > 0:
+        out.append(f"- slot {showcase_slot}: {showcase_goal or '見た目と差分訴求が強い1本'}")
+        out.append(f"- showcaseだけ aggressive寄り運用候補: {'yes' if showcase_enhancement else 'no'}")
+        out.append(f"- fallback_tier_if_needed: {showcase_fallback or 'medium'}")
+    else:
+        out.append("- なし")
+    out.append("")
     out.append("## 今週の実行例コマンド")
     out.append("```bash")
     out.append(f"DRY_RUN=1 ADOPTION_PROFILE={rec_profile} STAGE=all bash scripts/weekly_orchestrator.sh")
@@ -86,6 +98,8 @@ def main() -> int:
     out.append("### 今週の運用方針")
     out.append(f"- adoption profile: {rec_profile}")
     out.append(f"- tier mix: small={mix.get('small',4)} medium={mix.get('medium',2)} large={mix.get('large',1)}")
+    if showcase_slot > 0:
+        out.append(f"- showcase slot: {showcase_slot}（必要ならこの1本だけ aggressive 寄り）")
     out.append("- control_tower -> next_batch_plan -> thesis_update_draft -> weekly_run_report の順で確認")
     out.append("### 推奨コマンド例")
     out.append(f"- DRY_RUN=1 ADOPTION_PROFILE={rec_profile} STAGE=all bash scripts/weekly_orchestrator.sh")

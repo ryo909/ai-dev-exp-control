@@ -54,6 +54,9 @@ def main() -> int:
     src_bias = (tower.get("next_batch_recommendations", {}) or {}).get("recommended_source_bias", [])
     comp_bias = (tower.get("next_batch_recommendations", {}) or {}).get("recommended_component_bias", [])
     focus = (tower.get("next_batch_recommendations", {}) or {}).get("recommended_focus", [])
+    showcase_slot = int((next_plan.get("showcase_slot", 0) or 0))
+    showcase_goal = (next_plan.get("showcase_goal", "") or "")
+    showcase_bias = (next_plan.get("showcase_component_bias", []) or [])
 
     blocked = (tower.get("source_health", {}) or {}).get("blocked_domains", [])
     q_count = bsum.get("quality_reports_count", 0)
@@ -71,6 +74,10 @@ def main() -> int:
         "next_batch_plan の safe profile 採用率を上げ、複雑度注入を安定化する",
         "component bias に沿って再利用部品の実装密度を上げる",
       ]
+    if showcase_slot > 0:
+      priorities.append(
+        f"見せ玉は slot {showcase_slot} を優先し、{showcase_goal or '差分訴求を強める方向'} を狙う"
+      )
 
     dont_do = "UI演出の過剰な拡張に先に入らず、quality/fallbackの計測基盤が整うまで部品追加を段階運用する"
 
@@ -103,6 +110,8 @@ def main() -> int:
         lines.append(f"- {c}")
     else:
       lines.append("- なし")
+    if showcase_slot > 0:
+      lines.append(f"- showcase(slot {showcase_slot}): {', '.join(showcase_bias) if showcase_bias else 'component bias未設定'}")
     lines.append("")
     lines.append("## 今週はやらないこと")
     lines.append(f"- {dont_do}")

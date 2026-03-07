@@ -118,6 +118,8 @@ def main():
 
     latest_comp = latest_file(os.path.join(cdir, "reports", "competitors", "competitor_scan_*_shortlist.json"))
     comp = read_json(latest_comp) if latest_comp else {}
+    latest_showcase = latest_file(os.path.join(cdir, "reports", "showcase", "showcase_plan_*.json"))
+    showcase = read_json(latest_showcase) if latest_showcase else {}
 
     quality_files = sorted(glob.glob(os.path.join(cdir, "reports", "quality", "day*_quality.json")))
     enh_files = sorted(glob.glob(os.path.join(cdir, "plans", "candidates", "day*_enhanced_candidates.json")))
@@ -295,6 +297,8 @@ def main():
             "recommended_tier_mix": mix,
             "recommended_component_bias": (comp.get("twist_candidates") or [])[:2],
             "recommended_source_bias": [x[0] for x in successful_domains.most_common(3)],
+            "recommended_showcase_slot": int(showcase.get("selected_showcase_slot", 0) or 0),
+            "recommended_showcase_goal": ((showcase.get("selected_showcase_plan") or {}).get("showcase_goal", "")),
             "recommended_focus": [
                 "bias away from duplicated twist patterns",
                 "prioritize domains with successful extraction",
@@ -362,11 +366,16 @@ def main():
     lines.append("")
     lines.append("## 次の7本への推奨")
     lines.append(f"- tier mix: small={mix['small']}, medium={mix['medium']}, large={mix['large']}")
+    if payload["next_batch_recommendations"].get("recommended_showcase_slot", 0):
+        lines.append(
+            f"- showcase slot: {payload['next_batch_recommendations']['recommended_showcase_slot']} / "
+            f"{payload['next_batch_recommendations'].get('recommended_showcase_goal', '')}"
+        )
     for r in payload["next_batch_recommendations"]["recommended_focus"]:
         lines.append(f"- {r}")
     lines.append("")
     lines.append("## Context sources")
-    for p in [signals_path, coverage_path, latest_comp, memory_path, feedback_path, sources_path]:
+    for p in [signals_path, coverage_path, latest_comp, latest_showcase, memory_path, feedback_path, sources_path]:
         if p and os.path.exists(p):
             lines.append(f"- {os.path.relpath(p, cdir)}")
 
