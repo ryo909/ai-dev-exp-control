@@ -1,0 +1,105 @@
+{
+  "generated_at": "2026-03-07T06:16:11.247989+00:00",
+  "source_control_tower": "reports/control_tower/weekly_control_tower_2026-03-07.json",
+  "recommended_tier_mix": {
+    "small": 4,
+    "medium": 3,
+    "large": 0
+  },
+  "days": [
+    {
+      "slot": 1,
+      "recommended_complexity_tier": "small",
+      "recommended_component_count": 1,
+      "recommended_components": [
+        "reason_panel"
+      ],
+      "adopt_competitor_enhancement": false,
+      "notes": [
+        "bias away from duplicate core_action",
+        "use selected_components first"
+      ]
+    },
+    {
+      "slot": 2,
+      "recommended_complexity_tier": "small",
+      "recommended_component_count": 1,
+      "recommended_components": [
+        "reason_panel"
+      ],
+      "adopt_competitor_enhancement": false,
+      "notes": [
+        "bias away from duplicate core_action",
+        "use selected_components first"
+      ]
+    },
+    {
+      "slot": 3,
+      "recommended_complexity_tier": "small",
+      "recommended_component_count": 1,
+      "recommended_components": [
+        "reason_panel"
+      ],
+      "adopt_competitor_enhancement": false,
+      "notes": [
+        "bias away from duplicate core_action",
+        "use selected_components first"
+      ]
+    },
+    {
+      "slot": 4,
+      "recommended_complexity_tier": "small",
+      "recommended_component_count": 1,
+      "recommended_components": [
+        "reason_panel"
+      ],
+      "adopt_competitor_enhancement": false,
+      "notes": [
+        "bias away from duplicate core_action",
+        "use selected_components first"
+      ]
+    },
+    {
+      "slot": 5,
+      "recommended_complexity_tier": "medium",
+      "recommended_component_count": 2,
+      "recommended_components": [
+        "reason_panel",
+        "sample_inputs"
+      ],
+      "adopt_competitor_enhancement": true,
+      "notes": [
+        "bias away from duplicate core_action",
+        "use selected_components first"
+      ]
+    },
+    {
+      "slot": 6,
+      "recommended_complexity_tier": "medium",
+      "recommended_component_count": 2,
+      "recommended_components": [
+        "reason_panel",
+        "sample_inputs"
+      ],
+      "adopt_competitor_enhancement": true,
+      "notes": [
+        "bias away from duplicate core_action",
+        "use selected_components first"
+      ]
+    },
+    {
+      "slot": 7,
+      "recommended_complexity_tier": "medium",
+      "recommended_component_count": 2,
+      "recommended_components": [
+        "reason_panel",
+        "sample_inputs"
+      ],
+      "adopt_competitor_enhancement": true,
+      "notes": [
+        "bias away from duplicate core_action",
+        "use selected_components first"
+      ]
+    }
+  ]
+}

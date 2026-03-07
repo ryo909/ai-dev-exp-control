@@ -22,3 +22,6 @@
 - `step_ui`
 
 - 複雑度はコード量ではなく、再利用可能な部品数で上げる。
+
+## Control Tower連携
+- tier配分は固定値を起点にしつつ、control tower が quality/fallback 実績から次バッチ推奨配分を出す。

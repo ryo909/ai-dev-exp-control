@@ -1,0 +1,187 @@
+{
+  "generated_at": "2026-03-07T06:16:11.213665+00:00",
+  "batch_summary": {
+    "days_considered": [
+      "001",
+      "002",
+      "003",
+      "004",
+      "005",
+      "006",
+      "007",
+      "008"
+    ],
+    "success_count": 8,
+    "failure_count": 0,
+    "quality_reports_count": 0,
+    "enhancement_candidates_count": 0,
+    "fallback_plans_count": 0
+  },
+  "tier_performance": {
+    "small": {
+      "count": 8,
+      "avg_score": 0.0,
+      "fallback_count": 0
+    },
+    "medium": {
+      "count": 0,
+      "avg_score": 0.0,
+      "fallback_count": 0
+    },
+    "large": {
+      "count": 0,
+      "avg_score": 0.0,
+      "fallback_count": 0
+    }
+  },
+  "source_health": {
+    "top_sources": [
+      "HN Frontpage"
+    ],
+    "blocked_domains": [
+      "www.science.org"
+    ],
+    "successful_domains": [
+      "buttondown.com",
+      "github.com",
+      "blog.katanaquant.com"
+    ]
+  },
+  "theme_and_action_bias": {
+    "top_genres": [
+      "writing",
+      "devtools",
+      "planning",
+      "learning",
+      "health"
+    ],
+    "top_core_actions": [
+      "rewrite",
+      "generate",
+      "inspect",
+      "schedule",
+      "track"
+    ],
+    "duplicate_patterns": [
+      "文字数の目安を表示してSNS向けの短文化を支援"
+    ]
+  },
+  "improvement_signals": {
+    "top_twist_candidates": [
+      "冒頭1文で結論、2文目で根拠を示す『主張+証拠』導入を固定化する",
+      "CTAを『すぐ試す』と『背景を読む』の2導線に分けて離脱を減らす",
+      "頻出キーワード3語をヘッダ直下に固定表示し、焦点を即認識させる"
+    ],
+    "common_patterns": [
+      "冒頭で主張や問題設定を先に提示する構成が多い",
+      "CTAは購読・続きを読む・議論参加など次行動を明示する形式が中心",
+      "見出しは媒体依存だがH1段階で論点を断定する傾向がある"
+    ],
+    "dont_copy": [
+      "verificationページや媒体UIノイズを本文洞察として扱わない"
+    ]
+  },
+  "day_decisions": [
+    {
+      "day": "001",
+      "complexity_tier": "small",
+      "quality_score": 0.0,
+      "decision": "enhance",
+      "reason": "default to enhancement recommendation",
+      "recommended_components": [],
+      "recommended_enhancement_candidate_id": null,
+      "recommended_fallback_tier": null
+    },
+    {
+      "day": "002",
+      "complexity_tier": "small",
+      "quality_score": 0.0,
+      "decision": "enhance",
+      "reason": "default to enhancement recommendation",
+      "recommended_components": [],
+      "recommended_enhancement_candidate_id": null,
+      "recommended_fallback_tier": null
+    },
+    {
+      "day": "003",
+      "complexity_tier": "small",
+      "quality_score": 0.0,
+      "decision": "enhance",
+      "reason": "default to enhancement recommendation",
+      "recommended_components": [],
+      "recommended_enhancement_candidate_id": null,
+      "recommended_fallback_tier": null
+    },
+    {
+      "day": "004",
+      "complexity_tier": "small",
+      "quality_score": 0.0,
+      "decision": "enhance",
+      "reason": "default to enhancement recommendation",
+      "recommended_components": [],
+      "recommended_enhancement_candidate_id": null,
+      "recommended_fallback_tier": null
+    },
+    {
+      "day": "005",
+      "complexity_tier": "small",
+      "quality_score": 0.0,
+      "decision": "enhance",
+      "reason": "default to enhancement recommendation",
+      "recommended_components": [],
+      "recommended_enhancement_candidate_id": null,
+      "recommended_fallback_tier": null
+    },
+    {
+      "day": "006",
+      "complexity_tier": "small",
+      "quality_score": 0.0,
+      "decision": "enhance",
+      "reason": "default to enhancement recommendation",
+      "recommended_components": [],
+      "recommended_enhancement_candidate_id": null,
+      "recommended_fallback_tier": null
+    },
+    {
+      "day": "007",
+      "complexity_tier": "small",
+      "quality_score": 0.0,
+      "decision": "enhance",
+      "reason": "default to enhancement recommendation",
+      "recommended_components": [],
+      "recommended_enhancement_candidate_id": null,
+      "recommended_fallback_tier": null
+    },
+    {
+      "day": "008",
+      "complexity_tier": "small",
+      "quality_score": 0.0,
+      "decision": "enhance",
+      "reason": "default to enhancement recommendation",
+      "recommended_components": [],
+      "recommended_enhancement_candidate_id": null,
+      "recommended_fallback_tier": null
+    }
+  ],
+  "next_batch_recommendations": {
+    "recommended_tier_mix": {
+      "small": 4,
+      "medium": 3,
+      "large": 0
+    },
+    "recommended_component_bias": [
+      "冒頭1文で結論、2文目で根拠を示す『主張+証拠』導入を固定化する",
+      "CTAを『すぐ試す』と『背景を読む』の2導線に分けて離脱を減らす"
+    ],
+    "recommended_source_bias": [
+      "buttondown.com",
+      "github.com",
+      "blog.katanaquant.com"
+    ],
+    "recommended_focus": [
+      "bias away from duplicated twist patterns",
+      "prioritize domains with successful extraction",
+      "prefer enhancement/upgrade candidates before aggressive complexity"
+    ]
+  }
+}

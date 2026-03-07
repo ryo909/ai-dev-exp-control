@@ -9,3 +9,6 @@
 - `idea_bank/shortlist.json` がない場合は先に以下を実行する。
   - `bash scripts/research_refresh.sh`
   - `bash scripts/idea_shortlist.sh`
+
+## Control Tower連携
+- enhancement candidate は control tower の day decision summary で `enhance` 判断時の優先候補として使う。

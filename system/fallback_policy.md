@@ -16,3 +16,6 @@
 - fallback plan の採用成功率が安定して高い
 - 失敗分類（依存不通/実装不整合）の誤判定率が低い
 - 明示フラグ（例: `ENABLE_COMPLEXITY_FALLBACK=1`）でのみ有効化
+
+## Control Tower連携
+- fallback plan は control tower の day decision summary で `downgrade` 判断の根拠として統合参照する。

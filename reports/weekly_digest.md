@@ -29,3 +29,7 @@ _no Day*.summary.md found_
 - Update shared-context/THESIS.md (see 更新手順セクション)
 - If needed, add notes to shared-context/FEEDBACK-LOG.md and memory/MEMORY.md
 - Revise system/prompts/weekly_run.md for next week using this digest
+
+## Control Tower Link
+- 週次判断の起点として `reports/control_tower/weekly_control_tower_<YYYY-MM-DD>.md` を最初に確認する。
+- 次バッチ推奨は `plans/next_batch_plan.json` を参照し、採用は手動判断で行う。

@@ -7,3 +7,7 @@ echo "post_resume: generating weekly digest..."
 bash "$CONTROL_DIR/scripts/report_weekly_digest.sh" || true
 echo "post_resume: updating source stats..."
 bash "$CONTROL_DIR/scripts/update_sources_stats.sh" || true
+echo "post_resume: building control tower digest..."
+bash "$CONTROL_DIR/scripts/build_control_tower_digest.sh" || true
+echo "post_resume: building next batch plan..."
+bash "$CONTROL_DIR/scripts/build_next_batch_plan.sh" || true
