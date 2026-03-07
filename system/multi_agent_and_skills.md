@@ -9,3 +9,5 @@
   - `monitor`: 待機・進捗監視担当
 - Skills は UI の `/skills` またはプロンプトの `$competitor-scan` で起動する。
 - `competitor-scan` の出力先は `reports/competitors/`。
+- `competitor-scan` は `competitor_scan_<YYYY-MM-DD>_shortlist.md` と `competitor_scan_<YYYY-MM-DD>_shortlist.json` を同時に出力する。
+- Cloudflare など verification 系は `blocked` として記録し、スキップしながら `success_target` 件の `ok` を確保する。
