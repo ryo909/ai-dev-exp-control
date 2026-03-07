@@ -14,6 +14,8 @@ USE_NEXT_BATCH_PLAN="0"
 ADOPT_NEXT_BATCH_COMPLEXITY="0"
 ADOPT_NEXT_BATCH_COMPONENTS="0"
 ADOPT_NEXT_BATCH_ENHANCEMENT="0"
+ADOPT_THESIS_DRAFT="0"
+ADOPT_WEEKLY_RUN="0"
 
 STAGES_RUN=()
 RESUME_EXECUTED="false"
@@ -42,6 +44,8 @@ load_profile() {
     ADOPT_NEXT_BATCH_COMPLEXITY=$(jq -r --arg p "$ADOPTION_PROFILE" '.[$p].ADOPT_NEXT_BATCH_COMPLEXITY // "0"' "$PROFILE_FILE" 2>/dev/null || echo "0")
     ADOPT_NEXT_BATCH_COMPONENTS=$(jq -r --arg p "$ADOPTION_PROFILE" '.[$p].ADOPT_NEXT_BATCH_COMPONENTS // "0"' "$PROFILE_FILE" 2>/dev/null || echo "0")
     ADOPT_NEXT_BATCH_ENHANCEMENT=$(jq -r --arg p "$ADOPTION_PROFILE" '.[$p].ADOPT_NEXT_BATCH_ENHANCEMENT // "0"' "$PROFILE_FILE" 2>/dev/null || echo "0")
+    ADOPT_THESIS_DRAFT=$(jq -r --arg p "$ADOPTION_PROFILE" '.[$p].ADOPT_THESIS_DRAFT // "0"' "$PROFILE_FILE" 2>/dev/null || echo "0")
+    ADOPT_WEEKLY_RUN=$(jq -r --arg p "$ADOPTION_PROFILE" '.[$p].ADOPT_WEEKLY_RUN // "0"' "$PROFILE_FILE" 2>/dev/null || echo "0")
   fi
 }
 
@@ -66,7 +70,7 @@ stage_preflight() {
   (cd "$CONTROL_DIR" && git status -sb || true)
   (cd "$CONTROL_DIR" && git branch --show-current || true)
   if [ "$DRY_RUN" = "1" ]; then
-    log "planned stages: preflight -> intel -> thesis -> run -> report"
+    log "planned stages: preflight -> intel -> thesis -> preview -> adopt -> run -> report"
   fi
 }
 
@@ -84,6 +88,47 @@ stage_thesis() {
   STAGES_RUN+=("thesis")
   log "stage=thesis"
   run_best_effort bash "$CONTROL_DIR/scripts/build_thesis_update_draft.sh" --date "$TODAY"
+}
+
+stage_preview() {
+  STAGES_RUN+=("preview")
+  log "stage=preview"
+  # preview artifacts are safe and intentionally generated even in DRY_RUN
+  bash "$CONTROL_DIR/scripts/build_thesis_preview.sh" --date "$TODAY" || true
+  bash "$CONTROL_DIR/scripts/build_weekly_run_preview.sh" --date "$TODAY" || true
+}
+
+stage_adopt() {
+  STAGES_RUN+=("adopt")
+  log "stage=adopt"
+  load_profile
+  log "adoption flags: ADOPT_THESIS_DRAFT=${ADOPT_THESIS_DRAFT}, ADOPT_WEEKLY_RUN=${ADOPT_WEEKLY_RUN}"
+
+  if [ "$DRY_RUN" = "1" ]; then
+    if [ "$ADOPT_THESIS_DRAFT" = "1" ]; then
+      log "DRY-RUN: would run adopt_thesis_draft.sh (ADOPT_THESIS_DRAFT=1)"
+    else
+      log "DRY-RUN: skip thesis adoption (ADOPT_THESIS_DRAFT=0)"
+    fi
+    if [ "$ADOPT_WEEKLY_RUN" = "1" ]; then
+      log "DRY-RUN: would run adopt_weekly_run.sh (ADOPT_WEEKLY_RUN=1)"
+    else
+      log "DRY-RUN: skip weekly_run adoption (ADOPT_WEEKLY_RUN=0)"
+    fi
+    return 0
+  fi
+
+  if [ "$ADOPT_THESIS_DRAFT" = "1" ]; then
+    ADOPT_THESIS_DRAFT=1 bash "$CONTROL_DIR/scripts/adopt_thesis_draft.sh" --date "$TODAY" || true
+  else
+    log "thesis adoption skipped by profile"
+  fi
+
+  if [ "$ADOPT_WEEKLY_RUN" = "1" ]; then
+    ADOPT_WEEKLY_RUN=1 bash "$CONTROL_DIR/scripts/adopt_weekly_run.sh" --date "$TODAY" || true
+  else
+    log "weekly_run adoption skipped by profile"
+  fi
 }
 
 stage_run() {
@@ -119,7 +164,9 @@ stage_report() {
     --arg c "$ADOPT_NEXT_BATCH_COMPLEXITY" \
     --arg s "$ADOPT_NEXT_BATCH_COMPONENTS" \
     --arg e "$ADOPT_NEXT_BATCH_ENHANCEMENT" \
-    '{USE_NEXT_BATCH_PLAN:$u,ADOPT_NEXT_BATCH_COMPLEXITY:$c,ADOPT_NEXT_BATCH_COMPONENTS:$s,ADOPT_NEXT_BATCH_ENHANCEMENT:$e}')
+    --arg t "$ADOPT_THESIS_DRAFT" \
+    --arg w "$ADOPT_WEEKLY_RUN" \
+    '{USE_NEXT_BATCH_PLAN:$u,ADOPT_NEXT_BATCH_COMPLEXITY:$c,ADOPT_NEXT_BATCH_COMPONENTS:$s,ADOPT_NEXT_BATCH_ENHANCEMENT:$e,ADOPT_THESIS_DRAFT:$t,ADOPT_WEEKLY_RUN:$w}')
 
   run_best_effort bash "$CONTROL_DIR/scripts/build_weekly_run_report.sh" \
     --date "$TODAY" \
@@ -137,16 +184,20 @@ case "$STAGE" in
     stage_preflight
     stage_intel
     stage_thesis
+    stage_preview
+    stage_adopt
     stage_run
     stage_report
     ;;
   preflight) stage_preflight ;;
   intel) stage_intel ;;
   thesis) stage_thesis ;;
+  preview) stage_preview ;;
+  adopt) stage_adopt ;;
   run) stage_run ;;
   report) stage_report ;;
   *)
-    echo "Unknown STAGE=$STAGE (expected: all|preflight|intel|thesis|run|report)" >&2
+    echo "Unknown STAGE=$STAGE (expected: all|preflight|intel|thesis|preview|adopt|run|report)" >&2
     exit 1
     ;;
 esac

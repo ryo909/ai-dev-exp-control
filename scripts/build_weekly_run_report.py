@@ -43,6 +43,10 @@ def main() -> int:
     tower = latest(os.path.join(cdir, "reports", "control_tower", "weekly_control_tower_*.json"))
     next_plan = os.path.join(cdir, "plans", "next_batch_plan.json")
     thesis_draft = latest(os.path.join(cdir, "reports", "weekly", "thesis_update_draft_*.md"))
+    thesis_preview = latest(os.path.join(cdir, "reports", "weekly", "thesis_preview_*.md"))
+    weekly_run_preview = latest(os.path.join(cdir, "reports", "weekly", "weekly_run_preview_*.md"))
+    thesis_adoption_report = latest(os.path.join(cdir, "reports", "weekly", "thesis_adoption_report_*.json"))
+    weekly_run_adoption_report = latest(os.path.join(cdir, "reports", "weekly", "weekly_run_adoption_report_*.json"))
     weekly_digest = os.path.join(cdir, "reports", "weekly_digest.md")
 
     quality_reports = sorted(glob.glob(os.path.join(cdir, "reports", "quality", "day*_quality.json")))
@@ -69,6 +73,10 @@ def main() -> int:
         "control_tower": rel(tower, cdir),
         "next_batch_plan": rel(next_plan, cdir),
         "thesis_update_draft": rel(thesis_draft, cdir),
+        "thesis_preview": rel(thesis_preview, cdir),
+        "weekly_run_preview": rel(weekly_run_preview, cdir),
+        "thesis_adoption_report": rel(thesis_adoption_report, cdir),
+        "weekly_run_adoption_report": rel(weekly_run_adoption_report, cdir),
         "weekly_digest": rel(weekly_digest, cdir),
         "quality_reports": [rel(p, cdir) for p in quality_reports],
         "fallback_plans": [rel(p, cdir) for p in fallback_plans],
