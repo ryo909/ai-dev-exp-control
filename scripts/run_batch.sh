@@ -188,6 +188,13 @@ for i in $(seq 0 $((BATCH_SIZE - 1))); do
     echo "❌ Day${DAY_STR} 失敗 — 後続Dayを続行します"
     write_failure_summary "$DAY_STR" "$LOG_FILE"
     bash "$CONTROL_DIR/scripts/log_daily.sh" "$DAY_STR" "fail" "logs/Day${DAY_STR}.summary.md" || true
+    FALLBACK_OUT="$CONTROL_DIR/plans/candidates/day${DAY_STR}_fallback_plan.json"
+    if [ -x "$CONTROL_DIR/scripts/write_fallback_plan.sh" ]; then
+      bash "$CONTROL_DIR/scripts/write_fallback_plan.sh" \
+        --day "$DAY_STR" \
+        --summary "$CONTROL_DIR/logs/Day${DAY_STR}.summary.md" || true
+      [ -f "$FALLBACK_OUT" ] && echo "  ℹ fallback plan: plans/candidates/day${DAY_STR}_fallback_plan.json"
+    fi
     echo ""
     echo "⚠ 失敗詳細:"
     echo "  - 完了済み: ${COMPLETED}本"

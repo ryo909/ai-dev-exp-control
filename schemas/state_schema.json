@@ -89,6 +89,14 @@
                     "one_sentence": {
                         "type": "string"
                     },
+                    "complexity_tier": {
+                        "type": "string",
+                        "enum": [
+                            "small",
+                            "medium",
+                            "large"
+                        ]
+                    },
                     "keywords": {
                         "type": "array",
                         "items": {
@@ -155,6 +163,29 @@
                                 },
                                 "one_sentence": {
                                     "type": "string"
+                                },
+                                "complexity_tier": {
+                                    "type": "string",
+                                    "enum": [
+                                        "small",
+                                        "medium",
+                                        "large"
+                                    ]
+                                },
+                                "original_twist": {
+                                    "type": "string"
+                                },
+                                "original_one_sentence": {
+                                    "type": "string"
+                                },
+                                "enhancement_source": {
+                                    "type": "string"
+                                },
+                                "enhancement_candidate_id": {
+                                    "type": "string"
+                                },
+                                "enhancement_adopted": {
+                                    "type": "boolean"
                                 },
                                 "genre": {
                                     "type": "string"

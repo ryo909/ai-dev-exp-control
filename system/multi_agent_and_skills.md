@@ -11,3 +11,5 @@
 - `competitor-scan` の出力先は `reports/competitors/`。
 - `competitor-scan` は `competitor_scan_<YYYY-MM-DD>_shortlist.md` と `competitor_scan_<YYYY-MM-DD>_shortlist.json` を同時に出力する。
 - Cloudflare など verification 系は `blocked` として記録し、スキップしながら `success_target` 件の `ok` を確保する。
+- `run_day.sh` は最新 `competitor_scan_*_shortlist.json` から `plans/candidates/dayNNN_enhanced_candidates.json` を生成する（best-effort）。既定は候補保存のみで、`ADOPT_ENHANCED_PLAN=1` のときだけ recommended candidate を採用する。
+- `run_day.sh` は `complexity_tier`（small/medium/large）を7本配分で決定し、`run_batch.sh` は失敗時に `plans/candidates/dayNNN_fallback_plan.json` を best-effort で出力する。

@@ -56,6 +56,15 @@
         "Mono"
       ]
     },
+    "complexity_tier": {
+      "type": "string",
+      "enum": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "description": "複雑度ティア"
+    },
     "story_summary": {
       "type": "string",
       "minLength": 1,
@@ -80,6 +89,26 @@
       "type": "string",
       "minLength": 5,
       "description": "1文説明"
+    },
+    "original_twist": {
+      "type": "string",
+      "description": "強化採用前のtwist"
+    },
+    "original_one_sentence": {
+      "type": "string",
+      "description": "強化採用前のone_sentence"
+    },
+    "enhancement_source": {
+      "type": "string",
+      "description": "enhancement候補のソースファイル"
+    },
+    "enhancement_candidate_id": {
+      "type": "string",
+      "description": "採用したcandidate id"
+    },
+    "enhancement_adopted": {
+      "type": "boolean",
+      "description": "enhancement候補を採用したか"
     },
     "keywords": {
       "type": "array",

@@ -16,6 +16,7 @@ DAY_NUM=${1:?'Usage: run_day.sh <day_number>'}
 DAY_STR=$(printf '%03d' "$DAY_NUM")
 DAY_LABEL="Day${DAY_STR}"
 REPO_NAME="ai-dev-day-${DAY_STR}"
+ENHANCED_CANDIDATES_FILE="$CONTROL_DIR/plans/candidates/day${DAY_STR}_enhanced_candidates.json"
 
 GENRES=("productivity" "writing" "devtools" "planning" "learning" "health" "fun")
 THEMES=("NeoLab" "Paper" "Noir" "Brutal" "Soft" "RetroTerminal" "Candy" "Mono")
@@ -60,6 +61,18 @@ select_genre() {
   done
 
   echo "${GENRES[$idx]}"
+}
+
+select_complexity_tier() {
+  local idx
+  idx=$(( (DAY_NUM - 1) % 7 ))
+  if [ "$idx" -le 3 ]; then
+    echo "small"
+  elif [ "$idx" -le 5 ]; then
+    echo "medium"
+  else
+    echo "large"
+  fi
 }
 
 generate_plan() {
@@ -191,6 +204,7 @@ write_story_file() {
 - ${DAY_LABEL}専用にテーマをseed固定して再生成時の見た目を安定化
 - ${GENRE}用途に寄せた単機能UIで迷いを減らす
 - 出力をそのまま再利用できるテキスト構造
+- Complexity Tier: ${COMPLEXITY_TIER}
 
 ## Trade-offs / Known issues
 - ローカル保存機能は未実装
@@ -223,8 +237,49 @@ fi
 echo "  [1/6] 企画生成..."
 GENRE=$(select_genre)
 THEME=$(select_theme)
+COMPLEXITY_TIER=$(select_complexity_tier)
 generate_plan "$GENRE"
 apply_shortlist_injection || true
+
+ORIGINAL_TWIST="$TWIST"
+ORIGINAL_ONE_SENTENCE="$ONE_SENTENCE"
+ENHANCEMENT_ADOPTED="false"
+ENHANCEMENT_SOURCE=""
+ENHANCEMENT_CANDIDATE_ID=""
+
+if [ -x "$CONTROL_DIR/scripts/build_enhanced_plan_candidates.sh" ]; then
+  bash "$CONTROL_DIR/scripts/build_enhanced_plan_candidates.sh" \
+    --day "$DAY_STR" \
+    --genre "$GENRE" \
+    --theme "$THEME" \
+    --core-action "$CORE_ACTION" \
+    --twist "$TWIST" \
+    --one-sentence "$ONE_SENTENCE" || true
+fi
+
+if [ -f "$ENHANCED_CANDIDATES_FILE" ]; then
+  echo "  ℹ enhanced plan candidates found: plans/candidates/day${DAY_STR}_enhanced_candidates.json"
+  if [ "${ADOPT_ENHANCED_PLAN:-0}" = "1" ]; then
+    REC_ID=$(jq -r '.recommended_candidate_id // empty' "$ENHANCED_CANDIDATES_FILE" 2>/dev/null || true)
+    if [ -n "$REC_ID" ]; then
+      CAND_TWIST=$(jq -r --arg id "$REC_ID" '.candidates[]? | select(.id == $id) | .twist // empty' "$ENHANCED_CANDIDATES_FILE" 2>/dev/null || true)
+      CAND_ONE_SENTENCE=$(jq -r --arg id "$REC_ID" '.candidates[]? | select(.id == $id) | .one_sentence // empty' "$ENHANCED_CANDIDATES_FILE" 2>/dev/null || true)
+      CAND_SOURCE=$(jq -r '.source_competitor_scan // empty' "$ENHANCED_CANDIDATES_FILE" 2>/dev/null || true)
+      if [ -n "$CAND_TWIST" ] && [ -n "$CAND_ONE_SENTENCE" ]; then
+        TWIST="$CAND_TWIST"
+        ONE_SENTENCE="$CAND_ONE_SENTENCE"
+        ENHANCEMENT_ADOPTED="true"
+        ENHANCEMENT_SOURCE="$CAND_SOURCE"
+        ENHANCEMENT_CANDIDATE_ID="$REC_ID"
+        echo "  ℹ enhanced plan adopted: ${REC_ID}"
+      else
+        echo "  ℹ enhanced plan not adopted: recommended candidate incomplete"
+      fi
+    else
+      echo "  ℹ enhanced plan not adopted: recommended candidate missing"
+    fi
+  fi
+fi
 
 echo "  [2/6] Repo作成..."
 if ! gh repo view "${GH_USER}/${REPO_NAME}" >/dev/null 2>&1; then
@@ -248,10 +303,16 @@ jq -n \
   --arg genre "$GENRE" \
   --arg theme "$THEME" \
   --arg story_summary "$STORY_SUMMARY" \
+  --arg complexity_tier "$COMPLEXITY_TIER" \
   --arg tool_name "$TITLE" \
   --arg core_action "$CORE_ACTION" \
   --arg twist "$TWIST" \
   --arg one_sentence "$ONE_SENTENCE" \
+  --arg original_twist "$ORIGINAL_TWIST" \
+  --arg original_one_sentence "$ORIGINAL_ONE_SENTENCE" \
+  --arg enhancement_source "$ENHANCEMENT_SOURCE" \
+  --arg enhancement_candidate_id "$ENHANCEMENT_CANDIDATE_ID" \
+  --arg enhancement_adopted "$ENHANCEMENT_ADOPTED" \
   --argjson keywords "$KEYWORDS" \
   --arg repo_name "$REPO_NAME" \
   --arg pages_url "$PAGES_URL" \
@@ -262,11 +323,17 @@ jq -n \
     description: $description,
     genre: $genre,
     theme: $theme,
+    complexity_tier: $complexity_tier,
     story_summary: $story_summary,
     tool_name: $tool_name,
     core_action: $core_action,
     twist: $twist,
     one_sentence: $one_sentence,
+    original_twist: $original_twist,
+    original_one_sentence: $original_one_sentence,
+    enhancement_source: $enhancement_source,
+    enhancement_candidate_id: $enhancement_candidate_id,
+    enhancement_adopted: ($enhancement_adopted == "true"),
     keywords: $keywords,
     repo_name: $repo_name,
     pages_url: $pages_url
@@ -283,6 +350,8 @@ cat > README.md <<README
 # ${DAY_LABEL} — ${TITLE}
 
 > ${ONE_SENTENCE}
+>
+> Complexity Tier: ${COMPLEXITY_TIER}
 
 ## 使い方
 
@@ -372,9 +441,15 @@ jq --arg now "$NOW" \
    --arg genre "$GENRE" \
    --arg theme "$THEME" \
    --arg story_summary "$STORY_SUMMARY" \
+   --arg complexity_tier "$COMPLEXITY_TIER" \
    --arg core_action "$CORE_ACTION" \
    --arg twist "$TWIST" \
    --arg one_sentence "$ONE_SENTENCE" \
+   --arg original_twist "$ORIGINAL_TWIST" \
+   --arg original_one_sentence "$ORIGINAL_ONE_SENTENCE" \
+   --arg enhancement_source "$ENHANCEMENT_SOURCE" \
+   --arg enhancement_candidate_id "$ENHANCEMENT_CANDIDATE_ID" \
+   --arg enhancement_adopted "$ENHANCEMENT_ADOPTED" \
    --argjson keywords "$KEYWORDS" \
    --arg post_standard "$POST_STANDARD" \
    --arg post_compact "$POST_COMPACT" \
@@ -390,10 +465,16 @@ jq --arg now "$NOW" \
        description: $description,
        genre: $genre,
        theme: $theme,
+       complexity_tier: $complexity_tier,
        story_summary: $story_summary,
        core_action: $core_action,
        twist: $twist,
        one_sentence: $one_sentence,
+       original_twist: $original_twist,
+       original_one_sentence: $original_one_sentence,
+       enhancement_source: $enhancement_source,
+       enhancement_candidate_id: $enhancement_candidate_id,
+       enhancement_adopted: ($enhancement_adopted == "true"),
        keywords: $keywords
      },
      post_texts: {
@@ -410,6 +491,7 @@ jq --arg now "$NOW" \
        twist: $twist,
        one_sentence: $one_sentence
      }]) | .[-20:])
+   | .recent_meta[-1].complexity_tier = $complexity_tier
    | .recent_genres = (((.recent_genres // []) + [$genre]) | .[-3:])
    | .last_run_at = $now
    | .execution_logs = ((.execution_logs // []) + [{
