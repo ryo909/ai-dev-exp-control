@@ -55,6 +55,7 @@ def main() -> int:
     strategy_brief = latest(os.path.join(cdir, "reports", "strategy", "strategy_brief_*.json"))
     evidence_report = latest(os.path.join(cdir, "reports", "evidence", "evidence_*.json"))
     reality_gate = latest(os.path.join(cdir, "reports", "reality", "reality_gate_*.json"))
+    launch_pack = latest(os.path.join(cdir, "reports", "launch", "launch_pack_*.json"))
 
     quality_reports = sorted(glob.glob(os.path.join(cdir, "reports", "quality", "day*_quality.json")))
     fallback_plans = sorted(glob.glob(os.path.join(cdir, "plans", "candidates", "day*_fallback_plan.json")))
@@ -92,6 +93,7 @@ def main() -> int:
         "strategy_brief": rel(strategy_brief, cdir),
         "evidence_report": rel(evidence_report, cdir),
         "reality_gate": rel(reality_gate, cdir),
+        "launch_pack": rel(launch_pack, cdir),
         "quality_reports": [rel(p, cdir) for p in quality_reports],
         "fallback_plans": [rel(p, cdir) for p in fallback_plans],
         "enhanced_candidates": [rel(p, cdir) for p in enhanced_candidates],

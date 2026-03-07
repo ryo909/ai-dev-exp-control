@@ -130,6 +130,8 @@ def main():
     evidence = read_json(latest_evidence) if latest_evidence else {}
     latest_reality = latest_file(os.path.join(cdir, "reports", "reality", "reality_gate_*.json"))
     reality = read_json(latest_reality) if latest_reality else {}
+    latest_launch = latest_file(os.path.join(cdir, "reports", "launch", "launch_pack_*.json"))
+    launch = read_json(latest_launch) if latest_launch else {}
 
     quality_files = sorted(glob.glob(os.path.join(cdir, "reports", "quality", "day*_quality.json")))
     enh_files = sorted(glob.glob(os.path.join(cdir, "plans", "candidates", "day*_enhanced_candidates.json")))
@@ -307,6 +309,7 @@ def main():
             "strategy_avoidance_modes": ((strategy.get("summary") or {}).get("avoidance_modes") or [])[:5],
             "evidence_hotspots": (evidence.get("portfolio_relevant_findings") or [])[:5],
             "reality_hotspots": (reality.get("release_hotspots") or [])[:5],
+            "launch_hotspots": (launch.get("recommended_launch_actions") or [])[:5],
         },
         "day_decisions": day_decisions,
         "next_batch_recommendations": {
@@ -336,6 +339,11 @@ def main():
                 "improve CTA discoverability",
                 "strengthen showcase-visible first impression",
                 "avoid shipping unclear demos",
+                "improve hero-tool launch readiness",
+                "reduce hold-worthy showcase candidates",
+                "align proof points with first-view clarity",
+                "increase channel-fit differentiation",
+                "improve secondary tool packaging",
             ],
         },
     }
@@ -417,6 +425,14 @@ def main():
     lines.append(f"- evidence: {', '.join(eh) if eh else 'なし'}")
     lines.append(f"- reality: {', '.join(rh) if rh else 'なし'}")
     lines.append("")
+    lines.append("## launch hotspots")
+    lh = payload["improvement_signals"].get("launch_hotspots", [])
+    if lh:
+        for x in lh:
+            lines.append(f"- {x}")
+    else:
+        lines.append("- なし")
+    lines.append("")
     lines.append("## dayごとの decision summary")
     for dd in day_decisions[-10:]:
         lines.append(
@@ -436,7 +452,7 @@ def main():
         lines.append(f"- {r}")
     lines.append("")
     lines.append("## Context sources")
-    for p in [signals_path, coverage_path, latest_comp, latest_showcase, latest_portfolio, latest_growth, latest_strategy, latest_evidence, latest_reality, memory_path, feedback_path, sources_path]:
+    for p in [signals_path, coverage_path, latest_comp, latest_showcase, latest_portfolio, latest_growth, latest_strategy, latest_evidence, latest_reality, latest_launch, memory_path, feedback_path, sources_path]:
         if p and os.path.exists(p):
             lines.append(f"- {os.path.relpath(p, cdir)}")
 

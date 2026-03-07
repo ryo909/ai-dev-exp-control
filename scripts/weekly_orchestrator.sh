@@ -72,6 +72,7 @@ stage_preflight() {
     "$CONTROL_DIR/scripts/build_strategy_brief.sh"
     "$CONTROL_DIR/scripts/build_evidence_report.sh"
     "$CONTROL_DIR/scripts/build_reality_gate.sh"
+    "$CONTROL_DIR/scripts/build_launch_pack.sh"
   )
   for f in "${req[@]}"; do
     if [ -e "$f" ]; then
@@ -174,6 +175,7 @@ stage_report() {
   run_best_effort bash "$CONTROL_DIR/scripts/build_strategy_brief.sh"
   run_best_effort bash "$CONTROL_DIR/scripts/build_evidence_report.sh"
   run_best_effort bash "$CONTROL_DIR/scripts/build_reality_gate.sh"
+  run_best_effort bash "$CONTROL_DIR/scripts/build_launch_pack.sh"
 
   local stages_csv
   stages_csv=$(IFS=,; echo "${STAGES_RUN[*]}")
