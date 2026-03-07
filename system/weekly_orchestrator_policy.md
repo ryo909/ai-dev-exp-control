@@ -7,3 +7,4 @@
 - `safe` は preview のみ、`balanced` は THESIS 採用まで、`aggressive` は THESIS + weekly_run 採用までを許可する。
 - THESIS は `reports/weekly/thesis_update_draft_<YYYY-MM-DD>.md` と `reports/weekly/thesis_preview_<YYYY-MM-DD>.md` を見て採用判断する。
 - 判断順序は `control_tower -> next_batch_plan -> thesis_update_draft -> weekly_run_report` を推奨。
+- learning loop も同様に `learn_preview -> learn_adopt` を採用し、まずは `balanced`（MEMORY/FEEDBACKまで）で運用する。

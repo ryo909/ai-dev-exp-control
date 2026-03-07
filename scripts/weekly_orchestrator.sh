@@ -16,6 +16,10 @@ ADOPT_NEXT_BATCH_COMPONENTS="0"
 ADOPT_NEXT_BATCH_ENHANCEMENT="0"
 ADOPT_THESIS_DRAFT="0"
 ADOPT_WEEKLY_RUN="0"
+ADOPT_MEMORY_UPDATES="0"
+ADOPT_FEEDBACK_UPDATES="0"
+ADOPT_SOURCE_NOTES="0"
+ADOPT_LEARNED_RULES="0"
 
 STAGES_RUN=()
 RESUME_EXECUTED="false"
@@ -46,6 +50,10 @@ load_profile() {
     ADOPT_NEXT_BATCH_ENHANCEMENT=$(jq -r --arg p "$ADOPTION_PROFILE" '.[$p].ADOPT_NEXT_BATCH_ENHANCEMENT // "0"' "$PROFILE_FILE" 2>/dev/null || echo "0")
     ADOPT_THESIS_DRAFT=$(jq -r --arg p "$ADOPTION_PROFILE" '.[$p].ADOPT_THESIS_DRAFT // "0"' "$PROFILE_FILE" 2>/dev/null || echo "0")
     ADOPT_WEEKLY_RUN=$(jq -r --arg p "$ADOPTION_PROFILE" '.[$p].ADOPT_WEEKLY_RUN // "0"' "$PROFILE_FILE" 2>/dev/null || echo "0")
+    ADOPT_MEMORY_UPDATES=$(jq -r --arg p "$ADOPTION_PROFILE" '.[$p].ADOPT_MEMORY_UPDATES // "0"' "$PROFILE_FILE" 2>/dev/null || echo "0")
+    ADOPT_FEEDBACK_UPDATES=$(jq -r --arg p "$ADOPTION_PROFILE" '.[$p].ADOPT_FEEDBACK_UPDATES // "0"' "$PROFILE_FILE" 2>/dev/null || echo "0")
+    ADOPT_SOURCE_NOTES=$(jq -r --arg p "$ADOPTION_PROFILE" '.[$p].ADOPT_SOURCE_NOTES // "0"' "$PROFILE_FILE" 2>/dev/null || echo "0")
+    ADOPT_LEARNED_RULES=$(jq -r --arg p "$ADOPTION_PROFILE" '.[$p].ADOPT_LEARNED_RULES // "0"' "$PROFILE_FILE" 2>/dev/null || echo "0")
   fi
 }
 
@@ -70,7 +78,7 @@ stage_preflight() {
   (cd "$CONTROL_DIR" && git status -sb || true)
   (cd "$CONTROL_DIR" && git branch --show-current || true)
   if [ "$DRY_RUN" = "1" ]; then
-    log "planned stages: preflight -> intel -> thesis -> preview -> adopt -> run -> report"
+    log "planned stages: preflight -> intel -> thesis -> preview -> adopt -> run -> report -> learn_preview -> learn_adopt"
   fi
 }
 
@@ -166,7 +174,11 @@ stage_report() {
     --arg e "$ADOPT_NEXT_BATCH_ENHANCEMENT" \
     --arg t "$ADOPT_THESIS_DRAFT" \
     --arg w "$ADOPT_WEEKLY_RUN" \
-    '{USE_NEXT_BATCH_PLAN:$u,ADOPT_NEXT_BATCH_COMPLEXITY:$c,ADOPT_NEXT_BATCH_COMPONENTS:$s,ADOPT_NEXT_BATCH_ENHANCEMENT:$e,ADOPT_THESIS_DRAFT:$t,ADOPT_WEEKLY_RUN:$w}')
+    --arg m "$ADOPT_MEMORY_UPDATES" \
+    --arg f "$ADOPT_FEEDBACK_UPDATES" \
+    --arg n "$ADOPT_SOURCE_NOTES" \
+    --arg r "$ADOPT_LEARNED_RULES" \
+    '{USE_NEXT_BATCH_PLAN:$u,ADOPT_NEXT_BATCH_COMPLEXITY:$c,ADOPT_NEXT_BATCH_COMPONENTS:$s,ADOPT_NEXT_BATCH_ENHANCEMENT:$e,ADOPT_THESIS_DRAFT:$t,ADOPT_WEEKLY_RUN:$w,ADOPT_MEMORY_UPDATES:$m,ADOPT_FEEDBACK_UPDATES:$f,ADOPT_SOURCE_NOTES:$n,ADOPT_LEARNED_RULES:$r}')
 
   run_best_effort bash "$CONTROL_DIR/scripts/build_weekly_run_report.sh" \
     --date "$TODAY" \
@@ -175,6 +187,31 @@ stage_report() {
     --stages "$stages_csv" \
     --resume-executed "$RESUME_EXECUTED" \
     --flags-json "$flags_json"
+}
+
+stage_learn_preview() {
+  STAGES_RUN+=("learn_preview")
+  log "stage=learn_preview"
+  # learning preview is a read-mostly report and safe to generate
+  bash "$CONTROL_DIR/scripts/build_learning_update_preview.sh" --date "$TODAY" || true
+}
+
+stage_learn_adopt() {
+  STAGES_RUN+=("learn_adopt")
+  log "stage=learn_adopt"
+  load_profile
+  log "learning flags: ADOPT_MEMORY_UPDATES=${ADOPT_MEMORY_UPDATES}, ADOPT_FEEDBACK_UPDATES=${ADOPT_FEEDBACK_UPDATES}, ADOPT_SOURCE_NOTES=${ADOPT_SOURCE_NOTES}, ADOPT_LEARNED_RULES=${ADOPT_LEARNED_RULES}"
+
+  if [ "$DRY_RUN" = "1" ]; then
+    log "DRY-RUN: memory=${ADOPT_MEMORY_UPDATES} feedback=${ADOPT_FEEDBACK_UPDATES} sources=${ADOPT_SOURCE_NOTES} rules=${ADOPT_LEARNED_RULES}"
+    return 0
+  fi
+
+  ADOPT_MEMORY_UPDATES="$ADOPT_MEMORY_UPDATES" \
+  ADOPT_FEEDBACK_UPDATES="$ADOPT_FEEDBACK_UPDATES" \
+  ADOPT_SOURCE_NOTES="$ADOPT_SOURCE_NOTES" \
+  ADOPT_LEARNED_RULES="$ADOPT_LEARNED_RULES" \
+  bash "$CONTROL_DIR/scripts/adopt_learning_updates.sh" --date "$TODAY" || true
 }
 
 load_profile
@@ -188,6 +225,8 @@ case "$STAGE" in
     stage_adopt
     stage_run
     stage_report
+    stage_learn_preview
+    stage_learn_adopt
     ;;
   preflight) stage_preflight ;;
   intel) stage_intel ;;
@@ -196,8 +235,10 @@ case "$STAGE" in
   adopt) stage_adopt ;;
   run) stage_run ;;
   report) stage_report ;;
+  learn_preview) stage_learn_preview ;;
+  learn_adopt) stage_learn_adopt ;;
   *)
-    echo "Unknown STAGE=$STAGE (expected: all|preflight|intel|thesis|preview|adopt|run|report)" >&2
+    echo "Unknown STAGE=$STAGE (expected: all|preflight|intel|thesis|preview|adopt|run|report|learn_preview|learn_adopt)" >&2
     exit 1
     ;;
 esac
