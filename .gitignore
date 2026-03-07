@@ -1,1 +1,7 @@
 .env.local
+tools/capture/node_modules/
+tools/capture/out/
+tools/capture/.runtime/
+logs/
+research/processed/
+idea_bank/inbox.jsonl

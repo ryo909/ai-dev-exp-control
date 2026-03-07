@@ -133,3 +133,17 @@ ai-dev-exp-control/
 - **カタログページ**: `https://<username>.github.io/ai-dev-exp-control/`
 - **テンプレートrepo**: `ai-dev-exp-template`
 - **RULES.md**: AI契約ルール全文
+
+---
+
+## System Foundation（追記）
+
+- 実行前に [system/contract.md](./system/contract.md) を参照（不変ルール / 安全柵）
+- 投稿テンプレは `templates/posts/` の固定分離を利用（`header.txt` + `body_*.txt` + `footer.txt`）
+- 改善バックログは `improvements/backlog.md` のメタ情報付きフォーマットで管理
+- 生成前チェックは [rules/checklist.md](./rules/checklist.md) を参照
+- 次回の改善PR候補1件は [improvements/next_pick.md](./improvements/next_pick.md) に固定
+- 改善実験の台帳は `experiments/`（`EXP-000_template.md` / `exp_index.md`）で管理
+- 安全検査は `scripts/contract_check.sh` と `scripts/smoke_test.sh` を実行
+- 採点軸は `rubrics/system_rubric.md`、エージェント台帳は `agents/registry.md`
+- テレメトリ出力先は `telemetry/run_log.jsonl`、レトロ置き場は `system/retro/`

@@ -1,0 +1,104 @@
+{
+  "generated_at": "2026-03-07T05:43:42.569Z",
+  "success_target": 3,
+  "max_candidates": 10,
+  "candidates_considered": 4,
+  "success_count": 3,
+  "blocked_count": 1,
+  "failed_count": 0,
+  "targets": [
+    {
+      "url": "https://buttondown.com/creativegood/archive/ai-and-the-illegal-war/",
+      "domain": "buttondown.com",
+      "source": "HN Frontpage",
+      "title": "AI and the illegal war",
+      "status": "ok",
+      "reason": "",
+      "headings": [
+        {"level": "h1", "text": "Creative Good"},
+        {"level": "h1", "text": "AI and the illegal war"},
+        {"level": "h2", "text": "Search"}
+      ],
+      "hook": "\u201cNo stupid rules of engagement.\u201d から始まる強い問題提起で導入している。",
+      "ctas": ["Subscribe", "join Creative Good", "Unsubscribe"],
+      "frequent_phrases": [
+        {"term": "military", "count": 6},
+        {"term": "oligarchs", "count": 6},
+        {"term": "subscribe", "count": 5}
+      ]
+    },
+    {
+      "url": "https://www.science.org/content/article/can-wealthy-family-change-course-deadly-brain-disease",
+      "domain": "www.science.org",
+      "source": "HN Frontpage",
+      "title": "Just a moment...",
+      "status": "blocked",
+      "reason": "contains 'just a moment'",
+      "headings": [
+        {"level": "h1", "text": "www.science.org"},
+        {"level": "h2", "text": "Performing security verification"},
+        {"level": "h2", "text": "Verification successful. Waiting for www.science.org to respond"}
+      ],
+      "hook": "",
+      "ctas": [],
+      "frequent_phrases": []
+    },
+    {
+      "url": "https://github.com/golang/go/issues/62026",
+      "domain": "github.com",
+      "source": "HN Frontpage",
+      "title": "proposal: crypto/uuid: add API to generate and parse UUID \u00b7 Issue #62026 \u00b7 golang/go",
+      "status": "ok",
+      "reason": "",
+      "headings": [
+        {"level": "h1", "text": "proposal: crypto/uuid: add API to generate and parse UUID #62026"},
+        {"level": "h2", "text": "Description"},
+        {"level": "h2", "text": "Activity"}
+      ],
+      "hook": "標準ライブラリへのUUID生成/解析API追加提案を冒頭で明示している。",
+      "ctas": ["View all features", "View all use cases"],
+      "frequent_phrases": [
+        {"term": "uuid", "count": 59},
+        {"term": "generator", "count": 25},
+        {"term": "proposal", "count": 21}
+      ]
+    },
+    {
+      "url": "https://blog.katanaquant.com/p/your-llm-doesnt-write-correct-code",
+      "domain": "blog.katanaquant.com",
+      "source": "HN Frontpage",
+      "title": "Your LLM Doesn't Write Correct Code. It Writes Plausible Code.",
+      "status": "ok",
+      "reason": "",
+      "headings": [
+        {"level": "h1", "text": "Your LLM Doesn't Write Correct Code. It Writes Plausible Code."},
+        {"level": "h2", "text": "LLMs Lie. Numbers Don\u2019t."},
+        {"level": "h2", "text": "What the Planner Gets Wrong"}
+      ],
+      "hook": "コード品質評価の誤りを実測で示す流れを冒頭で提示。",
+      "ctas": ["Share Publication", "Subscribe", "View comments (0)"],
+      "frequent_phrases": [
+        {"term": "code", "count": 35},
+        {"term": "sqlite", "count": 29},
+        {"term": "rust", "count": 25}
+      ]
+    }
+  ],
+  "common_patterns": [
+    "冒頭で主張や問題設定を先に提示する構成が多い",
+    "CTAは購読・続きを読む・議論参加など次行動を明示する形式が中心",
+    "見出しは媒体依存だがH1段階で論点を断定する傾向がある"
+  ],
+  "twist_candidates": [
+    "冒頭1文で結論、2文目で根拠を示す『主張+証拠』導入を固定化する",
+    "CTAを『すぐ試す』と『背景を読む』の2導線に分けて離脱を減らす",
+    "頻出キーワード3語をヘッダ直下に固定表示し、焦点を即認識させる"
+  ],
+  "one_sentence_candidates": [
+    "最初の1文で結論、次の1文で根拠まで示すから価値がすぐ伝わる。",
+    "試す導線と学ぶ導線を同時に置き、速く動く人と深く読む人を両立する。"
+  ],
+  "dont_copy": [
+    "verificationページや媒体UIノイズを本文洞察として扱わない"
+  ]
+}

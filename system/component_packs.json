@@ -1,0 +1,37 @@
+{
+  "reason_panel": {
+    "description": "出力理由や判定根拠を表示するセクション",
+    "risk": "low",
+    "ui_cost": "low"
+  },
+  "sample_inputs": {
+    "description": "入力例を切り替えられるUI",
+    "risk": "low",
+    "ui_cost": "low"
+  },
+  "local_storage": {
+    "description": "入力/結果/設定をlocalStorageに保存・復元",
+    "risk": "medium",
+    "ui_cost": "low"
+  },
+  "comparison_view": {
+    "description": "複数候補の比較表示",
+    "risk": "medium",
+    "ui_cost": "medium"
+  },
+  "history_panel": {
+    "description": "直近履歴の一覧表示",
+    "risk": "medium",
+    "ui_cost": "medium"
+  },
+  "export_suite": {
+    "description": "txt/json/png などのエクスポート",
+    "risk": "medium",
+    "ui_cost": "medium"
+  },
+  "step_ui": {
+    "description": "ステップ形式のUI（進行表示）",
+    "risk": "medium",
+    "ui_cost": "medium"
+  }
+}
