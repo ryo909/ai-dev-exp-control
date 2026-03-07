@@ -158,6 +158,8 @@ def main():
     twist_counter = Counter()
 
     tier_scores = defaultdict(list)
+    tier_confidence = defaultdict(Counter)
+    tier_missing_components = defaultdict(Counter)
     tier_counts = Counter()
     tier_fallbacks = Counter()
 
@@ -187,6 +189,12 @@ def main():
             s = q.get("tier_expectation_score")
             if isinstance(s, (int, float)):
                 tier_scores[tier].append(float(s))
+            conf = q.get("confidence")
+            if isinstance(conf, str) and conf:
+                tier_confidence[tier][conf] += 1
+            for comp in q.get("missing_components") or []:
+                if isinstance(comp, str) and comp:
+                    tier_missing_components[tier][comp] += 1
 
         if d in fallback_by_day:
             tier_fallbacks[tier] += 1
@@ -197,6 +205,7 @@ def main():
             "count": int(tier_counts.get(t, 0)),
             "avg_score": safe_score_avg(tier_scores.get(t, [])),
             "fallback_count": int(tier_fallbacks.get(t, 0)),
+            "confidence_distribution": dict(tier_confidence.get(t, {})),
         }
 
     blocked_domains = Counter()
@@ -224,13 +233,21 @@ def main():
         decision, reason = day_decision(d, tier, q, has_enh, has_fb, summary)
         rec_components = []
         if q:
-            rec_components = q.get("upgrade_candidates", []) or q.get("missing_components", []) or []
+            rec_components = (
+                (q.get("recommendation", {}) or {}).get("add_components", [])
+                or q.get("upgrade_candidates", [])
+                or q.get("missing_components", [])
+                or []
+            )
 
         day_decisions.append(
             {
                 "day": d,
                 "complexity_tier": tier,
                 "quality_score": (q.get("tier_expectation_score") if q else 0.0),
+                "confidence": (q.get("confidence") if q else "low"),
+                "missing_components": (q.get("missing_components") if q else []),
+                "unexpected_components": (q.get("unexpected_components") if q else []),
                 "decision": decision,
                 "reason": reason,
                 "recommended_components": rec_components[:3],
@@ -240,6 +257,11 @@ def main():
         )
 
     mix = decide_mix(tier_perf)
+
+    missing_hotspots = {}
+    for t in ("small", "medium", "large"):
+        c = tier_missing_components.get(t, Counter())
+        missing_hotspots[t] = [f"{name}:{count}" for name, count in c.most_common(5)]
 
     payload = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -266,6 +288,7 @@ def main():
             "top_twist_candidates": (comp.get("twist_candidates") or [])[:3],
             "common_patterns": (comp.get("common_patterns") or [])[:5],
             "dont_copy": (comp.get("dont_copy") or [])[:5],
+            "missing_components_hotspots": missing_hotspots,
         },
         "day_decisions": day_decisions,
         "next_batch_recommendations": {
@@ -300,7 +323,10 @@ def main():
     lines.append("## tier別成績")
     for t in ("small", "medium", "large"):
         tp = tier_perf[t]
-        lines.append(f"- {t}: count={tp['count']}, avg_score={tp['avg_score']}, fallback_count={tp['fallback_count']}")
+        lines.append(
+            f"- {t}: count={tp['count']}, avg_score={tp['avg_score']}, "
+            f"fallback_count={tp['fallback_count']}, confidence={tp.get('confidence_distribution', {})}"
+        )
     lines.append("")
     lines.append("## blockedが多いドメイン")
     if blocked_domains:
@@ -321,10 +347,17 @@ def main():
     bad = [t for t, v in tier_perf.items() if v.get("fallback_count", 0) > 0]
     lines.append(f"- {', '.join(bad) if bad else '明確な偏りなし'}")
     lines.append("")
+    lines.append("## missing components hotspot")
+    for t in ("small", "medium", "large"):
+        hs = payload["improvement_signals"]["missing_components_hotspots"].get(t, [])
+        lines.append(f"- {t}: {', '.join(hs) if hs else 'なし'}")
+    lines.append("")
     lines.append("## dayごとの decision summary")
     for dd in day_decisions[-10:]:
         lines.append(
-            f"- Day{dd['day']}: {dd['decision']} (tier={dd['complexity_tier']}, score={dd['quality_score']}) / {dd['reason']}"
+            f"- Day{dd['day']}: {dd['decision']} "
+            f"(tier={dd['complexity_tier']}, score={dd['quality_score']}, confidence={dd.get('confidence', 'low')}) "
+            f"/ {dd['reason']}"
         )
     lines.append("")
     lines.append("## 次の7本への推奨")

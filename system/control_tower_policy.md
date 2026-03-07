@@ -10,3 +10,4 @@
   - `retry_later`: 失敗ログが重く、先に安定化が必要
 - `next_batch_plan` の実運用は `system/next_batch_adoption_policy.md` の段階フラグで行い、初期は opt-in のみ。
 - 週次の実行順は `scripts/weekly_orchestrator.sh` を使い、stage分割で安全に進める。
+- quality evaluator v2 の `confidence` と `missing_components` 集計を tier_performance/improvement_signals に反映し、次週の component 強化優先度を決める。
