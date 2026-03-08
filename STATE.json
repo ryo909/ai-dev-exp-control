@@ -15,15 +15,6 @@
   },
   "recent_meta": [
     {
-      "day": "010",
-      "core_action": "schedule",
-      "twist": "逆算の根拠を1行で示して計画の納得感を上げる / Signal:HN Frontpage「Autoresearch: Agents res」",
-      "one_sentence": "締切から逆算した実行計画を即作成するプランニングツール。（話題:HN Frontpage）",
-      "complexity_tier": "small",
-      "selected_components": [],
-      "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
-    },
-    {
       "day": "011",
       "core_action": "generate",
       "twist": "初回学習日から次回復習日を同時表示する / Signal:HN Frontpage「The surprising whimsy of」",
@@ -291,6 +282,29 @@
       "complexity_tier": "medium",
       "selected_components": [],
       "complexity_prompt_hint": "Add 2 safe enhancement components from selected_components while keeping the app single-page and stable."
+    },
+    {
+      "day": "009",
+      "title": "Signal Card Mixer",
+      "genre": "fun",
+      "family": "idea_cards",
+      "mechanic": "random_recombination",
+      "input_style": "multi_select_tokens",
+      "output_style": "card_stack",
+      "audience_promise": "faster_idea_divergence",
+      "interaction_archetype": "card_deck_recombination",
+      "page_archetype": "deck_stage",
+      "output_shape": "stacked_cards",
+      "state_model": "deck_history_with_lock",
+      "component_pack": "deck_controls+history_panel",
+      "scaffold_id": "card_deck_board",
+      "single_shot_text_generator": false,
+      "core_action": "recombine",
+      "twist": "引いたカードを固定して再抽選できるため、方向性の収束が速い / Signal:HN Frontpage「CasNum」",
+      "one_sentence": "カードの組み合わせから次の試作案を素早く作るデッキ型ツール。（話題:HN Frontpage）",
+      "complexity_tier": "small",
+      "selected_components": [],
+      "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
     }
   ],
   "days": {
@@ -542,6 +556,14 @@
         "audience_promise": "faster_idea_divergence",
         "publish_hook": "デッキを引くだけで試作テーマが決まる",
         "engine": "card_mixer",
+        "interaction_archetype": "card_deck_recombination",
+        "page_archetype": "deck_stage",
+        "output_shape": "stacked_cards",
+        "state_model": "deck_history_with_lock",
+        "core_loop": "draw -> lock -> redraw",
+        "component_pack": "deck_controls+history_panel",
+        "scaffold_id": "card_deck_board",
+        "single_shot_text_generator": false,
         "original_twist": "引いたカードを固定して再抽選できるため、方向性の収束が速い / Signal:HN Frontpage「CasNum」",
         "original_one_sentence": "カードの組み合わせから次の試作案を素早く作るデッキ型ツール。（話題:HN Frontpage）",
         "enhancement_source": "",
@@ -1392,13 +1414,28 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-03-08T07:32:07Z",
+      "day": "009",
+      "repo_name": "ai-dev-day-009",
+      "genre": "fun",
+      "theme": "Candy",
+      "steps": [
+        "planning",
+        "implementation",
+        "build",
+        "publish",
+        "state_update"
+      ],
+      "status": "done"
     }
   ],
   "recent_genres": [
-    "devtools",
     "fun",
-    "productivity"
+    "productivity",
+    "fun"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-03-08T07:27:58Z"
+  "last_run_at": "2026-03-08T07:32:07Z"
 }
