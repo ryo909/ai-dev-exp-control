@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-03-08T05:30:00.538841+00:00",
+  "generated_at": "2026-03-08T06:05:14.905330+00:00",
   "day": "012",
   "source_competitor_scan": "reports/competitors/competitor_scan_2026-03-07_shortlist.json",
   "context": {
-    "genre": "health",
-    "theme": "Mono",
-    "core_action": "track"
+    "genre": "productivity",
+    "theme": "RetroTerminal",
+    "core_action": "estimate"
   },
   "original": {
-    "twist": "勤務時間に合わせて飲水タイミングを均等化する / Signal:HN Frontpage「SigNoz (YC W21) is hirin」",
-    "one_sentence": "目標水分量を無理なく達成するための配分プランナー。（話題:HN Frontpage）"
+    "twist": "似た作業を束ねる再配置案を同時提案する / Signal:HN Frontpage「SigNoz (YC W21) is hirin」",
+    "one_sentence": "タスク切替の見えない損失を可視化する生産性分析ツール。（話題:HN Frontpage）"
   },
   "candidates": [
     {

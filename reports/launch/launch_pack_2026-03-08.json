@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-03-08T04:54:10.172017+00:00",
+  "generated_at": "2026-03-08T06:09:24.123798+00:00",
   "launch_id": "launch-2026-03-08",
   "summary": {
-    "launch_readiness": 0.827,
+    "launch_readiness": 0.698,
     "primary_showcase_slot": 5,
     "secondary_candidates": [
       "Day001",
@@ -463,6 +463,146 @@
       "title": "Draft Tightener",
       "pages_url": "https://ryo909.github.io/ai-dev-day-008/",
       "repo_url": "https://github.com/ryo909/ai-dev-day-008"
+    },
+    {
+      "day": "Day009",
+      "tool_id": "day009",
+      "repo_name": "ai-dev-day-009",
+      "launch_readiness": 0.55,
+      "decision": "quiet_catalog",
+      "decision_source": "launch_pack",
+      "one_line_positioning": "難しい話題を比喩で伝えやすくする発想支援ツール。（話題:HN Frontpage）",
+      "recommended_channels": [
+        "quiet catalog only"
+      ],
+      "hook_candidates": [],
+      "cta_candidates": [],
+      "proof_points": [],
+      "issues": [],
+      "recommended_actions": [],
+      "title": "Analogy Spark Lab",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-009/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-009"
+    },
+    {
+      "day": "Day010",
+      "tool_id": "day010",
+      "repo_name": "ai-dev-day-010",
+      "launch_readiness": 0.55,
+      "decision": "quiet_catalog",
+      "decision_source": "launch_pack",
+      "one_line_positioning": "API障害の初動切り分けを1分で始めるためのログ整理ツール。（話題:HN Frontpage）",
+      "recommended_channels": [
+        "quiet catalog only"
+      ],
+      "hook_candidates": [],
+      "cta_candidates": [],
+      "proof_points": [],
+      "issues": [],
+      "recommended_actions": [],
+      "title": "API Error Narrator",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-010/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-010"
+    },
+    {
+      "day": "Day011",
+      "tool_id": "day011",
+      "repo_name": "ai-dev-day-011",
+      "launch_readiness": 0.55,
+      "decision": "quiet_catalog",
+      "decision_source": "launch_pack",
+      "one_line_positioning": "つまずきポイントを前提不足として可視化する学習診断ツール。（話題:HN Frontpage）",
+      "recommended_channels": [
+        "quiet catalog only"
+      ],
+      "hook_candidates": [],
+      "cta_candidates": [],
+      "proof_points": [],
+      "issues": [],
+      "recommended_actions": [],
+      "title": "Concept Gap Mapper",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-011/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-011"
+    },
+    {
+      "day": "Day012",
+      "tool_id": "day012",
+      "repo_name": "ai-dev-day-012",
+      "launch_readiness": 0.55,
+      "decision": "quiet_catalog",
+      "decision_source": "launch_pack",
+      "one_line_positioning": "タスク切替の見えない損失を可視化する生産性分析ツール。（話題:HN Frontpage）",
+      "recommended_channels": [
+        "quiet catalog only"
+      ],
+      "hook_candidates": [],
+      "cta_candidates": [],
+      "proof_points": [],
+      "issues": [],
+      "recommended_actions": [],
+      "title": "Context Switch Cost Meter",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-012/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-012"
+    },
+    {
+      "day": "Day013",
+      "tool_id": "day013",
+      "repo_name": "ai-dev-day-013",
+      "launch_readiness": 0.55,
+      "decision": "quiet_catalog",
+      "decision_source": "launch_pack",
+      "one_line_positioning": "平日の食事準備を短時間で回すための作り置き計画ツール。（話題:HN Frontpage）",
+      "recommended_channels": [
+        "quiet catalog only"
+      ],
+      "hook_candidates": [],
+      "cta_candidates": [],
+      "proof_points": [],
+      "issues": [],
+      "recommended_actions": [],
+      "title": "Meal Prep Slotter",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-013/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-013"
+    },
+    {
+      "day": "Day014",
+      "tool_id": "day014",
+      "repo_name": "ai-dev-day-014",
+      "launch_readiness": 0.55,
+      "decision": "quiet_catalog",
+      "decision_source": "launch_pack",
+      "one_line_positioning": "新メンバーの初週導線を迷わず回すためのオンボーディング設計ツール。（話題:HN Frontpage）",
+      "recommended_channels": [
+        "quiet catalog only"
+      ],
+      "hook_candidates": [],
+      "cta_candidates": [],
+      "proof_points": [],
+      "issues": [],
+      "recommended_actions": [],
+      "title": "Onboarding Checklist Smith",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-014/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-014"
+    },
+    {
+      "day": "Day015",
+      "tool_id": "day015",
+      "repo_name": "ai-dev-day-015",
+      "launch_readiness": 0.55,
+      "decision": "quiet_catalog",
+      "decision_source": "launch_pack",
+      "one_line_positioning": "制約付きのお題を瞬時に作るミニチャレンジ生成ツール。（話題:HN Frontpage）",
+      "recommended_channels": [
+        "quiet catalog only"
+      ],
+      "hook_candidates": [],
+      "cta_candidates": [],
+      "proof_points": [],
+      "issues": [],
+      "recommended_actions": [],
+      "title": "Constraint Challenge Dealer",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-015/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-015"
     }
   ],
   "portfolio_level_actions": [

@@ -1,7 +1,7 @@
 # Launch Pack (2026-03-08)
 
 ## 今週の Launch 総評
-- launch_readiness: 0.827
+- launch_readiness: 0.698
 - distribution_mix: hero push: X first + gallery follow-up, secondary: note + X short posts
 
 ## hero tool の launch 方針

@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-03-08T05:26:52.428626+00:00",
+  "generated_at": "2026-03-08T06:01:28.001262+00:00",
   "day": "009",
   "source_competitor_scan": "reports/competitors/competitor_scan_2026-03-07_shortlist.json",
   "context": {
-    "genre": "devtools",
+    "genre": "fun",
     "theme": "Soft",
-    "core_action": "inspect"
+    "core_action": "analogize"
   },
   "original": {
-    "twist": "深いネストでもパス一覧を一気に展開できる / Signal:HN Frontpage「CasNum」",
-    "one_sentence": "JSONの構造を素早く把握するための開発者向けビューア。（話題:HN Frontpage）"
+    "twist": "初心者向け/上級者向けで比喩の粒度を切り替える / Signal:HN Frontpage「CasNum」",
+    "one_sentence": "難しい話題を比喩で伝えやすくする発想支援ツール。（話題:HN Frontpage）"
   },
   "candidates": [
     {

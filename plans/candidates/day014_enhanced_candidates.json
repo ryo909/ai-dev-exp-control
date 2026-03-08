@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-03-08T05:32:06.118195+00:00",
+  "generated_at": "2026-03-08T06:07:16.085300+00:00",
   "day": "014",
   "source_competitor_scan": "reports/competitors/competitor_scan_2026-03-07_shortlist.json",
   "context": {
-    "genre": "productivity",
-    "theme": "Paper",
-    "core_action": "plan"
+    "genre": "planning",
+    "theme": "Mono",
+    "core_action": "compose"
   },
   "original": {
-    "twist": "開始時刻つきでそのまま実行できるタイムスロットを提示 / Signal:HN Frontpage「FLASH radiotherapy's bol」",
-    "one_sentence": "作業時間から集中と休憩の実行順を自動で作る生産性ツール。（話題:HN Frontpage）"
+    "twist": "Day1/Day3/Day7の節目で確認質問を自動添付する / Signal:HN Frontpage「FLASH radiotherapy's bol」",
+    "one_sentence": "新メンバーの初週導線を迷わず回すためのオンボーディング設計ツール。（話題:HN Frontpage）"
   },
   "candidates": [
     {

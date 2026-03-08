@@ -9,3 +9,5 @@
 - 判断順序は `control_tower -> next_batch_plan -> thesis_update_draft -> weekly_run_report` を推奨。
 - learning loop も同様に `learn_preview -> learn_adopt` を採用し、まずは `balanced`（MEMORY/FEEDBACKまで）で運用する。
 - showcase planner は intel stage で `reports/showcase/showcase_plan_<YYYY-MM-DD>.json|md` を best-effort 生成し、採用は人手判断で行う。
+- day再生成時は `scripts/run_day.sh` の novelty selector を優先し、直近14本と近い企画（family/theme/mechanic/input_style/audience_promise重複）は採用しない。
+- 同一バッチ内の同一family連発は禁止し、除外理由は `plans/candidates/dayNNN_novelty_selection.json` に保存する。

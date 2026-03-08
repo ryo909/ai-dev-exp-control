@@ -14,12 +14,16 @@ SHORTLIST_FILE="$CONTROL_DIR/idea_bank/shortlist.json"
 COMPLEXITY_PROFILES_FILE="$CONTROL_DIR/system/complexity_profiles.json"
 COMPONENT_PACKS_FILE="$CONTROL_DIR/system/component_packs.json"
 NEXT_BATCH_PLAN_FILE="$CONTROL_DIR/plans/next_batch_plan.json"
+PLAN_CATALOG_FILE="$CONTROL_DIR/system/plan_catalog.json"
 
 DAY_NUM=${1:?'Usage: run_day.sh <day_number>'}
 DAY_STR=$(printf '%03d' "$DAY_NUM")
 DAY_LABEL="Day${DAY_STR}"
 REPO_NAME="ai-dev-day-${DAY_STR}"
 ENHANCED_CANDIDATES_FILE="$CONTROL_DIR/plans/candidates/day${DAY_STR}_enhanced_candidates.json"
+NOVELTY_SELECTION_FILE="$CONTROL_DIR/plans/candidates/day${DAY_STR}_novelty_selection.json"
+FORCE_REGENERATE="${FORCE_REGENERATE:-0}"
+DIVERSITY_LOOKBACK_DAYS="${DIVERSITY_LOOKBACK_DAYS:-14}"
 
 GENRES=("productivity" "writing" "devtools" "planning" "learning" "health" "fun")
 THEMES=("NeoLab" "Paper" "Noir" "Brutal" "Soft" "RetroTerminal" "Candy" "Mono")
@@ -76,6 +80,16 @@ select_complexity_tier() {
   else
     echo "large"
   fi
+}
+
+set_plan_metadata_defaults() {
+  FAMILY="${FAMILY:-${GENRE}_single_tool}"
+  MECHANIC="${MECHANIC:-single_step_transform}"
+  INPUT_STYLE="${INPUT_STYLE:-text_area}"
+  OUTPUT_STYLE="${OUTPUT_STYLE:-result_panel}"
+  AUDIENCE_PROMISE="${AUDIENCE_PROMISE:-quick_task_completion}"
+  PUBLISH_HOOK="${PUBLISH_HOOK:-1分で使えるミニツール}"
+  ENGINE="${ENGINE:-default_transform}"
 }
 
 resolve_selected_components() {
@@ -155,6 +169,13 @@ generate_plan() {
       ONE_SENTENCE="作業時間から集中と休憩の実行順を自動で作る生産性ツール。"
       KEYWORDS='["focus","pomodoro","timebox","productivity"]'
       STORY_SUMMARY="時間管理の迷いをなくすため、実行順を即決できる構成にした。"
+      FAMILY="focus_slot"
+      MECHANIC="time_blocking"
+      INPUT_STYLE="time_budget"
+      OUTPUT_STYLE="time_slots"
+      AUDIENCE_PROMISE="clear_execution_order"
+      PUBLISH_HOOK="開始時刻つきでそのまま使える"
+      ENGINE="habit_slots"
       ;;
     writing)
       TITLE="Draft Tightener"
@@ -164,6 +185,13 @@ generate_plan() {
       ONE_SENTENCE="文章を短く整えて、投稿しやすい形に圧縮するライティングツール。"
       KEYWORDS='["writing","edit","summary","copy"]'
       STORY_SUMMARY="長い文章を公開前に圧縮する一手間を最小化した。"
+      FAMILY="writing_tightener"
+      MECHANIC="compression"
+      INPUT_STYLE="paragraph_text"
+      OUTPUT_STYLE="short_copy"
+      AUDIENCE_PROMISE="faster_posting"
+      PUBLISH_HOOK="長文をすぐ短文化"
+      ENGINE="copy_angle"
       ;;
     devtools)
       TITLE="JSON Key Lens"
@@ -173,6 +201,13 @@ generate_plan() {
       ONE_SENTENCE="JSONの構造を素早く把握するための開発者向けビューア。"
       KEYWORDS='["json","devtools","inspect","debug"]'
       STORY_SUMMARY="APIレスポンス調査を速くするため、構造確認に特化した。"
+      FAMILY="json_structure"
+      MECHANIC="tree_extraction"
+      INPUT_STYLE="json_sample"
+      OUTPUT_STYLE="path_list"
+      AUDIENCE_PROMISE="faster_debugging"
+      PUBLISH_HOOK="JSON構造を即把握"
+      ENGINE="json_paths"
       ;;
     planning)
       TITLE="Backward Milestone Mapper"
@@ -182,6 +217,13 @@ generate_plan() {
       ONE_SENTENCE="締切から逆算した実行計画を即作成するプランニングツール。"
       KEYWORDS='["planning","milestone","schedule","roadmap"]'
       STORY_SUMMARY="期限直前の混乱を減らすため、逆算起点の設計を採用した。"
+      FAMILY="milestone_backward"
+      MECHANIC="reverse_planning"
+      INPUT_STYLE="deadline_and_tasks"
+      OUTPUT_STYLE="milestone_plan"
+      AUDIENCE_PROMISE="deadline_confidence"
+      PUBLISH_HOOK="締切逆算で計画が決まる"
+      ENGINE="agenda_builder"
       ;;
     learning)
       TITLE="Recall Loop Builder"
@@ -191,6 +233,13 @@ generate_plan() {
       ONE_SENTENCE="学習内容の復習タイミングを自動で組み立てる学習支援ツール。"
       KEYWORDS='["learning","review","memory","study"]'
       STORY_SUMMARY="覚えたつもりを防ぐため、復習日を先に決める導線にした。"
+      FAMILY="review_scheduler"
+      MECHANIC="spaced_repetition"
+      INPUT_STYLE="topic_list"
+      OUTPUT_STYLE="review_schedule"
+      AUDIENCE_PROMISE="higher_retention"
+      PUBLISH_HOOK="復習日を即決める"
+      ENGINE="qa_rotator"
       ;;
     health)
       TITLE="Hydration Pace Planner"
@@ -200,6 +249,13 @@ generate_plan() {
       ONE_SENTENCE="目標水分量を無理なく達成するための配分プランナー。"
       KEYWORDS='["health","hydration","habit","wellness"]'
       STORY_SUMMARY="健康行動を続けやすくするため、負担の少ない配分にした。"
+      FAMILY="hydration_planner"
+      MECHANIC="slot_distribution"
+      INPUT_STYLE="goal_amount"
+      OUTPUT_STYLE="intake_slots"
+      AUDIENCE_PROMISE="habit_consistency"
+      PUBLISH_HOOK="飲水配分を自動提案"
+      ENGINE="habit_slots"
       ;;
     fun)
       TITLE="Tiny Prompt Play"
@@ -209,12 +265,20 @@ generate_plan() {
       ONE_SENTENCE="気分転換用の短いお題をすぐ作るライトな遊びツール。"
       KEYWORDS='["fun","prompt","game","idea"]'
       STORY_SUMMARY="作業の合間に使える短時間の遊び体験を目指した。"
+      FAMILY="prompt_game"
+      MECHANIC="prompt_shuffle"
+      INPUT_STYLE="mood_selector"
+      OUTPUT_STYLE="mini_prompts"
+      AUDIENCE_PROMISE="quick_refresh"
+      PUBLISH_HOOK="30秒で遊べる"
+      ENGINE="constraint_game"
       ;;
     *)
       echo "❌ 未知のgenre: $genre"
       exit 1
       ;;
   esac
+  set_plan_metadata_defaults
 }
 
 apply_shortlist_injection() {
@@ -242,6 +306,161 @@ apply_shortlist_injection() {
   KEYWORDS=$(jq -nc --argjson base "$KEYWORDS" --argjson extra "$stags" '$base + $extra + ["trend"] | unique')
 }
 
+select_novel_plan() {
+  [ -f "$PLAN_CATALOG_FILE" ] || return 1
+  [[ "$DIVERSITY_LOOKBACK_DAYS" =~ ^[0-9]+$ ]] || DIVERSITY_LOOKBACK_DAYS=14
+
+  local generated_at selection_json
+  generated_at=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+  selection_json=$(jq -nc \
+    --slurpfile state "$STATE_FILE" \
+    --slurpfile catalog "$PLAN_CATALOG_FILE" \
+    --arg day "$DAY_STR" \
+    --arg generated_at "$generated_at" \
+    --argjson lookback "$DIVERSITY_LOOKBACK_DAYS" '
+    def pad3($n):
+      ($n | tostring) as $s
+      | if ($s | length) == 1 then "00" + $s
+        elif ($s | length) == 2 then "0" + $s
+        else $s
+        end;
+    def infer_family($m):
+      if (($m.family // "") | length) > 0 then $m.family
+      elif (($m.title // $m.tool_name // "") == "Draft Tightener") then "writing_tightener"
+      elif (($m.title // $m.tool_name // "") == "JSON Key Lens") then "json_structure"
+      elif (($m.title // $m.tool_name // "") == "Backward Milestone Mapper") then "milestone_backward"
+      elif (($m.title // $m.tool_name // "") == "Recall Loop Builder") then "review_scheduler"
+      elif (($m.title // $m.tool_name // "") == "Hydration Pace Planner") then "hydration_planner"
+      elif (($m.title // $m.tool_name // "") == "Tiny Prompt Play") then "prompt_game"
+      elif (($m.title // $m.tool_name // "") == "Focus Slot Composer") then "focus_slot"
+      else (($m.genre // "misc") + "_generic")
+      end;
+    def infer_mechanic($m):
+      if (($m.mechanic // "") | length) > 0 then $m.mechanic
+      else (($m.core_action // "generic") + "_flow")
+      end;
+    def infer_input_style($m):
+      if (($m.input_style // "") | length) > 0 then $m.input_style
+      else "text_area"
+      end;
+    def infer_output_style($m):
+      if (($m.output_style // "") | length) > 0 then $m.output_style
+      else "result_panel"
+      end;
+    def infer_audience($m):
+      if (($m.audience_promise // "") | length) > 0 then $m.audience_promise
+      else "quick_task_completion"
+      end;
+    ($day | tonumber) as $dayn
+    | (if $lookback < 1 then 14 else $lookback end) as $lb
+    | ($dayn - $lb) as $raw_start
+    | (if $raw_start < 1 then 1 else $raw_start end) as $start
+    | [
+        range($start; $dayn) as $n
+        | ($state[0].days[pad3($n)] // null) as $entry
+        | select($entry | type == "object")
+        | ($entry.meta // {}) as $m
+        | {
+            day: pad3($n),
+            title: ($m.title // $m.tool_name // ""),
+            genre: ($m.genre // ""),
+            core_action: ($m.core_action // ""),
+            theme: ($m.theme // ""),
+            family: infer_family($m),
+            mechanic: infer_mechanic($m),
+            input_style: infer_input_style($m),
+            output_style: infer_output_style($m),
+            audience_promise: infer_audience($m)
+          }
+      ] as $recent
+    | (($catalog[0].items // [])) as $items
+    | [
+        $items[] as $c
+        | ([ $recent[] | select(.title == ($c.title // "")) ] | length) as $title_hits
+        | ([ $recent[] | select(.family == ($c.family // "")) ] | length) as $family_hits
+        | ([ $recent[] | select(.theme == ($c.theme // "")) ] | length) as $theme_hits
+        | ([ $recent[] | select(.mechanic == ($c.mechanic // "")) ] | length) as $mechanic_hits
+        | ([ $recent[] | select(.input_style == ($c.input_style // "")) ] | length) as $input_hits
+        | ([ $recent[] | select(.output_style == ($c.output_style // "")) ] | length) as $output_hits
+        | ([ $recent[] | select(.audience_promise == ($c.audience_promise // "")) ] | length) as $audience_hits
+        | ([ $recent[] | select(.core_action == ($c.core_action // "")) ] | length) as $core_hits
+        | ([ $recent[] | select(.genre == ($c.genre // "")) ] | length) as $genre_hits
+        | [
+            (if $title_hits > 0 then {code:"title_overlap_recent", count:$title_hits, penalty:130} else empty end),
+            (if $family_hits > 0 then {code:"family_overlap_recent", count:$family_hits, penalty:(80 * $family_hits)} else empty end),
+            (if $theme_hits > 0 then {code:"theme_overlap_recent", count:$theme_hits, penalty:(28 * $theme_hits)} else empty end),
+            (if $mechanic_hits > 0 then {code:"mechanic_overlap_recent", count:$mechanic_hits, penalty:(35 * $mechanic_hits)} else empty end),
+            (if $input_hits > 0 then {code:"input_overlap_recent", count:$input_hits, penalty:(35 * $input_hits)} else empty end),
+            (if $output_hits > 0 then {code:"output_overlap_recent", count:$output_hits, penalty:(18 * $output_hits)} else empty end),
+            (if $audience_hits > 0 then {code:"audience_overlap_recent", count:$audience_hits, penalty:(35 * $audience_hits)} else empty end),
+            (if $core_hits > 1 then {code:"core_action_repeated", count:$core_hits, penalty:(12 * ($core_hits - 1))} else empty end),
+            (if $genre_hits > 1 then {code:"genre_repeated", count:$genre_hits, penalty:(8 * ($genre_hits - 1))} else empty end)
+          ] as $penalties
+        | (100 - (([ $penalties[].penalty ] | add) // 0)) as $score
+        | {
+            id: $c.id,
+            title: $c.title,
+            description: $c.description,
+            genre: $c.genre,
+            theme: $c.theme,
+            core_action: $c.core_action,
+            twist: $c.twist,
+            one_sentence: $c.one_sentence,
+            story_summary: $c.story_summary,
+            keywords: ($c.keywords // []),
+            family: $c.family,
+            mechanic: $c.mechanic,
+            input_style: $c.input_style,
+            output_style: $c.output_style,
+            audience_promise: $c.audience_promise,
+            publish_hook: $c.publish_hook,
+            engine: ($c.engine // "default_transform"),
+            score: $score,
+            penalties: $penalties
+          }
+      ] as $ranked_raw
+    | ($ranked_raw | sort_by(-.score, .id)) as $ranked
+    | {
+        generated_at: $generated_at,
+        day: ("Day" + $day),
+        lookback_days: $lb,
+        policy: {
+          note: "penalize similarity against recent days and within-batch updates",
+          reject_when_near_duplicate: true
+        },
+        recent_reference: $recent,
+        selected: ($ranked[0] // null),
+        ranked_candidates: $ranked,
+        rejected_candidates: [ $ranked[] | select(.score < 60) | {id, title, score, penalties} ]
+      }
+  ')
+
+  [ -n "$selection_json" ] || return 1
+  if ! jq -e '.selected != null' >/dev/null 2>&1 <<<"$selection_json"; then
+    return 1
+  fi
+
+  printf '%s\n' "$selection_json" > "$NOVELTY_SELECTION_FILE"
+  TITLE=$(jq -r '.selected.title' <<<"$selection_json")
+  DESCRIPTION=$(jq -r '.selected.description' <<<"$selection_json")
+  GENRE=$(jq -r '.selected.genre' <<<"$selection_json")
+  THEME=$(jq -r '.selected.theme' <<<"$selection_json")
+  CORE_ACTION=$(jq -r '.selected.core_action' <<<"$selection_json")
+  TWIST=$(jq -r '.selected.twist' <<<"$selection_json")
+  ONE_SENTENCE=$(jq -r '.selected.one_sentence' <<<"$selection_json")
+  STORY_SUMMARY=$(jq -r '.selected.story_summary' <<<"$selection_json")
+  KEYWORDS=$(jq -c '.selected.keywords // []' <<<"$selection_json")
+  FAMILY=$(jq -r '.selected.family // empty' <<<"$selection_json")
+  MECHANIC=$(jq -r '.selected.mechanic // empty' <<<"$selection_json")
+  INPUT_STYLE=$(jq -r '.selected.input_style // empty' <<<"$selection_json")
+  OUTPUT_STYLE=$(jq -r '.selected.output_style // empty' <<<"$selection_json")
+  AUDIENCE_PROMISE=$(jq -r '.selected.audience_promise // empty' <<<"$selection_json")
+  PUBLISH_HOOK=$(jq -r '.selected.publish_hook // empty' <<<"$selection_json")
+  ENGINE=$(jq -r '.selected.engine // "default_transform"' <<<"$selection_json")
+  set_plan_metadata_defaults
+  return 0
+}
+
 sync_template_files() {
   local tmp_template
   tmp_template=$(mktemp -d "${WORK_ROOT}/template-XXXXXX")
@@ -254,6 +473,364 @@ sync_template_files() {
     tar -xf -
   )
   rm -rf "$tmp_template"
+}
+
+resolve_ui_copy() {
+  case "$CORE_ACTION" in
+    diagnose) ACTION_LABEL="切り分ける" ;;
+    generate) ACTION_LABEL="生成する" ;;
+    rewrite) ACTION_LABEL="言い換える" ;;
+    summarize) ACTION_LABEL="要約する" ;;
+    outline) ACTION_LABEL="構成化する" ;;
+    schedule) ACTION_LABEL="配分する" ;;
+    prioritize) ACTION_LABEL="優先度化する" ;;
+    route) ACTION_LABEL="振り分ける" ;;
+    review) ACTION_LABEL="棚卸しする" ;;
+    estimate) ACTION_LABEL="見積もる" ;;
+    plan) ACTION_LABEL="計画化する" ;;
+    map) ACTION_LABEL="マップ化する" ;;
+    stabilize) ACTION_LABEL="整える" ;;
+    *) ACTION_LABEL="実行する" ;;
+  esac
+
+  case "$INPUT_STYLE" in
+    json_sample) INPUT_LABEL="JSONサンプル"; INPUT_PLACEHOLDER='{user:{id:1,name:A}}' ;;
+    error_log_paste) INPUT_LABEL="エラーログ"; INPUT_PLACEHOLDER='2026-03-08T12:00Z ERROR payment timeout status=504' ;;
+    topic_list) INPUT_LABEL="トピック"; INPUT_PLACEHOLDER=$'認証設計\n監視設計\n運用手順' ;;
+    risk_rows) INPUT_LABEL="リスク行"; INPUT_PLACEHOLDER=$'認証遅延|5|4\n通知失敗|4|3' ;;
+    option_notes) INPUT_LABEL="選択肢メモ"; INPUT_PLACEHOLDER=$'A案: 即実装\nB案: 先に検証' ;;
+    paragraph_text) INPUT_LABEL="本文"; INPUT_PLACEHOLDER='難しい説明文をここに貼り付けます。' ;;
+    question_list) INPUT_LABEL="質問リスト"; INPUT_PLACEHOLDER=$'Q. 料金は?\nQ. 解約方法は?' ;;
+    experience_notes) INPUT_LABEL="経験メモ"; INPUT_PLACEHOLDER=$'課題: リリース遅延\n行動: 進捗可視化を導入' ;;
+    confusion_notes) INPUT_LABEL="曖昧ポイント"; INPUT_PLACEHOLDER=$'useEffect依存配列の使い分け\nキャッシュ無効化の条件' ;;
+    time_range) INPUT_LABEL="時刻条件"; INPUT_PLACEHOLDER='現在 02:00 就寝 / 10:00 起床, 目標 23:30 就寝 / 07:30 起床' ;;
+    ingredient_list) INPUT_LABEL="食材リスト"; INPUT_PLACEHOLDER=$'鶏むね肉\nブロッコリー\n卵' ;;
+    trigger_notes) INPUT_LABEL="トリガーメモ"; INPUT_PLACEHOLDER=$'通知が連続すると焦る\n締切前に思考停止する' ;;
+    interruption_list) INPUT_LABEL="割り込み要因"; INPUT_PLACEHOLDER=$'チャット通知\n会議割り込み\nメール確認癖' ;;
+    task_sequence) INPUT_LABEL="タスク遷移"; INPUT_PLACEHOLDER=$'設計->実装->レビュー->会議->実装' ;;
+    weekly_notes) INPUT_LABEL="週次メモ"; INPUT_PLACEHOLDER=$'継続: 朝レビュー\n停止: 夜更かし\n実験: 昼散歩' ;;
+    constraints) INPUT_LABEL="制約条件"; INPUT_PLACEHOLDER='2人 / 10分 / 道具なし / 室内' ;;
+    concept_phrase) INPUT_LABEL="説明したい概念"; INPUT_PLACEHOLDER='レートリミット' ;;
+    trip_conditions) INPUT_LABEL="移動条件"; INPUT_PLACEHOLDER='1泊2日 / 電車移動 / 雨予報 / 荷物少なめ' ;;
+    memo_lines) INPUT_LABEL="断片メモ"; INPUT_PLACEHOLDER=$'画面遷移後にクラッシュ\niOS17で再現' ;;
+    role_and_tasks) INPUT_LABEL="役割と初週タスク"; INPUT_PLACEHOLDER=$'role: backend\n初週: API把握, 監視導線' ;;
+    task_rows) INPUT_LABEL="課題リスト"; INPUT_PLACEHOLDER=$'請求API修正|今週|高\nFAQ更新|来週|中' ;;
+    feature_bullets) INPUT_LABEL="機能箇条書き"; INPUT_PLACEHOLDER=$'無制限プロジェクト\nCSV出力\nチーム権限' ;;
+    *) INPUT_LABEL="入力"; INPUT_PLACEHOLDER="ここに入力..." ;;
+  esac
+
+  case "$OUTPUT_STYLE" in
+    triage_steps) OUTPUT_LABEL="初動切り分け" ;;
+    schema_draft) OUTPUT_LABEL="スキーマ下書き" ;;
+    repro_report) OUTPUT_LABEL="再現手順テンプレ" ;;
+    agenda_timeline) OUTPUT_LABEL="アジェンダ配分" ;;
+    priority_matrix) OUTPUT_LABEL="優先度マトリクス" ;;
+    onboarding_plan) OUTPUT_LABEL="初週オンボーディング案" ;;
+    three_lane_board) OUTPUT_LABEL="3レーン振り分け" ;;
+    decision_memo) OUTPUT_LABEL="判断メモ" ;;
+    article_outline) OUTPUT_LABEL="記事骨子" ;;
+    simplified_copy) OUTPUT_LABEL="平文化案" ;;
+    copy_variants) OUTPUT_LABEL="訴求バリエーション" ;;
+    star_outline) OUTPUT_LABEL="STAR骨子" ;;
+    question_set) OUTPUT_LABEL="確認問題セット" ;;
+    gap_map) OUTPUT_LABEL="前提不足マップ" ;;
+    daily_slots) OUTPUT_LABEL="段階調整プラン" ;;
+    prep_timeline) OUTPUT_LABEL="作り置き段取り" ;;
+    calm_steps) OUTPUT_LABEL="鎮静手順カード" ;;
+    defense_playbook) OUTPUT_LABEL="遮断プレイブック" ;;
+    cost_report) OUTPUT_LABEL="切替コスト見積" ;;
+    action_ledger) OUTPUT_LABEL="次週アクション台帳" ;;
+    challenge_cards) OUTPUT_LABEL="チャレンジお題" ;;
+    analogy_set) OUTPUT_LABEL="比喩セット" ;;
+    packing_list) OUTPUT_LABEL="持ち物リスト" ;;
+    *) OUTPUT_LABEL="結果" ;;
+  esac
+
+  INPUT_PLACEHOLDER_SINGLE=$(printf '%s' "$INPUT_PLACEHOLDER" | tr '\n' ' ' | sed 's/[[:space:]]\+/ /g')
+  INPUT_PLACEHOLDER_HTML=$(printf '%s' "$INPUT_PLACEHOLDER_SINGLE" | sed -e 's/&/\&amp;/g' -e 's/\"/\&quot;/g' -e "s/'/&#39;/g" -e 's/</\&lt;/g' -e 's/>/\&gt;/g')
+}
+
+write_index_file() {
+  cat > index.html <<HTML
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${DAY_LABEL} — ${TITLE}</title>
+  <meta name="description" content="${ONE_SENTENCE}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <div id="app">
+    <header class="app-header">
+      <div class="header-badge">${DAY_LABEL}</div>
+      <h1 class="header-title">${TITLE}</h1>
+      <p class="header-desc">${ONE_SENTENCE}</p>
+    </header>
+    <main class="app-main">
+      <section class="tool-area">
+        <div class="input-group">
+          <label for="toolInput" class="input-label">${INPUT_LABEL}</label>
+          <textarea id="toolInput" class="input-textarea" rows="6" placeholder="${INPUT_PLACEHOLDER_HTML}"></textarea>
+        </div>
+        <button id="actionBtn" class="btn-primary">${ACTION_LABEL}</button>
+        <div class="output-group" id="outputGroup" style="display:none">
+          <label class="input-label">${OUTPUT_LABEL}</label>
+          <div id="toolOutput" class="output-area"></div>
+        </div>
+      </section>
+    </main>
+    <footer class="app-footer">
+      <span>${DAY_LABEL} — ${PUBLISH_HOOK}</span>
+      <a href="${REPO_URL}" target="_blank" rel="noopener">GitHub</a>
+    </footer>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
+HTML
+}
+
+write_main_script() {
+  local profile_json
+  profile_json=$(jq -nc \
+    --arg day "$DAY_LABEL" \
+    --arg title "$TITLE" \
+    --arg one_sentence "$ONE_SENTENCE" \
+    --arg core_action "$CORE_ACTION" \
+    --arg family "$FAMILY" \
+    --arg mechanic "$MECHANIC" \
+    --arg input_style "$INPUT_STYLE" \
+    --arg output_style "$OUTPUT_STYLE" \
+    --arg audience_promise "$AUDIENCE_PROMISE" \
+    --arg publish_hook "$PUBLISH_HOOK" \
+    --arg engine "$ENGINE" \
+    '{day:$day,title:$title,one_sentence:$one_sentence,core_action:$core_action,family:$family,mechanic:$mechanic,input_style:$input_style,output_style:$output_style,audience_promise:$audience_promise,publish_hook:$publish_hook,engine:$engine}')
+
+  {
+    echo "import './style.css';"
+    printf 'const PROFILE = %s;\n' "$profile_json"
+    cat <<'JS'
+const actionBtn = document.getElementById('actionBtn');
+const toolInput = document.getElementById('toolInput');
+const toolOutput = document.getElementById('toolOutput');
+const outputGroup = document.getElementById('outputGroup');
+
+actionBtn.addEventListener('click', () => {
+  const input = (toolInput.value || '').trim();
+  if (!input) {
+    showOutput('⚠ 入力を入れてください', 'warning');
+    return;
+  }
+  const result = processInput(input);
+  showOutput(result, 'success');
+});
+
+function processInput(input) {
+  switch (PROFILE.engine) {
+    case 'json_paths':
+      return renderJsonPaths(input);
+    case 'agenda_builder':
+      return buildAgenda(input);
+    case 'risk_matrix':
+      return buildRiskMatrix(input);
+    case 'decision_brief':
+      return buildDecisionBrief(input);
+    case 'checklist_builder':
+      return buildChecklist(input);
+    case 'qa_rotator':
+      return buildQuestionRotation(input);
+    case 'habit_slots':
+      return buildHabitSlots(input);
+    case 'triage_router':
+      return buildTriage(input);
+    case 'copy_angle':
+      return buildCopyAngles(input);
+    case 'story_weaver':
+      return buildStoryOutline(input);
+    case 'constraint_game':
+      return buildConstraints(input);
+    case 'incident_card':
+      return buildIncidentCard(input);
+    default:
+      return fallbackAnalyze(input);
+  }
+}
+
+function renderJsonPaths(input) {
+  let obj;
+  try {
+    obj = JSON.parse(input);
+  } catch (e) {
+    return 'JSONとして解釈できませんでした。まずJSON形式で入力してください。';
+  }
+  const rows = [];
+  walk(obj, '$', rows);
+  return ['JSON path summary:', ...rows.slice(0, 80)].join('\\n');
+}
+
+function walk(node, path, rows) {
+  if (Array.isArray(node)) {
+    rows.push(`${path} : array(${node.length})`);
+    node.forEach((x, i) => walk(x, `${path}[${i}]`, rows));
+    return;
+  }
+  if (node && typeof node === 'object') {
+    rows.push(`${path} : object`);
+    Object.keys(node).forEach((k) => walk(node[k], `${path}.${k}`, rows));
+    return;
+  }
+  rows.push(`${path} : ${typeof node}`);
+}
+
+function splitLines(input) {
+  return input.split(/\\n+/).map((x) => x.trim()).filter(Boolean);
+}
+
+function buildAgenda(input) {
+  const topics = splitLines(input);
+  const per = Math.max(5, Math.floor(45 / Math.max(topics.length, 1)));
+  const lines = topics.map((t, i) => `${String(i + 1).padStart(2, '0')}. ${t} (${per}分)`);
+  return ['Agenda draft:', ...lines, 'Closing: 決定事項と担当を1分で確認'].join('\\n');
+}
+
+function buildRiskMatrix(input) {
+  const rows = splitLines(input).map((line) => {
+    const [name, impactRaw, probRaw] = line.split('|').map((x) => (x || '').trim());
+    const impact = Number(impactRaw || 3);
+    const prob = Number(probRaw || 3);
+    const score = impact * prob;
+    return { name: name || line, impact, prob, score };
+  }).sort((a, b) => b.score - a.score);
+  const out = rows.map((r, i) => `${i + 1}. ${r.name} | impact=${r.impact} prob=${r.prob} score=${r.score}`);
+  return ['Risk priority:', ...out.slice(0, 20)].join('\\n');
+}
+
+function buildDecisionBrief(input) {
+  const rows = splitLines(input);
+  const outline = rows.map((x, i) => `${i + 1}) ${x}`);
+  return [
+    'Decision memo draft',
+    '背景: 何を決めるかを1行で明記',
+    '選択肢:',
+    ...outline,
+    '採用理由: 影響と実行速度のバランス',
+    '却下理由: 維持コストまたはリスクが高い'
+  ].join('\\n');
+}
+
+function buildChecklist(input) {
+  const rows = splitLines(input);
+  const checks = rows.map((x, i) => `- [ ] ${x} を確認する (${i + 1})`);
+  return ['Checklist:', ...checks.slice(0, 30)].join('\\n');
+}
+
+function buildQuestionRotation(input) {
+  const rows = splitLines(input);
+  const out = [];
+  rows.forEach((x) => {
+    out.push(`基礎: ${x}とは?`);
+    out.push(`応用: ${x}を使う判断基準は?`);
+    out.push(`確認: ${x}を説明できるか?`);
+  });
+  return ['Question rotation:', ...out.slice(0, 24)].join('\\n');
+}
+
+function buildHabitSlots(input) {
+  const rows = splitLines(input);
+  if (rows.length === 0) {
+    return '条件を1行以上入力してください。';
+  }
+  return [
+    'Habit slots:',
+    '朝: 5分の準備タスク',
+    '昼: 進捗確認',
+    '夜: 翌日の障害を1つ潰す',
+    `メモ: ${rows[0]}`
+  ].join('\\n');
+}
+
+function buildTriage(input) {
+  const rows = splitLines(input);
+  const lanes = { now: [], later: [], delegate: [] };
+  rows.forEach((r, i) => {
+    if (i % 3 === 0) lanes.now.push(r);
+    else if (i % 3 === 1) lanes.later.push(r);
+    else lanes.delegate.push(r);
+  });
+  return [
+    'Triage lanes:',
+    '[Now]', ...lanes.now.map((x) => `- ${x}`),
+    '[Later]', ...lanes.later.map((x) => `- ${x}`),
+    '[Delegate]', ...lanes.delegate.map((x) => `- ${x}`)
+  ].join('\\n');
+}
+
+function buildCopyAngles(input) {
+  const seed = splitLines(input).slice(0, 3).join(' / ');
+  return [
+    'Copy angles:',
+    `1) 課題起点: ${seed} で困る時間を減らす`,
+    `2) 成果起点: ${seed} を最短で形にする`,
+    `3) 安心起点: ${seed} のミスを事前に防ぐ`
+  ].join('\\n');
+}
+
+function buildStoryOutline(input) {
+  const rows = splitLines(input);
+  return [
+    'STAR outline:',
+    `S: ${rows[0] || '背景を1行で記述'}`,
+    `T: ${rows[1] || '目標を1行で記述'}`,
+    `A: ${rows[2] || '取った行動を3点で記述'}`,
+    `R: ${rows[3] || '成果を数値で記述'}`
+  ].join('\\n');
+}
+
+function buildConstraints(input) {
+  const rows = splitLines(input);
+  const base = rows[0] || input;
+  return [
+    'Challenge cards:',
+    `- 5分: ${base} で1つ作る`,
+    `- 10分: ${base} を2通りで試す`,
+    `- 15分: ${base} を他人に説明する`
+  ].join('\\n');
+}
+
+function buildIncidentCard(input) {
+  const rows = splitLines(input);
+  return [
+    'Incident first-response card:',
+    `1. 事象要約: ${rows[0] || '症状を1行で記述'}`,
+    '2. 影響範囲を確認',
+    '3. 一時回避策を定義',
+    '4. 恒久対応の仮説を列挙',
+    '5. 共有先と次回更新時刻を明記'
+  ].join('\\n');
+}
+
+function fallbackAnalyze(input) {
+  const chars = input.length;
+  const lines = input.split('\\n').length;
+  const words = input.split(/\\s+/).filter(Boolean).length;
+  return `分析結果\\n- chars: ${chars}\\n- words: ${words}\\n- lines: ${lines}`;
+}
+
+function showOutput(content, type = 'info') {
+  outputGroup.style.display = '';
+  toolOutput.className = `output-area output-${type}`;
+  toolOutput.textContent = content;
+  outputGroup.style.animation = 'none';
+  outputGroup.offsetHeight;
+  outputGroup.style.animation = 'fadeSlideIn 0.3s ease';
+}
+JS
+  } > src/main.js
 }
 
 write_story_file() {
@@ -273,6 +850,11 @@ write_story_file() {
 - ${DAY_LABEL}専用にテーマをseed固定して再生成時の見た目を安定化
 - ${GENRE}用途に寄せた単機能UIで迷いを減らす
 - 出力をそのまま再利用できるテキスト構造
+- Family: ${FAMILY}
+- Mechanic: ${MECHANIC}
+- Input/Output: ${INPUT_STYLE} -> ${OUTPUT_STYLE}
+- Audience Promise: ${AUDIENCE_PROMISE}
+- Publish Hook: ${PUBLISH_HOOK}
 - Complexity Tier: ${COMPLEXITY_TIER}
 - Selected components: ${SELECTED_COMPONENTS_TEXT}
 - Complexity hint: ${COMPLEXITY_PROMPT_HINT}
@@ -301,16 +883,26 @@ echo "▶ ${DAY_LABEL}: ${REPO_NAME}"
 
 EXISTING_STATUS=$(jq -r ".days[\"${DAY_STR}\"].status // empty" "$STATE_FILE")
 if [ "$EXISTING_STATUS" = "done" ] || [ "$EXISTING_STATUS" = "posted" ]; then
-  echo "  ⏭ ${DAY_LABEL} は既に完了済みです。スキップします。"
-  exit 0
+  if [ "$FORCE_REGENERATE" = "1" ]; then
+    echo "  ♻ ${DAY_LABEL} は既存完了済みですが FORCE_REGENERATE=1 のため再生成します。"
+  else
+    echo "  ⏭ ${DAY_LABEL} は既に完了済みです。スキップします。"
+    exit 0
+  fi
 fi
 
 echo "  [1/6] 企画生成..."
-GENRE=$(select_genre)
-THEME=$(select_theme)
 COMPLEXITY_TIER=$(select_complexity_tier)
-generate_plan "$GENRE"
+if select_novel_plan; then
+  echo "  ℹ novelty plan selected: ${TITLE} (family=${FAMILY}, engine=${ENGINE})"
+else
+  GENRE=$(select_genre)
+  THEME=$(select_theme)
+  generate_plan "$GENRE"
+  echo "  ℹ novelty selector unavailable; fallback plan used"
+fi
 apply_shortlist_injection || true
+set_plan_metadata_defaults
 
 ADOPTED_NEXT_BATCH_COMPLEXITY="false"
 ADOPTED_NEXT_BATCH_COMPONENTS="false"
@@ -431,6 +1023,13 @@ jq -n \
   --arg core_action "$CORE_ACTION" \
   --arg twist "$TWIST" \
   --arg one_sentence "$ONE_SENTENCE" \
+  --arg family "$FAMILY" \
+  --arg mechanic "$MECHANIC" \
+  --arg input_style "$INPUT_STYLE" \
+  --arg output_style "$OUTPUT_STYLE" \
+  --arg audience_promise "$AUDIENCE_PROMISE" \
+  --arg publish_hook "$PUBLISH_HOOK" \
+  --arg engine "$ENGINE" \
   --arg original_twist "$ORIGINAL_TWIST" \
   --arg original_one_sentence "$ORIGINAL_ONE_SENTENCE" \
   --arg enhancement_source "$ENHANCEMENT_SOURCE" \
@@ -462,6 +1061,13 @@ jq -n \
     core_action: $core_action,
     twist: $twist,
     one_sentence: $one_sentence,
+    family: $family,
+    mechanic: $mechanic,
+    input_style: $input_style,
+    output_style: $output_style,
+    audience_promise: $audience_promise,
+    publish_hook: $publish_hook,
+    engine: $engine,
     original_twist: $original_twist,
     original_one_sentence: $original_one_sentence,
     enhancement_source: $enhancement_source,
@@ -482,8 +1088,9 @@ jq -n \
 
 bash "$CONTROL_DIR/scripts/validate_json.sh" "$CONTROL_DIR/schemas/meta_schema.json" "meta.json"
 
-sed -i -E "s#https://github.com/[^/]+/ai-dev-day-[0-9]{3}#${REPO_URL}#g" index.html
-
+resolve_ui_copy
+write_index_file
+write_main_script
 write_story_file "STORY.md"
 
 cat > README.md <<README
@@ -494,17 +1101,25 @@ cat > README.md <<README
 > Complexity Tier: ${COMPLEXITY_TIER}
 >
 > Selected Components: ${SELECTED_COMPONENTS_TEXT}
+>
+> Family / Mechanic: ${FAMILY} / ${MECHANIC}
+>
+> Input -> Output: ${INPUT_STYLE} -> ${OUTPUT_STYLE}
+>
+> Audience Promise: ${AUDIENCE_PROMISE}
 
 ## 使い方
 
 1. ページを開く
-2. 入力欄にテキストを入れる
-3. 実行して結果を確認する
+2. ${INPUT_LABEL}を入力する
+3. 「${ACTION_LABEL}」を実行する
+4. ${OUTPUT_LABEL}を確認して必要に応じて再入力する
 
 ## Story
 
 - [制作ストーリー](./STORY.md)
 - Complexity hint: ${COMPLEXITY_PROMPT_HINT}
+- Publish hook: ${PUBLISH_HOOK}
 
 ## Demo
 
@@ -527,8 +1142,8 @@ echo "  [4.5/6] Capture demo (optional)..."
 bash "$CONTROL_DIR/scripts/capture_assets.sh" "$WORK_DIR" || echo "⚠ capture skipped"
 
 echo "  [5/6] Push & Pages..."
-git add meta.json README.md STORY.md index.html public/media 2>/dev/null \
-  || git add meta.json README.md STORY.md index.html
+git add meta.json README.md STORY.md index.html src/main.js public/media 2>/dev/null \
+  || git add meta.json README.md STORY.md index.html src/main.js
 git commit -m "${DAY_LABEL}: scaffold ${TITLE}" >/dev/null || true
 git -c credential.helper=store push origin main >/dev/null
 
@@ -589,6 +1204,13 @@ jq --arg now "$NOW" \
    --arg core_action "$CORE_ACTION" \
    --arg twist "$TWIST" \
    --arg one_sentence "$ONE_SENTENCE" \
+   --arg family "$FAMILY" \
+   --arg mechanic "$MECHANIC" \
+   --arg input_style "$INPUT_STYLE" \
+   --arg output_style "$OUTPUT_STYLE" \
+   --arg audience_promise "$AUDIENCE_PROMISE" \
+   --arg publish_hook "$PUBLISH_HOOK" \
+   --arg engine "$ENGINE" \
    --arg original_twist "$ORIGINAL_TWIST" \
    --arg original_one_sentence "$ORIGINAL_ONE_SENTENCE" \
    --arg enhancement_source "$ENHANCEMENT_SOURCE" \
@@ -624,6 +1246,13 @@ jq --arg now "$NOW" \
        core_action: $core_action,
        twist: $twist,
        one_sentence: $one_sentence,
+       family: $family,
+       mechanic: $mechanic,
+       input_style: $input_style,
+       output_style: $output_style,
+       audience_promise: $audience_promise,
+       publish_hook: $publish_hook,
+       engine: $engine,
        original_twist: $original_twist,
        original_one_sentence: $original_one_sentence,
        enhancement_source: $enhancement_source,
@@ -648,6 +1277,13 @@ jq --arg now "$NOW" \
    | .next_day = (($day | tonumber) + 1)
    | .recent_meta = ((.recent_meta + [{
        day: $day,
+       title: $title,
+       genre: $genre,
+       family: $family,
+       mechanic: $mechanic,
+       input_style: $input_style,
+       output_style: $output_style,
+       audience_promise: $audience_promise,
        core_action: $core_action,
        twist: $twist,
        one_sentence: $one_sentence
@@ -668,7 +1304,7 @@ jq --arg now "$NOW" \
      }])
 ' "$STATE_FILE" > "${STATE_FILE}.tmp" && mv "${STATE_FILE}.tmp" "$STATE_FILE"
 
-git add "$STATE_FILE"
+git add "$STATE_FILE" "$NOVELTY_SELECTION_FILE" 2>/dev/null || git add "$STATE_FILE"
 git commit -m "state: ${DAY_LABEL} completed" >/dev/null || true
 
 echo "  ✅ ${DAY_LABEL} 全工程完了"
