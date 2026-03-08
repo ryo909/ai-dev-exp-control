@@ -1,6 +1,6 @@
 {
   "target_day": 100,
-  "next_day": 14,
+  "next_day": 15,
   "batch_size_default": 7,
   "posts": {
     "fixed_tags": [
@@ -14,12 +14,6 @@
     }
   },
   "recent_meta": [
-    {
-      "day": "001",
-      "core_action": "rewrite",
-      "twist": "文字数の目安を表示してSNS向けの短文化を支援",
-      "one_sentence": "文章を短く整えて、投稿しやすい形に圧縮するライティングツール。"
-    },
     {
       "day": "002",
       "core_action": "inspect",
@@ -204,6 +198,22 @@
       "complexity_tier": "medium",
       "selected_components": [],
       "complexity_prompt_hint": "Add 2 safe enhancement components from selected_components while keeping the app single-page and stable."
+    },
+    {
+      "day": "014",
+      "title": "Onboarding Checklist Smith",
+      "genre": "planning",
+      "family": "onboarding_flow",
+      "mechanic": "milestone_chunking",
+      "input_style": "role_and_tasks",
+      "output_style": "onboarding_plan",
+      "audience_promise": "faster_team_rampup",
+      "core_action": "compose",
+      "twist": "Day1/Day3/Day7の節目で確認質問を自動添付する / Signal:HN Frontpage「FLASH radiotherapy's bol」",
+      "one_sentence": "新メンバーの初週導線を迷わず回すためのオンボーディング設計ツール。（話題:HN Frontpage）",
+      "complexity_tier": "large",
+      "selected_components": [],
+      "complexity_prompt_hint": "Create a showpiece version by adding around 3 safe enhancement components from selected_components, but avoid risky architecture changes."
     }
   ],
   "days": {
@@ -706,20 +716,27 @@
       "repo_url": "https://github.com/ryo909/ai-dev-day-014",
       "pages_url": "https://ryo909.github.io/ai-dev-day-014/",
       "meta": {
-        "tool_name": "Focus Slot Composer",
-        "title": "Focus Slot Composer",
-        "description": "タスク時間を入力すると、集中ブロックと休憩を自動配置する。",
-        "genre": "productivity",
-        "theme": "Paper",
+        "tool_name": "Onboarding Checklist Smith",
+        "title": "Onboarding Checklist Smith",
+        "description": "職種と初週タスクからオンボーディング手順を組み立てる。",
+        "genre": "planning",
+        "theme": "Mono",
         "complexity_tier": "large",
         "selected_components": [],
         "complexity_prompt_hint": "Create a showpiece version by adding around 3 safe enhancement components from selected_components, but avoid risky architecture changes.",
-        "story_summary": "時間管理の迷いをなくすため、実行順を即決できる構成にした。｜Signal:HN Frontpage",
-        "core_action": "plan",
-        "twist": "開始時刻つきでそのまま実行できるタイムスロットを提示 / Signal:HN Frontpage「FLASH radiotherapy's bol」",
-        "one_sentence": "作業時間から集中と休憩の実行順を自動で作る生産性ツール。（話題:HN Frontpage）",
-        "original_twist": "開始時刻つきでそのまま実行できるタイムスロットを提示 / Signal:HN Frontpage「FLASH radiotherapy's bol」",
-        "original_one_sentence": "作業時間から集中と休憩の実行順を自動で作る生産性ツール。（話題:HN Frontpage）",
+        "story_summary": "属人化しがちな受け入れ手順を、節目チェック付きで標準化した。｜Signal:HN Frontpage",
+        "core_action": "compose",
+        "twist": "Day1/Day3/Day7の節目で確認質問を自動添付する / Signal:HN Frontpage「FLASH radiotherapy's bol」",
+        "one_sentence": "新メンバーの初週導線を迷わず回すためのオンボーディング設計ツール。（話題:HN Frontpage）",
+        "family": "onboarding_flow",
+        "mechanic": "milestone_chunking",
+        "input_style": "role_and_tasks",
+        "output_style": "onboarding_plan",
+        "audience_promise": "faster_team_rampup",
+        "publish_hook": "初週で迷わない受け入れ手順を即生成",
+        "engine": "checklist_builder",
+        "original_twist": "Day1/Day3/Day7の節目で確認質問を自動添付する / Signal:HN Frontpage「FLASH radiotherapy's bol」",
+        "original_one_sentence": "新メンバーの初週導線を迷わず回すためのオンボーディング設計ツール。（話題:HN Frontpage）",
         "enhancement_source": "",
         "enhancement_candidate_id": "",
         "enhancement_adopted": false,
@@ -731,22 +748,22 @@
         "next_batch_recommended_components": [],
         "next_batch_recommended_enhancement": false,
         "keywords": [
+          "checklist",
           "dev",
-          "focus",
-          "pomodoro",
+          "hr",
+          "onboarding",
           "product",
-          "productivity",
           "startup",
-          "timebox",
+          "team",
           "trend"
         ]
       },
       "post_texts": {
-        "standard": "Day014｜Focus Slot Composer\n作業時間から集中と休憩の実行順を自動で作る生産性ツール。（話題:HN Frontpage）\n用途: タスク時間を入力すると、集中ブロックと休憩を自動配置する。\n👉 https://ryo909.github.io/ai-dev-day-014/\n#個人開発 #100日開発\n（経緯/一覧：固定ポストの2ツリーへ）",
-        "compact": "Day014|Focus Slot Compo\n作業時間から集中\nhttps://ryo909.github.io/ai-dev-day-014/\n#個人開発 #100日開発",
-        "minimal": "Day014|Focus Slot Compo\nhttps://ryo909.github.io/ai-dev-day-014/\n#個人開発 #100日開発"
+        "standard": "Day014｜Onboarding Checklist Smith\n新メンバーの初週導線を迷わず回すためのオンボーディング設計ツール。（話題:HN Frontpage）\n用途: 職種と初週タスクからオンボーディング手順を組み立てる。\n👉 https://ryo909.github.io/ai-dev-day-014/\n#個人開発 #100日開発\n（経緯/一覧：固定ポストの2ツリーへ）",
+        "compact": "Day014|Onboarding Check\n新メンバーの初週\nhttps://ryo909.github.io/ai-dev-day-014/\n#個人開発 #100日開発",
+        "minimal": "Day014|Onboarding Check\nhttps://ryo909.github.io/ai-dev-day-014/\n#個人開発 #100日開発"
       },
-      "status": "posted"
+      "status": "done"
     },
     "015": {
       "repo_name": "ai-dev-day-015",
@@ -1156,13 +1173,28 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-03-08T06:08:14Z",
+      "day": "014",
+      "repo_name": "ai-dev-day-014",
+      "genre": "planning",
+      "theme": "Mono",
+      "steps": [
+        "planning",
+        "implementation",
+        "build",
+        "publish",
+        "state_update"
+      ],
+      "status": "done"
     }
   ],
   "recent_genres": [
-    "learning",
     "productivity",
-    "health"
+    "health",
+    "planning"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-03-08T06:07:13Z"
+  "last_run_at": "2026-03-08T06:08:14Z"
 }
