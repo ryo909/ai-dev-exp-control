@@ -1,0 +1,72 @@
+{
+  "generated_at": "2026-03-08T05:05:33.793341+00:00",
+  "summary": {
+    "overall_status": "warn",
+    "repo_cleanliness": "dirty",
+    "artifact_freshness": "ok",
+    "launch_chain_status": "ok",
+    "feedback_status": "ok",
+    "manual_attention_count": 2
+  },
+  "checks": {
+    "repo_status": {
+      "status": "warn",
+      "repo_cleanliness": "dirty",
+      "notes": [
+        "dirty_count=2",
+        "untracked_count=0",
+        "working tree has tracked modifications"
+      ],
+      "git_status": "## sys-self-improve-pack...origin/sys-self-improve-pack\n M reports/feedback/post_launch_feedback_2026-03-08.json\n M reports/feedback/post_launch_feedback_2026-03-08.md"
+    },
+    "required_paths": {
+      "status": "ok",
+      "missing": [],
+      "notes": [
+        "required path check complete"
+      ]
+    },
+    "artifact_freshness": {
+      "status": "ok",
+      "latest_found": {
+        "strategy": "reports/strategy/strategy_brief_2026-03-08.json",
+        "growth": "reports/growth/growth_brief_2026-03-08.json",
+        "portfolio": "reports/portfolio/portfolio_eval_2026-03-08.json",
+        "evidence": "reports/evidence/evidence_2026-03-08.json",
+        "reality": "reports/reality/reality_gate_2026-03-08.json",
+        "launch": "reports/launch/launch_pack_2026-03-08.json",
+        "export": "exports/launch/launch_export_2026-03-08.json",
+        "feedback": "reports/feedback/post_launch_feedback_2026-03-08.json",
+        "healthcheck": "reports/healthcheck/healthcheck_2026-03-08.json"
+      },
+      "notes": []
+    },
+    "launch_chain": {
+      "status": "ok",
+      "notes": []
+    },
+    "imports_backlog": {
+      "status": "ok",
+      "pending_files": [],
+      "notes": []
+    },
+    "feedback_continuity": {
+      "status": "ok",
+      "notes": []
+    },
+    "browser_dependency": {
+      "status": "warn",
+      "notes": [
+        "python playwright not installed; use manual import fallback"
+      ]
+    },
+    "pending_operational_risks": {
+      "status": "ok",
+      "notes": []
+    }
+  },
+  "manual_actions": [],
+  "recommended_next_steps": [
+    "Playwright 依存回収が難しい場合は manual import 運用を先に固定する"
+  ]
+}

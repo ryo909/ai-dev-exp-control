@@ -1,0 +1,181 @@
+{
+  "generated_at": "2026-03-08T04:53:31.638927+00:00",
+  "date": "2026-03-08",
+  "source_control_tower": "reports/control_tower/weekly_control_tower_2026-03-08.json",
+  "source_next_batch_plan": "plans/next_batch_plan.json",
+  "source_competitor_scan": "reports/competitors/competitor_scan_2026-03-07_shortlist.json",
+  "source_thesis": "shared-context/THESIS.md",
+  "source_sources": "shared-context/SOURCES.md",
+  "candidate_slots": [
+    {
+      "slot": 5,
+      "recommended_complexity_tier": "medium",
+      "recommended_components": [
+        "reason_panel",
+        "sample_inputs"
+      ],
+      "adopt_competitor_enhancement": true,
+      "scores": {
+        "novelty": 0.715,
+        "showcase_potential": 0.45,
+        "implementation_risk": 0.67,
+        "component_fit": 1.0,
+        "competitor_signal_strength": 0.888,
+        "quality_confidence": 0.55,
+        "total": 0.683
+      },
+      "reason": [
+        "tier=medium, components=reason_panel, sample_inputs",
+        "showcase_potential=0.45, implementation_risk=0.67",
+        "competitor_signal_strength=0.888, quality_confidence=0.55"
+      ]
+    },
+    {
+      "slot": 6,
+      "recommended_complexity_tier": "medium",
+      "recommended_components": [
+        "reason_panel",
+        "sample_inputs"
+      ],
+      "adopt_competitor_enhancement": true,
+      "scores": {
+        "novelty": 0.715,
+        "showcase_potential": 0.45,
+        "implementation_risk": 0.67,
+        "component_fit": 1.0,
+        "competitor_signal_strength": 0.888,
+        "quality_confidence": 0.55,
+        "total": 0.683
+      },
+      "reason": [
+        "tier=medium, components=reason_panel, sample_inputs",
+        "showcase_potential=0.45, implementation_risk=0.67",
+        "competitor_signal_strength=0.888, quality_confidence=0.55"
+      ]
+    },
+    {
+      "slot": 7,
+      "recommended_complexity_tier": "medium",
+      "recommended_components": [
+        "reason_panel",
+        "sample_inputs"
+      ],
+      "adopt_competitor_enhancement": true,
+      "scores": {
+        "novelty": 0.715,
+        "showcase_potential": 0.45,
+        "implementation_risk": 0.67,
+        "component_fit": 1.0,
+        "competitor_signal_strength": 0.888,
+        "quality_confidence": 0.55,
+        "total": 0.683
+      },
+      "reason": [
+        "tier=medium, components=reason_panel, sample_inputs",
+        "showcase_potential=0.45, implementation_risk=0.67",
+        "competitor_signal_strength=0.888, quality_confidence=0.55"
+      ]
+    },
+    {
+      "slot": 1,
+      "recommended_complexity_tier": "small",
+      "recommended_components": [
+        "reason_panel"
+      ],
+      "adopt_competitor_enhancement": false,
+      "scores": {
+        "novelty": 0.438,
+        "showcase_potential": 0.2,
+        "implementation_risk": 0.85,
+        "component_fit": 1.0,
+        "competitor_signal_strength": 0.888,
+        "quality_confidence": 0.55,
+        "total": 0.601
+      },
+      "reason": [
+        "tier=small, components=reason_panel",
+        "showcase_potential=0.2, implementation_risk=0.85",
+        "competitor_signal_strength=0.888, quality_confidence=0.55"
+      ]
+    },
+    {
+      "slot": 2,
+      "recommended_complexity_tier": "small",
+      "recommended_components": [
+        "reason_panel"
+      ],
+      "adopt_competitor_enhancement": false,
+      "scores": {
+        "novelty": 0.438,
+        "showcase_potential": 0.2,
+        "implementation_risk": 0.85,
+        "component_fit": 1.0,
+        "competitor_signal_strength": 0.888,
+        "quality_confidence": 0.55,
+        "total": 0.601
+      },
+      "reason": [
+        "tier=small, components=reason_panel",
+        "showcase_potential=0.2, implementation_risk=0.85",
+        "competitor_signal_strength=0.888, quality_confidence=0.55"
+      ]
+    },
+    {
+      "slot": 3,
+      "recommended_complexity_tier": "small",
+      "recommended_components": [
+        "reason_panel"
+      ],
+      "adopt_competitor_enhancement": false,
+      "scores": {
+        "novelty": 0.438,
+        "showcase_potential": 0.2,
+        "implementation_risk": 0.85,
+        "component_fit": 1.0,
+        "competitor_signal_strength": 0.888,
+        "quality_confidence": 0.55,
+        "total": 0.601
+      },
+      "reason": [
+        "tier=small, components=reason_panel",
+        "showcase_potential=0.2, implementation_risk=0.85",
+        "competitor_signal_strength=0.888, quality_confidence=0.55"
+      ]
+    },
+    {
+      "slot": 4,
+      "recommended_complexity_tier": "small",
+      "recommended_components": [
+        "reason_panel"
+      ],
+      "adopt_competitor_enhancement": false,
+      "scores": {
+        "novelty": 0.438,
+        "showcase_potential": 0.2,
+        "implementation_risk": 0.85,
+        "component_fit": 1.0,
+        "competitor_signal_strength": 0.888,
+        "quality_confidence": 0.55,
+        "total": 0.601
+      },
+      "reason": [
+        "tier=small, components=reason_panel",
+        "showcase_potential=0.2, implementation_risk=0.85",
+        "competitor_signal_strength=0.888, quality_confidence=0.55"
+      ]
+    }
+  ],
+  "selected_showcase_slot": 5,
+  "selected_showcase_plan": {
+    "slot": 5,
+    "target_tier": "medium",
+    "component_bias": [
+      "reason_panel",
+      "sample_inputs",
+      "comparison_view"
+    ],
+    "adopt_competitor_enhancement": true,
+    "showcase_goal": "見た目と差分訴求が強い1本にする",
+    "fallback_tier_if_needed": "small"
+  }
+}

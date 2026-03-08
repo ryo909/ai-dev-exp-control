@@ -1,1 +1,17 @@
 .env.local
+__pycache__/
+*.pyc
+tools/capture/node_modules/
+tools/capture/out/
+tools/capture/.runtime/
+logs/
+research/processed/
+idea_bank/inbox.jsonl
+data/feedback/raw/*
+!data/feedback/raw/.gitkeep
+data/feedback/normalized/*
+!data/feedback/normalized/.gitkeep
+exports/launch/*
+!exports/launch/.gitkeep
+imports/feedback/*
+!imports/feedback/.gitkeep

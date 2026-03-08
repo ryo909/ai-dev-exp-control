@@ -1,0 +1,15 @@
+{
+  "generated_at": "2026-03-08T05:22:09.522035+00:00",
+  "day": "011",
+  "summary": "logs/Day011.summary.md",
+  "original_complexity_tier": "small",
+  "suggested_complexity_tier": "small",
+  "removed_parts": [],
+  "kept_parts": [
+    "basic_result",
+    "copy_button",
+    "single_flow"
+  ],
+  "reason": "smoke/build failure; downgrade small -> small to reduce component surface",
+  "retry_recommended": false
+}

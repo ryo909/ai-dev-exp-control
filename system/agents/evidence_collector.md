@@ -1,0 +1,31 @@
+# Evidence Collector Agent Card
+
+- name: Evidence Collector
+- purpose: 視覚品質の証拠（above-the-fold/CTA視認性/崩れ）を収集する。
+- when_to_use: build後、release gate前。
+- primary_inputs:
+  - `STATE.json`, `catalog/catalog.json`
+  - pages_url / README / dist
+  - 既存 capture assets（存在時）
+- primary_outputs:
+  - `reports/evidence/evidence_*.json|md`
+- workflow:
+  - day別に visual signals を best-effort収集
+  - success/partial/failed を記録
+- critical_rules:
+  - Playwright/ネットワーク失敗で停止しない
+- success_metrics:
+  - targets_considered と by_day件数一致
+  - capture_status の可視化
+- handoff_targets: Reality Checker, Portfolio
+- anti_patterns:
+  - スクリーンショットなしで断定評価
+- codex_mapping:
+  - AGENTS.md: post-build role
+  - Skill: `evidence-collector`
+  - script/report: `build_evidence_report.py`
+  - multi-agent: post-build局所利用
+- implementation_status:
+  - 実装済み: report生成（heuristic中心）
+  - 未実装: Playwright自動キャプチャ統合
+  - 今回の自動化範囲: best-effort evidence layer

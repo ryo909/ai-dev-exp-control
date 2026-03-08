@@ -1,0 +1,5 @@
+interface:
+  display_name: "Reality Checker"
+  short_description: "release gate judgement"
+policy:
+  allow_implicit_invocation: false

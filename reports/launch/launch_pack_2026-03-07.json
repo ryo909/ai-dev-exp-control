@@ -1,0 +1,261 @@
+{
+  "generated_at": "2026-03-07T12:13:01.487216+00:00",
+  "launch_id": "launch-2026-03-07",
+  "summary": {
+    "launch_readiness": 0.55,
+    "primary_showcase_slot": null,
+    "secondary_candidates": [],
+    "recommended_distribution_mix": [
+      "hero push: X first + gallery follow-up"
+    ],
+    "inputs_used": {
+      "strategy": false,
+      "growth": false,
+      "portfolio": false,
+      "evidence": false,
+      "reality": false,
+      "showcase": false,
+      "control_tower": true
+    }
+  },
+  "launch_decisions": {
+    "hero_tool": {
+      "day": "Day001",
+      "tool_id": "day001",
+      "repo_name": "ai-dev-day-001",
+      "title": "Draft Tightener",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-001/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-001",
+      "decision": "launch_with_notes",
+      "decision_source": "launch_pack",
+      "why": [
+        "launch_readiness が相対的に高い",
+        "channel fit と one-line positioning が揃っている"
+      ],
+      "risks": [],
+      "required_fixes_before_push": [],
+      "preferred_channels": [
+        "quiet catalog only"
+      ]
+    },
+    "secondary_tools": [],
+    "hold_candidates": []
+  },
+  "hero_launch_pack": {
+    "one_line_positioning": "文章を短く整えて、投稿しやすい形に圧縮するライティングツール。",
+    "hero_message": "Draft Tightener を今週の前面に出し、first-view clarity と proof point を揃えて出す",
+    "audience_angles": [],
+    "x_hooks": [],
+    "cta_candidates": [],
+    "launch_copy_candidates": [],
+    "note_angles": [],
+    "note_outline": [
+      "課題背景と想定ユーザー",
+      "なぜこの体験設計にしたか",
+      "使い方とユースケース",
+      "改善予定とフィードバック募集"
+    ],
+    "x_thread_outline": [
+      "Hook",
+      "What it solves",
+      "Demo link",
+      "CTA"
+    ],
+    "gallery_caption_candidates": [
+      "文章を短く整えて、投稿しやすい形に圧縮するライティングツール。",
+      "Draft Tightener: 1分で使えて用途が伝わる小ツール"
+    ],
+    "asset_recommendations": [
+      "hero screenshot (first view)",
+      "mobile screenshot",
+      "CTAが見える crop"
+    ],
+    "visual_callouts": [],
+    "proof_points": [],
+    "risk_notes": []
+  },
+  "by_day": [
+    {
+      "day": "Day001",
+      "tool_id": "day001",
+      "repo_name": "ai-dev-day-001",
+      "launch_readiness": 0.55,
+      "decision": "quiet_catalog",
+      "decision_source": "launch_pack",
+      "one_line_positioning": "文章を短く整えて、投稿しやすい形に圧縮するライティングツール。",
+      "recommended_channels": [
+        "quiet catalog only"
+      ],
+      "hook_candidates": [],
+      "cta_candidates": [],
+      "proof_points": [],
+      "issues": [],
+      "recommended_actions": [],
+      "title": "Draft Tightener",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-001/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-001"
+    },
+    {
+      "day": "Day002",
+      "tool_id": "day002",
+      "repo_name": "ai-dev-day-002",
+      "launch_readiness": 0.55,
+      "decision": "quiet_catalog",
+      "decision_source": "launch_pack",
+      "one_line_positioning": "JSONの構造を素早く把握するための開発者向けビューア。",
+      "recommended_channels": [
+        "quiet catalog only"
+      ],
+      "hook_candidates": [],
+      "cta_candidates": [],
+      "proof_points": [],
+      "issues": [],
+      "recommended_actions": [],
+      "title": "JSON Key Lens",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-002/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-002"
+    },
+    {
+      "day": "Day003",
+      "tool_id": "day003",
+      "repo_name": "ai-dev-day-003",
+      "launch_readiness": 0.55,
+      "decision": "quiet_catalog",
+      "decision_source": "launch_pack",
+      "one_line_positioning": "締切から逆算した実行計画を即作成するプランニングツール。",
+      "recommended_channels": [
+        "quiet catalog only"
+      ],
+      "hook_candidates": [],
+      "cta_candidates": [],
+      "proof_points": [],
+      "issues": [],
+      "recommended_actions": [],
+      "title": "Backward Milestone Mapper",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-003/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-003"
+    },
+    {
+      "day": "Day004",
+      "tool_id": "day004",
+      "repo_name": "ai-dev-day-004",
+      "launch_readiness": 0.55,
+      "decision": "quiet_catalog",
+      "decision_source": "launch_pack",
+      "one_line_positioning": "学習内容の復習タイミングを自動で組み立てる学習支援ツール。",
+      "recommended_channels": [
+        "quiet catalog only"
+      ],
+      "hook_candidates": [],
+      "cta_candidates": [],
+      "proof_points": [],
+      "issues": [],
+      "recommended_actions": [],
+      "title": "Recall Loop Builder",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-004/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-004"
+    },
+    {
+      "day": "Day005",
+      "tool_id": "day005",
+      "repo_name": "ai-dev-day-005",
+      "launch_readiness": 0.55,
+      "decision": "quiet_catalog",
+      "decision_source": "launch_pack",
+      "one_line_positioning": "目標水分量を無理なく達成するための配分プランナー。",
+      "recommended_channels": [
+        "quiet catalog only"
+      ],
+      "hook_candidates": [],
+      "cta_candidates": [],
+      "proof_points": [],
+      "issues": [],
+      "recommended_actions": [],
+      "title": "Hydration Pace Planner",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-005/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-005"
+    },
+    {
+      "day": "Day006",
+      "tool_id": "day006",
+      "repo_name": "ai-dev-day-006",
+      "launch_readiness": 0.55,
+      "decision": "quiet_catalog",
+      "decision_source": "launch_pack",
+      "one_line_positioning": "気分転換用の短いお題をすぐ作るライトな遊びツール。",
+      "recommended_channels": [
+        "quiet catalog only"
+      ],
+      "hook_candidates": [],
+      "cta_candidates": [],
+      "proof_points": [],
+      "issues": [],
+      "recommended_actions": [],
+      "title": "Tiny Prompt Play",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-006/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-006"
+    },
+    {
+      "day": "Day007",
+      "tool_id": "day007",
+      "repo_name": "ai-dev-day-007",
+      "launch_readiness": 0.55,
+      "decision": "quiet_catalog",
+      "decision_source": "launch_pack",
+      "one_line_positioning": "作業時間から集中と休憩の実行順を自動で作る生産性ツール。",
+      "recommended_channels": [
+        "quiet catalog only"
+      ],
+      "hook_candidates": [],
+      "cta_candidates": [],
+      "proof_points": [],
+      "issues": [],
+      "recommended_actions": [],
+      "title": "Focus Slot Composer",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-007/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-007"
+    },
+    {
+      "day": "Day008",
+      "tool_id": "day008",
+      "repo_name": "ai-dev-day-008",
+      "launch_readiness": 0.55,
+      "decision": "quiet_catalog",
+      "decision_source": "launch_pack",
+      "one_line_positioning": "文章を短く整えて、投稿しやすい形に圧縮するライティングツール。",
+      "recommended_channels": [
+        "quiet catalog only"
+      ],
+      "hook_candidates": [],
+      "cta_candidates": [],
+      "proof_points": [],
+      "issues": [],
+      "recommended_actions": [],
+      "title": "Draft Tightener",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-008/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-008"
+    }
+  ],
+  "portfolio_level_actions": [
+    "hero と secondary は README first-view と CTA を先に揃える",
+    "hold/quiet候補は catalog導線の維持を優先"
+  ],
+  "recommended_launch_actions": [
+    "hero tool の one-line / hook / CTA を1セットで固定",
+    "secondary は channel-fit に応じて短文で出し分ける",
+    "hold候補は visual clarity と demo導線を修正後に再評価"
+  ],
+  "sources": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "reports/control_tower/weekly_control_tower_2026-03-07.json",
+    "plans/next_batch_plan.json",
+    "STATE.json",
+    "catalog/catalog.json",
+    "CATALOG.md"
+  ]
+}

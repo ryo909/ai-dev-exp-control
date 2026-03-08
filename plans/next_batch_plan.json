@@ -1,0 +1,136 @@
+{
+  "generated_at": "2026-03-08T05:34:21.177436+00:00",
+  "source_control_tower": "reports/control_tower/weekly_control_tower_2026-03-08.json",
+  "recommended_tier_mix": {
+    "small": 4,
+    "medium": 3,
+    "large": 0
+  },
+  "days": [
+    {
+      "slot": 1,
+      "recommended_complexity_tier": "small",
+      "recommended_component_count": 1,
+      "recommended_components": [
+        "reason_panel"
+      ],
+      "adopt_competitor_enhancement": false,
+      "notes": [
+        "bias away from duplicate core_action",
+        "use selected_components first"
+      ],
+      "is_showcase_candidate": true,
+      "is_selected_showcase": false,
+      "showcase_score": 0.601
+    },
+    {
+      "slot": 2,
+      "recommended_complexity_tier": "small",
+      "recommended_component_count": 1,
+      "recommended_components": [
+        "reason_panel"
+      ],
+      "adopt_competitor_enhancement": false,
+      "notes": [
+        "bias away from duplicate core_action",
+        "use selected_components first"
+      ],
+      "is_showcase_candidate": true,
+      "is_selected_showcase": false,
+      "showcase_score": 0.601
+    },
+    {
+      "slot": 3,
+      "recommended_complexity_tier": "small",
+      "recommended_component_count": 1,
+      "recommended_components": [
+        "reason_panel"
+      ],
+      "adopt_competitor_enhancement": false,
+      "notes": [
+        "bias away from duplicate core_action",
+        "use selected_components first"
+      ],
+      "is_showcase_candidate": true,
+      "is_selected_showcase": false,
+      "showcase_score": 0.601
+    },
+    {
+      "slot": 4,
+      "recommended_complexity_tier": "small",
+      "recommended_component_count": 1,
+      "recommended_components": [
+        "reason_panel"
+      ],
+      "adopt_competitor_enhancement": false,
+      "notes": [
+        "bias away from duplicate core_action",
+        "use selected_components first"
+      ],
+      "is_showcase_candidate": true,
+      "is_selected_showcase": false,
+      "showcase_score": 0.601
+    },
+    {
+      "slot": 5,
+      "recommended_complexity_tier": "medium",
+      "recommended_component_count": 2,
+      "recommended_components": [
+        "reason_panel",
+        "sample_inputs"
+      ],
+      "adopt_competitor_enhancement": true,
+      "notes": [
+        "bias away from duplicate core_action",
+        "use selected_components first"
+      ],
+      "is_showcase_candidate": true,
+      "is_selected_showcase": true,
+      "showcase_score": 0.683
+    },
+    {
+      "slot": 6,
+      "recommended_complexity_tier": "medium",
+      "recommended_component_count": 2,
+      "recommended_components": [
+        "reason_panel",
+        "sample_inputs"
+      ],
+      "adopt_competitor_enhancement": true,
+      "notes": [
+        "bias away from duplicate core_action",
+        "use selected_components first"
+      ],
+      "is_showcase_candidate": true,
+      "is_selected_showcase": false,
+      "showcase_score": 0.683
+    },
+    {
+      "slot": 7,
+      "recommended_complexity_tier": "medium",
+      "recommended_component_count": 2,
+      "recommended_components": [
+        "reason_panel",
+        "sample_inputs"
+      ],
+      "adopt_competitor_enhancement": true,
+      "notes": [
+        "bias away from duplicate core_action",
+        "use selected_components first"
+      ],
+      "is_showcase_candidate": true,
+      "is_selected_showcase": false,
+      "showcase_score": 0.683
+    }
+  ],
+  "showcase_slot": 5,
+  "showcase_goal": "見た目と差分訴求が強い1本にする",
+  "showcase_component_bias": [
+    "reason_panel",
+    "sample_inputs",
+    "comparison_view"
+  ],
+  "showcase_adopt_competitor_enhancement": true,
+  "showcase_fallback_tier": "small",
+  "source_showcase_plan": "reports/showcase/showcase_plan_2026-03-08.json"
+}

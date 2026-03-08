@@ -1,0 +1,105 @@
+{
+  "generated_at": "2026-03-08T11:18:56.399060+00:00",
+  "adoption_profile": "safe",
+  "dry_run": false,
+  "stages_run": [
+    "preflight",
+    "intel",
+    "thesis",
+    "preview",
+    "adopt",
+    "run",
+    "publish",
+    "report",
+    "learn_preview",
+    "learn_adopt"
+  ],
+  "artifacts": {
+    "signals": "shared-context/SIGNALS.md",
+    "shortlist": "idea_bank/shortlist.json",
+    "control_tower": "reports/control_tower/weekly_control_tower_2026-03-08.json",
+    "next_batch_plan": "plans/next_batch_plan.json",
+    "thesis_update_draft": "reports/weekly/thesis_update_draft_2026-03-08.md",
+    "thesis_preview": "reports/weekly/thesis_preview_2026-03-08.md",
+    "weekly_run_preview": "reports/weekly/weekly_run_preview_2026-03-08.md",
+    "thesis_adoption_report": "reports/weekly/thesis_adoption_report_2026-03-07.json",
+    "weekly_run_adoption_report": "",
+    "learning_preview": "reports/weekly/learning/learning_update_preview_2026-03-08.json",
+    "learning_adoption_report": "reports/weekly/learning/learning_adoption_report_2026-03-08.json",
+    "weekly_digest": "reports/weekly_digest.md",
+    "portfolio_eval": "reports/portfolio/portfolio_eval_2026-03-08.json",
+    "growth_brief": "reports/growth/growth_brief_2026-03-08.json",
+    "strategy_brief": "reports/strategy/strategy_brief_2026-03-08.json",
+    "evidence_report": "reports/evidence/evidence_2026-03-08.json",
+    "reality_gate": "reports/reality/reality_gate_2026-03-08.json",
+    "launch_pack": "reports/launch/launch_pack_2026-03-08.json",
+    "launch_export": "exports/launch/launch_export_2026-03-08.json",
+    "feedback_raw": "data/feedback/raw/buffer_metrics_2026-03-08.json",
+    "feedback_digest": "reports/feedback/post_launch_feedback_2026-03-08.json",
+    "healthcheck": "reports/healthcheck/healthcheck_2026-03-08.json",
+    "publish_preview": "reports/publish/publish_preview_2026-03-08T11-17-03-7210.json",
+    "publish_send_report": "",
+    "publish_weekly_summary": "reports/publish/publish_weekly_summary_2026-03-08.json",
+    "id_linked_chain_present": true,
+    "quality_reports": [
+      "reports/quality/day009_quality.json",
+      "reports/quality/day010_quality.json",
+      "reports/quality/day011_quality.json",
+      "reports/quality/day012_quality.json",
+      "reports/quality/day013_quality.json",
+      "reports/quality/day014_quality.json",
+      "reports/quality/day015_quality.json"
+    ],
+    "fallback_plans": [
+      "plans/candidates/day009_fallback_plan.json",
+      "plans/candidates/day010_fallback_plan.json",
+      "plans/candidates/day011_fallback_plan.json",
+      "plans/candidates/day012_fallback_plan.json",
+      "plans/candidates/day013_fallback_plan.json",
+      "plans/candidates/day014_fallback_plan.json",
+      "plans/candidates/day015_fallback_plan.json"
+    ],
+    "enhanced_candidates": [
+      "plans/candidates/day009_enhanced_candidates.json",
+      "plans/candidates/day010_enhanced_candidates.json",
+      "plans/candidates/day011_enhanced_candidates.json",
+      "plans/candidates/day012_enhanced_candidates.json",
+      "plans/candidates/day013_enhanced_candidates.json",
+      "plans/candidates/day014_enhanced_candidates.json",
+      "plans/candidates/day015_enhanced_candidates.json"
+    ]
+  },
+  "adoption_flags": {},
+  "summary": {
+    "resume_executed": true,
+    "publish_mode": "preview",
+    "allow_external_send": false,
+    "publish": {
+      "target_days": [
+        "009",
+        "010",
+        "011",
+        "012",
+        "013",
+        "014",
+        "015"
+      ],
+      "target_platforms": [
+        "x",
+        "youtube"
+      ],
+      "x_ready_count": 7,
+      "youtube_ready_count": 7,
+      "youtube_pending_asset_count": 0,
+      "gallery_apply_count": 7,
+      "x_sent_target_count": 0,
+      "youtube_sent_target_count": 0,
+      "duplicate_target_count": 7,
+      "blocked_target_count": 0,
+      "skipped_target_count": 7,
+      "batch_ids": [],
+      "external_send_executed": false
+    },
+    "notes": []
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "generated_at": "2026-03-07T06:46:53.720234+00:00",
+  "adoption_profile": "balanced",
+  "dry_run": false,
+  "stages_run": [
+    "report"
+  ],
+  "artifacts": {
+    "signals": "shared-context/SIGNALS.md",
+    "shortlist": "idea_bank/shortlist.json",
+    "control_tower": "reports/control_tower/weekly_control_tower_2026-03-07.json",
+    "next_batch_plan": "plans/next_batch_plan.json",
+    "thesis_update_draft": "reports/weekly/thesis_update_draft_2026-03-07.md",
+    "thesis_preview": "reports/weekly/thesis_preview_2026-03-07.md",
+    "weekly_run_preview": "reports/weekly/weekly_run_preview_2026-03-07.md",
+    "thesis_adoption_report": "reports/weekly/thesis_adoption_report_2026-03-07.json",
+    "weekly_run_adoption_report": "",
+    "learning_preview": "reports/weekly/learning/learning_update_preview_2026-03-07.json",
+    "learning_adoption_report": "reports/weekly/learning/learning_adoption_report_2026-03-07.json",
+    "weekly_digest": "reports/weekly_digest.md",
+    "quality_reports": [],
+    "fallback_plans": [],
+    "enhanced_candidates": []
+  },
+  "adoption_flags": {
+    "USE_NEXT_BATCH_PLAN": "1",
+    "ADOPT_NEXT_BATCH_COMPLEXITY": "1",
+    "ADOPT_NEXT_BATCH_COMPONENTS": "1",
+    "ADOPT_NEXT_BATCH_ENHANCEMENT": "0",
+    "ADOPT_THESIS_DRAFT": "1",
+    "ADOPT_WEEKLY_RUN": "0",
+    "ADOPT_MEMORY_UPDATES": "1",
+    "ADOPT_FEEDBACK_UPDATES": "1",
+    "ADOPT_SOURCE_NOTES": "0",
+    "ADOPT_LEARNED_RULES": "0"
+  },
+  "summary": {
+    "resume_executed": false,
+    "notes": []
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "generated_at": "2026-03-08T04:54:09.893864+00:00",
+  "summary": {
+    "targets_considered": 8,
+    "captures_succeeded": 8,
+    "overall_visual_confidence": 0.829
+  },
+  "by_day": [
+    {
+      "day": "Day001",
+      "repo_name": "ai-dev-day-001",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-001/",
+      "capture_status": "success",
+      "visual_strengths": [
+        "above-the-fold にタイトル/要旨がある",
+        "CTA がテキスト上で確認できる",
+        "viewport 設定があり狭幅対応が期待できる"
+      ],
+      "visual_issues": [],
+      "cta_visibility": 0.9,
+      "above_the_fold_clarity": 0.9,
+      "showcase_visual_potential": 0.65,
+      "recommended_actions": [],
+      "evidence_notes": [
+        "media artifact not found"
+      ]
+    },
+    {
+      "day": "Day002",
+      "repo_name": "ai-dev-day-002",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-002/",
+      "capture_status": "success",
+      "visual_strengths": [
+        "above-the-fold にタイトル/要旨がある",
+        "CTA がテキスト上で確認できる",
+        "viewport 設定があり狭幅対応が期待できる"
+      ],
+      "visual_issues": [],
+      "cta_visibility": 0.9,
+      "above_the_fold_clarity": 0.9,
+      "showcase_visual_potential": 0.65,
+      "recommended_actions": [],
+      "evidence_notes": [
+        "media artifact not found"
+      ]
+    },
+    {
+      "day": "Day003",
+      "repo_name": "ai-dev-day-003",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-003/",
+      "capture_status": "success",
+      "visual_strengths": [
+        "above-the-fold にタイトル/要旨がある",
+        "CTA がテキスト上で確認できる",
+        "viewport 設定があり狭幅対応が期待できる"
+      ],
+      "visual_issues": [],
+      "cta_visibility": 0.9,
+      "above_the_fold_clarity": 0.9,
+      "showcase_visual_potential": 0.65,
+      "recommended_actions": [],
+      "evidence_notes": [
+        "media artifact not found"
+      ]
+    },
+    {
+      "day": "Day004",
+      "repo_name": "ai-dev-day-004",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-004/",
+      "capture_status": "success",
+      "visual_strengths": [
+        "above-the-fold にタイトル/要旨がある",
+        "CTA がテキスト上で確認できる",
+        "viewport 設定があり狭幅対応が期待できる"
+      ],
+      "visual_issues": [],
+      "cta_visibility": 0.9,
+      "above_the_fold_clarity": 0.9,
+      "showcase_visual_potential": 0.65,
+      "recommended_actions": [],
+      "evidence_notes": [
+        "media artifact not found"
+      ]
+    },
+    {
+      "day": "Day005",
+      "repo_name": "ai-dev-day-005",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-005/",
+      "capture_status": "success",
+      "visual_strengths": [
+        "above-the-fold にタイトル/要旨がある",
+        "CTA がテキスト上で確認できる",
+        "viewport 設定があり狭幅対応が期待できる"
+      ],
+      "visual_issues": [],
+      "cta_visibility": 0.9,
+      "above_the_fold_clarity": 0.9,
+      "showcase_visual_potential": 0.65,
+      "recommended_actions": [],
+      "evidence_notes": [
+        "media artifact not found"
+      ]
+    },
+    {
+      "day": "Day006",
+      "repo_name": "ai-dev-day-006",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-006/",
+      "capture_status": "success",
+      "visual_strengths": [
+        "above-the-fold にタイトル/要旨がある",
+        "CTA がテキスト上で確認できる",
+        "viewport 設定があり狭幅対応が期待できる"
+      ],
+      "visual_issues": [],
+      "cta_visibility": 0.9,
+      "above_the_fold_clarity": 0.9,
+      "showcase_visual_potential": 0.65,
+      "recommended_actions": [],
+      "evidence_notes": [
+        "media artifact not found"
+      ]
+    },
+    {
+      "day": "Day007",
+      "repo_name": "ai-dev-day-007",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-007/",
+      "capture_status": "success",
+      "visual_strengths": [
+        "above-the-fold にタイトル/要旨がある",
+        "CTA がテキスト上で確認できる",
+        "viewport 設定があり狭幅対応が期待できる"
+      ],
+      "visual_issues": [],
+      "cta_visibility": 0.9,
+      "above_the_fold_clarity": 0.9,
+      "showcase_visual_potential": 0.65,
+      "recommended_actions": [],
+      "evidence_notes": [
+        "media artifact not found"
+      ]
+    },
+    {
+      "day": "Day008",
+      "repo_name": "ai-dev-day-008",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-008/",
+      "capture_status": "success",
+      "visual_strengths": [
+        "above-the-fold にタイトル/要旨がある",
+        "CTA がテキスト上で確認できる",
+        "viewport 設定があり狭幅対応が期待できる",
+        "視覚素材（media/capture）が存在する"
+      ],
+      "visual_issues": [],
+      "cta_visibility": 0.9,
+      "above_the_fold_clarity": 0.9,
+      "showcase_visual_potential": 0.95,
+      "recommended_actions": [],
+      "evidence_notes": [
+        "media_count=2"
+      ]
+    }
+  ],
+  "portfolio_relevant_findings": [],
+  "recommended_evidence_actions": [
+    "improve above-the-fold utility sentence",
+    "place primary CTA in first viewport",
+    "prepare one showcase-friendly visual moment"
+  ]
+}

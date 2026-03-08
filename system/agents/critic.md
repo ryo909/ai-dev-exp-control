@@ -1,0 +1,30 @@
+# Critic Agent Card
+
+- name: Critic
+- purpose: 実装品質・リスク・fallback必要性を判定する。
+- when_to_use: build後、release判断前。
+- primary_inputs:
+  - build artifacts
+  - `reports/quality/day*_quality.json`
+- primary_outputs:
+  - quality判定
+  - missing/unexpected component 指摘
+- workflow:
+  - manifest -> marker -> heuristic の順で評価
+- critical_rules:
+  - confidence を必ず出す
+- success_metrics:
+  - quality report 生成率
+  - confidence high/medium 比率
+- handoff_targets: Reality Checker, Architect
+- anti_patterns:
+  - heuristicのみで断定する
+- codex_mapping:
+  - AGENTS.md: post-build role
+  - Skill: なし
+  - script/report: `evaluate_build_quality.py`
+  - multi-agent: reviewer系のみ
+- implementation_status:
+  - 実装済み: evaluator v2
+  - 未実装: visual QA統合
+  - 今回の自動化範囲: Evidence/Realityへ連携

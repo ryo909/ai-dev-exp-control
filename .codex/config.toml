@@ -1,0 +1,57 @@
+[mcp_servers.openaiDeveloperDocs]
+url = "https://developers.openai.com/mcp"
+
+[mcp_servers.context7]
+command = "npx"
+args = ["-y", "@upstash/context7-mcp@latest"]
+startup_timeout_sec = 20
+tool_timeout_sec = 90
+
+[mcp_servers.playwright]
+command = "npx"
+args = ["-y", "@playwright/mcp@latest"]
+startup_timeout_sec = 30
+tool_timeout_sec = 180
+
+[mcp_servers.sequentialthinking]
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+startup_timeout_sec = 10
+tool_timeout_sec = 60
+
+[mcp_servers.memory]
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-memory"]
+startup_timeout_sec = 10
+tool_timeout_sec = 60
+
+[mcp_servers.memory.env]
+MEMORY_FILE_PATH = "mcp_state/memory.json"
+
+[features]
+multi_agent = true
+
+[agents]
+max_threads = 6
+max_depth = 1
+job_max_runtime_seconds = 1800
+
+[agents.explorer]
+description = "Read-onlyでコードベース/STATE/ログを探索し、要点と根拠（ファイルパス）を返す。変更や実行はしない。"
+config_file = "agents/explorer.toml"
+
+[agents.reviewer]
+description = "Read-onlyで品質監査（coverage・重複・meta品質・壊れやすい箇所）をレビューし、改善案とリスクを返す。変更しない。"
+config_file = "agents/reviewer.toml"
+
+[agents.docs_researcher]
+description = "Read-onlyで一次情報の確認役。OpenAI仕様/CLI/MCP/skills/multi-agentはopenaiDeveloperDocsで裏取りし、結論に根拠を付ける。"
+config_file = "agents/docs_researcher.toml"
+
+[agents.worker]
+description = "実装担当。最小差分で変更し、差分提示まで行う。"
+config_file = "agents/worker.toml"
+
+[agents.monitor]
+description = "待機・監視担当。長い処理や進捗待ちを行い、状態変化だけ報告する。"
+config_file = "agents/monitor.toml"

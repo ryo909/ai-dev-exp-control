@@ -1,0 +1,5 @@
+interface:
+  display_name: "Launch Copy"
+  short_description: "copy seed for launch channels"
+policy:
+  allow_implicit_invocation: false

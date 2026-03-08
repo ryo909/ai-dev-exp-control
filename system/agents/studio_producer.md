@@ -1,0 +1,31 @@
+# Studio Producer Agent Card
+
+- name: Studio Producer
+- purpose: 各役の成果物を束ね、週次運用の整合を保つ。
+- when_to_use: weekly orchestration 実行時。
+- primary_inputs:
+  - orchestrator stage outputs
+  - control tower digest
+- primary_outputs:
+  - weekly run report
+  - 次週の判断材料一式
+- workflow:
+  - preflight -> intel -> thesis -> run -> report -> learn
+- critical_rules:
+  - best-effort実行を優先
+  - 新規レイヤー追加時は既存出力を壊さない
+- success_metrics:
+  - stage完走率
+  - report artifact 生成率
+- handoff_targets: 全ロール
+- anti_patterns:
+  - stage増設で複雑化しすぎる
+- codex_mapping:
+  - AGENTS.md: orchestration方針
+  - Skill: なし
+  - script/report: `weekly_orchestrator.sh`, `build_weekly_run_report.py`
+  - multi-agent: 限定利用
+- implementation_status:
+  - 実装済み: orchestrator
+  - 未実装: role別SLA可視化
+  - 今回の自動化範囲: 既存維持 + evidence/reality接続

@@ -1,0 +1,234 @@
+{
+  "generated_at": "2026-03-08T04:54:10.000898+00:00",
+  "summary": {
+    "targets_considered": 8,
+    "pass_count": 0,
+    "pass_with_notes_count": 8,
+    "hold_count": 0
+  },
+  "by_day": [
+    {
+      "day": "Day001",
+      "repo_name": "ai-dev-day-001",
+      "decision": "PASS_WITH_NOTES",
+      "showstoppers": [],
+      "non_blockers": [
+        "pages_url probe failed: network_error=URLError",
+        "quality report is missing",
+        "repo_url probe failed: network_error=URLError"
+      ],
+      "strengths": [
+        "CTA がテキスト上で確認できる",
+        "README has overview/title",
+        "README includes demo/live guidance",
+        "above-the-fold にタイトル/要旨がある",
+        "catalog and STATE are consistent"
+      ],
+      "recommended_actions": [
+        "non-blocker を次バッチ改善に反映"
+      ],
+      "decision_rationale": [
+        "quality_score=0.0 confidence=low",
+        "showstoppers=0 non_blockers=3",
+        "reality gate は意思決定支援であり自動ブロックはしない"
+      ]
+    },
+    {
+      "day": "Day002",
+      "repo_name": "ai-dev-day-002",
+      "decision": "PASS_WITH_NOTES",
+      "showstoppers": [],
+      "non_blockers": [
+        "pages_url probe failed: network_error=URLError",
+        "quality report is missing",
+        "repo_url probe failed: network_error=URLError"
+      ],
+      "strengths": [
+        "CTA がテキスト上で確認できる",
+        "README has overview/title",
+        "README includes demo/live guidance",
+        "above-the-fold にタイトル/要旨がある",
+        "catalog and STATE are consistent"
+      ],
+      "recommended_actions": [
+        "non-blocker を次バッチ改善に反映"
+      ],
+      "decision_rationale": [
+        "quality_score=0.0 confidence=low",
+        "showstoppers=0 non_blockers=3",
+        "reality gate は意思決定支援であり自動ブロックはしない"
+      ]
+    },
+    {
+      "day": "Day003",
+      "repo_name": "ai-dev-day-003",
+      "decision": "PASS_WITH_NOTES",
+      "showstoppers": [],
+      "non_blockers": [
+        "pages_url probe failed: network_error=URLError",
+        "quality report is missing",
+        "repo_url probe failed: network_error=URLError"
+      ],
+      "strengths": [
+        "CTA がテキスト上で確認できる",
+        "README has overview/title",
+        "README includes demo/live guidance",
+        "above-the-fold にタイトル/要旨がある",
+        "catalog and STATE are consistent"
+      ],
+      "recommended_actions": [
+        "non-blocker を次バッチ改善に反映"
+      ],
+      "decision_rationale": [
+        "quality_score=0.0 confidence=low",
+        "showstoppers=0 non_blockers=3",
+        "reality gate は意思決定支援であり自動ブロックはしない"
+      ]
+    },
+    {
+      "day": "Day004",
+      "repo_name": "ai-dev-day-004",
+      "decision": "PASS_WITH_NOTES",
+      "showstoppers": [],
+      "non_blockers": [
+        "pages_url probe failed: network_error=URLError",
+        "quality report is missing",
+        "repo_url probe failed: network_error=URLError"
+      ],
+      "strengths": [
+        "CTA がテキスト上で確認できる",
+        "README has overview/title",
+        "README includes demo/live guidance",
+        "above-the-fold にタイトル/要旨がある",
+        "catalog and STATE are consistent"
+      ],
+      "recommended_actions": [
+        "non-blocker を次バッチ改善に反映"
+      ],
+      "decision_rationale": [
+        "quality_score=0.0 confidence=low",
+        "showstoppers=0 non_blockers=3",
+        "reality gate は意思決定支援であり自動ブロックはしない"
+      ]
+    },
+    {
+      "day": "Day005",
+      "repo_name": "ai-dev-day-005",
+      "decision": "PASS_WITH_NOTES",
+      "showstoppers": [],
+      "non_blockers": [
+        "pages_url probe failed: network_error=URLError",
+        "quality report is missing",
+        "repo_url probe failed: network_error=URLError"
+      ],
+      "strengths": [
+        "CTA がテキスト上で確認できる",
+        "README has overview/title",
+        "README includes demo/live guidance",
+        "above-the-fold にタイトル/要旨がある",
+        "catalog and STATE are consistent"
+      ],
+      "recommended_actions": [
+        "non-blocker を次バッチ改善に反映"
+      ],
+      "decision_rationale": [
+        "quality_score=0.0 confidence=low",
+        "showstoppers=0 non_blockers=3",
+        "reality gate は意思決定支援であり自動ブロックはしない"
+      ]
+    },
+    {
+      "day": "Day006",
+      "repo_name": "ai-dev-day-006",
+      "decision": "PASS_WITH_NOTES",
+      "showstoppers": [],
+      "non_blockers": [
+        "pages_url probe failed: network_error=URLError",
+        "quality report is missing",
+        "repo_url probe failed: network_error=URLError"
+      ],
+      "strengths": [
+        "CTA がテキスト上で確認できる",
+        "README has overview/title",
+        "README includes demo/live guidance",
+        "above-the-fold にタイトル/要旨がある",
+        "catalog and STATE are consistent"
+      ],
+      "recommended_actions": [
+        "non-blocker を次バッチ改善に反映"
+      ],
+      "decision_rationale": [
+        "quality_score=0.0 confidence=low",
+        "showstoppers=0 non_blockers=3",
+        "reality gate は意思決定支援であり自動ブロックはしない"
+      ]
+    },
+    {
+      "day": "Day007",
+      "repo_name": "ai-dev-day-007",
+      "decision": "PASS_WITH_NOTES",
+      "showstoppers": [],
+      "non_blockers": [
+        "pages_url probe failed: network_error=URLError",
+        "quality report is missing",
+        "repo_url probe failed: network_error=URLError"
+      ],
+      "strengths": [
+        "CTA がテキスト上で確認できる",
+        "README has overview/title",
+        "README includes demo/live guidance",
+        "above-the-fold にタイトル/要旨がある",
+        "catalog and STATE are consistent"
+      ],
+      "recommended_actions": [
+        "non-blocker を次バッチ改善に反映"
+      ],
+      "decision_rationale": [
+        "quality_score=0.0 confidence=low",
+        "showstoppers=0 non_blockers=3",
+        "reality gate は意思決定支援であり自動ブロックはしない"
+      ]
+    },
+    {
+      "day": "Day008",
+      "repo_name": "ai-dev-day-008",
+      "decision": "PASS_WITH_NOTES",
+      "showstoppers": [],
+      "non_blockers": [
+        "CATALOG.md may not include this day",
+        "catalog entry is missing for this day",
+        "pages_url probe failed: network_error=URLError",
+        "quality report is missing",
+        "repo_url probe failed: network_error=URLError"
+      ],
+      "strengths": [
+        "CTA がテキスト上で確認できる",
+        "README has overview/title",
+        "README includes demo/live guidance",
+        "above-the-fold にタイトル/要旨がある",
+        "one_sentence is present"
+      ],
+      "recommended_actions": [
+        "non-blocker を次バッチ改善に反映"
+      ],
+      "decision_rationale": [
+        "quality_score=0.0 confidence=low",
+        "showstoppers=0 non_blockers=5",
+        "reality gate は意思決定支援であり自動ブロックはしない"
+      ]
+    }
+  ],
+  "release_hotspots": [],
+  "recommended_gate_actions": [
+    "improve above-the-fold clarity before release",
+    "fix severe CTA visibility issues",
+    "avoid shipping unclear demos",
+    "use PASS_WITH_NOTES items as next-batch improvements"
+  ],
+  "quality_signal_sources": [
+    "reports/portfolio/portfolio_eval_2026-03-08.json",
+    "reports/evidence/evidence_2026-03-08.json",
+    "quality_reports:0",
+    "STATE.json"
+  ]
+}

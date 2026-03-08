@@ -1,0 +1,469 @@
+{
+  "generated_at": "2026-03-08T04:54:09.399613+00:00",
+  "summary": {
+    "showcase_slot": 5,
+    "overall_growth_readiness": 0.911,
+    "primary_distribution_focus": [
+      "note + X"
+    ],
+    "portfolio_dependency_used": true,
+    "days_considered": 8
+  },
+  "role_context": {
+    "strategic_direction": [
+      "bias away from duplicated twist patterns",
+      "prioritize domains with successful extraction",
+      "prefer enhancement/upgrade candidates before aggressive complexity",
+      "improve README above-the-fold clarity",
+      "冒頭1文で結論、2文目で根拠を示す『主張+証拠』導入を固定化する",
+      "CTAを『すぐ試す』と『背景を読む』の2導線に分けて離脱を減らす"
+    ],
+    "showcase_rationale": "見た目と差分訴求が強い1本にする",
+    "portfolio_hotspots": [
+      "missing or weak live demo links"
+    ]
+  },
+  "by_day": [
+    {
+      "day": "Day001",
+      "slot": null,
+      "repo_name": "ai-dev-day-001",
+      "title": "Draft Tightener",
+      "one_sentence": "文章を短く整えて、投稿しやすい形に圧縮するライティングツール。",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-001/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-001",
+      "growth_readiness": 0.911,
+      "positioning": {
+        "target_audience": [
+          "content creators",
+          "busy users"
+        ],
+        "core_angle": "文章を短く整えて、投稿しやすい形に圧縮するライティングツール。",
+        "novelty_angle": "文字数の目安を表示してSNS向けの短文化を支援",
+        "practical_angle": "下書きを貼ると、冗長表現を減らした短文案を作る。",
+        "emotion_angle": "迷いを減らして、すぐ試せる安心感"
+      },
+      "x_hooks": [
+        "Draft Tightener を作って、文字数の目安を表示してSNS向けの短文化を支援を狙いました。",
+        "1分で使える Draft Tightener。文章を短く整えて、投稿しやすい形に圧縮するライティングツール。",
+        "「文字数の目安を表示してSNS向けの短文化を支援」を最短で試せる小ツールです。",
+        "競合観察で見えた『冒頭で主張や問題設定を先に提示する構成が多い』を、より軽く試せる形にしました。",
+        "今日の実験: Draft Tightener。触って違和感/改善点をください。"
+      ],
+      "note_angles": [
+        "Draft Tightener を1日で組むために削った仕様と残した仕様",
+        "rewrite を短時間で価値化する設計メモ",
+        "小さなWebツールを公開し続けるための実装テンプレ運用",
+        "世界観を壊さずに最小差分で改善する進め方"
+      ],
+      "cta_candidates": [
+        "まず触ってみて、使いづらい点を教えてください。",
+        "GitHubも公開しているので実装差分も見られます。",
+        "他の実験ツールも一覧から辿れます。",
+        "改善アイデアがあれば気軽にください。"
+      ],
+      "launch_copy_candidates": [
+        "Draft Tightener を公開しました。文章を短く整えて、投稿しやすい形に圧縮するライティングツール。 https://ryo909.github.io/ai-dev-day-001/",
+        "今日の1本: Draft Tightener。文章を短く整えて、投稿しやすい形に圧縮するライティングツール。"
+      ],
+      "recommended_channel_priority": [
+        "note + X",
+        "showcase/gallery push"
+      ],
+      "issues": [],
+      "recommended_actions": []
+    },
+    {
+      "day": "Day002",
+      "slot": null,
+      "repo_name": "ai-dev-day-002",
+      "title": "JSON Key Lens",
+      "one_sentence": "JSONの構造を素早く把握するための開発者向けビューア。",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-002/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-002",
+      "growth_readiness": 0.911,
+      "positioning": {
+        "target_audience": [
+          "developers",
+          "indie hackers"
+        ],
+        "core_angle": "JSONの構造を素早く把握するための開発者向けビューア。",
+        "novelty_angle": "深いネストでもパス一覧を一気に展開できる",
+        "practical_angle": "JSON文字列からキー構造を抽出して読みやすく表示する。",
+        "emotion_angle": "迷いを減らして、すぐ試せる安心感"
+      },
+      "x_hooks": [
+        "JSON Key Lens を作って、深いネストでもパス一覧を一気に展開できるを狙いました。",
+        "1分で使える JSON Key Lens。JSONの構造を素早く把握するための開発者向けビューア。",
+        "「深いネストでもパス一覧を一気に展開できる」を最短で試せる小ツールです。",
+        "競合観察で見えた『冒頭で主張や問題設定を先に提示する構成が多い』を、より軽く試せる形にしました。",
+        "今日の実験: JSON Key Lens。触って違和感/改善点をください。"
+      ],
+      "note_angles": [
+        "JSON Key Lens を1日で組むために削った仕様と残した仕様",
+        "inspect を短時間で価値化する設計メモ",
+        "小さなWebツールを公開し続けるための実装テンプレ運用",
+        "世界観を壊さずに最小差分で改善する進め方"
+      ],
+      "cta_candidates": [
+        "まず触ってみて、使いづらい点を教えてください。",
+        "GitHubも公開しているので実装差分も見られます。",
+        "他の実験ツールも一覧から辿れます。",
+        "改善アイデアがあれば気軽にください。"
+      ],
+      "launch_copy_candidates": [
+        "JSON Key Lens を公開しました。JSONの構造を素早く把握するための開発者向けビューア。 https://ryo909.github.io/ai-dev-day-002/",
+        "今日の1本: JSON Key Lens。JSONの構造を素早く把握するための開発者向けビューア。"
+      ],
+      "recommended_channel_priority": [
+        "note + X",
+        "showcase/gallery push"
+      ],
+      "issues": [],
+      "recommended_actions": []
+    },
+    {
+      "day": "Day003",
+      "slot": null,
+      "repo_name": "ai-dev-day-003",
+      "title": "Backward Milestone Mapper",
+      "one_sentence": "締切から逆算した実行計画を即作成するプランニングツール。",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-003/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-003",
+      "growth_readiness": 0.911,
+      "positioning": {
+        "target_audience": [
+          "knowledge workers",
+          "students"
+        ],
+        "core_angle": "締切から逆算した実行計画を即作成するプランニングツール。",
+        "novelty_angle": "逆算の根拠を1行で示して計画の納得感を上げる",
+        "practical_angle": "締切から逆算して、中間マイルストーンを自動分割する。",
+        "emotion_angle": "迷いを減らして、すぐ試せる安心感"
+      },
+      "x_hooks": [
+        "Backward Milestone Mapper を作って、逆算の根拠を1行で示して計画の納得感を上げるを狙いました。",
+        "1分で使える Backward Milestone Mapper。締切から逆算した実行計画を即作成するプランニングツール。",
+        "「逆算の根拠を1行で示して計画の納得感を上げる」を最短で試せる小ツールです。",
+        "競合観察で見えた『冒頭で主張や問題設定を先に提示する構成が多い』を、より軽く試せる形にしました。",
+        "今日の実験: Backward Milestone Mapper。触って違和感/改善点をください。"
+      ],
+      "note_angles": [
+        "Backward Milestone Mapper を1日で組むために削った仕様と残した仕様",
+        "schedule を短時間で価値化する設計メモ",
+        "小さなWebツールを公開し続けるための実装テンプレ運用",
+        "世界観を壊さずに最小差分で改善する進め方"
+      ],
+      "cta_candidates": [
+        "まず触ってみて、使いづらい点を教えてください。",
+        "GitHubも公開しているので実装差分も見られます。",
+        "他の実験ツールも一覧から辿れます。",
+        "改善アイデアがあれば気軽にください。"
+      ],
+      "launch_copy_candidates": [
+        "Backward Milestone Mapper を公開しました。締切から逆算した実行計画を即作成するプランニングツール。 https://ryo909.github.io/ai-dev-day-003/",
+        "今日の1本: Backward Milestone Mapper。締切から逆算した実行計画を即作成するプランニングツール。"
+      ],
+      "recommended_channel_priority": [
+        "note + X",
+        "showcase/gallery push"
+      ],
+      "issues": [],
+      "recommended_actions": []
+    },
+    {
+      "day": "Day004",
+      "slot": null,
+      "repo_name": "ai-dev-day-004",
+      "title": "Recall Loop Builder",
+      "one_sentence": "学習内容の復習タイミングを自動で組み立てる学習支援ツール。",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-004/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-004",
+      "growth_readiness": 0.911,
+      "positioning": {
+        "target_audience": [
+          "learners",
+          "students"
+        ],
+        "core_angle": "学習内容の復習タイミングを自動で組み立てる学習支援ツール。",
+        "novelty_angle": "初回学習日から次回復習日を同時表示する",
+        "practical_angle": "学習トピックから復習間隔つきのチェックリストを生成する。",
+        "emotion_angle": "迷いを減らして、すぐ試せる安心感"
+      },
+      "x_hooks": [
+        "Recall Loop Builder を作って、初回学習日から次回復習日を同時表示するを狙いました。",
+        "1分で使える Recall Loop Builder。学習内容の復習タイミングを自動で組み立てる学習支援ツール。",
+        "「初回学習日から次回復習日を同時表示する」を最短で試せる小ツールです。",
+        "競合観察で見えた『冒頭で主張や問題設定を先に提示する構成が多い』を、より軽く試せる形にしました。",
+        "今日の実験: Recall Loop Builder。触って違和感/改善点をください。"
+      ],
+      "note_angles": [
+        "Recall Loop Builder を1日で組むために削った仕様と残した仕様",
+        "generate を短時間で価値化する設計メモ",
+        "小さなWebツールを公開し続けるための実装テンプレ運用",
+        "世界観を壊さずに最小差分で改善する進め方"
+      ],
+      "cta_candidates": [
+        "まず触ってみて、使いづらい点を教えてください。",
+        "GitHubも公開しているので実装差分も見られます。",
+        "他の実験ツールも一覧から辿れます。",
+        "改善アイデアがあれば気軽にください。"
+      ],
+      "launch_copy_candidates": [
+        "Recall Loop Builder を公開しました。学習内容の復習タイミングを自動で組み立てる学習支援ツール。 https://ryo909.github.io/ai-dev-day-004/",
+        "今日の1本: Recall Loop Builder。学習内容の復習タイミングを自動で組み立てる学習支援ツール。"
+      ],
+      "recommended_channel_priority": [
+        "note + X",
+        "showcase/gallery push"
+      ],
+      "issues": [],
+      "recommended_actions": []
+    },
+    {
+      "day": "Day005",
+      "slot": null,
+      "repo_name": "ai-dev-day-005",
+      "title": "Hydration Pace Planner",
+      "one_sentence": "目標水分量を無理なく達成するための配分プランナー。",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-005/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-005",
+      "growth_readiness": 0.911,
+      "positioning": {
+        "target_audience": [
+          "habit builders",
+          "wellness-minded users"
+        ],
+        "core_angle": "目標水分量を無理なく達成するための配分プランナー。",
+        "novelty_angle": "勤務時間に合わせて飲水タイミングを均等化する",
+        "practical_angle": "1日の目標水分量を時間帯ごとに分割して表示する。",
+        "emotion_angle": "迷いを減らして、すぐ試せる安心感"
+      },
+      "x_hooks": [
+        "Hydration Pace Planner を作って、勤務時間に合わせて飲水タイミングを均等化するを狙いました。",
+        "1分で使える Hydration Pace Planner。目標水分量を無理なく達成するための配分プランナー。",
+        "「勤務時間に合わせて飲水タイミングを均等化する」を最短で試せる小ツールです。",
+        "競合観察で見えた『冒頭で主張や問題設定を先に提示する構成が多い』を、より軽く試せる形にしました。",
+        "今日の実験: Hydration Pace Planner。触って違和感/改善点をください。"
+      ],
+      "note_angles": [
+        "Hydration Pace Planner を1日で組むために削った仕様と残した仕様",
+        "track を短時間で価値化する設計メモ",
+        "小さなWebツールを公開し続けるための実装テンプレ運用",
+        "世界観を壊さずに最小差分で改善する進め方"
+      ],
+      "cta_candidates": [
+        "まず触ってみて、使いづらい点を教えてください。",
+        "GitHubも公開しているので実装差分も見られます。",
+        "他の実験ツールも一覧から辿れます。",
+        "改善アイデアがあれば気軽にください。"
+      ],
+      "launch_copy_candidates": [
+        "Hydration Pace Planner を公開しました。目標水分量を無理なく達成するための配分プランナー。 https://ryo909.github.io/ai-dev-day-005/",
+        "今日の1本: Hydration Pace Planner。目標水分量を無理なく達成するための配分プランナー。"
+      ],
+      "recommended_channel_priority": [
+        "note + X",
+        "showcase/gallery push"
+      ],
+      "issues": [],
+      "recommended_actions": []
+    },
+    {
+      "day": "Day006",
+      "slot": null,
+      "repo_name": "ai-dev-day-006",
+      "title": "Tiny Prompt Play",
+      "one_sentence": "気分転換用の短いお題をすぐ作るライトな遊びツール。",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-006/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-006",
+      "growth_readiness": 0.911,
+      "positioning": {
+        "target_audience": [
+          "casual users",
+          "creators"
+        ],
+        "core_angle": "気分転換用の短いお題をすぐ作るライトな遊びツール。",
+        "novelty_angle": "30秒で遊べるミニお題を即時に複数提案",
+        "practical_angle": "気分を選ぶと短いお題を3つ返す遊びツール。",
+        "emotion_angle": "迷いを減らして、すぐ試せる安心感"
+      },
+      "x_hooks": [
+        "Tiny Prompt Play を作って、30秒で遊べるミニお題を即時に複数提案を狙いました。",
+        "1分で使える Tiny Prompt Play。気分転換用の短いお題をすぐ作るライトな遊びツール。",
+        "「30秒で遊べるミニお題を即時に複数提案」を最短で試せる小ツールです。",
+        "競合観察で見えた『冒頭で主張や問題設定を先に提示する構成が多い』を、より軽く試せる形にしました。",
+        "今日の実験: Tiny Prompt Play。触って違和感/改善点をください。"
+      ],
+      "note_angles": [
+        "Tiny Prompt Play を1日で組むために削った仕様と残した仕様",
+        "generate を短時間で価値化する設計メモ",
+        "小さなWebツールを公開し続けるための実装テンプレ運用",
+        "世界観を壊さずに最小差分で改善する進め方"
+      ],
+      "cta_candidates": [
+        "まず触ってみて、使いづらい点を教えてください。",
+        "GitHubも公開しているので実装差分も見られます。",
+        "他の実験ツールも一覧から辿れます。",
+        "改善アイデアがあれば気軽にください。"
+      ],
+      "launch_copy_candidates": [
+        "Tiny Prompt Play を公開しました。気分転換用の短いお題をすぐ作るライトな遊びツール。 https://ryo909.github.io/ai-dev-day-006/",
+        "今日の1本: Tiny Prompt Play。気分転換用の短いお題をすぐ作るライトな遊びツール。"
+      ],
+      "recommended_channel_priority": [
+        "note + X",
+        "showcase/gallery push"
+      ],
+      "issues": [],
+      "recommended_actions": []
+    },
+    {
+      "day": "Day007",
+      "slot": null,
+      "repo_name": "ai-dev-day-007",
+      "title": "Focus Slot Composer",
+      "one_sentence": "作業時間から集中と休憩の実行順を自動で作る生産性ツール。",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-007/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-007",
+      "growth_readiness": 0.911,
+      "positioning": {
+        "target_audience": [
+          "knowledge workers",
+          "students"
+        ],
+        "core_angle": "作業時間から集中と休憩の実行順を自動で作る生産性ツール。",
+        "novelty_angle": "開始時刻つきでそのまま実行できるタイムスロットを提示",
+        "practical_angle": "タスク時間を入力すると、集中ブロックと休憩を自動配置する。",
+        "emotion_angle": "迷いを減らして、すぐ試せる安心感"
+      },
+      "x_hooks": [
+        "Focus Slot Composer を作って、開始時刻つきでそのまま実行できるタイムスロットを提示を狙いました。",
+        "1分で使える Focus Slot Composer。作業時間から集中と休憩の実行順を自動で作る生産性ツール。",
+        "「開始時刻つきでそのまま実行できるタイムスロットを提示」を最短で試せる小ツールです。",
+        "競合観察で見えた『冒頭で主張や問題設定を先に提示する構成が多い』を、より軽く試せる形にしました。",
+        "今日の実験: Focus Slot Composer。触って違和感/改善点をください。"
+      ],
+      "note_angles": [
+        "Focus Slot Composer を1日で組むために削った仕様と残した仕様",
+        "plan を短時間で価値化する設計メモ",
+        "小さなWebツールを公開し続けるための実装テンプレ運用",
+        "世界観を壊さずに最小差分で改善する進め方"
+      ],
+      "cta_candidates": [
+        "まず触ってみて、使いづらい点を教えてください。",
+        "GitHubも公開しているので実装差分も見られます。",
+        "他の実験ツールも一覧から辿れます。",
+        "改善アイデアがあれば気軽にください。"
+      ],
+      "launch_copy_candidates": [
+        "Focus Slot Composer を公開しました。作業時間から集中と休憩の実行順を自動で作る生産性ツール。 https://ryo909.github.io/ai-dev-day-007/",
+        "今日の1本: Focus Slot Composer。作業時間から集中と休憩の実行順を自動で作る生産性ツール。"
+      ],
+      "recommended_channel_priority": [
+        "note + X",
+        "showcase/gallery push"
+      ],
+      "issues": [],
+      "recommended_actions": []
+    },
+    {
+      "day": "Day008",
+      "slot": null,
+      "repo_name": "ai-dev-day-008",
+      "title": "Draft Tightener",
+      "one_sentence": "文章を短く整えて、投稿しやすい形に圧縮するライティングツール。",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-008/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-008",
+      "growth_readiness": 0.911,
+      "positioning": {
+        "target_audience": [
+          "content creators",
+          "busy users"
+        ],
+        "core_angle": "文章を短く整えて、投稿しやすい形に圧縮するライティングツール。",
+        "novelty_angle": "文字数の目安を表示してSNS向けの短文化を支援",
+        "practical_angle": "下書きを貼ると、冗長表現を減らした短文案を作る。",
+        "emotion_angle": "迷いを減らして、すぐ試せる安心感"
+      },
+      "x_hooks": [
+        "Draft Tightener を作って、文字数の目安を表示してSNS向けの短文化を支援を狙いました。",
+        "1分で使える Draft Tightener。文章を短く整えて、投稿しやすい形に圧縮するライティングツール。",
+        "「文字数の目安を表示してSNS向けの短文化を支援」を最短で試せる小ツールです。",
+        "競合観察で見えた『冒頭で主張や問題設定を先に提示する構成が多い』を、より軽く試せる形にしました。",
+        "今日の実験: Draft Tightener。触って違和感/改善点をください。"
+      ],
+      "note_angles": [
+        "Draft Tightener を1日で組むために削った仕様と残した仕様",
+        "rewrite を短時間で価値化する設計メモ",
+        "小さなWebツールを公開し続けるための実装テンプレ運用",
+        "世界観を壊さずに最小差分で改善する進め方"
+      ],
+      "cta_candidates": [
+        "まず触ってみて、使いづらい点を教えてください。",
+        "GitHubも公開しているので実装差分も見られます。",
+        "他の実験ツールも一覧から辿れます。",
+        "改善アイデアがあれば気軽にください。"
+      ],
+      "launch_copy_candidates": [
+        "Draft Tightener を公開しました。文章を短く整えて、投稿しやすい形に圧縮するライティングツール。 https://ryo909.github.io/ai-dev-day-008/",
+        "今日の1本: Draft Tightener。文章を短く整えて、投稿しやすい形に圧縮するライティングツール。"
+      ],
+      "recommended_channel_priority": [
+        "note + X",
+        "showcase/gallery push"
+      ],
+      "issues": [],
+      "recommended_actions": []
+    }
+  ],
+  "showcase_launch_brief": {
+    "selected_slot": 5,
+    "hero_message": "Draft Tightener を今週の見せ玉として、価値が一目で伝わる導線で押し出す",
+    "why_this_is_the_showpiece": [
+      "growth_readiness=0.911 と比較して相対的に高い",
+      "one-line と demo 導線が揃っておりSNSで説明しやすい",
+      "showcase slot として差分訴求を作りやすい"
+    ],
+    "launch_hooks": [
+      "Draft Tightener を作って、文字数の目安を表示してSNS向けの短文化を支援を狙いました。",
+      "1分で使える Draft Tightener。文章を短く整えて、投稿しやすい形に圧縮するライティングツール。",
+      "「文字数の目安を表示してSNS向けの短文化を支援」を最短で試せる小ツールです。"
+    ],
+    "cta_candidates": [
+      "まず触ってみて、使いづらい点を教えてください。",
+      "GitHubも公開しているので実装差分も見られます。",
+      "他の実験ツールも一覧から辿れます。"
+    ],
+    "note_article_outline": [
+      "課題の背景: なぜこのツールが必要か",
+      "実装の核: 何を削って何を残したか",
+      "使い方と3つの利用シーン",
+      "今後の改善とフィードバック募集"
+    ],
+    "x_thread_outline": [
+      "Hook: 何が1秒で分かるか",
+      "Tool value: 何がどう楽になるか",
+      "Demo: Pages URL",
+      "CTA: 触って感想募集"
+    ]
+  },
+  "recommended_growth_actions": [
+    "strengthen one-line positioning for first-view clarity",
+    "align README first screen with Demo/Live CTA",
+    "improve showcase launch narrative with concrete user value",
+    "prepare 1 short X hook + 1 note angle per day before launch",
+    "portfolio hotspot と一致する導線課題を優先修正"
+  ],
+  "growth_hotspots": [],
+  "quality_signal_sources": [
+    "plans/next_batch_plan.json",
+    "reports/showcase/showcase_plan_2026-03-08.json",
+    "reports/control_tower/weekly_control_tower_2026-03-08.json",
+    "reports/competitors/competitor_scan_2026-03-07_shortlist.json",
+    "reports/portfolio/portfolio_eval_2026-03-08.json",
+    "STATE.json",
+    "catalog/catalog.json",
+    "CATALOG.md"
+  ]
+}

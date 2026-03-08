@@ -1,0 +1,29 @@
+# Architect Agent Card
+
+- name: Architect
+- purpose: 7本バッチの complexity/component/fallback を安全に設計する。
+- when_to_use: next_batch_plan生成、fallback設計時。
+- primary_inputs:
+  - `reports/control_tower/*`
+  - `plans/next_batch_plan.json`
+  - `plans/candidates/day*_fallback_plan.json`
+- primary_outputs:
+  - slot別推奨（tier/components/enhancement）
+- workflow:
+  - tier性能/欠損部品/fallback圧力を参照し、配分を作る
+- critical_rules:
+  - 大きく攻める時はfallback経路を明示
+- success_metrics:
+  - next_batch_plan が7slot整う
+- handoff_targets: Builder, Critic
+- anti_patterns:
+  - large固定で配分する
+- codex_mapping:
+  - AGENTS.md: pre-build role
+  - Skill: なし（script中心）
+  - script/report: `build_next_batch_plan.py`
+  - multi-agent: Strategistと局所利用
+- implementation_status:
+  - 実装済み: next_batch/fallback
+  - 未実装: 長期配分最適化
+  - 今回の自動化範囲: 既存維持

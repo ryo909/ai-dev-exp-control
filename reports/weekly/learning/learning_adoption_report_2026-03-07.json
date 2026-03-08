@@ -1,0 +1,20 @@
+{
+  "generated_at": "2026-03-07T06:46:50.252154+00:00",
+  "source_preview": "reports/weekly/learning/learning_update_preview_2026-03-07.json",
+  "adopted": {
+    "memory": true,
+    "feedback": true,
+    "sources": false,
+    "rules": false
+  },
+  "backups": {
+    "memory": "backups/learning/MEMORY_2026-03-07_154650.bak.md",
+    "feedback": "backups/learning/FEEDBACK-LOG_2026-03-07_154650.bak.md",
+    "sources": null,
+    "rules": null
+  },
+  "notes": [
+    "sources adoption skipped by env",
+    "rules adoption skipped by env"
+  ]
+}

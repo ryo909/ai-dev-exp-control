@@ -1,0 +1,55 @@
+{
+  "generated_at": "2026-03-08T06:30:00Z",
+  "goal": "maximize interaction/page/output/state diversity for Day009-015",
+  "days": {
+    "009": {
+      "candidate_id": "card_signal_mixer",
+      "interaction_archetype": "card_deck_recombination",
+      "page_archetype": "deck_stage",
+      "output_shape": "stacked_cards",
+      "state_model": "deck_history_with_lock"
+    },
+    "010": {
+      "candidate_id": "tradeoff_path_wizard",
+      "interaction_archetype": "decision_tree_wizard",
+      "page_archetype": "stepper_wizard",
+      "output_shape": "decision_path",
+      "state_model": "step_index_and_answers"
+    },
+    "011": {
+      "candidate_id": "risk_quadrant_mapper",
+      "interaction_archetype": "matrix_mapper",
+      "page_archetype": "matrix_canvas",
+      "output_shape": "quadrant_board",
+      "state_model": "cells_with_draggable_items"
+    },
+    "012": {
+      "candidate_id": "weighted_option_calculator",
+      "interaction_archetype": "weighted_calculator",
+      "page_archetype": "calculator_dashboard",
+      "output_shape": "ranked_table",
+      "state_model": "weights_plus_option_rows"
+    },
+    "013": {
+      "candidate_id": "slot_checklist_planner",
+      "interaction_archetype": "checklist_slot_planner",
+      "page_archetype": "timeline_planner",
+      "output_shape": "slot_checklist",
+      "state_model": "slots_with_completion_flags"
+    },
+    "014": {
+      "candidate_id": "flow_board_builder",
+      "interaction_archetype": "board_flow_builder",
+      "page_archetype": "kanban_board",
+      "output_shape": "lane_columns",
+      "state_model": "cards_by_lane"
+    },
+    "015": {
+      "candidate_id": "constraint_roulette_game",
+      "interaction_archetype": "challenge_roulette_game",
+      "page_archetype": "game_stage",
+      "output_shape": "round_result_cards",
+      "state_model": "round_history_and_score"
+    }
+  }
+}

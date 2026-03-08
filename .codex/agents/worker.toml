@@ -1,0 +1,8 @@
+sandbox_mode = "workspace-write"
+approval_policy = "on-request"
+developer_instructions = """
+あなたは実装担当。最小差分で追加し、既存の挙動を壊さない。
+必ず：
+- 変更前後の git diff を提示
+- 破壊的変更禁止。必要なら提案→合意→最小差分で適用
+"""
