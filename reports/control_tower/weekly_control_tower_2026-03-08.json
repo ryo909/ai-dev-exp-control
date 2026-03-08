@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-08T05:23:05.003802+00:00",
+  "generated_at": "2026-03-08T05:34:21.053110+00:00",
   "batch_summary": {
     "days_considered": [
       "001",
@@ -9,32 +9,45 @@
       "005",
       "006",
       "007",
-      "008"
+      "008",
+      "009",
+      "010",
+      "011",
+      "012",
+      "013",
+      "014",
+      "015"
     ],
-    "success_count": 8,
+    "success_count": 15,
     "failure_count": 0,
-    "quality_reports_count": 0,
+    "quality_reports_count": 7,
     "enhancement_candidates_count": 7,
     "fallback_plans_count": 7
   },
   "tier_performance": {
     "small": {
-      "count": 8,
-      "avg_score": 0.0,
-      "fallback_count": 0,
-      "confidence_distribution": {}
+      "count": 12,
+      "avg_score": 1.0,
+      "fallback_count": 4,
+      "confidence_distribution": {
+        "high": 4
+      }
     },
     "medium": {
-      "count": 0,
-      "avg_score": 0.0,
-      "fallback_count": 0,
-      "confidence_distribution": {}
+      "count": 2,
+      "avg_score": 1.0,
+      "fallback_count": 2,
+      "confidence_distribution": {
+        "high": 2
+      }
     },
     "large": {
-      "count": 0,
-      "avg_score": 0.0,
-      "fallback_count": 0,
-      "confidence_distribution": {}
+      "count": 1,
+      "avg_score": 1.0,
+      "fallback_count": 1,
+      "confidence_distribution": {
+        "high": 1
+      }
     }
   },
   "source_health": {
@@ -59,8 +72,8 @@
       "health"
     ],
     "top_core_actions": [
-      "rewrite",
       "generate",
+      "rewrite",
       "inspect",
       "schedule",
       "track"
@@ -228,6 +241,142 @@
       "recommended_components": [],
       "recommended_enhancement_candidate_id": null,
       "recommended_fallback_tier": null
+    },
+    {
+      "day": "009",
+      "complexity_tier": "small",
+      "quality_score": 1.0,
+      "confidence": "high",
+      "missing_components": [],
+      "unexpected_components": [
+        "comparison_view",
+        "export_suite",
+        "history_panel",
+        "local_storage",
+        "sample_inputs",
+        "step_ui"
+      ],
+      "decision": "enhance",
+      "reason": "default to enhancement recommendation",
+      "recommended_components": [],
+      "recommended_enhancement_candidate_id": "cand_1",
+      "recommended_fallback_tier": "small"
+    },
+    {
+      "day": "010",
+      "complexity_tier": "small",
+      "quality_score": 1.0,
+      "confidence": "high",
+      "missing_components": [],
+      "unexpected_components": [
+        "comparison_view",
+        "export_suite",
+        "history_panel",
+        "local_storage",
+        "sample_inputs",
+        "step_ui"
+      ],
+      "decision": "enhance",
+      "reason": "default to enhancement recommendation",
+      "recommended_components": [],
+      "recommended_enhancement_candidate_id": "cand_1",
+      "recommended_fallback_tier": "small"
+    },
+    {
+      "day": "011",
+      "complexity_tier": "small",
+      "quality_score": 1.0,
+      "confidence": "high",
+      "missing_components": [],
+      "unexpected_components": [
+        "comparison_view",
+        "export_suite",
+        "history_panel",
+        "local_storage",
+        "sample_inputs",
+        "step_ui"
+      ],
+      "decision": "enhance",
+      "reason": "default to enhancement recommendation",
+      "recommended_components": [],
+      "recommended_enhancement_candidate_id": "cand_1",
+      "recommended_fallback_tier": "small"
+    },
+    {
+      "day": "012",
+      "complexity_tier": "medium",
+      "quality_score": 1.0,
+      "confidence": "high",
+      "missing_components": [],
+      "unexpected_components": [
+        "export_suite",
+        "local_storage",
+        "reason_panel",
+        "sample_inputs",
+        "step_ui"
+      ],
+      "decision": "enhance",
+      "reason": "default to enhancement recommendation",
+      "recommended_components": [],
+      "recommended_enhancement_candidate_id": "cand_1",
+      "recommended_fallback_tier": "small"
+    },
+    {
+      "day": "013",
+      "complexity_tier": "medium",
+      "quality_score": 1.0,
+      "confidence": "high",
+      "missing_components": [],
+      "unexpected_components": [
+        "export_suite",
+        "local_storage",
+        "reason_panel",
+        "sample_inputs",
+        "step_ui"
+      ],
+      "decision": "enhance",
+      "reason": "default to enhancement recommendation",
+      "recommended_components": [],
+      "recommended_enhancement_candidate_id": "cand_1",
+      "recommended_fallback_tier": "small"
+    },
+    {
+      "day": "014",
+      "complexity_tier": "large",
+      "quality_score": 1.0,
+      "confidence": "high",
+      "missing_components": [],
+      "unexpected_components": [
+        "local_storage",
+        "reason_panel",
+        "sample_inputs",
+        "step_ui"
+      ],
+      "decision": "enhance",
+      "reason": "default to enhancement recommendation",
+      "recommended_components": [],
+      "recommended_enhancement_candidate_id": "cand_1",
+      "recommended_fallback_tier": "small"
+    },
+    {
+      "day": "015",
+      "complexity_tier": "small",
+      "quality_score": 1.0,
+      "confidence": "high",
+      "missing_components": [],
+      "unexpected_components": [
+        "comparison_view",
+        "export_suite",
+        "history_panel",
+        "local_storage",
+        "sample_inputs",
+        "step_ui"
+      ],
+      "decision": "enhance",
+      "reason": "default to enhancement recommendation",
+      "recommended_components": [],
+      "recommended_enhancement_candidate_id": "cand_1",
+      "recommended_fallback_tier": "small"
     }
   ],
   "next_batch_recommendations": {

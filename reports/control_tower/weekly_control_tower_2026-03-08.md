@@ -1,15 +1,15 @@
 # Weekly Control Tower (2026-03-08)
 
 ## 今週の要約
-- success/failure: 8/0
-- quality reports: 0
+- success/failure: 15/0
+- quality reports: 7
 - enhancement candidates: 7
 - fallback plans: 7
 
 ## tier別成績
-- small: count=8, avg_score=0.0, fallback_count=0, confidence={}
-- medium: count=0, avg_score=0.0, fallback_count=0, confidence={}
-- large: count=0, avg_score=0.0, fallback_count=0, confidence={}
+- small: count=12, avg_score=1.0, fallback_count=4, confidence={'high': 4}
+- medium: count=2, avg_score=1.0, fallback_count=2, confidence={'high': 2}
+- large: count=1, avg_score=1.0, fallback_count=1, confidence={'high': 1}
 
 ## blockedが多いドメイン
 - www.science.org: 1
@@ -20,7 +20,7 @@
 - 見出しは媒体依存だがH1段階で論点を断定する傾向がある
 
 ## 失敗の多い構成
-- 明確な偏りなし
+- small, medium, large
 
 ## missing components hotspot
 - small: なし
@@ -61,14 +61,16 @@
 - healthcheck: warn
 
 ## dayごとの decision summary
-- Day001: enhance (tier=small, score=0.0, confidence=low) / default to enhancement recommendation
-- Day002: enhance (tier=small, score=0.0, confidence=low) / default to enhancement recommendation
-- Day003: enhance (tier=small, score=0.0, confidence=low) / default to enhancement recommendation
-- Day004: enhance (tier=small, score=0.0, confidence=low) / default to enhancement recommendation
-- Day005: enhance (tier=small, score=0.0, confidence=low) / default to enhancement recommendation
 - Day006: enhance (tier=small, score=0.0, confidence=low) / default to enhancement recommendation
 - Day007: enhance (tier=small, score=0.0, confidence=low) / default to enhancement recommendation
 - Day008: enhance (tier=small, score=0.0, confidence=low) / default to enhancement recommendation
+- Day009: enhance (tier=small, score=1.0, confidence=high) / default to enhancement recommendation
+- Day010: enhance (tier=small, score=1.0, confidence=high) / default to enhancement recommendation
+- Day011: enhance (tier=small, score=1.0, confidence=high) / default to enhancement recommendation
+- Day012: enhance (tier=medium, score=1.0, confidence=high) / default to enhancement recommendation
+- Day013: enhance (tier=medium, score=1.0, confidence=high) / default to enhancement recommendation
+- Day014: enhance (tier=large, score=1.0, confidence=high) / default to enhancement recommendation
+- Day015: enhance (tier=small, score=1.0, confidence=high) / default to enhancement recommendation
 
 ## 次の7本への推奨
 - tier mix: small=4, medium=3, large=0

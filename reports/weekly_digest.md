@@ -1,9 +1,9 @@
 # Weekly Digest (2026-03-08)
 
-- generated_at: 2026-03-08T05:23:04Z
+- generated_at: 2026-03-08T05:34:20Z
 - branch: sys-self-improve-pack
-- head: e8780f1
-- STATE.last_run: 2026-02-28T05:55:20Z
+- head: 9c7da77
+- STATE.last_run: 2026-03-08T05:34:14Z
 
 ## Signals (top)
 - [HN Frontpage] MonoGame: A .NET framework for making cross-platform games (https://github.com/MonoGame/MonoGame)
@@ -31,18 +31,18 @@ _source: shared-context/SIGNALS.md_
 
 ## Coverage highlights
 ### top genres
-- writing (2)
-- productivity (1)
-- planning (1)
-- learning (1)
-- health (1)
+- writing (3)
+- productivity (2)
+- planning (2)
+- learning (2)
+- health (2)
 
 ### top core_actions
-- rewrite (2)
-- generate (2)
-- track (1)
-- schedule (1)
-- plan (1)
+- generate (4)
+- rewrite (3)
+- track (2)
+- schedule (2)
+- plan (2)
 
 ### duplicates (core_action | twist) top 5
 - rewrite | 文字数の目安を表示してSNS向けの短文化を支援 : Day001, Day008
