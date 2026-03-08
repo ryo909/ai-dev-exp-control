@@ -1,6 +1,6 @@
 {
   "target_day": 100,
-  "next_day": 11,
+  "next_day": 12,
   "batch_size_default": 7,
   "posts": {
     "fixed_tags": [
@@ -14,12 +14,6 @@
     }
   },
   "recent_meta": [
-    {
-      "day": "005",
-      "core_action": "track",
-      "twist": "勤務時間に合わせて飲水タイミングを均等化する",
-      "one_sentence": "目標水分量を無理なく達成するための配分プランナー。"
-    },
     {
       "day": "006",
       "core_action": "generate",
@@ -241,6 +235,22 @@
       "core_action": "navigate",
       "twist": "各分岐で採用しなかった選択肢の理由も残す / Signal:HN Frontpage「Autoresearch: Agents res」",
       "one_sentence": "段階質問で意思決定パスを確定するウィザード型ツール。（話題:HN Frontpage）",
+      "complexity_tier": "small",
+      "selected_components": [],
+      "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
+    },
+    {
+      "day": "011",
+      "title": "Risk Quadrant Mapper",
+      "genre": "planning",
+      "family": "quadrant_mapping",
+      "mechanic": "axis_mapping",
+      "input_style": "item_with_scores",
+      "output_style": "quadrant_matrix",
+      "audience_promise": "faster_priority_alignment",
+      "core_action": "map",
+      "twist": "象限ごとに対応方針テンプレを同時提示する / Signal:HN Frontpage「The surprising whimsy of」",
+      "one_sentence": "課題を4象限に配置して対応優先度を可視化するマッパー。（話題:HN Frontpage）",
       "complexity_tier": "small",
       "selected_components": [],
       "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
@@ -584,27 +594,27 @@
       "repo_url": "https://github.com/ryo909/ai-dev-day-011",
       "pages_url": "https://ryo909.github.io/ai-dev-day-011/",
       "meta": {
-        "tool_name": "Concept Gap Mapper",
-        "title": "Concept Gap Mapper",
-        "description": "理解が曖昧な点を、前提知識の不足マップに変換する。",
-        "genre": "learning",
-        "theme": "NeoLab",
+        "tool_name": "Risk Quadrant Mapper",
+        "title": "Risk Quadrant Mapper",
+        "description": "項目をimpact×urgencyの4象限に配置して優先順を作る。",
+        "genre": "planning",
+        "theme": "Brutal",
         "complexity_tier": "small",
         "selected_components": [],
         "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component.",
-        "story_summary": "分からない原因が曖昧な状態を、再学習ルートへ変換するために作った。｜Signal:HN Frontpage",
+        "story_summary": "優先度の議論を短くするため、象限配置で意思統一できる形にした。｜Signal:HN Frontpage",
         "core_action": "map",
-        "twist": "次に読む順番を3ステップで提示する / Signal:HN Frontpage「The surprising whimsy of」",
-        "one_sentence": "つまずきポイントを前提不足として可視化する学習診断ツール。（話題:HN Frontpage）",
-        "family": "knowledge_gap",
-        "mechanic": "dependency_mapping",
-        "input_style": "confusion_notes",
-        "output_style": "gap_map",
-        "audience_promise": "clearer_study_path",
-        "publish_hook": "何が足りないかを前提マップで見える化",
-        "engine": "decision_brief",
-        "original_twist": "次に読む順番を3ステップで提示する / Signal:HN Frontpage「The surprising whimsy of」",
-        "original_one_sentence": "つまずきポイントを前提不足として可視化する学習診断ツール。（話題:HN Frontpage）",
+        "twist": "象限ごとに対応方針テンプレを同時提示する / Signal:HN Frontpage「The surprising whimsy of」",
+        "one_sentence": "課題を4象限に配置して対応優先度を可視化するマッパー。（話題:HN Frontpage）",
+        "family": "quadrant_mapping",
+        "mechanic": "axis_mapping",
+        "input_style": "item_with_scores",
+        "output_style": "quadrant_matrix",
+        "audience_promise": "faster_priority_alignment",
+        "publish_hook": "4象限で優先度の議論を短縮",
+        "engine": "matrix_mapper",
+        "original_twist": "象限ごとに対応方針テンプレを同時提示する / Signal:HN Frontpage「The surprising whimsy of」",
+        "original_one_sentence": "課題を4象限に配置して対応優先度を可視化するマッパー。（話題:HN Frontpage）",
         "enhancement_source": "",
         "enhancement_candidate_id": "",
         "enhancement_adopted": false,
@@ -616,20 +626,20 @@
         "next_batch_recommended_components": [],
         "next_batch_recommended_enhancement": false,
         "keywords": [
-          "concept",
           "dev",
-          "diagnosis",
-          "learning",
-          "map",
+          "matrix",
+          "planning",
+          "prioritization",
           "product",
+          "risk",
           "startup",
           "trend"
         ]
       },
       "post_texts": {
-        "standard": "Day011｜Concept Gap Mapper\nつまずきポイントを前提不足として可視化する学習診断ツール。（話題:HN Frontpage）\n用途: 理解が曖昧な点を、前提知識の不足マップに変換する。\n👉 https://ryo909.github.io/ai-dev-day-011/\n#個人開発 #100日開発\n（経緯/一覧：固定ポストの2ツリーへ）",
-        "compact": "Day011|Concept Gap Mapp\nつまずきポイント\nhttps://ryo909.github.io/ai-dev-day-011/\n#個人開発 #100日開発",
-        "minimal": "Day011|Concept Gap Mapp\nhttps://ryo909.github.io/ai-dev-day-011/\n#個人開発 #100日開発"
+        "standard": "Day011｜Risk Quadrant Mapper\n課題を4象限に配置して対応優先度を可視化するマッパー。（話題:HN Frontpage）\n用途: 項目をimpact×urgencyの4象限に配置して優先順を作る。\n👉 https://ryo909.github.io/ai-dev-day-011/\n#個人開発 #100日開発\n（経緯/一覧：固定ポストの2ツリーへ）",
+        "compact": "Day011|Risk Quadrant Ma\n課題を4象限に配�\nhttps://ryo909.github.io/ai-dev-day-011/\n#個人開発 #100日開発",
+        "minimal": "Day011|Risk Quadrant Ma\nhttps://ryo909.github.io/ai-dev-day-011/\n#個人開発 #100日開発"
       },
       "status": "done"
     },
@@ -1270,13 +1280,28 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-03-08T07:22:57Z",
+      "day": "011",
+      "repo_name": "ai-dev-day-011",
+      "genre": "planning",
+      "theme": "Brutal",
+      "steps": [
+        "planning",
+        "implementation",
+        "build",
+        "publish",
+        "state_update"
+      ],
+      "status": "done"
     }
   ],
   "recent_genres": [
     "fun",
-    "fun",
+    "planning",
     "planning"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-03-08T07:21:54Z"
+  "last_run_at": "2026-03-08T07:22:57Z"
 }
