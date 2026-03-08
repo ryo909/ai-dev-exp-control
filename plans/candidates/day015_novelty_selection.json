@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-08T07:25:21Z",
+  "generated_at": "2026-03-08T07:35:46Z",
   "day": "Day015",
   "lookback_days": 14,
   "policy": {
@@ -171,13 +171,13 @@
       "input_style": "multi_select_tokens",
       "output_style": "card_stack",
       "audience_promise": "faster_idea_divergence",
-      "interaction_archetype": "single_shot_text_submit",
-      "page_archetype": "single_column_form",
-      "output_shape": "single_text_block",
-      "state_model": "ephemeral_result_only",
-      "component_pack": "single_form",
-      "scaffold_id": "text_generator_scaffold",
-      "single_shot_text_generator": true
+      "interaction_archetype": "card_deck_recombination",
+      "page_archetype": "deck_stage",
+      "output_shape": "stacked_cards",
+      "state_model": "deck_history_with_lock",
+      "component_pack": "deck_controls+history_panel",
+      "scaffold_id": "card_deck_board",
+      "single_shot_text_generator": false
     },
     {
       "day": "010",
@@ -219,22 +219,22 @@
     },
     {
       "day": "012",
-      "title": "Context Switch Cost Meter",
+      "title": "Weighted Option Calculator",
       "genre": "productivity",
-      "core_action": "estimate",
+      "core_action": "score",
       "theme": "RetroTerminal",
-      "family": "switch_cost",
-      "mechanic": "cost_estimation",
-      "input_style": "task_sequence",
-      "output_style": "cost_report",
-      "audience_promise": "better_time_planning",
-      "interaction_archetype": "single_shot_text_submit",
-      "page_archetype": "single_column_form",
-      "output_shape": "single_text_block",
-      "state_model": "ephemeral_result_only",
-      "component_pack": "single_form",
-      "scaffold_id": "text_generator_scaffold",
-      "single_shot_text_generator": true
+      "family": "weighted_scoring",
+      "mechanic": "weighted_formula",
+      "input_style": "slider_weights_and_rows",
+      "output_style": "ranked_scores",
+      "audience_promise": "transparent_tradeoff",
+      "interaction_archetype": "weighted_calculator",
+      "page_archetype": "calculator_dashboard",
+      "output_shape": "ranked_table",
+      "state_model": "weights_plus_option_rows",
+      "component_pack": "slider_panel+ranking_table",
+      "scaffold_id": "weighted_calculator",
+      "single_shot_text_generator": false
     },
     {
       "day": "013",
@@ -247,13 +247,13 @@
       "input_style": "task_cards",
       "output_style": "checklist_timeline",
       "audience_promise": "better_execution_consistency",
-      "interaction_archetype": "single_shot_text_submit",
-      "page_archetype": "single_column_form",
-      "output_shape": "single_text_block",
-      "state_model": "ephemeral_result_only",
-      "component_pack": "single_form",
-      "scaffold_id": "text_generator_scaffold",
-      "single_shot_text_generator": true
+      "interaction_archetype": "checklist_slot_planner",
+      "page_archetype": "timeline_planner",
+      "output_shape": "slot_checklist",
+      "state_model": "slots_with_completion_flags",
+      "component_pack": "slot_grid+checklist_panel",
+      "scaffold_id": "slot_checklist_planner",
+      "single_shot_text_generator": false
     },
     {
       "day": "014",
@@ -266,16 +266,16 @@
       "input_style": "card_creation",
       "output_style": "lane_board",
       "audience_promise": "clearer_flow_visibility",
-      "interaction_archetype": "single_shot_text_submit",
-      "page_archetype": "single_column_form",
-      "output_shape": "single_text_block",
-      "state_model": "ephemeral_result_only",
-      "component_pack": "single_form",
-      "scaffold_id": "text_generator_scaffold",
-      "single_shot_text_generator": true
+      "interaction_archetype": "board_flow_builder",
+      "page_archetype": "kanban_board",
+      "output_shape": "lane_columns",
+      "state_model": "cards_by_lane",
+      "component_pack": "lane_columns+bottleneck_hint",
+      "scaffold_id": "flow_board",
+      "single_shot_text_generator": false
     }
   ],
-  "recent_single_shot_count": 14,
+  "recent_single_shot_count": 10,
   "selected": {
     "id": "constraint_roulette_game",
     "title": "Constraint Roulette",
@@ -322,51 +322,6 @@
     ]
   },
   "ranked_candidates": [
-    {
-      "id": "budget_tradeoff_calculator",
-      "title": "Budget Tradeoff Calculator",
-      "description": "予算配分を動かして達成率と余剰リスクを比較する。",
-      "genre": "productivity",
-      "theme": "Mono",
-      "core_action": "optimize",
-      "twist": "予算制約を超えた場合は自動で代替配分案を提示する",
-      "one_sentence": "予算配分の妥協点を重み付きで可視化する計算ダッシュボード。",
-      "story_summary": "配分議論を感覚論にしないため、制約付き計算に寄せた。",
-      "keywords": [
-        "budget",
-        "calculator",
-        "tradeoff",
-        "productivity"
-      ],
-      "family": "budget_optimization",
-      "mechanic": "constrained_weighted_formula",
-      "input_style": "slider_weights_and_rows",
-      "output_style": "ranked_scores",
-      "audience_promise": "faster_budget_alignment",
-      "publish_hook": "予算制約下の最適配分を即比較",
-      "engine": "weighted_calc",
-      "interaction_archetype": "weighted_calculator",
-      "page_archetype": "calculator_dashboard",
-      "output_shape": "ranked_table",
-      "state_model": "weights_plus_option_rows",
-      "core_loop": "set budget -> tune weights -> rebalance",
-      "component_pack": "slider_panel+constraint_banner",
-      "scaffold_id": "weighted_calculator",
-      "single_shot_text_generator": false,
-      "score": 64,
-      "penalties": [
-        {
-          "code": "theme_overlap_recent",
-          "count": 1,
-          "penalty": 28
-        },
-        {
-          "code": "genre_repeated",
-          "count": 2,
-          "penalty": 8
-        }
-      ]
-    },
     {
       "id": "constraint_roulette_game",
       "title": "Constraint Roulette",
@@ -458,51 +413,6 @@
       ]
     },
     {
-      "id": "weighted_option_calculator",
-      "title": "Weighted Option Calculator",
-      "description": "重みを調整して候補案の総合点ランキングを算出する。",
-      "genre": "productivity",
-      "theme": "RetroTerminal",
-      "core_action": "score",
-      "twist": "重み変更時に順位変動の差分を即表示する",
-      "one_sentence": "重み付き評価で候補案の順位変化を比較できる計算ツール。",
-      "story_summary": "主観的な比較を減らすため、重み付き計算に統一した。",
-      "keywords": [
-        "calculator",
-        "weights",
-        "ranking",
-        "productivity"
-      ],
-      "family": "weighted_scoring",
-      "mechanic": "weighted_formula",
-      "input_style": "slider_weights_and_rows",
-      "output_style": "ranked_scores",
-      "audience_promise": "transparent_tradeoff",
-      "publish_hook": "重みを動かすと順位差分が見える",
-      "engine": "weighted_calc",
-      "interaction_archetype": "weighted_calculator",
-      "page_archetype": "calculator_dashboard",
-      "output_shape": "ranked_table",
-      "state_model": "weights_plus_option_rows",
-      "core_loop": "tune weights -> recalc -> compare",
-      "component_pack": "slider_panel+ranking_table",
-      "scaffold_id": "weighted_calculator",
-      "single_shot_text_generator": false,
-      "score": 36,
-      "penalties": [
-        {
-          "code": "theme_overlap_recent",
-          "count": 2,
-          "penalty": 56
-        },
-        {
-          "code": "genre_repeated",
-          "count": 2,
-          "penalty": 8
-        }
-      ]
-    },
-    {
       "id": "incident_response_wizard",
       "title": "Incident Response Wizard",
       "description": "障害状況の選択入力から一次対応フローを確定する。",
@@ -544,116 +454,6 @@
           "code": "input_overlap_recent",
           "count": 1,
           "penalty": 35
-        },
-        {
-          "code": "genre_repeated",
-          "count": 2,
-          "penalty": 8
-        }
-      ]
-    },
-    {
-      "id": "daily_routine_slotter",
-      "title": "Daily Routine Slotter",
-      "description": "習慣タスクを朝昼夜の枠へ配置し、継続率を可視化する。",
-      "genre": "health",
-      "theme": "Candy",
-      "core_action": "schedule",
-      "twist": "連続達成日数を自動集計して維持モチベーションを可視化する",
-      "one_sentence": "習慣タスクを時間枠で回しやすくするルーティンプランナー。",
-      "story_summary": "継続の可視化不足を補うため、連続達成表示を追加した。",
-      "keywords": [
-        "routine",
-        "planner",
-        "health",
-        "habit"
-      ],
-      "family": "routine_slots",
-      "mechanic": "slot_assignment_with_streak",
-      "input_style": "task_cards",
-      "output_style": "checklist_timeline",
-      "audience_promise": "higher_habit_streak",
-      "publish_hook": "連続達成を見ながら習慣を回す",
-      "engine": "slot_planner",
-      "interaction_archetype": "checklist_slot_planner",
-      "page_archetype": "timeline_planner",
-      "output_shape": "slot_checklist",
-      "state_model": "slots_with_completion_flags",
-      "core_loop": "assign -> complete -> streak",
-      "component_pack": "slot_grid+streak_badges",
-      "scaffold_id": "slot_checklist_planner",
-      "single_shot_text_generator": false,
-      "score": -17,
-      "penalties": [
-        {
-          "code": "theme_overlap_recent",
-          "count": 2,
-          "penalty": 56
-        },
-        {
-          "code": "input_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        },
-        {
-          "code": "output_overlap_recent",
-          "count": 1,
-          "penalty": 18
-        },
-        {
-          "code": "genre_repeated",
-          "count": 2,
-          "penalty": 8
-        }
-      ]
-    },
-    {
-      "id": "dependency_flow_board",
-      "title": "Dependency Flow Board",
-      "description": "依存関係付きカードをボードで整理し、着手順を整える。",
-      "genre": "devtools",
-      "theme": "Brutal",
-      "core_action": "sequence",
-      "twist": "依存未解決カードは移動制限し、順序ミスを防ぐ",
-      "one_sentence": "依存関係を崩さず着手順を整理するフローボード。",
-      "story_summary": "順序ミスによる手戻りを防ぐため、依存制約をUIに組み込んだ。",
-      "keywords": [
-        "board",
-        "dependency",
-        "flow",
-        "devtools"
-      ],
-      "family": "dependency_board",
-      "mechanic": "constrained_lane_movement",
-      "input_style": "card_creation",
-      "output_style": "lane_board",
-      "audience_promise": "fewer_rework_cycles",
-      "publish_hook": "依存関係を守って流せるボード",
-      "engine": "flow_board",
-      "interaction_archetype": "board_flow_builder",
-      "page_archetype": "kanban_board",
-      "output_shape": "lane_columns",
-      "state_model": "cards_by_lane",
-      "core_loop": "add dependency -> move only ready cards",
-      "component_pack": "lane_columns+dependency_lock",
-      "scaffold_id": "flow_board",
-      "single_shot_text_generator": false,
-      "score": -17,
-      "penalties": [
-        {
-          "code": "theme_overlap_recent",
-          "count": 2,
-          "penalty": 56
-        },
-        {
-          "code": "input_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        },
-        {
-          "code": "output_overlap_recent",
-          "count": 1,
-          "penalty": 18
         },
         {
           "code": "genre_repeated",
@@ -719,216 +519,6 @@
           "code": "genre_repeated",
           "count": 3,
           "penalty": 16
-        }
-      ]
-    },
-    {
-      "id": "idea_combo_deck",
-      "title": "Idea Combo Deck",
-      "description": "目的カードと制約カードを混ぜ、実行可能な組み合わせを作る。",
-      "genre": "fun",
-      "theme": "Soft",
-      "core_action": "combine",
-      "twist": "失敗した組み合わせを除外しながら次案を探索できる",
-      "one_sentence": "制約付きのアイデア探索をカード操作で進める組み合わせツール。",
-      "story_summary": "思考の堂々巡りを防ぐため、除外履歴を持つデッキ方式にした。",
-      "keywords": [
-        "cards",
-        "combination",
-        "constraints",
-        "fun"
-      ],
-      "family": "idea_cards",
-      "mechanic": "card_pairing",
-      "input_style": "multi_select_tokens",
-      "output_style": "card_stack",
-      "audience_promise": "faster_idea_filtering",
-      "publish_hook": "失敗案を除外しながら次案を出す",
-      "engine": "card_mixer",
-      "interaction_archetype": "card_deck_recombination",
-      "page_archetype": "deck_stage",
-      "output_shape": "stacked_cards",
-      "state_model": "deck_history_with_lock",
-      "core_loop": "draw -> reject -> redraw",
-      "component_pack": "deck_controls+history_panel",
-      "scaffold_id": "card_deck_board",
-      "single_shot_text_generator": false,
-      "score": -97,
-      "penalties": [
-        {
-          "code": "family_overlap_recent",
-          "count": 1,
-          "penalty": 80
-        },
-        {
-          "code": "theme_overlap_recent",
-          "count": 2,
-          "penalty": 56
-        },
-        {
-          "code": "input_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        },
-        {
-          "code": "output_overlap_recent",
-          "count": 1,
-          "penalty": 18
-        },
-        {
-          "code": "genre_repeated",
-          "count": 2,
-          "penalty": 8
-        }
-      ]
-    },
-    {
-      "id": "card_signal_mixer",
-      "title": "Signal Card Mixer",
-      "description": "素材カードを引いて掛け合わせ、試作テーマを作る。",
-      "genre": "fun",
-      "theme": "Candy",
-      "core_action": "recombine",
-      "twist": "引いたカードを固定して再抽選できるため、方向性の収束が速い",
-      "one_sentence": "カードの組み合わせから次の試作案を素早く作るデッキ型ツール。",
-      "story_summary": "発想が止まる瞬間を減らすため、カード再抽選ループを採用した。",
-      "keywords": [
-        "cards",
-        "ideation",
-        "recombine",
-        "fun"
-      ],
-      "family": "idea_cards",
-      "mechanic": "random_recombination",
-      "input_style": "multi_select_tokens",
-      "output_style": "card_stack",
-      "audience_promise": "faster_idea_divergence",
-      "publish_hook": "デッキを引くだけで試作テーマが決まる",
-      "engine": "card_mixer",
-      "interaction_archetype": "card_deck_recombination",
-      "page_archetype": "deck_stage",
-      "output_shape": "stacked_cards",
-      "state_model": "deck_history_with_lock",
-      "core_loop": "draw -> lock -> redraw",
-      "component_pack": "deck_controls+history_panel",
-      "scaffold_id": "card_deck_board",
-      "single_shot_text_generator": false,
-      "score": -297,
-      "penalties": [
-        {
-          "code": "title_overlap_recent",
-          "count": 1,
-          "penalty": 130
-        },
-        {
-          "code": "family_overlap_recent",
-          "count": 1,
-          "penalty": 80
-        },
-        {
-          "code": "theme_overlap_recent",
-          "count": 2,
-          "penalty": 56
-        },
-        {
-          "code": "mechanic_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        },
-        {
-          "code": "input_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        },
-        {
-          "code": "output_overlap_recent",
-          "count": 1,
-          "penalty": 18
-        },
-        {
-          "code": "audience_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        },
-        {
-          "code": "genre_repeated",
-          "count": 2,
-          "penalty": 8
-        }
-      ]
-    },
-    {
-      "id": "flow_board_builder",
-      "title": "Flow Board Builder",
-      "description": "カードをレーン間で移動しながら作業フローを組み立てる。",
-      "genre": "devtools",
-      "theme": "Paper",
-      "core_action": "flow",
-      "twist": "詰まりレーンを検知すると改善ヒントを表示する",
-      "one_sentence": "作業カードを流しながらボトルネックを見つけるボード型ツール。",
-      "story_summary": "進捗停滞の原因を見える化するため、レーン可視化を採用した。",
-      "keywords": [
-        "board",
-        "flow",
-        "kanban",
-        "devtools"
-      ],
-      "family": "flow_board",
-      "mechanic": "lane_movement",
-      "input_style": "card_creation",
-      "output_style": "lane_board",
-      "audience_promise": "clearer_flow_visibility",
-      "publish_hook": "詰まりレーンを可視化して改善",
-      "engine": "flow_board",
-      "interaction_archetype": "board_flow_builder",
-      "page_archetype": "kanban_board",
-      "output_shape": "lane_columns",
-      "state_model": "cards_by_lane",
-      "core_loop": "add card -> move lane -> review bottleneck",
-      "component_pack": "lane_columns+bottleneck_hint",
-      "scaffold_id": "flow_board",
-      "single_shot_text_generator": false,
-      "score": -297,
-      "penalties": [
-        {
-          "code": "title_overlap_recent",
-          "count": 1,
-          "penalty": 130
-        },
-        {
-          "code": "family_overlap_recent",
-          "count": 1,
-          "penalty": 80
-        },
-        {
-          "code": "theme_overlap_recent",
-          "count": 2,
-          "penalty": 56
-        },
-        {
-          "code": "mechanic_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        },
-        {
-          "code": "input_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        },
-        {
-          "code": "output_overlap_recent",
-          "count": 1,
-          "penalty": 18
-        },
-        {
-          "code": "audience_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        },
-        {
-          "code": "genre_repeated",
-          "count": 2,
-          "penalty": 8
         }
       ]
     },
@@ -1083,37 +673,367 @@
       ]
     },
     {
-      "id": "slot_checklist_planner",
-      "title": "Slot Checklist Planner",
-      "description": "時間枠にタスクを割り当て、完了チェック付きで進捗管理する。",
-      "genre": "health",
-      "theme": "Soft",
-      "core_action": "plan",
-      "twist": "未完了タスクを次スロットへ自動で繰り越せる",
-      "one_sentence": "時間枠とチェックリストを一体化した実行計画プランナー。",
-      "story_summary": "計画倒れを減らすため、スロット単位の完了管理を導入した。",
+      "id": "budget_tradeoff_calculator",
+      "title": "Budget Tradeoff Calculator",
+      "description": "予算配分を動かして達成率と余剰リスクを比較する。",
+      "genre": "productivity",
+      "theme": "Mono",
+      "core_action": "optimize",
+      "twist": "予算制約を超えた場合は自動で代替配分案を提示する",
+      "one_sentence": "予算配分の妥協点を重み付きで可視化する計算ダッシュボード。",
+      "story_summary": "配分議論を感覚論にしないため、制約付き計算に寄せた。",
       "keywords": [
+        "budget",
+        "calculator",
+        "tradeoff",
+        "productivity"
+      ],
+      "family": "budget_optimization",
+      "mechanic": "constrained_weighted_formula",
+      "input_style": "slider_weights_and_rows",
+      "output_style": "ranked_scores",
+      "audience_promise": "faster_budget_alignment",
+      "publish_hook": "予算制約下の最適配分を即比較",
+      "engine": "weighted_calc",
+      "interaction_archetype": "weighted_calculator",
+      "page_archetype": "calculator_dashboard",
+      "output_shape": "ranked_table",
+      "state_model": "weights_plus_option_rows",
+      "core_loop": "set budget -> tune weights -> rebalance",
+      "component_pack": "slider_panel+constraint_banner",
+      "scaffold_id": "weighted_calculator",
+      "single_shot_text_generator": false,
+      "score": -441,
+      "penalties": [
+        {
+          "code": "theme_overlap_recent",
+          "count": 1,
+          "penalty": 28
+        },
+        {
+          "code": "input_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "output_overlap_recent",
+          "count": 1,
+          "penalty": 18
+        },
+        {
+          "code": "interaction_archetype_overlap",
+          "count": 1,
+          "penalty": 95
+        },
+        {
+          "code": "page_archetype_overlap",
+          "count": 1,
+          "penalty": 85
+        },
+        {
+          "code": "output_shape_overlap",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "state_model_overlap",
+          "count": 1,
+          "penalty": 72
+        },
+        {
+          "code": "scaffold_overlap",
+          "count": 1,
+          "penalty": 120
+        },
+        {
+          "code": "genre_repeated",
+          "count": 2,
+          "penalty": 8
+        }
+      ]
+    },
+    {
+      "id": "daily_routine_slotter",
+      "title": "Daily Routine Slotter",
+      "description": "習慣タスクを朝昼夜の枠へ配置し、継続率を可視化する。",
+      "genre": "health",
+      "theme": "Candy",
+      "core_action": "schedule",
+      "twist": "連続達成日数を自動集計して維持モチベーションを可視化する",
+      "one_sentence": "習慣タスクを時間枠で回しやすくするルーティンプランナー。",
+      "story_summary": "継続の可視化不足を補うため、連続達成表示を追加した。",
+      "keywords": [
+        "routine",
         "planner",
-        "checklist",
-        "slots",
+        "health",
         "habit"
       ],
-      "family": "slot_planning",
-      "mechanic": "slot_assignment_with_check",
+      "family": "routine_slots",
+      "mechanic": "slot_assignment_with_streak",
       "input_style": "task_cards",
       "output_style": "checklist_timeline",
-      "audience_promise": "better_execution_consistency",
-      "publish_hook": "未完了を次枠へ自動繰越",
+      "audience_promise": "higher_habit_streak",
+      "publish_hook": "連続達成を見ながら習慣を回す",
       "engine": "slot_planner",
       "interaction_archetype": "checklist_slot_planner",
       "page_archetype": "timeline_planner",
       "output_shape": "slot_checklist",
       "state_model": "slots_with_completion_flags",
-      "core_loop": "assign -> check -> carry",
-      "component_pack": "slot_grid+checklist_panel",
+      "core_loop": "assign -> complete -> streak",
+      "component_pack": "slot_grid+streak_badges",
       "scaffold_id": "slot_checklist_planner",
       "single_shot_text_generator": false,
-      "score": -309,
+      "score": -469,
+      "penalties": [
+        {
+          "code": "theme_overlap_recent",
+          "count": 2,
+          "penalty": 56
+        },
+        {
+          "code": "input_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "output_overlap_recent",
+          "count": 1,
+          "penalty": 18
+        },
+        {
+          "code": "interaction_archetype_overlap",
+          "count": 1,
+          "penalty": 95
+        },
+        {
+          "code": "page_archetype_overlap",
+          "count": 1,
+          "penalty": 85
+        },
+        {
+          "code": "output_shape_overlap",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "state_model_overlap",
+          "count": 1,
+          "penalty": 72
+        },
+        {
+          "code": "scaffold_overlap",
+          "count": 1,
+          "penalty": 120
+        },
+        {
+          "code": "genre_repeated",
+          "count": 2,
+          "penalty": 8
+        }
+      ]
+    },
+    {
+      "id": "dependency_flow_board",
+      "title": "Dependency Flow Board",
+      "description": "依存関係付きカードをボードで整理し、着手順を整える。",
+      "genre": "devtools",
+      "theme": "Brutal",
+      "core_action": "sequence",
+      "twist": "依存未解決カードは移動制限し、順序ミスを防ぐ",
+      "one_sentence": "依存関係を崩さず着手順を整理するフローボード。",
+      "story_summary": "順序ミスによる手戻りを防ぐため、依存制約をUIに組み込んだ。",
+      "keywords": [
+        "board",
+        "dependency",
+        "flow",
+        "devtools"
+      ],
+      "family": "dependency_board",
+      "mechanic": "constrained_lane_movement",
+      "input_style": "card_creation",
+      "output_style": "lane_board",
+      "audience_promise": "fewer_rework_cycles",
+      "publish_hook": "依存関係を守って流せるボード",
+      "engine": "flow_board",
+      "interaction_archetype": "board_flow_builder",
+      "page_archetype": "kanban_board",
+      "output_shape": "lane_columns",
+      "state_model": "cards_by_lane",
+      "core_loop": "add dependency -> move only ready cards",
+      "component_pack": "lane_columns+dependency_lock",
+      "scaffold_id": "flow_board",
+      "single_shot_text_generator": false,
+      "score": -469,
+      "penalties": [
+        {
+          "code": "theme_overlap_recent",
+          "count": 2,
+          "penalty": 56
+        },
+        {
+          "code": "input_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "output_overlap_recent",
+          "count": 1,
+          "penalty": 18
+        },
+        {
+          "code": "interaction_archetype_overlap",
+          "count": 1,
+          "penalty": 95
+        },
+        {
+          "code": "page_archetype_overlap",
+          "count": 1,
+          "penalty": 85
+        },
+        {
+          "code": "output_shape_overlap",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "state_model_overlap",
+          "count": 1,
+          "penalty": 72
+        },
+        {
+          "code": "scaffold_overlap",
+          "count": 1,
+          "penalty": 120
+        },
+        {
+          "code": "genre_repeated",
+          "count": 2,
+          "penalty": 8
+        }
+      ]
+    },
+    {
+      "id": "idea_combo_deck",
+      "title": "Idea Combo Deck",
+      "description": "目的カードと制約カードを混ぜ、実行可能な組み合わせを作る。",
+      "genre": "fun",
+      "theme": "Soft",
+      "core_action": "combine",
+      "twist": "失敗した組み合わせを除外しながら次案を探索できる",
+      "one_sentence": "制約付きのアイデア探索をカード操作で進める組み合わせツール。",
+      "story_summary": "思考の堂々巡りを防ぐため、除外履歴を持つデッキ方式にした。",
+      "keywords": [
+        "cards",
+        "combination",
+        "constraints",
+        "fun"
+      ],
+      "family": "idea_cards",
+      "mechanic": "card_pairing",
+      "input_style": "multi_select_tokens",
+      "output_style": "card_stack",
+      "audience_promise": "faster_idea_filtering",
+      "publish_hook": "失敗案を除外しながら次案を出す",
+      "engine": "card_mixer",
+      "interaction_archetype": "card_deck_recombination",
+      "page_archetype": "deck_stage",
+      "output_shape": "stacked_cards",
+      "state_model": "deck_history_with_lock",
+      "core_loop": "draw -> reject -> redraw",
+      "component_pack": "deck_controls+history_panel",
+      "scaffold_id": "card_deck_board",
+      "single_shot_text_generator": false,
+      "score": -604,
+      "penalties": [
+        {
+          "code": "family_overlap_recent",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "theme_overlap_recent",
+          "count": 2,
+          "penalty": 56
+        },
+        {
+          "code": "input_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "output_overlap_recent",
+          "count": 1,
+          "penalty": 18
+        },
+        {
+          "code": "interaction_archetype_overlap",
+          "count": 1,
+          "penalty": 95
+        },
+        {
+          "code": "page_archetype_overlap",
+          "count": 1,
+          "penalty": 85
+        },
+        {
+          "code": "output_shape_overlap",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "state_model_overlap",
+          "count": 1,
+          "penalty": 72
+        },
+        {
+          "code": "component_pack_overlap",
+          "count": 1,
+          "penalty": 55
+        },
+        {
+          "code": "scaffold_overlap",
+          "count": 1,
+          "penalty": 120
+        },
+        {
+          "code": "genre_repeated",
+          "count": 2,
+          "penalty": 8
+        }
+      ]
+    },
+    {
+      "id": "card_signal_mixer",
+      "title": "Signal Card Mixer",
+      "description": "素材カードを引いて掛け合わせ、試作テーマを作る。",
+      "genre": "fun",
+      "theme": "Candy",
+      "core_action": "recombine",
+      "twist": "引いたカードを固定して再抽選できるため、方向性の収束が速い",
+      "one_sentence": "カードの組み合わせから次の試作案を素早く作るデッキ型ツール。",
+      "story_summary": "発想が止まる瞬間を減らすため、カード再抽選ループを採用した。",
+      "keywords": [
+        "cards",
+        "ideation",
+        "recombine",
+        "fun"
+      ],
+      "family": "idea_cards",
+      "mechanic": "random_recombination",
+      "input_style": "multi_select_tokens",
+      "output_style": "card_stack",
+      "audience_promise": "faster_idea_divergence",
+      "publish_hook": "デッキを引くだけで試作テーマが決まる",
+      "engine": "card_mixer",
+      "interaction_archetype": "card_deck_recombination",
+      "page_archetype": "deck_stage",
+      "output_shape": "stacked_cards",
+      "state_model": "deck_history_with_lock",
+      "core_loop": "draw -> lock -> redraw",
+      "component_pack": "deck_controls+history_panel",
+      "scaffold_id": "card_deck_board",
+      "single_shot_text_generator": false,
+      "score": -804,
       "penalties": [
         {
           "code": "title_overlap_recent",
@@ -1151,6 +1071,351 @@
           "penalty": 35
         },
         {
+          "code": "interaction_archetype_overlap",
+          "count": 1,
+          "penalty": 95
+        },
+        {
+          "code": "page_archetype_overlap",
+          "count": 1,
+          "penalty": 85
+        },
+        {
+          "code": "output_shape_overlap",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "state_model_overlap",
+          "count": 1,
+          "penalty": 72
+        },
+        {
+          "code": "component_pack_overlap",
+          "count": 1,
+          "penalty": 55
+        },
+        {
+          "code": "scaffold_overlap",
+          "count": 1,
+          "penalty": 120
+        },
+        {
+          "code": "genre_repeated",
+          "count": 2,
+          "penalty": 8
+        }
+      ]
+    },
+    {
+      "id": "flow_board_builder",
+      "title": "Flow Board Builder",
+      "description": "カードをレーン間で移動しながら作業フローを組み立てる。",
+      "genre": "devtools",
+      "theme": "Paper",
+      "core_action": "flow",
+      "twist": "詰まりレーンを検知すると改善ヒントを表示する",
+      "one_sentence": "作業カードを流しながらボトルネックを見つけるボード型ツール。",
+      "story_summary": "進捗停滞の原因を見える化するため、レーン可視化を採用した。",
+      "keywords": [
+        "board",
+        "flow",
+        "kanban",
+        "devtools"
+      ],
+      "family": "flow_board",
+      "mechanic": "lane_movement",
+      "input_style": "card_creation",
+      "output_style": "lane_board",
+      "audience_promise": "clearer_flow_visibility",
+      "publish_hook": "詰まりレーンを可視化して改善",
+      "engine": "flow_board",
+      "interaction_archetype": "board_flow_builder",
+      "page_archetype": "kanban_board",
+      "output_shape": "lane_columns",
+      "state_model": "cards_by_lane",
+      "core_loop": "add card -> move lane -> review bottleneck",
+      "component_pack": "lane_columns+bottleneck_hint",
+      "scaffold_id": "flow_board",
+      "single_shot_text_generator": false,
+      "score": -804,
+      "penalties": [
+        {
+          "code": "title_overlap_recent",
+          "count": 1,
+          "penalty": 130
+        },
+        {
+          "code": "family_overlap_recent",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "theme_overlap_recent",
+          "count": 2,
+          "penalty": 56
+        },
+        {
+          "code": "mechanic_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "input_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "output_overlap_recent",
+          "count": 1,
+          "penalty": 18
+        },
+        {
+          "code": "audience_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "interaction_archetype_overlap",
+          "count": 1,
+          "penalty": 95
+        },
+        {
+          "code": "page_archetype_overlap",
+          "count": 1,
+          "penalty": 85
+        },
+        {
+          "code": "output_shape_overlap",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "state_model_overlap",
+          "count": 1,
+          "penalty": 72
+        },
+        {
+          "code": "component_pack_overlap",
+          "count": 1,
+          "penalty": 55
+        },
+        {
+          "code": "scaffold_overlap",
+          "count": 1,
+          "penalty": 120
+        },
+        {
+          "code": "genre_repeated",
+          "count": 2,
+          "penalty": 8
+        }
+      ]
+    },
+    {
+      "id": "weighted_option_calculator",
+      "title": "Weighted Option Calculator",
+      "description": "重みを調整して候補案の総合点ランキングを算出する。",
+      "genre": "productivity",
+      "theme": "RetroTerminal",
+      "core_action": "score",
+      "twist": "重み変更時に順位変動の差分を即表示する",
+      "one_sentence": "重み付き評価で候補案の順位変化を比較できる計算ツール。",
+      "story_summary": "主観的な比較を減らすため、重み付き計算に統一した。",
+      "keywords": [
+        "calculator",
+        "weights",
+        "ranking",
+        "productivity"
+      ],
+      "family": "weighted_scoring",
+      "mechanic": "weighted_formula",
+      "input_style": "slider_weights_and_rows",
+      "output_style": "ranked_scores",
+      "audience_promise": "transparent_tradeoff",
+      "publish_hook": "重みを動かすと順位差分が見える",
+      "engine": "weighted_calc",
+      "interaction_archetype": "weighted_calculator",
+      "page_archetype": "calculator_dashboard",
+      "output_shape": "ranked_table",
+      "state_model": "weights_plus_option_rows",
+      "core_loop": "tune weights -> recalc -> compare",
+      "component_pack": "slider_panel+ranking_table",
+      "scaffold_id": "weighted_calculator",
+      "single_shot_text_generator": false,
+      "score": -804,
+      "penalties": [
+        {
+          "code": "title_overlap_recent",
+          "count": 1,
+          "penalty": 130
+        },
+        {
+          "code": "family_overlap_recent",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "theme_overlap_recent",
+          "count": 2,
+          "penalty": 56
+        },
+        {
+          "code": "mechanic_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "input_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "output_overlap_recent",
+          "count": 1,
+          "penalty": 18
+        },
+        {
+          "code": "audience_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "interaction_archetype_overlap",
+          "count": 1,
+          "penalty": 95
+        },
+        {
+          "code": "page_archetype_overlap",
+          "count": 1,
+          "penalty": 85
+        },
+        {
+          "code": "output_shape_overlap",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "state_model_overlap",
+          "count": 1,
+          "penalty": 72
+        },
+        {
+          "code": "component_pack_overlap",
+          "count": 1,
+          "penalty": 55
+        },
+        {
+          "code": "scaffold_overlap",
+          "count": 1,
+          "penalty": 120
+        },
+        {
+          "code": "genre_repeated",
+          "count": 2,
+          "penalty": 8
+        }
+      ]
+    },
+    {
+      "id": "slot_checklist_planner",
+      "title": "Slot Checklist Planner",
+      "description": "時間枠にタスクを割り当て、完了チェック付きで進捗管理する。",
+      "genre": "health",
+      "theme": "Soft",
+      "core_action": "plan",
+      "twist": "未完了タスクを次スロットへ自動で繰り越せる",
+      "one_sentence": "時間枠とチェックリストを一体化した実行計画プランナー。",
+      "story_summary": "計画倒れを減らすため、スロット単位の完了管理を導入した。",
+      "keywords": [
+        "planner",
+        "checklist",
+        "slots",
+        "habit"
+      ],
+      "family": "slot_planning",
+      "mechanic": "slot_assignment_with_check",
+      "input_style": "task_cards",
+      "output_style": "checklist_timeline",
+      "audience_promise": "better_execution_consistency",
+      "publish_hook": "未完了を次枠へ自動繰越",
+      "engine": "slot_planner",
+      "interaction_archetype": "checklist_slot_planner",
+      "page_archetype": "timeline_planner",
+      "output_shape": "slot_checklist",
+      "state_model": "slots_with_completion_flags",
+      "core_loop": "assign -> check -> carry",
+      "component_pack": "slot_grid+checklist_panel",
+      "scaffold_id": "slot_checklist_planner",
+      "single_shot_text_generator": false,
+      "score": -816,
+      "penalties": [
+        {
+          "code": "title_overlap_recent",
+          "count": 1,
+          "penalty": 130
+        },
+        {
+          "code": "family_overlap_recent",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "theme_overlap_recent",
+          "count": 2,
+          "penalty": 56
+        },
+        {
+          "code": "mechanic_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "input_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "output_overlap_recent",
+          "count": 1,
+          "penalty": 18
+        },
+        {
+          "code": "audience_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "interaction_archetype_overlap",
+          "count": 1,
+          "penalty": 95
+        },
+        {
+          "code": "page_archetype_overlap",
+          "count": 1,
+          "penalty": 85
+        },
+        {
+          "code": "output_shape_overlap",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "state_model_overlap",
+          "count": 1,
+          "penalty": 72
+        },
+        {
+          "code": "component_pack_overlap",
+          "count": 1,
+          "penalty": 55
+        },
+        {
+          "code": "scaffold_overlap",
+          "count": 1,
+          "penalty": 120
+        },
+        {
           "code": "core_action_repeated",
           "count": 2,
           "penalty": 12
@@ -1167,23 +1432,6 @@
     {
       "id": "challenge_chain_roulette",
       "title": "Challenge Chain Roulette",
-      "score": 36,
-      "penalties": [
-        {
-          "code": "theme_overlap_recent",
-          "count": 2,
-          "penalty": 56
-        },
-        {
-          "code": "genre_repeated",
-          "count": 2,
-          "penalty": 8
-        }
-      ]
-    },
-    {
-      "id": "weighted_option_calculator",
-      "title": "Weighted Option Calculator",
       "score": 36,
       "penalties": [
         {
@@ -1221,60 +1469,6 @@
       ]
     },
     {
-      "id": "daily_routine_slotter",
-      "title": "Daily Routine Slotter",
-      "score": -17,
-      "penalties": [
-        {
-          "code": "theme_overlap_recent",
-          "count": 2,
-          "penalty": 56
-        },
-        {
-          "code": "input_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        },
-        {
-          "code": "output_overlap_recent",
-          "count": 1,
-          "penalty": 18
-        },
-        {
-          "code": "genre_repeated",
-          "count": 2,
-          "penalty": 8
-        }
-      ]
-    },
-    {
-      "id": "dependency_flow_board",
-      "title": "Dependency Flow Board",
-      "score": -17,
-      "penalties": [
-        {
-          "code": "theme_overlap_recent",
-          "count": 2,
-          "penalty": 56
-        },
-        {
-          "code": "input_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        },
-        {
-          "code": "output_overlap_recent",
-          "count": 1,
-          "penalty": 18
-        },
-        {
-          "code": "genre_repeated",
-          "count": 2,
-          "penalty": 8
-        }
-      ]
-    },
-    {
       "id": "stakeholder_matrix_mapper",
       "title": "Stakeholder Matrix Mapper",
       "score": -60,
@@ -1303,132 +1497,6 @@
           "code": "genre_repeated",
           "count": 3,
           "penalty": 16
-        }
-      ]
-    },
-    {
-      "id": "idea_combo_deck",
-      "title": "Idea Combo Deck",
-      "score": -97,
-      "penalties": [
-        {
-          "code": "family_overlap_recent",
-          "count": 1,
-          "penalty": 80
-        },
-        {
-          "code": "theme_overlap_recent",
-          "count": 2,
-          "penalty": 56
-        },
-        {
-          "code": "input_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        },
-        {
-          "code": "output_overlap_recent",
-          "count": 1,
-          "penalty": 18
-        },
-        {
-          "code": "genre_repeated",
-          "count": 2,
-          "penalty": 8
-        }
-      ]
-    },
-    {
-      "id": "card_signal_mixer",
-      "title": "Signal Card Mixer",
-      "score": -297,
-      "penalties": [
-        {
-          "code": "title_overlap_recent",
-          "count": 1,
-          "penalty": 130
-        },
-        {
-          "code": "family_overlap_recent",
-          "count": 1,
-          "penalty": 80
-        },
-        {
-          "code": "theme_overlap_recent",
-          "count": 2,
-          "penalty": 56
-        },
-        {
-          "code": "mechanic_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        },
-        {
-          "code": "input_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        },
-        {
-          "code": "output_overlap_recent",
-          "count": 1,
-          "penalty": 18
-        },
-        {
-          "code": "audience_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        },
-        {
-          "code": "genre_repeated",
-          "count": 2,
-          "penalty": 8
-        }
-      ]
-    },
-    {
-      "id": "flow_board_builder",
-      "title": "Flow Board Builder",
-      "score": -297,
-      "penalties": [
-        {
-          "code": "title_overlap_recent",
-          "count": 1,
-          "penalty": 130
-        },
-        {
-          "code": "family_overlap_recent",
-          "count": 1,
-          "penalty": 80
-        },
-        {
-          "code": "theme_overlap_recent",
-          "count": 2,
-          "penalty": 56
-        },
-        {
-          "code": "mechanic_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        },
-        {
-          "code": "input_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        },
-        {
-          "code": "output_overlap_recent",
-          "count": 1,
-          "penalty": 18
-        },
-        {
-          "code": "audience_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        },
-        {
-          "code": "genre_repeated",
-          "count": 2,
-          "penalty": 8
         }
       ]
     },
@@ -1527,9 +1595,227 @@
       ]
     },
     {
-      "id": "slot_checklist_planner",
-      "title": "Slot Checklist Planner",
-      "score": -309,
+      "id": "budget_tradeoff_calculator",
+      "title": "Budget Tradeoff Calculator",
+      "score": -441,
+      "penalties": [
+        {
+          "code": "theme_overlap_recent",
+          "count": 1,
+          "penalty": 28
+        },
+        {
+          "code": "input_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "output_overlap_recent",
+          "count": 1,
+          "penalty": 18
+        },
+        {
+          "code": "interaction_archetype_overlap",
+          "count": 1,
+          "penalty": 95
+        },
+        {
+          "code": "page_archetype_overlap",
+          "count": 1,
+          "penalty": 85
+        },
+        {
+          "code": "output_shape_overlap",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "state_model_overlap",
+          "count": 1,
+          "penalty": 72
+        },
+        {
+          "code": "scaffold_overlap",
+          "count": 1,
+          "penalty": 120
+        },
+        {
+          "code": "genre_repeated",
+          "count": 2,
+          "penalty": 8
+        }
+      ]
+    },
+    {
+      "id": "daily_routine_slotter",
+      "title": "Daily Routine Slotter",
+      "score": -469,
+      "penalties": [
+        {
+          "code": "theme_overlap_recent",
+          "count": 2,
+          "penalty": 56
+        },
+        {
+          "code": "input_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "output_overlap_recent",
+          "count": 1,
+          "penalty": 18
+        },
+        {
+          "code": "interaction_archetype_overlap",
+          "count": 1,
+          "penalty": 95
+        },
+        {
+          "code": "page_archetype_overlap",
+          "count": 1,
+          "penalty": 85
+        },
+        {
+          "code": "output_shape_overlap",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "state_model_overlap",
+          "count": 1,
+          "penalty": 72
+        },
+        {
+          "code": "scaffold_overlap",
+          "count": 1,
+          "penalty": 120
+        },
+        {
+          "code": "genre_repeated",
+          "count": 2,
+          "penalty": 8
+        }
+      ]
+    },
+    {
+      "id": "dependency_flow_board",
+      "title": "Dependency Flow Board",
+      "score": -469,
+      "penalties": [
+        {
+          "code": "theme_overlap_recent",
+          "count": 2,
+          "penalty": 56
+        },
+        {
+          "code": "input_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "output_overlap_recent",
+          "count": 1,
+          "penalty": 18
+        },
+        {
+          "code": "interaction_archetype_overlap",
+          "count": 1,
+          "penalty": 95
+        },
+        {
+          "code": "page_archetype_overlap",
+          "count": 1,
+          "penalty": 85
+        },
+        {
+          "code": "output_shape_overlap",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "state_model_overlap",
+          "count": 1,
+          "penalty": 72
+        },
+        {
+          "code": "scaffold_overlap",
+          "count": 1,
+          "penalty": 120
+        },
+        {
+          "code": "genre_repeated",
+          "count": 2,
+          "penalty": 8
+        }
+      ]
+    },
+    {
+      "id": "idea_combo_deck",
+      "title": "Idea Combo Deck",
+      "score": -604,
+      "penalties": [
+        {
+          "code": "family_overlap_recent",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "theme_overlap_recent",
+          "count": 2,
+          "penalty": 56
+        },
+        {
+          "code": "input_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "output_overlap_recent",
+          "count": 1,
+          "penalty": 18
+        },
+        {
+          "code": "interaction_archetype_overlap",
+          "count": 1,
+          "penalty": 95
+        },
+        {
+          "code": "page_archetype_overlap",
+          "count": 1,
+          "penalty": 85
+        },
+        {
+          "code": "output_shape_overlap",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "state_model_overlap",
+          "count": 1,
+          "penalty": 72
+        },
+        {
+          "code": "component_pack_overlap",
+          "count": 1,
+          "penalty": 55
+        },
+        {
+          "code": "scaffold_overlap",
+          "count": 1,
+          "penalty": 120
+        },
+        {
+          "code": "genre_repeated",
+          "count": 2,
+          "penalty": 8
+        }
+      ]
+    },
+    {
+      "id": "card_signal_mixer",
+      "title": "Signal Card Mixer",
+      "score": -804,
       "penalties": [
         {
           "code": "title_overlap_recent",
@@ -1565,6 +1851,267 @@
           "code": "audience_overlap_recent",
           "count": 1,
           "penalty": 35
+        },
+        {
+          "code": "interaction_archetype_overlap",
+          "count": 1,
+          "penalty": 95
+        },
+        {
+          "code": "page_archetype_overlap",
+          "count": 1,
+          "penalty": 85
+        },
+        {
+          "code": "output_shape_overlap",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "state_model_overlap",
+          "count": 1,
+          "penalty": 72
+        },
+        {
+          "code": "component_pack_overlap",
+          "count": 1,
+          "penalty": 55
+        },
+        {
+          "code": "scaffold_overlap",
+          "count": 1,
+          "penalty": 120
+        },
+        {
+          "code": "genre_repeated",
+          "count": 2,
+          "penalty": 8
+        }
+      ]
+    },
+    {
+      "id": "flow_board_builder",
+      "title": "Flow Board Builder",
+      "score": -804,
+      "penalties": [
+        {
+          "code": "title_overlap_recent",
+          "count": 1,
+          "penalty": 130
+        },
+        {
+          "code": "family_overlap_recent",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "theme_overlap_recent",
+          "count": 2,
+          "penalty": 56
+        },
+        {
+          "code": "mechanic_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "input_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "output_overlap_recent",
+          "count": 1,
+          "penalty": 18
+        },
+        {
+          "code": "audience_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "interaction_archetype_overlap",
+          "count": 1,
+          "penalty": 95
+        },
+        {
+          "code": "page_archetype_overlap",
+          "count": 1,
+          "penalty": 85
+        },
+        {
+          "code": "output_shape_overlap",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "state_model_overlap",
+          "count": 1,
+          "penalty": 72
+        },
+        {
+          "code": "component_pack_overlap",
+          "count": 1,
+          "penalty": 55
+        },
+        {
+          "code": "scaffold_overlap",
+          "count": 1,
+          "penalty": 120
+        },
+        {
+          "code": "genre_repeated",
+          "count": 2,
+          "penalty": 8
+        }
+      ]
+    },
+    {
+      "id": "weighted_option_calculator",
+      "title": "Weighted Option Calculator",
+      "score": -804,
+      "penalties": [
+        {
+          "code": "title_overlap_recent",
+          "count": 1,
+          "penalty": 130
+        },
+        {
+          "code": "family_overlap_recent",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "theme_overlap_recent",
+          "count": 2,
+          "penalty": 56
+        },
+        {
+          "code": "mechanic_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "input_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "output_overlap_recent",
+          "count": 1,
+          "penalty": 18
+        },
+        {
+          "code": "audience_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "interaction_archetype_overlap",
+          "count": 1,
+          "penalty": 95
+        },
+        {
+          "code": "page_archetype_overlap",
+          "count": 1,
+          "penalty": 85
+        },
+        {
+          "code": "output_shape_overlap",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "state_model_overlap",
+          "count": 1,
+          "penalty": 72
+        },
+        {
+          "code": "component_pack_overlap",
+          "count": 1,
+          "penalty": 55
+        },
+        {
+          "code": "scaffold_overlap",
+          "count": 1,
+          "penalty": 120
+        },
+        {
+          "code": "genre_repeated",
+          "count": 2,
+          "penalty": 8
+        }
+      ]
+    },
+    {
+      "id": "slot_checklist_planner",
+      "title": "Slot Checklist Planner",
+      "score": -816,
+      "penalties": [
+        {
+          "code": "title_overlap_recent",
+          "count": 1,
+          "penalty": 130
+        },
+        {
+          "code": "family_overlap_recent",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "theme_overlap_recent",
+          "count": 2,
+          "penalty": 56
+        },
+        {
+          "code": "mechanic_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "input_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "output_overlap_recent",
+          "count": 1,
+          "penalty": 18
+        },
+        {
+          "code": "audience_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "interaction_archetype_overlap",
+          "count": 1,
+          "penalty": 95
+        },
+        {
+          "code": "page_archetype_overlap",
+          "count": 1,
+          "penalty": 85
+        },
+        {
+          "code": "output_shape_overlap",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "state_model_overlap",
+          "count": 1,
+          "penalty": 72
+        },
+        {
+          "code": "component_pack_overlap",
+          "count": 1,
+          "penalty": 55
+        },
+        {
+          "code": "scaffold_overlap",
+          "count": 1,
+          "penalty": 120
         },
         {
           "code": "core_action_repeated",

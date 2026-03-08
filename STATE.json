@@ -1,6 +1,6 @@
 {
   "target_day": 100,
-  "next_day": 15,
+  "next_day": 16,
   "batch_size_default": 7,
   "posts": {
     "fixed_tags": [
@@ -14,15 +14,6 @@
     }
   },
   "recent_meta": [
-    {
-      "day": "014",
-      "core_action": "plan",
-      "twist": "開始時刻つきでそのまま実行できるタイムスロットを提示 / Signal:HN Frontpage「FLASH radiotherapy's bol」",
-      "one_sentence": "作業時間から集中と休憩の実行順を自動で作る生産性ツール。（話題:HN Frontpage）",
-      "complexity_tier": "large",
-      "selected_components": [],
-      "complexity_prompt_hint": "Create a showpiece version by adding around 3 safe enhancement components from selected_components, but avoid risky architecture changes."
-    },
     {
       "day": "015",
       "core_action": "rewrite",
@@ -347,6 +338,29 @@
       "complexity_tier": "large",
       "selected_components": [],
       "complexity_prompt_hint": "Create a showpiece version by adding around 3 safe enhancement components from selected_components, but avoid risky architecture changes."
+    },
+    {
+      "day": "015",
+      "title": "Constraint Roulette",
+      "genre": "fun",
+      "family": "roulette_challenge",
+      "mechanic": "random_spin",
+      "input_style": "preset_pool",
+      "output_style": "roulette_result",
+      "audience_promise": "high_short_burst_engagement",
+      "interaction_archetype": "challenge_roulette_game",
+      "page_archetype": "game_stage",
+      "output_shape": "round_result_cards",
+      "state_model": "round_history_and_score",
+      "component_pack": "roulette_wheel+score_panel",
+      "scaffold_id": "roulette_game",
+      "single_shot_text_generator": false,
+      "core_action": "play",
+      "twist": "連続成功時に制約が段階強化される / Signal:HN Frontpage「Yoghurt delivery women c」",
+      "one_sentence": "制約ミッションをルーレットで引いて遊ぶチャレンジゲーム。（話題:HN Frontpage）",
+      "complexity_tier": "small",
+      "selected_components": [],
+      "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
     }
   ],
   "days": {
@@ -954,6 +968,14 @@
         "audience_promise": "high_short_burst_engagement",
         "publish_hook": "回すたびに制約ミッションが変わる",
         "engine": "roulette_game",
+        "interaction_archetype": "challenge_roulette_game",
+        "page_archetype": "game_stage",
+        "output_shape": "round_result_cards",
+        "state_model": "round_history_and_score",
+        "core_loop": "spin -> challenge -> score",
+        "component_pack": "roulette_wheel+score_panel",
+        "scaffold_id": "roulette_game",
+        "single_shot_text_generator": false,
         "original_twist": "連続成功時に制約が段階強化される / Signal:HN Frontpage「Yoghurt delivery women c」",
         "original_one_sentence": "制約ミッションをルーレットで引いて遊ぶチャレンジゲーム。（話題:HN Frontpage）",
         "enhancement_source": "",
@@ -1540,13 +1562,28 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-03-08T07:36:46Z",
+      "day": "015",
+      "repo_name": "ai-dev-day-015",
+      "genre": "fun",
+      "theme": "Noir",
+      "steps": [
+        "planning",
+        "implementation",
+        "build",
+        "publish",
+        "state_update"
+      ],
+      "status": "done"
     }
   ],
   "recent_genres": [
-    "productivity",
     "health",
-    "devtools"
+    "devtools",
+    "fun"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-03-08T07:35:44Z"
+  "last_run_at": "2026-03-08T07:36:46Z"
 }
