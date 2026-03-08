@@ -1,0 +1,52 @@
+{
+  "generated_at": "2026-03-08T04:54:10.840197+00:00",
+  "adoption_profile": "safe",
+  "dry_run": false,
+  "stages_run": [
+    "report"
+  ],
+  "artifacts": {
+    "signals": "shared-context/SIGNALS.md",
+    "shortlist": "idea_bank/shortlist.json",
+    "control_tower": "reports/control_tower/weekly_control_tower_2026-03-08.json",
+    "next_batch_plan": "plans/next_batch_plan.json",
+    "thesis_update_draft": "reports/weekly/thesis_update_draft_2026-03-08.md",
+    "thesis_preview": "reports/weekly/thesis_preview_2026-03-08.md",
+    "weekly_run_preview": "reports/weekly/weekly_run_preview_2026-03-08.md",
+    "thesis_adoption_report": "reports/weekly/thesis_adoption_report_2026-03-07.json",
+    "weekly_run_adoption_report": "",
+    "learning_preview": "reports/weekly/learning/learning_update_preview_2026-03-08.json",
+    "learning_adoption_report": "reports/weekly/learning/learning_adoption_report_2026-03-08.json",
+    "weekly_digest": "reports/weekly_digest.md",
+    "portfolio_eval": "reports/portfolio/portfolio_eval_2026-03-08.json",
+    "growth_brief": "reports/growth/growth_brief_2026-03-08.json",
+    "strategy_brief": "reports/strategy/strategy_brief_2026-03-08.json",
+    "evidence_report": "reports/evidence/evidence_2026-03-08.json",
+    "reality_gate": "reports/reality/reality_gate_2026-03-08.json",
+    "launch_pack": "reports/launch/launch_pack_2026-03-08.json",
+    "launch_export": "exports/launch/launch_export_2026-03-08.json",
+    "feedback_raw": "data/feedback/raw/buffer_metrics_2026-03-08.json",
+    "feedback_digest": "reports/feedback/post_launch_feedback_2026-03-08.json",
+    "healthcheck": "reports/healthcheck/healthcheck_2026-03-08.json",
+    "id_linked_chain_present": true,
+    "quality_reports": [],
+    "fallback_plans": [],
+    "enhanced_candidates": []
+  },
+  "adoption_flags": {
+    "USE_NEXT_BATCH_PLAN": "1",
+    "ADOPT_NEXT_BATCH_COMPLEXITY": "1",
+    "ADOPT_NEXT_BATCH_COMPONENTS": "0",
+    "ADOPT_NEXT_BATCH_ENHANCEMENT": "0",
+    "ADOPT_THESIS_DRAFT": "0",
+    "ADOPT_WEEKLY_RUN": "0",
+    "ADOPT_MEMORY_UPDATES": "0",
+    "ADOPT_FEEDBACK_UPDATES": "0",
+    "ADOPT_SOURCE_NOTES": "0",
+    "ADOPT_LEARNED_RULES": "0"
+  },
+  "summary": {
+    "resume_executed": false,
+    "notes": []
+  }
+}

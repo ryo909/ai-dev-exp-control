@@ -1,0 +1,277 @@
+{
+  "generated_at": "2026-03-08T04:54:09.557568+00:00",
+  "summary": {
+    "strategic_confidence": 0.96,
+    "primary_modes": [
+      "clarity-first utility",
+      "showcase one + safe six",
+      "portfolio-visible impact"
+    ],
+    "avoidance_modes": [
+      "over-complex novelty bets",
+      "模倣色の強い competitor hook",
+      "demo導線が弱いままの公開"
+    ],
+    "showcase_slot": 5,
+    "next_batch_bias": [
+      "clarity first",
+      "showcase one + safe six",
+      "portfolio-visible outcomes"
+    ],
+    "key_thesis_shift": [
+      "quality report 生成率の安定化",
+      "next_batch_plan safe採用の継続",
+      "blocked回避のsource選定"
+    ]
+  },
+  "inputs_used": {
+    "signals_used": true,
+    "shortlist_used": true,
+    "competitor_scan_used": true,
+    "control_tower_used": true,
+    "showcase_used": true,
+    "growth_used": true,
+    "portfolio_used": true
+  },
+  "strategic_direction": {
+    "core_thesis": "novelty 単体ではなく『一文で用途が伝わる即時価値 + 小さな驚き』を軸に、showcase 1本で差分訴求、残りは再現性重視で積み上げる",
+    "why_now": [
+      "quality/fallback は整ってきたため、次は勝ち筋の言語化がボトルネック",
+      "showcase/growth/portfolio の判断が分散しており、統合フレーミングが必要"
+    ],
+    "winning_angles": [
+      "小さくても即伝わる utility",
+      "one-line clarity を先に固定",
+      "showcase 1本の演出を明確化",
+      "README / demo / social hook の一貫性",
+      "medium中心で component を安全に増やす",
+      "competitor signal を流用しつつ差分 twist を明文化"
+    ],
+    "deprioritized_angles": [
+      "実装コストの高すぎる大型機能",
+      "説明しないと伝わらない複雑演出",
+      "競合フックの過度な模倣",
+      "導線が弱いままの showcase 強行"
+    ],
+    "risks_to_watch": [
+      "novelty はあるが用途が不明な案が混ざる",
+      "showcase 候補の README/demo clarity 不足",
+      "component 追加で complexity が過負荷になる",
+      "small 量産で portfolio で埋もれる"
+    ],
+    "differentiation_axes": [
+      "instant clarity vs lore depth",
+      "utility vs gimmick",
+      "portfolio fit vs one-off novelty",
+      "replayability vs one-shot delight"
+    ],
+    "showcase_rationale": [
+      "見た目と差分訴求が強い1本にする",
+      "slot 5 を見せ玉として位置付ける"
+    ]
+  },
+  "batch_guidance": {
+    "recommended_biases": [
+      "clarity first",
+      "showcase one + safe six",
+      "portfolio-visible outcomes"
+    ],
+    "complexity_bias": [
+      "tier mix target: small=4, medium=3, large=0"
+    ],
+    "component_bias": [
+      "reason_panel",
+      "sample_inputs"
+    ],
+    "enhancement_bias": [
+      "competitor enhancement は clarity を維持できる slot に限定",
+      "showcase slot でのみ aggressive enhancement を検討"
+    ],
+    "fallback_posture": [
+      "showcase は large失敗時に medium へ段階fallback",
+      "missing component が多い場合は同tier再試行より先に構成を削る"
+    ],
+    "portfolio_implications": [
+      "missing or weak live demo links"
+    ],
+    "growth_implications": [
+      "one-line positioning を先に固定"
+    ]
+  },
+  "slot_recommendations": [
+    {
+      "slot": "Slot1",
+      "recommended_direction": "small で reason_panel を活かし、用途の即時伝達を優先",
+      "why": [
+        "next_batch_plan の complexity/components 推奨に整合",
+        "戦略軸を clarity-first に固定"
+      ],
+      "do_more_of": [
+        "one_sentence の便益明確化",
+        "README 冒頭の demo 導線"
+      ],
+      "avoid": [
+        "説明前提の複雑演出",
+        "用途が曖昧な twist"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "slot": "Slot2",
+      "recommended_direction": "small で reason_panel を活かし、用途の即時伝達を優先",
+      "why": [
+        "next_batch_plan の complexity/components 推奨に整合",
+        "戦略軸を clarity-first に固定"
+      ],
+      "do_more_of": [
+        "one_sentence の便益明確化",
+        "README 冒頭の demo 導線"
+      ],
+      "avoid": [
+        "説明前提の複雑演出",
+        "用途が曖昧な twist"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "slot": "Slot3",
+      "recommended_direction": "small で reason_panel を活かし、用途の即時伝達を優先",
+      "why": [
+        "next_batch_plan の complexity/components 推奨に整合",
+        "戦略軸を clarity-first に固定"
+      ],
+      "do_more_of": [
+        "one_sentence の便益明確化",
+        "README 冒頭の demo 導線"
+      ],
+      "avoid": [
+        "説明前提の複雑演出",
+        "用途が曖昧な twist"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "slot": "Slot4",
+      "recommended_direction": "small で reason_panel を活かし、用途の即時伝達を優先",
+      "why": [
+        "next_batch_plan の complexity/components 推奨に整合",
+        "戦略軸を clarity-first に固定"
+      ],
+      "do_more_of": [
+        "one_sentence の便益明確化",
+        "README 冒頭の demo 導線"
+      ],
+      "avoid": [
+        "説明前提の複雑演出",
+        "用途が曖昧な twist"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "slot": "Slot5",
+      "recommended_direction": "medium で reason_panel/sample_inputs を活かし、用途の即時伝達を優先",
+      "why": [
+        "next_batch_plan の complexity/components 推奨に整合",
+        "戦略軸を clarity-first に固定"
+      ],
+      "do_more_of": [
+        "one_sentence の便益明確化",
+        "README 冒頭の demo 導線"
+      ],
+      "avoid": [
+        "説明前提の複雑演出",
+        "用途が曖昧な twist"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "slot": "Slot6",
+      "recommended_direction": "medium で reason_panel/sample_inputs を活かし、用途の即時伝達を優先",
+      "why": [
+        "next_batch_plan の complexity/components 推奨に整合",
+        "戦略軸を clarity-first に固定"
+      ],
+      "do_more_of": [
+        "one_sentence の便益明確化",
+        "README 冒頭の demo 導線"
+      ],
+      "avoid": [
+        "説明前提の複雑演出",
+        "用途が曖昧な twist"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "slot": "Slot7",
+      "recommended_direction": "medium で reason_panel/sample_inputs を活かし、用途の即時伝達を優先",
+      "why": [
+        "next_batch_plan の complexity/components 推奨に整合",
+        "戦略軸を clarity-first に固定"
+      ],
+      "do_more_of": [
+        "one_sentence の便益明確化",
+        "README 冒頭の demo 導線"
+      ],
+      "avoid": [
+        "説明前提の複雑演出",
+        "用途が曖昧な twist"
+      ],
+      "confidence": 0.84
+    }
+  ],
+  "thesis_candidates": [
+    {
+      "label": "clarity-first",
+      "candidate_text": "今週は『一文で用途が伝わる即時価値』を最優先にし、showcase 1本で差分訴求、残りは再現性重視で回す。",
+      "why": [
+        "growth/portfolio に共通する改善軸",
+        "next_batch の安全運用と両立"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "label": "showcase-discipline",
+      "candidate_text": "showcase は目立つ演出よりも『使いどころの即時理解 + demo導線』を満たす案だけ採用する。",
+      "why": [
+        "portfolio/growth観点で効果が高い",
+        "失敗時のfallback判断が容易"
+      ],
+      "confidence": 0.76
+    },
+    {
+      "label": "component-safety",
+      "candidate_text": "component追加は medium帯で段階導入し、missing signal が出た部品は翌週に再評価する。",
+      "why": [
+        "quality/fallback の既存ループと整合"
+      ],
+      "confidence": 0.74
+    }
+  ],
+  "decision_rules": [
+    "用途が一文で伝わらない案は showcase 候補にしない",
+    "large は novelty より portfolio impact が明確な時だけ採用",
+    "competitor enhancement は clarity を壊さない範囲でのみ採用",
+    "README / demo / social hook が揃わない場合は先に導線改善を優先",
+    "showcase slot 5 は演出強化を許容し、他slotは安全実装を優先",
+    "推奨 tier mix ({'small': 4, 'medium': 3, 'large': 0}) を逸脱する場合は根拠を残す",
+    "競合の共通構成は参考にとどめ、言い回しの模倣は避ける"
+  ],
+  "recommended_strategy_actions": [
+    "THESIS 更新時に strategy_brief の thesis_candidates から1つ採用候補を選ぶ",
+    "showcase slot は launch前に README/demo/hook を1セットで確認",
+    "next_batch slot ごとに do_more_of/avoid を run_day 前にメタへ反映",
+    "control_tower の recommended_focus と戦略文言の齟齬を週次で解消"
+  ],
+  "sources": [
+    "shared-context/SIGNALS.md",
+    "idea_bank/shortlist.json",
+    "reports/competitors/competitor_scan_2026-03-07_shortlist.json",
+    "reports/control_tower/weekly_control_tower_2026-03-08.json",
+    "reports/showcase/showcase_plan_2026-03-08.json",
+    "plans/next_batch_plan.json",
+    "shared-context/THESIS.md",
+    "system/prompts/weekly_run.md",
+    "reports/growth/growth_brief_2026-03-08.json",
+    "reports/portfolio/portfolio_eval_2026-03-08.json"
+  ]
+}

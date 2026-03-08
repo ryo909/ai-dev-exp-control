@@ -1,0 +1,490 @@
+{
+  "generated_at": "2026-03-08T04:54:10.172017+00:00",
+  "launch_id": "launch-2026-03-08",
+  "summary": {
+    "launch_readiness": 0.827,
+    "primary_showcase_slot": 5,
+    "secondary_candidates": [
+      "Day001",
+      "Day002",
+      "Day003"
+    ],
+    "recommended_distribution_mix": [
+      "hero push: X first + gallery follow-up",
+      "secondary: note + X short posts"
+    ],
+    "inputs_used": {
+      "strategy": true,
+      "growth": true,
+      "portfolio": true,
+      "evidence": true,
+      "reality": true,
+      "showcase": true,
+      "control_tower": true
+    }
+  },
+  "launch_decisions": {
+    "hero_tool": {
+      "day": "Day005",
+      "tool_id": "day005",
+      "repo_name": "ai-dev-day-005",
+      "title": "Hydration Pace Planner",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-005/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-005",
+      "decision": "launch_now",
+      "decision_source": "launch_pack",
+      "why": [
+        "launch_readiness が相対的に高い",
+        "channel fit と one-line positioning が揃っている"
+      ],
+      "risks": [
+        "pages_url probe failed: network_error=URLError",
+        "repo_url probe failed: network_error=URLError"
+      ],
+      "required_fixes_before_push": [
+        "fix repo/pages links and confirm demo reachability"
+      ],
+      "preferred_channels": [
+        "note + X",
+        "showcase/gallery push"
+      ]
+    },
+    "secondary_tools": [
+      {
+        "day": "Day001",
+        "tool_id": "day001",
+        "repo_name": "ai-dev-day-001",
+        "decision": "launch_now",
+        "decision_source": "launch_pack",
+        "preferred_channels": [
+          "note + X",
+          "showcase/gallery push"
+        ]
+      },
+      {
+        "day": "Day002",
+        "tool_id": "day002",
+        "repo_name": "ai-dev-day-002",
+        "decision": "launch_now",
+        "decision_source": "launch_pack",
+        "preferred_channels": [
+          "note + X",
+          "showcase/gallery push"
+        ]
+      },
+      {
+        "day": "Day003",
+        "tool_id": "day003",
+        "repo_name": "ai-dev-day-003",
+        "decision": "launch_now",
+        "decision_source": "launch_pack",
+        "preferred_channels": [
+          "note + X",
+          "showcase/gallery push"
+        ]
+      }
+    ],
+    "hold_candidates": []
+  },
+  "hero_launch_pack": {
+    "one_line_positioning": "目標水分量を無理なく達成するための配分プランナー。",
+    "hero_message": "Hydration Pace Planner を今週の前面に出し、first-view clarity と proof point を揃えて出す",
+    "audience_angles": [
+      "habit builders",
+      "wellness-minded users"
+    ],
+    "x_hooks": [
+      "Hydration Pace Planner を作って、勤務時間に合わせて飲水タイミングを均等化するを狙いました。",
+      "1分で使える Hydration Pace Planner。目標水分量を無理なく達成するための配分プランナー。",
+      "「勤務時間に合わせて飲水タイミングを均等化する」を最短で試せる小ツールです。"
+    ],
+    "cta_candidates": [
+      "まず触ってみて、使いづらい点を教えてください。",
+      "GitHubも公開しているので実装差分も見られます。",
+      "他の実験ツールも一覧から辿れます。"
+    ],
+    "launch_copy_candidates": [
+      "Hydration Pace Planner を公開しました。目標水分量を無理なく達成するための配分プランナー。 https://ryo909.github.io/ai-dev-day-005/",
+      "今日の1本: Hydration Pace Planner。目標水分量を無理なく達成するための配分プランナー。"
+    ],
+    "note_angles": [
+      "Hydration Pace Planner を1日で組むために削った仕様と残した仕様",
+      "track を短時間で価値化する設計メモ",
+      "小さなWebツールを公開し続けるための実装テンプレ運用",
+      "世界観を壊さずに最小差分で改善する進め方"
+    ],
+    "note_outline": [
+      "課題背景と想定ユーザー",
+      "なぜこの体験設計にしたか",
+      "使い方とユースケース",
+      "改善予定とフィードバック募集"
+    ],
+    "x_thread_outline": [
+      "Hook",
+      "What it solves",
+      "Demo link",
+      "CTA"
+    ],
+    "gallery_caption_candidates": [
+      "目標水分量を無理なく達成するための配分プランナー。",
+      "Hydration Pace Planner: 1分で使えて用途が伝わる小ツール"
+    ],
+    "asset_recommendations": [
+      "hero screenshot (first view)",
+      "mobile screenshot",
+      "CTAが見える crop"
+    ],
+    "visual_callouts": [
+      "above-the-fold にタイトル/要旨がある",
+      "CTA がテキスト上で確認できる",
+      "viewport 設定があり狭幅対応が期待できる"
+    ],
+    "proof_points": [
+      "README has overview/title",
+      "README includes demo/live guidance",
+      "above-the-fold にタイトル/要旨がある",
+      "CTA がテキスト上で確認できる"
+    ],
+    "risk_notes": [
+      "pages_url probe failed: network_error=URLError",
+      "repo_url probe failed: network_error=URLError"
+    ]
+  },
+  "by_day": [
+    {
+      "day": "Day001",
+      "tool_id": "day001",
+      "repo_name": "ai-dev-day-001",
+      "launch_readiness": 0.827,
+      "decision": "launch_now",
+      "decision_source": "launch_pack",
+      "one_line_positioning": "文章を短く整えて、投稿しやすい形に圧縮するライティングツール。",
+      "recommended_channels": [
+        "note + X",
+        "showcase/gallery push"
+      ],
+      "hook_candidates": [
+        "Draft Tightener を作って、文字数の目安を表示してSNS向けの短文化を支援を狙いました。",
+        "1分で使える Draft Tightener。文章を短く整えて、投稿しやすい形に圧縮するライティングツール。",
+        "「文字数の目安を表示してSNS向けの短文化を支援」を最短で試せる小ツールです。"
+      ],
+      "cta_candidates": [
+        "まず触ってみて、使いづらい点を教えてください。",
+        "GitHubも公開しているので実装差分も見られます。",
+        "他の実験ツールも一覧から辿れます。"
+      ],
+      "proof_points": [
+        "README has overview/title",
+        "README includes demo/live guidance",
+        "above-the-fold にタイトル/要旨がある",
+        "CTA がテキスト上で確認できる"
+      ],
+      "issues": [
+        "pages_url probe failed: network_error=URLError",
+        "repo_url probe failed: network_error=URLError"
+      ],
+      "recommended_actions": [
+        "fix repo/pages links and confirm demo reachability"
+      ],
+      "title": "Draft Tightener",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-001/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-001"
+    },
+    {
+      "day": "Day002",
+      "tool_id": "day002",
+      "repo_name": "ai-dev-day-002",
+      "launch_readiness": 0.827,
+      "decision": "launch_now",
+      "decision_source": "launch_pack",
+      "one_line_positioning": "JSONの構造を素早く把握するための開発者向けビューア。",
+      "recommended_channels": [
+        "note + X",
+        "showcase/gallery push"
+      ],
+      "hook_candidates": [
+        "JSON Key Lens を作って、深いネストでもパス一覧を一気に展開できるを狙いました。",
+        "1分で使える JSON Key Lens。JSONの構造を素早く把握するための開発者向けビューア。",
+        "「深いネストでもパス一覧を一気に展開できる」を最短で試せる小ツールです。"
+      ],
+      "cta_candidates": [
+        "まず触ってみて、使いづらい点を教えてください。",
+        "GitHubも公開しているので実装差分も見られます。",
+        "他の実験ツールも一覧から辿れます。"
+      ],
+      "proof_points": [
+        "README has overview/title",
+        "README includes demo/live guidance",
+        "above-the-fold にタイトル/要旨がある",
+        "CTA がテキスト上で確認できる"
+      ],
+      "issues": [
+        "pages_url probe failed: network_error=URLError",
+        "repo_url probe failed: network_error=URLError"
+      ],
+      "recommended_actions": [
+        "fix repo/pages links and confirm demo reachability"
+      ],
+      "title": "JSON Key Lens",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-002/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-002"
+    },
+    {
+      "day": "Day003",
+      "tool_id": "day003",
+      "repo_name": "ai-dev-day-003",
+      "launch_readiness": 0.827,
+      "decision": "launch_now",
+      "decision_source": "launch_pack",
+      "one_line_positioning": "締切から逆算した実行計画を即作成するプランニングツール。",
+      "recommended_channels": [
+        "note + X",
+        "showcase/gallery push"
+      ],
+      "hook_candidates": [
+        "Backward Milestone Mapper を作って、逆算の根拠を1行で示して計画の納得感を上げるを狙いました。",
+        "1分で使える Backward Milestone Mapper。締切から逆算した実行計画を即作成するプランニングツール。",
+        "「逆算の根拠を1行で示して計画の納得感を上げる」を最短で試せる小ツールです。"
+      ],
+      "cta_candidates": [
+        "まず触ってみて、使いづらい点を教えてください。",
+        "GitHubも公開しているので実装差分も見られます。",
+        "他の実験ツールも一覧から辿れます。"
+      ],
+      "proof_points": [
+        "README has overview/title",
+        "README includes demo/live guidance",
+        "above-the-fold にタイトル/要旨がある",
+        "CTA がテキスト上で確認できる"
+      ],
+      "issues": [
+        "pages_url probe failed: network_error=URLError",
+        "repo_url probe failed: network_error=URLError"
+      ],
+      "recommended_actions": [
+        "fix repo/pages links and confirm demo reachability"
+      ],
+      "title": "Backward Milestone Mapper",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-003/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-003"
+    },
+    {
+      "day": "Day004",
+      "tool_id": "day004",
+      "repo_name": "ai-dev-day-004",
+      "launch_readiness": 0.827,
+      "decision": "launch_now",
+      "decision_source": "launch_pack",
+      "one_line_positioning": "学習内容の復習タイミングを自動で組み立てる学習支援ツール。",
+      "recommended_channels": [
+        "note + X",
+        "showcase/gallery push"
+      ],
+      "hook_candidates": [
+        "Recall Loop Builder を作って、初回学習日から次回復習日を同時表示するを狙いました。",
+        "1分で使える Recall Loop Builder。学習内容の復習タイミングを自動で組み立てる学習支援ツール。",
+        "「初回学習日から次回復習日を同時表示する」を最短で試せる小ツールです。"
+      ],
+      "cta_candidates": [
+        "まず触ってみて、使いづらい点を教えてください。",
+        "GitHubも公開しているので実装差分も見られます。",
+        "他の実験ツールも一覧から辿れます。"
+      ],
+      "proof_points": [
+        "README has overview/title",
+        "README includes demo/live guidance",
+        "above-the-fold にタイトル/要旨がある",
+        "CTA がテキスト上で確認できる"
+      ],
+      "issues": [
+        "pages_url probe failed: network_error=URLError",
+        "repo_url probe failed: network_error=URLError"
+      ],
+      "recommended_actions": [
+        "fix repo/pages links and confirm demo reachability"
+      ],
+      "title": "Recall Loop Builder",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-004/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-004"
+    },
+    {
+      "day": "Day005",
+      "tool_id": "day005",
+      "repo_name": "ai-dev-day-005",
+      "launch_readiness": 0.827,
+      "decision": "launch_now",
+      "decision_source": "launch_pack",
+      "one_line_positioning": "目標水分量を無理なく達成するための配分プランナー。",
+      "recommended_channels": [
+        "note + X",
+        "showcase/gallery push"
+      ],
+      "hook_candidates": [
+        "Hydration Pace Planner を作って、勤務時間に合わせて飲水タイミングを均等化するを狙いました。",
+        "1分で使える Hydration Pace Planner。目標水分量を無理なく達成するための配分プランナー。",
+        "「勤務時間に合わせて飲水タイミングを均等化する」を最短で試せる小ツールです。"
+      ],
+      "cta_candidates": [
+        "まず触ってみて、使いづらい点を教えてください。",
+        "GitHubも公開しているので実装差分も見られます。",
+        "他の実験ツールも一覧から辿れます。"
+      ],
+      "proof_points": [
+        "README has overview/title",
+        "README includes demo/live guidance",
+        "above-the-fold にタイトル/要旨がある",
+        "CTA がテキスト上で確認できる"
+      ],
+      "issues": [
+        "pages_url probe failed: network_error=URLError",
+        "repo_url probe failed: network_error=URLError"
+      ],
+      "recommended_actions": [
+        "fix repo/pages links and confirm demo reachability"
+      ],
+      "title": "Hydration Pace Planner",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-005/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-005"
+    },
+    {
+      "day": "Day006",
+      "tool_id": "day006",
+      "repo_name": "ai-dev-day-006",
+      "launch_readiness": 0.827,
+      "decision": "launch_now",
+      "decision_source": "launch_pack",
+      "one_line_positioning": "気分転換用の短いお題をすぐ作るライトな遊びツール。",
+      "recommended_channels": [
+        "note + X",
+        "showcase/gallery push"
+      ],
+      "hook_candidates": [
+        "Tiny Prompt Play を作って、30秒で遊べるミニお題を即時に複数提案を狙いました。",
+        "1分で使える Tiny Prompt Play。気分転換用の短いお題をすぐ作るライトな遊びツール。",
+        "「30秒で遊べるミニお題を即時に複数提案」を最短で試せる小ツールです。"
+      ],
+      "cta_candidates": [
+        "まず触ってみて、使いづらい点を教えてください。",
+        "GitHubも公開しているので実装差分も見られます。",
+        "他の実験ツールも一覧から辿れます。"
+      ],
+      "proof_points": [
+        "README has overview/title",
+        "README includes demo/live guidance",
+        "above-the-fold にタイトル/要旨がある",
+        "CTA がテキスト上で確認できる"
+      ],
+      "issues": [
+        "pages_url probe failed: network_error=URLError",
+        "repo_url probe failed: network_error=URLError"
+      ],
+      "recommended_actions": [
+        "fix repo/pages links and confirm demo reachability"
+      ],
+      "title": "Tiny Prompt Play",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-006/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-006"
+    },
+    {
+      "day": "Day007",
+      "tool_id": "day007",
+      "repo_name": "ai-dev-day-007",
+      "launch_readiness": 0.827,
+      "decision": "launch_now",
+      "decision_source": "launch_pack",
+      "one_line_positioning": "作業時間から集中と休憩の実行順を自動で作る生産性ツール。",
+      "recommended_channels": [
+        "note + X",
+        "showcase/gallery push"
+      ],
+      "hook_candidates": [
+        "Focus Slot Composer を作って、開始時刻つきでそのまま実行できるタイムスロットを提示を狙いました。",
+        "1分で使える Focus Slot Composer。作業時間から集中と休憩の実行順を自動で作る生産性ツール。",
+        "「開始時刻つきでそのまま実行できるタイムスロットを提示」を最短で試せる小ツールです。"
+      ],
+      "cta_candidates": [
+        "まず触ってみて、使いづらい点を教えてください。",
+        "GitHubも公開しているので実装差分も見られます。",
+        "他の実験ツールも一覧から辿れます。"
+      ],
+      "proof_points": [
+        "README has overview/title",
+        "README includes demo/live guidance",
+        "above-the-fold にタイトル/要旨がある",
+        "CTA がテキスト上で確認できる"
+      ],
+      "issues": [
+        "pages_url probe failed: network_error=URLError",
+        "repo_url probe failed: network_error=URLError"
+      ],
+      "recommended_actions": [
+        "fix repo/pages links and confirm demo reachability"
+      ],
+      "title": "Focus Slot Composer",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-007/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-007"
+    },
+    {
+      "day": "Day008",
+      "tool_id": "day008",
+      "repo_name": "ai-dev-day-008",
+      "launch_readiness": 0.824,
+      "decision": "launch_now",
+      "decision_source": "launch_pack",
+      "one_line_positioning": "文章を短く整えて、投稿しやすい形に圧縮するライティングツール。",
+      "recommended_channels": [
+        "note + X",
+        "showcase/gallery push"
+      ],
+      "hook_candidates": [
+        "Draft Tightener を作って、文字数の目安を表示してSNS向けの短文化を支援を狙いました。",
+        "1分で使える Draft Tightener。文章を短く整えて、投稿しやすい形に圧縮するライティングツール。",
+        "「文字数の目安を表示してSNS向けの短文化を支援」を最短で試せる小ツールです。"
+      ],
+      "cta_candidates": [
+        "まず触ってみて、使いづらい点を教えてください。",
+        "GitHubも公開しているので実装差分も見られます。",
+        "他の実験ツールも一覧から辿れます。"
+      ],
+      "proof_points": [
+        "README has overview/title",
+        "README includes demo/live guidance",
+        "above-the-fold にタイトル/要旨がある",
+        "CTA がテキスト上で確認できる"
+      ],
+      "issues": [
+        "CATALOG.md may not include this day",
+        "catalog entry is missing for this day"
+      ],
+      "recommended_actions": [
+        "fix repo/pages links and confirm demo reachability",
+        "sync STATE and catalog fields (repo/pages/status/title)"
+      ],
+      "title": "Draft Tightener",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-008/",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-008"
+    }
+  ],
+  "portfolio_level_actions": [
+    "hero と secondary は README first-view と CTA を先に揃える",
+    "hold/quiet候補は catalog導線の維持を優先"
+  ],
+  "recommended_launch_actions": [
+    "hero tool の one-line / hook / CTA を1セットで固定",
+    "secondary は channel-fit に応じて短文で出し分ける",
+    "hold候補は visual clarity と demo導線を修正後に再評価"
+  ],
+  "sources": [
+    "reports/strategy/strategy_brief_2026-03-08.json",
+    "reports/growth/growth_brief_2026-03-08.json",
+    "reports/portfolio/portfolio_eval_2026-03-08.json",
+    "reports/evidence/evidence_2026-03-08.json",
+    "reports/reality/reality_gate_2026-03-08.json",
+    "reports/showcase/showcase_plan_2026-03-08.json",
+    "reports/control_tower/weekly_control_tower_2026-03-08.json",
+    "plans/next_batch_plan.json",
+    "STATE.json",
+    "catalog/catalog.json",
+    "CATALOG.md"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "generated_at": "2026-03-08T04:54:10.635332+00:00",
+  "summary": {
+    "records_considered": 0,
+    "posts_considered": 0,
+    "channels_considered": [],
+    "best_hook_families": [],
+    "best_post_types": [],
+    "best_tool_patterns": [],
+    "notes": [
+      "no normalized feedback records available"
+    ]
+  },
+  "launch_feedback": {
+    "hero_outcomes": [],
+    "secondary_outcomes": [],
+    "quiet_catalog_outcomes": [],
+    "hold_validation_notes": [
+      "hold対象は投稿実績が薄い場合が多く、導線改善後に再評価"
+    ]
+  },
+  "growth_feedback": {
+    "winning_hooks": [],
+    "weak_hooks": [],
+    "winning_ctas": [],
+    "weak_ctas": [],
+    "positioning_notes": [
+      "hookとone-lineの整合がある投稿の反応を優先採用",
+      "CTAを1つに絞るとクリック誘導が安定しやすい"
+    ]
+  },
+  "strategy_feedback": {
+    "winning_tool_shapes": [],
+    "weak_tool_shapes": [],
+    "complexity_notes": [
+      "post_type別の反応を次バッチのcomplexity配分判断に反映する"
+    ],
+    "showcase_notes": [
+      "hero投稿の反応が弱い場合はshowcase選定条件を再評価する"
+    ],
+    "portfolio_visibility_notes": [
+      "導線URLが明確な投稿はclick_through_likeが改善しやすい"
+    ]
+  },
+  "by_tool": [],
+  "recommended_feedback_actions": [
+    "勝ちhook_familyを次週のx_queueテンプレに反映",
+    "弱いCTAをlaunch_export段階で置換候補化",
+    "hero判定が弱い週はlaunch_with_notes基準を厳格化"
+  ],
+  "learned_rules_candidates": [
+    "hero投稿は用途が一文で伝わるhookを優先する",
+    "CTAはdemo導線1つに絞る",
+    "quiet対象はgallery/caption最適化を優先しX投稿は縮小する"
+  ]
+}

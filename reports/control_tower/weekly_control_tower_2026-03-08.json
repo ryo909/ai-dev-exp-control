@@ -1,0 +1,295 @@
+{
+  "generated_at": "2026-03-08T04:54:08.749338+00:00",
+  "batch_summary": {
+    "days_considered": [
+      "001",
+      "002",
+      "003",
+      "004",
+      "005",
+      "006",
+      "007",
+      "008"
+    ],
+    "success_count": 8,
+    "failure_count": 0,
+    "quality_reports_count": 0,
+    "enhancement_candidates_count": 0,
+    "fallback_plans_count": 0
+  },
+  "tier_performance": {
+    "small": {
+      "count": 8,
+      "avg_score": 0.0,
+      "fallback_count": 0,
+      "confidence_distribution": {}
+    },
+    "medium": {
+      "count": 0,
+      "avg_score": 0.0,
+      "fallback_count": 0,
+      "confidence_distribution": {}
+    },
+    "large": {
+      "count": 0,
+      "avg_score": 0.0,
+      "fallback_count": 0,
+      "confidence_distribution": {}
+    }
+  },
+  "source_health": {
+    "top_sources": [
+      "HN Frontpage"
+    ],
+    "blocked_domains": [
+      "www.science.org"
+    ],
+    "successful_domains": [
+      "buttondown.com",
+      "github.com",
+      "blog.katanaquant.com"
+    ]
+  },
+  "theme_and_action_bias": {
+    "top_genres": [
+      "writing",
+      "devtools",
+      "planning",
+      "learning",
+      "health"
+    ],
+    "top_core_actions": [
+      "rewrite",
+      "generate",
+      "inspect",
+      "schedule",
+      "track"
+    ],
+    "duplicate_patterns": [
+      "文字数の目安を表示してSNS向けの短文化を支援"
+    ]
+  },
+  "improvement_signals": {
+    "top_twist_candidates": [
+      "冒頭1文で結論、2文目で根拠を示す『主張+証拠』導入を固定化する",
+      "CTAを『すぐ試す』と『背景を読む』の2導線に分けて離脱を減らす",
+      "頻出キーワード3語をヘッダ直下に固定表示し、焦点を即認識させる"
+    ],
+    "common_patterns": [
+      "冒頭で主張や問題設定を先に提示する構成が多い",
+      "CTAは購読・続きを読む・議論参加など次行動を明示する形式が中心",
+      "見出しは媒体依存だがH1段階で論点を断定する傾向がある"
+    ],
+    "dont_copy": [
+      "verificationページや媒体UIノイズを本文洞察として扱わない"
+    ],
+    "missing_components_hotspots": {
+      "small": [],
+      "medium": [],
+      "large": []
+    },
+    "portfolio_hotspots": [
+      "missing or weak live demo links"
+    ],
+    "growth_hotspots": [],
+    "strategy_primary_modes": [
+      "clarity-first utility",
+      "showcase one + safe six",
+      "portfolio-visible impact"
+    ],
+    "strategy_avoidance_modes": [
+      "over-complex novelty bets",
+      "模倣色の強い competitor hook",
+      "demo導線が弱いままの公開"
+    ],
+    "evidence_hotspots": [],
+    "reality_hotspots": [],
+    "launch_hotspots": [
+      "hero tool の one-line / hook / CTA を1セットで固定",
+      "secondary は channel-fit に応じて短文で出し分ける",
+      "hold候補は visual clarity と demo導線を修正後に再評価"
+    ],
+    "launch_export_hotspots": [
+      "hero 投稿文を最終確認してX/Bufferへ手動投入",
+      "note seed を下書き化して見出しと導入を整える",
+      "gallery entries を表示優先度に沿って反映",
+      "hold対象は fixes 完了後に再export"
+    ],
+    "post_launch_hotspots": [
+      "勝ちhook_familyを次週のx_queueテンプレに反映",
+      "弱いCTAをlaunch_export段階で置換候補化",
+      "hero判定が弱い週はlaunch_with_notes基準を厳格化"
+    ],
+    "healthcheck_overall_status": "attention",
+    "healthcheck_manual_actions": [],
+    "id_traceability_hotspots": [
+      "tool_id coverage is incomplete across launch/export/feedback"
+    ]
+  },
+  "day_decisions": [
+    {
+      "day": "001",
+      "complexity_tier": "small",
+      "quality_score": 0.0,
+      "confidence": "low",
+      "missing_components": [],
+      "unexpected_components": [],
+      "decision": "enhance",
+      "reason": "default to enhancement recommendation",
+      "recommended_components": [],
+      "recommended_enhancement_candidate_id": null,
+      "recommended_fallback_tier": null
+    },
+    {
+      "day": "002",
+      "complexity_tier": "small",
+      "quality_score": 0.0,
+      "confidence": "low",
+      "missing_components": [],
+      "unexpected_components": [],
+      "decision": "enhance",
+      "reason": "default to enhancement recommendation",
+      "recommended_components": [],
+      "recommended_enhancement_candidate_id": null,
+      "recommended_fallback_tier": null
+    },
+    {
+      "day": "003",
+      "complexity_tier": "small",
+      "quality_score": 0.0,
+      "confidence": "low",
+      "missing_components": [],
+      "unexpected_components": [],
+      "decision": "enhance",
+      "reason": "default to enhancement recommendation",
+      "recommended_components": [],
+      "recommended_enhancement_candidate_id": null,
+      "recommended_fallback_tier": null
+    },
+    {
+      "day": "004",
+      "complexity_tier": "small",
+      "quality_score": 0.0,
+      "confidence": "low",
+      "missing_components": [],
+      "unexpected_components": [],
+      "decision": "enhance",
+      "reason": "default to enhancement recommendation",
+      "recommended_components": [],
+      "recommended_enhancement_candidate_id": null,
+      "recommended_fallback_tier": null
+    },
+    {
+      "day": "005",
+      "complexity_tier": "small",
+      "quality_score": 0.0,
+      "confidence": "low",
+      "missing_components": [],
+      "unexpected_components": [],
+      "decision": "enhance",
+      "reason": "default to enhancement recommendation",
+      "recommended_components": [],
+      "recommended_enhancement_candidate_id": null,
+      "recommended_fallback_tier": null
+    },
+    {
+      "day": "006",
+      "complexity_tier": "small",
+      "quality_score": 0.0,
+      "confidence": "low",
+      "missing_components": [],
+      "unexpected_components": [],
+      "decision": "enhance",
+      "reason": "default to enhancement recommendation",
+      "recommended_components": [],
+      "recommended_enhancement_candidate_id": null,
+      "recommended_fallback_tier": null
+    },
+    {
+      "day": "007",
+      "complexity_tier": "small",
+      "quality_score": 0.0,
+      "confidence": "low",
+      "missing_components": [],
+      "unexpected_components": [],
+      "decision": "enhance",
+      "reason": "default to enhancement recommendation",
+      "recommended_components": [],
+      "recommended_enhancement_candidate_id": null,
+      "recommended_fallback_tier": null
+    },
+    {
+      "day": "008",
+      "complexity_tier": "small",
+      "quality_score": 0.0,
+      "confidence": "low",
+      "missing_components": [],
+      "unexpected_components": [],
+      "decision": "enhance",
+      "reason": "default to enhancement recommendation",
+      "recommended_components": [],
+      "recommended_enhancement_candidate_id": null,
+      "recommended_fallback_tier": null
+    }
+  ],
+  "next_batch_recommendations": {
+    "recommended_tier_mix": {
+      "small": 4,
+      "medium": 3,
+      "large": 0
+    },
+    "recommended_component_bias": [
+      "冒頭1文で結論、2文目で根拠を示す『主張+証拠』導入を固定化する",
+      "CTAを『すぐ試す』と『背景を読む』の2導線に分けて離脱を減らす"
+    ],
+    "recommended_source_bias": [
+      "buttondown.com",
+      "github.com",
+      "blog.katanaquant.com"
+    ],
+    "recommended_showcase_slot": 5,
+    "recommended_showcase_goal": "見た目と差分訴求が強い1本にする",
+    "recommended_focus": [
+      "bias away from duplicated twist patterns",
+      "prioritize domains with successful extraction",
+      "prefer enhancement/upgrade candidates before aggressive complexity",
+      "improve README above-the-fold clarity",
+      "reduce broken or missing live demo links",
+      "strengthen showcase-ready presentation for standout tools",
+      "improve one-line positioning for portfolio browsing",
+      "strengthen one-line positioning for audience-facing messaging",
+      "improve showcase launch narrative before weekly release",
+      "align README and demo clarity with social hooks",
+      "generate more distinct audience-facing value propositions",
+      "reinforce instant-use clarity as strategic default",
+      "reduce over-complex novelty bets unless portfolio impact is explicit",
+      "bias showcase toward portfolio-visible impact",
+      "align component selection with strategic thesis",
+      "improve above-the-fold clarity",
+      "reduce release-hold visual issues",
+      "improve CTA discoverability",
+      "strengthen showcase-visible first impression",
+      "avoid shipping unclear demos",
+      "improve hero-tool launch readiness",
+      "reduce hold-worthy showcase candidates",
+      "align proof points with first-view clarity",
+      "increase channel-fit differentiation",
+      "improve secondary tool packaging",
+      "improve handoff-ready launch packaging",
+      "reduce hero-tool export friction",
+      "strengthen quiet-catalog packaging clarity",
+      "align launch decisions with channel-ready assets",
+      "reduce manual rewrite burden for social copy",
+      "reinforce winning hook families",
+      "reduce underperforming hero launch patterns",
+      "tighten CTA choices for X posts",
+      "align showcase bets with observed engagement",
+      "improve channel-fit packaging for secondary tools",
+      "tighten launch-to-feedback traceability",
+      "reduce missing ID fields in launch/export/feedback chain",
+      "reduce manual import backlog",
+      "improve weekly run readiness",
+      "stabilize browser-dependent feedback collection"
+    ]
+  }
+}

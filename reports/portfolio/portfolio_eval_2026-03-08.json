@@ -1,0 +1,253 @@
+{
+  "generated_at": "2026-03-08T04:54:09.130305+00:00",
+  "summary": {
+    "days_considered": 8,
+    "overall_score": 0.821,
+    "avg_link_health": 0.5,
+    "avg_readme_score": 0.85,
+    "avg_demo_clarity": 1.0
+  },
+  "by_day": [
+    {
+      "day": "Day001",
+      "repo_name": "ai-dev-day-001",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-001",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-001/",
+      "status": "posted",
+      "total_score": 0.834,
+      "sub_scores": {
+        "link_health": 0.5,
+        "readme_hygiene": 0.85,
+        "demo_clarity": 1.0,
+        "catalog_consistency": 1.0,
+        "showcase_readiness": 0.945
+      },
+      "issues": [
+        "pages_url probe failed: network_error=URLError",
+        "repo_url probe failed: network_error=URLError"
+      ],
+      "strengths": [
+        "README has overview/title",
+        "README includes demo/live guidance",
+        "catalog and STATE are consistent",
+        "one_sentence is present",
+        "showcase-ready presentation is strong"
+      ],
+      "recommended_actions": [
+        "fix repo/pages links and confirm demo reachability"
+      ]
+    },
+    {
+      "day": "Day002",
+      "repo_name": "ai-dev-day-002",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-002",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-002/",
+      "status": "posted",
+      "total_score": 0.834,
+      "sub_scores": {
+        "link_health": 0.5,
+        "readme_hygiene": 0.85,
+        "demo_clarity": 1.0,
+        "catalog_consistency": 1.0,
+        "showcase_readiness": 0.945
+      },
+      "issues": [
+        "pages_url probe failed: network_error=URLError",
+        "repo_url probe failed: network_error=URLError"
+      ],
+      "strengths": [
+        "README has overview/title",
+        "README includes demo/live guidance",
+        "catalog and STATE are consistent",
+        "one_sentence is present",
+        "showcase-ready presentation is strong"
+      ],
+      "recommended_actions": [
+        "fix repo/pages links and confirm demo reachability"
+      ]
+    },
+    {
+      "day": "Day003",
+      "repo_name": "ai-dev-day-003",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-003",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-003/",
+      "status": "posted",
+      "total_score": 0.834,
+      "sub_scores": {
+        "link_health": 0.5,
+        "readme_hygiene": 0.85,
+        "demo_clarity": 1.0,
+        "catalog_consistency": 1.0,
+        "showcase_readiness": 0.945
+      },
+      "issues": [
+        "pages_url probe failed: network_error=URLError",
+        "repo_url probe failed: network_error=URLError"
+      ],
+      "strengths": [
+        "README has overview/title",
+        "README includes demo/live guidance",
+        "catalog and STATE are consistent",
+        "one_sentence is present",
+        "showcase-ready presentation is strong"
+      ],
+      "recommended_actions": [
+        "fix repo/pages links and confirm demo reachability"
+      ]
+    },
+    {
+      "day": "Day004",
+      "repo_name": "ai-dev-day-004",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-004",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-004/",
+      "status": "posted",
+      "total_score": 0.834,
+      "sub_scores": {
+        "link_health": 0.5,
+        "readme_hygiene": 0.85,
+        "demo_clarity": 1.0,
+        "catalog_consistency": 1.0,
+        "showcase_readiness": 0.945
+      },
+      "issues": [
+        "pages_url probe failed: network_error=URLError",
+        "repo_url probe failed: network_error=URLError"
+      ],
+      "strengths": [
+        "README has overview/title",
+        "README includes demo/live guidance",
+        "catalog and STATE are consistent",
+        "one_sentence is present",
+        "showcase-ready presentation is strong"
+      ],
+      "recommended_actions": [
+        "fix repo/pages links and confirm demo reachability"
+      ]
+    },
+    {
+      "day": "Day005",
+      "repo_name": "ai-dev-day-005",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-005",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-005/",
+      "status": "posted",
+      "total_score": 0.834,
+      "sub_scores": {
+        "link_health": 0.5,
+        "readme_hygiene": 0.85,
+        "demo_clarity": 1.0,
+        "catalog_consistency": 1.0,
+        "showcase_readiness": 0.945
+      },
+      "issues": [
+        "pages_url probe failed: network_error=URLError",
+        "repo_url probe failed: network_error=URLError"
+      ],
+      "strengths": [
+        "README has overview/title",
+        "README includes demo/live guidance",
+        "catalog and STATE are consistent",
+        "one_sentence is present",
+        "showcase-ready presentation is strong"
+      ],
+      "recommended_actions": [
+        "fix repo/pages links and confirm demo reachability"
+      ]
+    },
+    {
+      "day": "Day006",
+      "repo_name": "ai-dev-day-006",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-006",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-006/",
+      "status": "posted",
+      "total_score": 0.834,
+      "sub_scores": {
+        "link_health": 0.5,
+        "readme_hygiene": 0.85,
+        "demo_clarity": 1.0,
+        "catalog_consistency": 1.0,
+        "showcase_readiness": 0.945
+      },
+      "issues": [
+        "pages_url probe failed: network_error=URLError",
+        "repo_url probe failed: network_error=URLError"
+      ],
+      "strengths": [
+        "README has overview/title",
+        "README includes demo/live guidance",
+        "catalog and STATE are consistent",
+        "one_sentence is present",
+        "showcase-ready presentation is strong"
+      ],
+      "recommended_actions": [
+        "fix repo/pages links and confirm demo reachability"
+      ]
+    },
+    {
+      "day": "Day007",
+      "repo_name": "ai-dev-day-007",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-007",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-007/",
+      "status": "posted",
+      "total_score": 0.834,
+      "sub_scores": {
+        "link_health": 0.5,
+        "readme_hygiene": 0.85,
+        "demo_clarity": 1.0,
+        "catalog_consistency": 1.0,
+        "showcase_readiness": 0.945
+      },
+      "issues": [
+        "pages_url probe failed: network_error=URLError",
+        "repo_url probe failed: network_error=URLError"
+      ],
+      "strengths": [
+        "README has overview/title",
+        "README includes demo/live guidance",
+        "catalog and STATE are consistent",
+        "one_sentence is present",
+        "showcase-ready presentation is strong"
+      ],
+      "recommended_actions": [
+        "fix repo/pages links and confirm demo reachability"
+      ]
+    },
+    {
+      "day": "Day008",
+      "repo_name": "ai-dev-day-008",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-008",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-008/",
+      "status": "done",
+      "total_score": 0.729,
+      "sub_scores": {
+        "link_health": 0.5,
+        "readme_hygiene": 0.85,
+        "demo_clarity": 1.0,
+        "catalog_consistency": 0.3,
+        "showcase_readiness": 0.945
+      },
+      "issues": [
+        "CATALOG.md may not include this day",
+        "catalog entry is missing for this day",
+        "pages_url probe failed: network_error=URLError",
+        "repo_url probe failed: network_error=URLError"
+      ],
+      "strengths": [
+        "README has overview/title",
+        "README includes demo/live guidance",
+        "one_sentence is present",
+        "showcase-ready presentation is strong"
+      ],
+      "recommended_actions": [
+        "fix repo/pages links and confirm demo reachability",
+        "sync STATE and catalog fields (repo/pages/status/title)"
+      ]
+    }
+  ],
+  "portfolio_hotspots": [
+    "missing or weak live demo links"
+  ],
+  "recommended_portfolio_actions": [
+    "Reduce broken or missing live demo links",
+    "Use showcase-ready repos as reference templates for presentation quality"
+  ]
+}
