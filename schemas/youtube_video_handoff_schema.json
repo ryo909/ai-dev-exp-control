@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "youtube_video_handoff_v1",
+  "type": "object",
+  "required": ["schema_version", "items"],
+  "properties": {
+    "schema_version": {
+      "const": "youtube_video_handoff.v1"
+    },
+    "generatedAt": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "target_days": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9]{3}$"
+      }
+    },
+    "unresolved_days": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9]{3}$"
+      }
+    },
+    "note": {
+      "type": "string"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["day", "videoUrl"],
+        "properties": {
+          "day": {
+            "type": "string",
+            "pattern": "^[0-9]{3}$"
+          },
+          "videoUrl": {
+            "type": "string"
+          },
+          "titleOverride": {
+            "type": "string"
+          },
+          "descriptionOverride": {
+            "type": "string"
+          },
+          "thumbnailUrl": {
+            "type": "string"
+          },
+          "videoSource": {
+            "type": "string"
+          },
+          "assetStatus": {
+            "type": "string",
+            "enum": ["ready", "pending_asset", "blocked", "invalid"]
+          },
+          "dueAtOverride": {
+            "type": "string"
+          },
+          "privacy": {
+            "type": "string"
+          },
+          "madeForKids": {
+            "type": "boolean"
+          },
+          "notifySubscribers": {
+            "type": "boolean"
+          },
+          "playlistCandidate": {
+            "type": "string"
+          },
+          "audience": {
+            "type": "string"
+          },
+          "shortsCandidate": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}

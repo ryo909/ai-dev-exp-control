@@ -1,0 +1,118 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "publish_payload_v2",
+  "type": "object",
+  "required": ["launch_id", "schema_version", "publish_items", "x_items", "youtube_items"],
+  "properties": {
+    "launch_id": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "publish_payload.v2"
+    },
+    "schedule_policy": {
+      "type": "object"
+    },
+    "publish_items": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "required": ["day", "platform", "text", "dueAt"],
+            "properties": {
+              "day": {
+                "type": "string",
+                "pattern": "^[0-9]{3}$"
+              },
+              "platform": {
+                "const": "x"
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1
+              },
+              "dueAt": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "day",
+              "platform",
+              "title",
+              "description",
+              "videoUrl",
+              "dueAt",
+              "readiness",
+              "missing_fields"
+            ],
+            "properties": {
+              "day": {
+                "type": "string",
+                "pattern": "^[0-9]{3}$"
+              },
+              "platform": {
+                "const": "youtube"
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": {
+                "type": "string"
+              },
+              "videoUrl": {
+                "type": "string"
+              },
+              "thumbnailUrl": {
+                "type": "string"
+              },
+              "dueAt": {
+                "type": "string",
+                "minLength": 1
+              },
+              "privacy": {
+                "type": "string"
+              },
+              "madeForKids": {
+                "type": "boolean"
+              },
+              "notifySubscribers": {
+                "type": "boolean"
+              },
+              "playlistCandidate": {
+                "type": "string"
+              },
+              "audience": {
+                "type": "string"
+              },
+              "shortsCandidate": {
+                "type": "boolean"
+              },
+              "readiness": {
+                "type": "string",
+                "enum": ["ready", "pending_asset", "blocked", "invalid"]
+              },
+              "missing_fields": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "x_items": {
+      "type": "array"
+    },
+    "youtube_items": {
+      "type": "array"
+    }
+  }
+}

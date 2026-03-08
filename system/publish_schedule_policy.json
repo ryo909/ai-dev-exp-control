@@ -1,0 +1,35 @@
+{
+  "version": "2026-03-08",
+  "timezone": "Asia/Tokyo",
+  "timezone_offset": "+09:00",
+  "start_offset_days": 1,
+  "platforms": {
+    "x": {
+      "mode": "weekly_slots",
+      "weekly_slots": {
+        "mon": "21:00",
+        "tue": "08:30",
+        "wed": "12:10",
+        "thu": "09:00",
+        "fri": "08:30",
+        "sat": "10:00",
+        "sun": "21:00"
+      }
+    },
+    "youtube": {
+      "mode": "weekly_slots",
+      "weekly_slots": {
+        "mon": "21:00",
+        "tue": "08:30",
+        "wed": "12:10",
+        "thu": "09:00",
+        "fri": "08:30",
+        "sat": "10:00",
+        "sun": "21:00"
+      },
+      "privacy": "public",
+      "madeForKids": false,
+      "notifySubscribers": true
+    }
+  }
+}

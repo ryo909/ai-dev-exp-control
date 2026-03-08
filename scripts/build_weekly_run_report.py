@@ -31,6 +31,9 @@ def main() -> int:
     parser.add_argument("--dry-run", default="0")
     parser.add_argument("--stages", default="")
     parser.add_argument("--resume-executed", default="false")
+    parser.add_argument("--publish-mode", default="preview")
+    parser.add_argument("--allow-external-send", default="0")
+    parser.add_argument("--publish-summary", default="")
     parser.add_argument("--flags-json", default="{}")
     args = parser.parse_args()
 
@@ -60,6 +63,13 @@ def main() -> int:
     feedback_raw = latest(os.path.join(cdir, "data", "feedback", "raw", "buffer_metrics_*.json"))
     feedback_digest = latest(os.path.join(cdir, "reports", "feedback", "post_launch_feedback_*.json"))
     healthcheck = latest(os.path.join(cdir, "reports", "healthcheck", "healthcheck_*.json"))
+    publish_preview = latest(os.path.join(cdir, "reports", "publish", "publish_preview_*.json"))
+    publish_send = ""
+    if str(args.publish_mode).lower() == "send" or str(args.allow_external_send) == "1":
+        publish_send = latest(os.path.join(cdir, "reports", "publish", "make_webhook_send_*.json"))
+    publish_weekly_summary = args.publish_summary if (args.publish_summary and os.path.exists(args.publish_summary)) else latest(
+        os.path.join(cdir, "reports", "publish", "publish_weekly_summary_*.json")
+    )
 
     quality_reports = sorted(glob.glob(os.path.join(cdir, "reports", "quality", "day*_quality.json")))
     fallback_plans = sorted(glob.glob(os.path.join(cdir, "plans", "candidates", "day*_fallback_plan.json")))
@@ -73,6 +83,14 @@ def main() -> int:
       flags = {}
 
     stages_run = [s for s in args.stages.split(",") if s]
+
+    publish_summary_data = {}
+    if publish_weekly_summary and os.path.exists(publish_weekly_summary):
+      try:
+        with open(publish_weekly_summary, "r", encoding="utf-8") as f:
+          publish_summary_data = json.load(f)
+      except Exception:
+        publish_summary_data = {}
 
     payload = {
       "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -102,6 +120,9 @@ def main() -> int:
         "feedback_raw": rel(feedback_raw, cdir),
         "feedback_digest": rel(feedback_digest, cdir),
         "healthcheck": rel(healthcheck, cdir),
+        "publish_preview": rel(publish_preview, cdir),
+        "publish_send_report": rel(publish_send, cdir),
+        "publish_weekly_summary": rel(publish_weekly_summary, cdir),
         "id_linked_chain_present": bool(rel(launch_pack, cdir) and rel(launch_export, cdir) and rel(feedback_digest, cdir)),
         "quality_reports": [rel(p, cdir) for p in quality_reports],
         "fallback_plans": [rel(p, cdir) for p in fallback_plans],
@@ -110,6 +131,23 @@ def main() -> int:
       "adoption_flags": flags,
       "summary": {
         "resume_executed": str(args.resume_executed).lower() == "true",
+        "publish_mode": args.publish_mode,
+        "allow_external_send": str(args.allow_external_send) == "1",
+        "publish": {
+          "target_days": publish_summary_data.get("target_days", []),
+          "target_platforms": publish_summary_data.get("target_platforms", []),
+          "x_ready_count": ((publish_summary_data.get("readiness") or {}).get("x_ready_count", 0)),
+          "youtube_ready_count": ((publish_summary_data.get("readiness") or {}).get("youtube_ready_count", 0)),
+          "youtube_pending_asset_count": ((publish_summary_data.get("readiness") or {}).get("youtube_pending_asset_count", 0)),
+          "gallery_apply_count": publish_summary_data.get("gallery_apply_count", 0),
+          "x_sent_target_count": len(publish_summary_data.get("x_sent_targets", []) or []),
+          "youtube_sent_target_count": len(publish_summary_data.get("youtube_sent_targets", []) or []),
+          "duplicate_target_count": publish_summary_data.get("duplicate_target_count", 0),
+          "blocked_target_count": publish_summary_data.get("blocked_target_count", 0),
+          "skipped_target_count": publish_summary_data.get("skipped_target_count", 0),
+          "batch_ids": publish_summary_data.get("batch_ids", []),
+          "external_send_executed": bool(publish_summary_data.get("external_send_executed", False)),
+        },
         "notes": []
       }
     }
@@ -129,6 +167,8 @@ def main() -> int:
     lines.append(f"- adoption profile: {payload['adoption_profile']}")
     lines.append(f"- dry_run: {payload['dry_run']}")
     lines.append(f"- resume executed: {payload['summary']['resume_executed']}")
+    lines.append(f"- publish_mode: {payload['summary']['publish_mode']}")
+    lines.append(f"- allow_external_send: {payload['summary']['allow_external_send']}")
     lines.append("")
     lines.append("## Stages")
     for s in stages_run:
@@ -144,6 +184,22 @@ def main() -> int:
         lines.append(f"- {k}: {len(v)} files")
       else:
         lines.append(f"- {k}: {v or '(missing)'}")
+    lines.append("")
+    lines.append("## Publish")
+    pub = payload["summary"]["publish"]
+    lines.append(f"- target_days: {','.join(pub.get('target_days', []))}")
+    lines.append(f"- target_platforms: {','.join(pub.get('target_platforms', []))}")
+    lines.append(f"- x_ready_count: {pub.get('x_ready_count', 0)}")
+    lines.append(f"- youtube_ready_count: {pub.get('youtube_ready_count', 0)}")
+    lines.append(f"- youtube_pending_asset_count: {pub.get('youtube_pending_asset_count', 0)}")
+    lines.append(f"- gallery_apply_count: {pub.get('gallery_apply_count', 0)}")
+    lines.append(f"- x_sent_target_count: {pub.get('x_sent_target_count', 0)}")
+    lines.append(f"- youtube_sent_target_count: {pub.get('youtube_sent_target_count', 0)}")
+    lines.append(f"- duplicate_target_count: {pub.get('duplicate_target_count', 0)}")
+    lines.append(f"- blocked_target_count: {pub.get('blocked_target_count', 0)}")
+    lines.append(f"- skipped_target_count: {pub.get('skipped_target_count', 0)}")
+    lines.append(f"- external_send_executed: {pub.get('external_send_executed', False)}")
+    lines.append(f"- batch_ids: {','.join(pub.get('batch_ids', []))}")
     lines.append("")
     lines.append("## Next Actions")
     lines.append("- control_tower -> next_batch_plan -> thesis_update_draft の順で確認")

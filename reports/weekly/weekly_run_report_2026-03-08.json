@@ -1,9 +1,18 @@
 {
-  "generated_at": "2026-03-08T04:54:10.840197+00:00",
+  "generated_at": "2026-03-08T11:18:56.399060+00:00",
   "adoption_profile": "safe",
   "dry_run": false,
   "stages_run": [
-    "report"
+    "preflight",
+    "intel",
+    "thesis",
+    "preview",
+    "adopt",
+    "run",
+    "publish",
+    "report",
+    "learn_preview",
+    "learn_adopt"
   ],
   "artifacts": {
     "signals": "shared-context/SIGNALS.md",
@@ -28,25 +37,69 @@
     "feedback_raw": "data/feedback/raw/buffer_metrics_2026-03-08.json",
     "feedback_digest": "reports/feedback/post_launch_feedback_2026-03-08.json",
     "healthcheck": "reports/healthcheck/healthcheck_2026-03-08.json",
+    "publish_preview": "reports/publish/publish_preview_2026-03-08T11-17-03-7210.json",
+    "publish_send_report": "",
+    "publish_weekly_summary": "reports/publish/publish_weekly_summary_2026-03-08.json",
     "id_linked_chain_present": true,
-    "quality_reports": [],
-    "fallback_plans": [],
-    "enhanced_candidates": []
+    "quality_reports": [
+      "reports/quality/day009_quality.json",
+      "reports/quality/day010_quality.json",
+      "reports/quality/day011_quality.json",
+      "reports/quality/day012_quality.json",
+      "reports/quality/day013_quality.json",
+      "reports/quality/day014_quality.json",
+      "reports/quality/day015_quality.json"
+    ],
+    "fallback_plans": [
+      "plans/candidates/day009_fallback_plan.json",
+      "plans/candidates/day010_fallback_plan.json",
+      "plans/candidates/day011_fallback_plan.json",
+      "plans/candidates/day012_fallback_plan.json",
+      "plans/candidates/day013_fallback_plan.json",
+      "plans/candidates/day014_fallback_plan.json",
+      "plans/candidates/day015_fallback_plan.json"
+    ],
+    "enhanced_candidates": [
+      "plans/candidates/day009_enhanced_candidates.json",
+      "plans/candidates/day010_enhanced_candidates.json",
+      "plans/candidates/day011_enhanced_candidates.json",
+      "plans/candidates/day012_enhanced_candidates.json",
+      "plans/candidates/day013_enhanced_candidates.json",
+      "plans/candidates/day014_enhanced_candidates.json",
+      "plans/candidates/day015_enhanced_candidates.json"
+    ]
   },
-  "adoption_flags": {
-    "USE_NEXT_BATCH_PLAN": "1",
-    "ADOPT_NEXT_BATCH_COMPLEXITY": "1",
-    "ADOPT_NEXT_BATCH_COMPONENTS": "0",
-    "ADOPT_NEXT_BATCH_ENHANCEMENT": "0",
-    "ADOPT_THESIS_DRAFT": "0",
-    "ADOPT_WEEKLY_RUN": "0",
-    "ADOPT_MEMORY_UPDATES": "0",
-    "ADOPT_FEEDBACK_UPDATES": "0",
-    "ADOPT_SOURCE_NOTES": "0",
-    "ADOPT_LEARNED_RULES": "0"
-  },
+  "adoption_flags": {},
   "summary": {
-    "resume_executed": false,
+    "resume_executed": true,
+    "publish_mode": "preview",
+    "allow_external_send": false,
+    "publish": {
+      "target_days": [
+        "009",
+        "010",
+        "011",
+        "012",
+        "013",
+        "014",
+        "015"
+      ],
+      "target_platforms": [
+        "x",
+        "youtube"
+      ],
+      "x_ready_count": 7,
+      "youtube_ready_count": 7,
+      "youtube_pending_asset_count": 0,
+      "gallery_apply_count": 7,
+      "x_sent_target_count": 0,
+      "youtube_sent_target_count": 0,
+      "duplicate_target_count": 7,
+      "blocked_target_count": 0,
+      "skipped_target_count": 7,
+      "batch_ids": [],
+      "external_send_executed": false
+    },
     "notes": []
   }
 }

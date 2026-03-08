@@ -11,16 +11,19 @@
 # 2. control repoに移動
 cd ~/ai-dev-exp-control
 
-# 3. resume を実行（STATEを読んで自動で続きを処理）
-bash scripts/resume.sh
+# 3. まず週次safe preview
+DRY_RUN=1 ADOPTION_PROFILE=safe STAGE=all PUBLISH_MODE=preview bash scripts/weekly_orchestrator.sh
+
+# 4. 問題なければ週次実行（送信なし）
+ADOPTION_PROFILE=safe STAGE=all PUBLISH_MODE=preview bash scripts/weekly_orchestrator.sh
 ```
 
 これだけで:
 - STATE.json から `next_day` を読み取り
 - 7本分のDay repoを生成・ビルド・デプロイ
 - 各Day repoに `STORY.md` を自動生成（READMEから参照）
-- X投稿テキストを生成
-- Buffer投入（連携済みなら）
+- X/YouTube publish preview を生成（readiness可視化）
+- gallery entries を apply
 - カタログページを更新
 
 ---

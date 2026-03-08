@@ -1,29 +1,30 @@
-# weekly_run (Version: 2026-03-xx)
+# weekly_run prompt (sys-self-improve-pack)
 
-## 0) Quick checks (must)
-- git status -sb
-- 現在ブランチ確認（sys-self-improve-pack）
-- STATE.json の next_day / post_pending を確認
-- reports/weekly_digest.md があれば最初に読む
+対象repoは `ai-dev-exp-control` のみ。  
+破壊的変更は禁止。外部送信は `ALLOW_EXTERNAL_SEND=1` がある場合のみ。
 
-## 1) Update Thesis (weekly focus)
-- shared-context/THESIS.md を開き、末尾の「更新手順（週1テンプレ）」に従って今週の重点を更新
-- commit: "chore: update weekly thesis"（必要なら）
+## まず監査
+1. `git status -sb`
+2. `git branch --show-current`
+3. `STATE.json` の `next_day`, `last_make_webhook`, `post_pending` を確認
+4. 最新の `reports/healthcheck/*`, `reports/weekly/*`, `reports/publish/*` を確認
 
-## 2) Refresh research signals (best-effort)
-- hooks が入っている前提で、resume 実行前に pre_resume が走るが、必要なら手動で:
-  - bash scripts/research_refresh.sh
-  - bash scripts/idea_shortlist.sh
+## 週1実行
+- safe preview（既定）:
+  - `DRY_RUN=1 ADOPTION_PROFILE=safe STAGE=all PUBLISH_MODE=preview bash scripts/weekly_orchestrator.sh`
+- 実行（送信なし）:
+  - `ADOPTION_PROFILE=safe STAGE=all PUBLISH_MODE=preview bash scripts/weekly_orchestrator.sh`
 
-## 3) Execute weekly run
-- bash scripts/resume.sh
-  - 失敗したら logs/DayXXX.summary.md を最優先に読んで復旧案
+## publish実行（明示時のみ）
+- Xのみ送信:
+  - `ADOPTION_PROFILE=safe STAGE=publish PUBLISH_MODE=send ALLOW_EXTERNAL_SEND=1 PUBLISH_PLATFORMS=x bash scripts/weekly_orchestrator.sh`
+- YouTubeのみ送信:
+  - `ADOPTION_PROFILE=safe STAGE=publish PUBLISH_MODE=send ALLOW_EXTERNAL_SEND=1 PUBLISH_PLATFORMS=youtube bash scripts/weekly_orchestrator.sh`
+- X+YouTube送信:
+  - `ADOPTION_PROFILE=safe STAGE=publish PUBLISH_MODE=send ALLOW_EXTERNAL_SEND=1 PUBLISH_PLATFORMS=x,youtube bash scripts/weekly_orchestrator.sh`
 
-## 4) After run: review outputs
-- reports/coverage.md を確認（偏り/重複）
-- shared-context/SIGNALS.md と idea_bank/shortlist.json を確認（来週ネタ）
-- reports/weekly_digest.md を確認（次週改訂材料）
-
-## 5) Improvement loop (lightweight)
-- 気づきがあれば shared-context/FEEDBACK-LOG.md / memory/MEMORY.md に追記案（提案ベースでOK）
-- パイプライン修正が必要なら最小差分でパッチ→bash -n→コミット案まで
+## チェックポイント
+- X は Buffer route / YouTube は Make direct route
+- duplicate guard は `day-platform`
+- `pending_asset` は送信対象外
+- `reports/publish/publish_weekly_summary_<date>.json` に visibility を集約

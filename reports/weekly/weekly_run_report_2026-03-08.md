@@ -2,22 +2,23 @@
 
 - adoption profile: safe
 - dry_run: False
-- resume executed: False
+- resume executed: True
+- publish_mode: preview
+- allow_external_send: False
 
 ## Stages
+- preflight
+- intel
+- thesis
+- preview
+- adopt
+- run
+- publish
 - report
+- learn_preview
+- learn_adopt
 
 ## Adoption Flags
-- USE_NEXT_BATCH_PLAN=1
-- ADOPT_NEXT_BATCH_COMPLEXITY=1
-- ADOPT_NEXT_BATCH_COMPONENTS=0
-- ADOPT_NEXT_BATCH_ENHANCEMENT=0
-- ADOPT_THESIS_DRAFT=0
-- ADOPT_WEEKLY_RUN=0
-- ADOPT_MEMORY_UPDATES=0
-- ADOPT_FEEDBACK_UPDATES=0
-- ADOPT_SOURCE_NOTES=0
-- ADOPT_LEARNED_RULES=0
 
 ## Artifacts
 - signals: shared-context/SIGNALS.md
@@ -42,10 +43,28 @@
 - feedback_raw: data/feedback/raw/buffer_metrics_2026-03-08.json
 - feedback_digest: reports/feedback/post_launch_feedback_2026-03-08.json
 - healthcheck: reports/healthcheck/healthcheck_2026-03-08.json
+- publish_preview: reports/publish/publish_preview_2026-03-08T11-17-03-7210.json
+- publish_send_report: (missing)
+- publish_weekly_summary: reports/publish/publish_weekly_summary_2026-03-08.json
 - id_linked_chain_present: True
-- quality_reports: 0 files
-- fallback_plans: 0 files
-- enhanced_candidates: 0 files
+- quality_reports: 7 files
+- fallback_plans: 7 files
+- enhanced_candidates: 7 files
+
+## Publish
+- target_days: 009,010,011,012,013,014,015
+- target_platforms: x,youtube
+- x_ready_count: 7
+- youtube_ready_count: 7
+- youtube_pending_asset_count: 0
+- gallery_apply_count: 7
+- x_sent_target_count: 0
+- youtube_sent_target_count: 0
+- duplicate_target_count: 7
+- blocked_target_count: 0
+- skipped_target_count: 7
+- external_send_executed: False
+- batch_ids: 
 
 ## Next Actions
 - control_tower -> next_batch_plan -> thesis_update_draft の順で確認

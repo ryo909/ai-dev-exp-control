@@ -2,6 +2,9 @@
 
 - 週1運用の基本実行コマンドは `scripts/weekly_orchestrator.sh`。
 - 初回は `DRY_RUN=1 ADOPTION_PROFILE=safe STAGE=all` で実行計画だけ確認する。
+- publish は `safe(default)=preview only` と `send` を分離し、`ALLOW_EXTERNAL_SEND=1` がない限り外部送信しない。
+- publish責務は固定: `X -> Buffer route`, `YouTube -> Make direct route`。
+- duplicate guard は `day-platform` 単位（例: `009-x`, `009-youtube`）で判定する。
 - adoption profile は `safe -> balanced -> aggressive` の順に段階導入する。
 - 更新は `preview -> backup -> adopt` の順で行い、無条件上書きはしない。
 - `safe` は preview のみ、`balanced` は THESIS 採用まで、`aggressive` は THESIS + weekly_run 採用までを許可する。
@@ -11,3 +14,4 @@
 - showcase planner は intel stage で `reports/showcase/showcase_plan_<YYYY-MM-DD>.json|md` を best-effort 生成し、採用は人手判断で行う。
 - day再生成時は `scripts/run_day.sh` の novelty selector を優先し、直近14本と近い企画（family/theme/mechanic/input_style/audience_promise重複）は採用しない。
 - 同一バッチ内の同一family連発は禁止し、除外理由は `plans/candidates/dayNNN_novelty_selection.json` に保存する。
+- `STAGE=publish` では `build_launch_exports -> publish preview -> gallery apply -> platform preview -> (条件付きsend) -> publish weekly summary` を実行する。

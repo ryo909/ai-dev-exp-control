@@ -9,16 +9,18 @@ STATE_FILE="$CONTROL_DIR/STATE.json"
 DATE=""
 DAYS_CSV=""
 PREVIEW=0
+REPORT_FILE=""
 
 usage() {
   cat <<'USAGE'
 Usage:
-  scripts/apply_gallery_entries.sh --date YYYY-MM-DD --days 009,010,... [--preview]
+  scripts/apply_gallery_entries.sh --date YYYY-MM-DD --days 009,010,... [--preview] [--report-file path]
 
 Options:
   --date      gallery_entries_<date>.json を指定
   --days      反映対象 day (3桁CSV)
   --preview   ファイルは更新せず差分要約のみ表示
+  --report-file  実行結果サマリJSONの出力先
 USAGE
 }
 
@@ -35,6 +37,10 @@ while [ $# -gt 0 ]; do
     --preview)
       PREVIEW=1
       shift
+      ;;
+    --report-file)
+      REPORT_FILE="${2:-}"
+      shift 2
       ;;
     -h|--help)
       usage
@@ -115,10 +121,42 @@ SUMMARY=$(jq -nc \
   }
 ')
 
+write_report() {
+  local mode="$1"
+  local applied="$2"
+  [ -z "$REPORT_FILE" ] && return 0
+  mkdir -p "$(dirname "$REPORT_FILE")"
+  jq -nc \
+    --arg executed_at "$(date -u +"%Y-%m-%dT%H:%M:%SZ")" \
+    --arg date "$DATE" \
+    --arg mode "$mode" \
+    --argjson applied "$applied" \
+    --argjson days "$DAYS_JSON" \
+    --argjson selected "$SELECTED_ENTRIES" \
+    --argjson summary "$SUMMARY" \
+    --arg catalog "${CATALOG_JSON#$CONTROL_DIR/}" \
+    --arg latest "${LATEST_JSON#$CONTROL_DIR/}" \
+    '{
+      executed_at: $executed_at,
+      date: $date,
+      mode: $mode,
+      applied: $applied,
+      target_days: $days,
+      selected_count: ($selected | length),
+      selected_entries: ($selected | map({day, tool_name, pages_url, status})),
+      summary: $summary,
+      target_files: {
+        catalog: $catalog,
+        latest: $latest
+      }
+    }' > "$REPORT_FILE"
+}
+
 echo "▶ gallery apply target: catalog/catalog.json + catalog/latest.json"
 jq '.' <<<"$SUMMARY"
 
 if [ "$PREVIEW" -eq 1 ]; then
+  write_report "preview" false
   echo "ℹ preview mode: no files updated"
   exit 0
 fi
@@ -151,3 +189,4 @@ mv "$tmp_latest" "$LATEST_JSON"
 echo "✅ applied gallery entries to:"
 echo "  - ${CATALOG_JSON#$CONTROL_DIR/}"
 echo "  - ${LATEST_JSON#$CONTROL_DIR/}"
+write_report "apply" true
