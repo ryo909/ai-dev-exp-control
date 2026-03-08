@@ -1,6 +1,6 @@
 {
   "target_day": 100,
-  "next_day": 11,
+  "next_day": 12,
   "batch_size_default": 7,
   "posts": {
     "fixed_tags": [
@@ -153,6 +153,22 @@
       "core_action": "diagnose",
       "twist": "HTTPコードとキーワードから最初の調査順を自動で提案する / Signal:HN Frontpage「Autoresearch: Agents res」",
       "one_sentence": "API障害の初動切り分けを1分で始めるためのログ整理ツール。（話題:HN Frontpage）",
+      "complexity_tier": "small",
+      "selected_components": [],
+      "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
+    },
+    {
+      "day": "011",
+      "title": "Concept Gap Mapper",
+      "genre": "learning",
+      "family": "knowledge_gap",
+      "mechanic": "dependency_mapping",
+      "input_style": "confusion_notes",
+      "output_style": "gap_map",
+      "audience_promise": "clearer_study_path",
+      "core_action": "map",
+      "twist": "次に読む順番を3ステップで提示する / Signal:HN Frontpage「The surprising whimsy of」",
+      "one_sentence": "つまずきポイントを前提不足として可視化する学習診断ツール。（話題:HN Frontpage）",
       "complexity_tier": "small",
       "selected_components": [],
       "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
@@ -496,20 +512,27 @@
       "repo_url": "https://github.com/ryo909/ai-dev-day-011",
       "pages_url": "https://ryo909.github.io/ai-dev-day-011/",
       "meta": {
-        "tool_name": "Recall Loop Builder",
-        "title": "Recall Loop Builder",
-        "description": "学習トピックから復習間隔つきのチェックリストを生成する。",
+        "tool_name": "Concept Gap Mapper",
+        "title": "Concept Gap Mapper",
+        "description": "理解が曖昧な点を、前提知識の不足マップに変換する。",
         "genre": "learning",
-        "theme": "Candy",
+        "theme": "NeoLab",
         "complexity_tier": "small",
         "selected_components": [],
         "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component.",
-        "story_summary": "覚えたつもりを防ぐため、復習日を先に決める導線にした。｜Signal:HN Frontpage",
-        "core_action": "generate",
-        "twist": "初回学習日から次回復習日を同時表示する / Signal:HN Frontpage「The surprising whimsy of」",
-        "one_sentence": "学習内容の復習タイミングを自動で組み立てる学習支援ツール。（話題:HN Frontpage）",
-        "original_twist": "初回学習日から次回復習日を同時表示する / Signal:HN Frontpage「The surprising whimsy of」",
-        "original_one_sentence": "学習内容の復習タイミングを自動で組み立てる学習支援ツール。（話題:HN Frontpage）",
+        "story_summary": "分からない原因が曖昧な状態を、再学習ルートへ変換するために作った。｜Signal:HN Frontpage",
+        "core_action": "map",
+        "twist": "次に読む順番を3ステップで提示する / Signal:HN Frontpage「The surprising whimsy of」",
+        "one_sentence": "つまずきポイントを前提不足として可視化する学習診断ツール。（話題:HN Frontpage）",
+        "family": "knowledge_gap",
+        "mechanic": "dependency_mapping",
+        "input_style": "confusion_notes",
+        "output_style": "gap_map",
+        "audience_promise": "clearer_study_path",
+        "publish_hook": "何が足りないかを前提マップで見える化",
+        "engine": "decision_brief",
+        "original_twist": "次に読む順番を3ステップで提示する / Signal:HN Frontpage「The surprising whimsy of」",
+        "original_one_sentence": "つまずきポイントを前提不足として可視化する学習診断ツール。（話題:HN Frontpage）",
         "enhancement_source": "",
         "enhancement_candidate_id": "",
         "enhancement_adopted": false,
@@ -521,22 +544,22 @@
         "next_batch_recommended_components": [],
         "next_batch_recommended_enhancement": false,
         "keywords": [
+          "concept",
           "dev",
+          "diagnosis",
           "learning",
-          "memory",
+          "map",
           "product",
-          "review",
           "startup",
-          "study",
           "trend"
         ]
       },
       "post_texts": {
-        "standard": "Day011｜Recall Loop Builder\n学習内容の復習タイミングを自動で組み立てる学習支援ツール。（話題:HN Frontpage）\n用途: 学習トピックから復習間隔つきのチェックリストを生成する。\n👉 https://ryo909.github.io/ai-dev-day-011/\n#個人開発 #100日開発\n（経緯/一覧：固定ポストの2ツリーへ）",
-        "compact": "Day011|Recall Loop Buil\n学習内容の復習タ\nhttps://ryo909.github.io/ai-dev-day-011/\n#個人開発 #100日開発",
-        "minimal": "Day011|Recall Loop Buil\nhttps://ryo909.github.io/ai-dev-day-011/\n#個人開発 #100日開発"
+        "standard": "Day011｜Concept Gap Mapper\nつまずきポイントを前提不足として可視化する学習診断ツール。（話題:HN Frontpage）\n用途: 理解が曖昧な点を、前提知識の不足マップに変換する。\n👉 https://ryo909.github.io/ai-dev-day-011/\n#個人開発 #100日開発\n（経緯/一覧：固定ポストの2ツリーへ）",
+        "compact": "Day011|Concept Gap Mapp\nつまずきポイント\nhttps://ryo909.github.io/ai-dev-day-011/\n#個人開発 #100日開発",
+        "minimal": "Day011|Concept Gap Mapp\nhttps://ryo909.github.io/ai-dev-day-011/\n#個人開発 #100日開発"
       },
-      "status": "posted"
+      "status": "done"
     },
     "012": {
       "repo_name": "ai-dev-day-012",
@@ -1042,13 +1065,28 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-03-08T06:05:12Z",
+      "day": "011",
+      "repo_name": "ai-dev-day-011",
+      "genre": "learning",
+      "theme": "NeoLab",
+      "steps": [
+        "planning",
+        "implementation",
+        "build",
+        "publish",
+        "state_update"
+      ],
+      "status": "done"
     }
   ],
   "recent_genres": [
-    "writing",
     "fun",
-    "devtools"
+    "devtools",
+    "learning"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-03-08T06:04:11Z"
+  "last_run_at": "2026-03-08T06:05:12Z"
 }
