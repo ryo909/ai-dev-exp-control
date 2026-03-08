@@ -15,6 +15,7 @@ COMPLEXITY_PROFILES_FILE="$CONTROL_DIR/system/complexity_profiles.json"
 COMPONENT_PACKS_FILE="$CONTROL_DIR/system/component_packs.json"
 NEXT_BATCH_PLAN_FILE="$CONTROL_DIR/plans/next_batch_plan.json"
 PLAN_CATALOG_FILE="$CONTROL_DIR/system/plan_catalog.json"
+ARCHETYPE_PLAN_FILE="${ARCHETYPE_PLAN_FILE:-$CONTROL_DIR/plans/day009_015_archetype_plan_2026-03-08.json}"
 
 DAY_NUM=${1:?'Usage: run_day.sh <day_number>'}
 DAY_STR=$(printf '%03d' "$DAY_NUM")
@@ -24,6 +25,7 @@ ENHANCED_CANDIDATES_FILE="$CONTROL_DIR/plans/candidates/day${DAY_STR}_enhanced_c
 NOVELTY_SELECTION_FILE="$CONTROL_DIR/plans/candidates/day${DAY_STR}_novelty_selection.json"
 FORCE_REGENERATE="${FORCE_REGENERATE:-0}"
 DIVERSITY_LOOKBACK_DAYS="${DIVERSITY_LOOKBACK_DAYS:-14}"
+USE_ARCHETYPE_PLAN="${USE_ARCHETYPE_PLAN:-1}"
 
 GENRES=("productivity" "writing" "devtools" "planning" "learning" "health" "fun")
 THEMES=("NeoLab" "Paper" "Noir" "Brutal" "Soft" "RetroTerminal" "Candy" "Mono")
@@ -90,6 +92,14 @@ set_plan_metadata_defaults() {
   AUDIENCE_PROMISE="${AUDIENCE_PROMISE:-quick_task_completion}"
   PUBLISH_HOOK="${PUBLISH_HOOK:-1分で使えるミニツール}"
   ENGINE="${ENGINE:-default_transform}"
+  INTERACTION_ARCHETYPE="${INTERACTION_ARCHETYPE:-single_shot_text_submit}"
+  PAGE_ARCHETYPE="${PAGE_ARCHETYPE:-single_column_form}"
+  OUTPUT_SHAPE="${OUTPUT_SHAPE:-single_text_block}"
+  STATE_MODEL="${STATE_MODEL:-ephemeral_result_only}"
+  CORE_LOOP="${CORE_LOOP:-input -> submit -> output}"
+  COMPONENT_PACK="${COMPONENT_PACK:-single_form}"
+  SCAFFOLD_ID="${SCAFFOLD_ID:-text_generator_scaffold}"
+  SINGLE_SHOT_TEXT_GENERATOR="${SINGLE_SHOT_TEXT_GENERATOR:-true}"
 }
 
 resolve_selected_components() {
@@ -310,7 +320,7 @@ select_novel_plan() {
   [ -f "$PLAN_CATALOG_FILE" ] || return 1
   [[ "$DIVERSITY_LOOKBACK_DAYS" =~ ^[0-9]+$ ]] || DIVERSITY_LOOKBACK_DAYS=14
 
-  local generated_at selection_json
+  local generated_at selection_json override_id
   generated_at=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
   selection_json=$(jq -nc \
     --slurpfile state "$STATE_FILE" \
@@ -351,6 +361,35 @@ select_novel_plan() {
       if (($m.audience_promise // "") | length) > 0 then $m.audience_promise
       else "quick_task_completion"
       end;
+    def infer_interaction($m):
+      if (($m.interaction_archetype // "") | length) > 0 then $m.interaction_archetype
+      else "single_shot_text_submit"
+      end;
+    def infer_page($m):
+      if (($m.page_archetype // "") | length) > 0 then $m.page_archetype
+      else "single_column_form"
+      end;
+    def infer_shape($m):
+      if (($m.output_shape // "") | length) > 0 then $m.output_shape
+      else "single_text_block"
+      end;
+    def infer_state_model($m):
+      if (($m.state_model // "") | length) > 0 then $m.state_model
+      else "ephemeral_result_only"
+      end;
+    def infer_component_pack($m):
+      if (($m.component_pack // "") | length) > 0 then $m.component_pack
+      else "single_form"
+      end;
+    def infer_scaffold($m):
+      if (($m.scaffold_id // "") | length) > 0 then $m.scaffold_id
+      else "text_generator_scaffold"
+      end;
+    def infer_single_shot($m):
+      if ($m.single_shot_text_generator == true) then true
+      elif ($m.single_shot_text_generator == false) then false
+      else (infer_interaction($m) == "single_shot_text_submit")
+      end;
     ($day | tonumber) as $dayn
     | (if $lookback < 1 then 14 else $lookback end) as $lb
     | ($dayn - $lb) as $raw_start
@@ -370,9 +409,17 @@ select_novel_plan() {
             mechanic: infer_mechanic($m),
             input_style: infer_input_style($m),
             output_style: infer_output_style($m),
-            audience_promise: infer_audience($m)
+            audience_promise: infer_audience($m),
+            interaction_archetype: infer_interaction($m),
+            page_archetype: infer_page($m),
+            output_shape: infer_shape($m),
+            state_model: infer_state_model($m),
+            component_pack: infer_component_pack($m),
+            scaffold_id: infer_scaffold($m),
+            single_shot_text_generator: infer_single_shot($m)
           }
       ] as $recent
+    | ([ $recent[] | select(.single_shot_text_generator == true) ] | length) as $single_shot_count
     | (($catalog[0].items // [])) as $items
     | [
         $items[] as $c
@@ -385,6 +432,13 @@ select_novel_plan() {
         | ([ $recent[] | select(.audience_promise == ($c.audience_promise // "")) ] | length) as $audience_hits
         | ([ $recent[] | select(.core_action == ($c.core_action // "")) ] | length) as $core_hits
         | ([ $recent[] | select(.genre == ($c.genre // "")) ] | length) as $genre_hits
+        | ([ $recent[] | select(.interaction_archetype == ($c.interaction_archetype // "single_shot_text_submit")) ] | length) as $interaction_hits
+        | ([ $recent[] | select(.page_archetype == ($c.page_archetype // "single_column_form")) ] | length) as $page_hits
+        | ([ $recent[] | select(.output_shape == ($c.output_shape // "single_text_block")) ] | length) as $shape_hits
+        | ([ $recent[] | select(.state_model == ($c.state_model // "ephemeral_result_only")) ] | length) as $state_hits
+        | ([ $recent[] | select(.component_pack == ($c.component_pack // "single_form")) ] | length) as $component_pack_hits
+        | ([ $recent[] | select(.scaffold_id == ($c.scaffold_id // "text_generator_scaffold")) ] | length) as $scaffold_hits
+        | (($c.single_shot_text_generator // false) == true) as $is_single_shot
         | [
             (if $title_hits > 0 then {code:"title_overlap_recent", count:$title_hits, penalty:130} else empty end),
             (if $family_hits > 0 then {code:"family_overlap_recent", count:$family_hits, penalty:(80 * $family_hits)} else empty end),
@@ -393,8 +447,16 @@ select_novel_plan() {
             (if $input_hits > 0 then {code:"input_overlap_recent", count:$input_hits, penalty:(35 * $input_hits)} else empty end),
             (if $output_hits > 0 then {code:"output_overlap_recent", count:$output_hits, penalty:(18 * $output_hits)} else empty end),
             (if $audience_hits > 0 then {code:"audience_overlap_recent", count:$audience_hits, penalty:(35 * $audience_hits)} else empty end),
+            (if $interaction_hits > 0 then {code:"interaction_archetype_overlap", count:$interaction_hits, penalty:(95 * $interaction_hits)} else empty end),
+            (if $page_hits > 0 then {code:"page_archetype_overlap", count:$page_hits, penalty:(85 * $page_hits)} else empty end),
+            (if $shape_hits > 0 then {code:"output_shape_overlap", count:$shape_hits, penalty:(80 * $shape_hits)} else empty end),
+            (if $state_hits > 0 then {code:"state_model_overlap", count:$state_hits, penalty:(72 * $state_hits)} else empty end),
+            (if $component_pack_hits > 0 then {code:"component_pack_overlap", count:$component_pack_hits, penalty:(55 * $component_pack_hits)} else empty end),
+            (if $scaffold_hits > 0 then {code:"scaffold_overlap", count:$scaffold_hits, penalty:(120 * $scaffold_hits)} else empty end),
             (if $core_hits > 1 then {code:"core_action_repeated", count:$core_hits, penalty:(12 * ($core_hits - 1))} else empty end),
-            (if $genre_hits > 1 then {code:"genre_repeated", count:$genre_hits, penalty:(8 * ($genre_hits - 1))} else empty end)
+            (if $genre_hits > 1 then {code:"genre_repeated", count:$genre_hits, penalty:(8 * ($genre_hits - 1))} else empty end),
+            (if ($is_single_shot and $single_shot_count >= 2) then {code:"single_shot_cap_exceeded", count:$single_shot_count, penalty:400} else empty end),
+            (if ($is_single_shot) then {code:"single_shot_discourage", count:1, penalty:40} else empty end)
           ] as $penalties
         | (100 - (([ $penalties[].penalty ] | add) // 0)) as $score
         | {
@@ -415,6 +477,14 @@ select_novel_plan() {
             audience_promise: $c.audience_promise,
             publish_hook: $c.publish_hook,
             engine: ($c.engine // "default_transform"),
+            interaction_archetype: ($c.interaction_archetype // "single_shot_text_submit"),
+            page_archetype: ($c.page_archetype // "single_column_form"),
+            output_shape: ($c.output_shape // "single_text_block"),
+            state_model: ($c.state_model // "ephemeral_result_only"),
+            core_loop: ($c.core_loop // "input -> submit -> output"),
+            component_pack: ($c.component_pack // "single_form"),
+            scaffold_id: ($c.scaffold_id // "text_generator_scaffold"),
+            single_shot_text_generator: ($c.single_shot_text_generator // false),
             score: $score,
             penalties: $penalties
           }
@@ -425,10 +495,12 @@ select_novel_plan() {
         day: ("Day" + $day),
         lookback_days: $lb,
         policy: {
-          note: "penalize similarity against recent days and within-batch updates",
-          reject_when_near_duplicate: true
+          note: "penalize similarity across concept + interaction/page/output/state/scaffold axes",
+          reject_when_near_duplicate: true,
+          single_shot_text_generator_max_per_batch: 2
         },
         recent_reference: $recent,
+        recent_single_shot_count: $single_shot_count,
         selected: ($ranked[0] // null),
         ranked_candidates: $ranked,
         rejected_candidates: [ $ranked[] | select(.score < 60) | {id, title, score, penalties} ]
@@ -438,6 +510,25 @@ select_novel_plan() {
   [ -n "$selection_json" ] || return 1
   if ! jq -e '.selected != null' >/dev/null 2>&1 <<<"$selection_json"; then
     return 1
+  fi
+
+  if [ "$USE_ARCHETYPE_PLAN" = "1" ] && [ -f "$ARCHETYPE_PLAN_FILE" ]; then
+    override_id=$(jq -r --arg day "$DAY_STR" '.days[$day].candidate_id // empty' "$ARCHETYPE_PLAN_FILE" 2>/dev/null || true)
+    if [ -n "$override_id" ]; then
+      selection_json=$(jq --arg id "$override_id" '
+        if ([.ranked_candidates[]?.id] | index($id)) != null then
+          .selected = (.ranked_candidates[] | select(.id == $id))
+          | .selection_mode = "archetype_override"
+        else
+          .selection_mode = "score_top"
+          | .override_warning = ("override candidate not found: " + $id)
+        end
+      ' <<<"$selection_json")
+    else
+      selection_json=$(jq '.selection_mode = "score_top"' <<<"$selection_json")
+    fi
+  else
+    selection_json=$(jq '.selection_mode = "score_top"' <<<"$selection_json")
   fi
 
   printf '%s\n' "$selection_json" > "$NOVELTY_SELECTION_FILE"
@@ -457,6 +548,14 @@ select_novel_plan() {
   AUDIENCE_PROMISE=$(jq -r '.selected.audience_promise // empty' <<<"$selection_json")
   PUBLISH_HOOK=$(jq -r '.selected.publish_hook // empty' <<<"$selection_json")
   ENGINE=$(jq -r '.selected.engine // "default_transform"' <<<"$selection_json")
+  INTERACTION_ARCHETYPE=$(jq -r '.selected.interaction_archetype // empty' <<<"$selection_json")
+  PAGE_ARCHETYPE=$(jq -r '.selected.page_archetype // empty' <<<"$selection_json")
+  OUTPUT_SHAPE=$(jq -r '.selected.output_shape // empty' <<<"$selection_json")
+  STATE_MODEL=$(jq -r '.selected.state_model // empty' <<<"$selection_json")
+  CORE_LOOP=$(jq -r '.selected.core_loop // empty' <<<"$selection_json")
+  COMPONENT_PACK=$(jq -r '.selected.component_pack // empty' <<<"$selection_json")
+  SCAFFOLD_ID=$(jq -r '.selected.scaffold_id // empty' <<<"$selection_json")
+  SINGLE_SHOT_TEXT_GENERATOR=$(jq -r '.selected.single_shot_text_generator // false | tostring' <<<"$selection_json")
   set_plan_metadata_defaults
   return 0
 }
@@ -472,7 +571,8 @@ sync_template_files() {
     cd "$WORK_DIR"
     tar -xf -
   )
-  rm -rf "$tmp_template"
+  chmod -R u+w "$tmp_template" >/dev/null 2>&1 || true
+  rm -rf "$tmp_template" >/dev/null 2>&1 || true
 }
 
 resolve_ui_copy() {
@@ -490,10 +590,22 @@ resolve_ui_copy() {
     plan) ACTION_LABEL="計画化する" ;;
     map) ACTION_LABEL="マップ化する" ;;
     stabilize) ACTION_LABEL="整える" ;;
+    recombine|combine) ACTION_LABEL="カードを引く" ;;
+    navigate|triage) ACTION_LABEL="次へ進む" ;;
+    score|optimize) ACTION_LABEL="再計算する" ;;
+    flow|sequence) ACTION_LABEL="カードを動かす" ;;
+    play|chain) ACTION_LABEL="スピンする" ;;
     *) ACTION_LABEL="実行する" ;;
   esac
 
   case "$INPUT_STYLE" in
+    multi_select_tokens) INPUT_LABEL="素材トークン"; INPUT_PLACEHOLDER='UI / API / Habit / Team' ;;
+    step_choices) INPUT_LABEL="ステップ回答"; INPUT_PLACEHOLDER='設問に沿って選択します' ;;
+    item_with_scores) INPUT_LABEL="項目 + スコア"; INPUT_PLACEHOLDER=$'支払い遅延|impact5|urgency4\n通知漏れ|impact4|urgency3' ;;
+    slider_weights_and_rows) INPUT_LABEL="重みと候補"; INPUT_PLACEHOLDER=$'速度|40\n品質|35\nコスト|25' ;;
+    task_cards) INPUT_LABEL="タスクカード"; INPUT_PLACEHOLDER=$'調査\n実装\n検証' ;;
+    card_creation) INPUT_LABEL="カード作成"; INPUT_PLACEHOLDER=$'カード名: API監視\nカード名: README更新' ;;
+    preset_pool) INPUT_LABEL="ミッション候補"; INPUT_PLACEHOLDER='10分 / 1人 / 制約あり' ;;
     json_sample) INPUT_LABEL="JSONサンプル"; INPUT_PLACEHOLDER='{user:{id:1,name:A}}' ;;
     error_log_paste) INPUT_LABEL="エラーログ"; INPUT_PLACEHOLDER='2026-03-08T12:00Z ERROR payment timeout status=504' ;;
     topic_list) INPUT_LABEL="トピック"; INPUT_PLACEHOLDER=$'認証設計\n監視設計\n運用手順' ;;
@@ -520,6 +632,14 @@ resolve_ui_copy() {
   esac
 
   case "$OUTPUT_STYLE" in
+    card_stack) OUTPUT_LABEL="カードスタック" ;;
+    path_summary) OUTPUT_LABEL="判断パス" ;;
+    response_flow) OUTPUT_LABEL="一次対応フロー" ;;
+    quadrant_matrix) OUTPUT_LABEL="4象限マトリクス" ;;
+    ranked_scores) OUTPUT_LABEL="重み付きランキング" ;;
+    checklist_timeline) OUTPUT_LABEL="スロットチェックリスト" ;;
+    lane_board) OUTPUT_LABEL="フローボード" ;;
+    roulette_result) OUTPUT_LABEL="ラウンド結果" ;;
     triage_steps) OUTPUT_LABEL="初動切り分け" ;;
     schema_draft) OUTPUT_LABEL="スキーマ下書き" ;;
     repro_report) OUTPUT_LABEL="再現手順テンプレ" ;;
@@ -550,49 +670,165 @@ resolve_ui_copy() {
   INPUT_PLACEHOLDER_HTML=$(printf '%s' "$INPUT_PLACEHOLDER_SINGLE" | sed -e 's/&/\&amp;/g' -e 's/\"/\&quot;/g' -e "s/'/&#39;/g" -e 's/</\&lt;/g' -e 's/>/\&gt;/g')
 }
 
+write_style_file() {
+  case "$SCAFFOLD_ID" in
+    card_deck_board)
+      cat > src/style.css <<'CSS'
+body{font-family:"Inter","Noto Sans JP",sans-serif;background:linear-gradient(135deg,#fff8e1,#fce4ec);margin:0;color:#2d1b4e}
+#app{max-width:1100px;margin:0 auto;padding:24px}
+.top{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.panel{background:#fff;border-radius:16px;padding:16px;box-shadow:0 10px 24px rgba(93,38,140,.12)}
+.tokens,.cards{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chip,.card{padding:8px 10px;border-radius:10px;background:#f3e5f5}
+button{border:0;border-radius:10px;padding:10px 12px;background:#5e35b1;color:#fff;font-weight:600;cursor:pointer}
+input{width:100%;padding:10px;border:1px solid #d1c4e9;border-radius:8px}
+ul{padding-left:18px}
+@media (max-width:800px){.grid{grid-template-columns:1fr}}
+CSS
+      ;;
+    wizard_stepper)
+      cat > src/style.css <<'CSS'
+body{font-family:"Inter","Noto Sans JP",sans-serif;background:#f3f7ff;margin:0;color:#102a43}
+#app{max-width:820px;margin:0 auto;padding:24px}
+.wizard{background:#fff;border:1px solid #d9e2ec;border-radius:16px;padding:20px}
+.step{display:inline-block;padding:6px 12px;border-radius:999px;background:#e3f2fd;font-weight:700}
+.question{font-size:1.25rem;margin:14px 0}
+.choices{display:grid;gap:10px}
+.choice{display:flex;gap:10px;align-items:flex-start;padding:10px;border:1px solid #d9e2ec;border-radius:10px}
+.actions{display:flex;justify-content:space-between;margin-top:16px}
+button{border:0;border-radius:10px;padding:10px 14px;background:#0d47a1;color:#fff;font-weight:700;cursor:pointer}
+pre{background:#102a43;color:#f0f4f8;padding:12px;border-radius:10px;white-space:pre-wrap}
+CSS
+      ;;
+    matrix_mapper)
+      cat > src/style.css <<'CSS'
+body{font-family:"Inter","Noto Sans JP",sans-serif;background:#fffbe6;margin:0;color:#3e2723}
+#app{max-width:1100px;margin:0 auto;padding:24px}
+.layout{display:grid;grid-template-columns:320px 1fr;gap:16px}
+.panel{background:#fff;border:2px solid #ffe082;border-radius:14px;padding:14px}
+.matrix{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px;min-height:420px}
+.quad{border-radius:12px;padding:10px;background:#fff8e1;border:1px solid #ffcc80}
+.quad h3{margin:0 0 8px 0;font-size:.95rem}
+button{border:0;border-radius:10px;padding:10px 12px;background:#ef6c00;color:#fff;font-weight:700;cursor:pointer}
+input,select{width:100%;padding:8px;margin-bottom:8px;border:1px solid #ffcc80;border-radius:8px}
+@media (max-width:900px){.layout{grid-template-columns:1fr}}
+CSS
+      ;;
+    weighted_calculator)
+      cat > src/style.css <<'CSS'
+body{font-family:"Inter","Noto Sans JP",sans-serif;background:#0f172a;margin:0;color:#e2e8f0}
+#app{max-width:1100px;margin:0 auto;padding:24px}
+.dash{display:grid;grid-template-columns:340px 1fr;gap:16px}
+.panel{background:#111827;border:1px solid #1f2937;border-radius:14px;padding:16px}
+label{display:block;margin-top:8px}
+input,button{width:100%;padding:10px;border-radius:8px;border:1px solid #334155;background:#0b1220;color:#e2e8f0}
+button{background:#2563eb;border:0;font-weight:700;cursor:pointer}
+table{width:100%;border-collapse:collapse;margin-top:10px}
+th,td{border-bottom:1px solid #334155;padding:8px;text-align:left}
+.meter{font-size:.9rem;color:#93c5fd}
+@media (max-width:900px){.dash{grid-template-columns:1fr}}
+CSS
+      ;;
+    slot_checklist_planner)
+      cat > src/style.css <<'CSS'
+body{font-family:"Inter","Noto Sans JP",sans-serif;background:#f0fff4;margin:0;color:#1b4332}
+#app{max-width:1100px;margin:0 auto;padding:24px}
+.planner{display:grid;grid-template-columns:300px 1fr;gap:16px}
+.panel{background:#fff;border:1px solid #b7e4c7;border-radius:14px;padding:14px}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.slot{background:#f1faee;border-radius:12px;padding:10px;min-height:260px}
+.task{display:flex;gap:8px;align-items:center;padding:6px 0}
+input,select,button{width:100%;padding:9px;border:1px solid #95d5b2;border-radius:8px}
+button{background:#2d6a4f;color:#fff;border:0;font-weight:700;cursor:pointer}
+@media (max-width:900px){.planner{grid-template-columns:1fr}.slots{grid-template-columns:1fr}}
+CSS
+      ;;
+    flow_board)
+      cat > src/style.css <<'CSS'
+body{font-family:"Inter","Noto Sans JP",sans-serif;background:#f5f3ff;margin:0;color:#312e81}
+#app{max-width:1200px;margin:0 auto;padding:24px}
+.toolbar{display:grid;grid-template-columns:1fr 180px;gap:10px;margin-bottom:12px}
+input,button{padding:10px;border-radius:8px;border:1px solid #c4b5fd}
+button{background:#7c3aed;color:#fff;border:0;font-weight:700;cursor:pointer}
+.board{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.lane{background:#fff;border:1px solid #ddd6fe;border-radius:12px;padding:10px;min-height:340px}
+.card{background:#ede9fe;border-radius:10px;padding:8px;margin:8px 0}
+.card button{width:auto;padding:6px 8px;font-size:.82rem}
+@media (max-width:900px){.board{grid-template-columns:1fr}}
+CSS
+      ;;
+    roulette_game)
+      cat > src/style.css <<'CSS'
+body{font-family:"Inter","Noto Sans JP",sans-serif;background:radial-gradient(circle at top,#1f2937,#020617);margin:0;color:#f8fafc}
+#app{max-width:880px;margin:0 auto;padding:24px}
+.game{background:#0f172a;border:1px solid #334155;border-radius:16px;padding:18px}
+.wheel{font-size:2rem;text-align:center;padding:18px;border-radius:999px;background:#1e293b;margin:10px auto;width:220px;height:220px;display:flex;align-items:center;justify-content:center}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+input,button{padding:10px;border-radius:8px;border:1px solid #475569;background:#111827;color:#f8fafc}
+button{background:#f59e0b;color:#111827;border:0;font-weight:800;cursor:pointer}
+.score{display:flex;gap:10px;justify-content:space-between;margin-top:12px}
+ul{min-height:120px}
+CSS
+      ;;
+    *)
+      cp "$CONTROL_DIR/../ai-dev-exp-template/src/style.css" src/style.css 2>/dev/null || true
+      ;;
+  esac
+}
+
 write_index_file() {
-  cat > index.html <<HTML
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${DAY_LABEL} — ${TITLE}</title>
-  <meta name="description" content="${ONE_SENTENCE}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/src/style.css">
-</head>
-<body>
-  <div id="app">
-    <header class="app-header">
-      <div class="header-badge">${DAY_LABEL}</div>
-      <h1 class="header-title">${TITLE}</h1>
-      <p class="header-desc">${ONE_SENTENCE}</p>
-    </header>
-    <main class="app-main">
-      <section class="tool-area">
-        <div class="input-group">
-          <label for="toolInput" class="input-label">${INPUT_LABEL}</label>
-          <textarea id="toolInput" class="input-textarea" rows="6" placeholder="${INPUT_PLACEHOLDER_HTML}"></textarea>
-        </div>
-        <button id="actionBtn" class="btn-primary">${ACTION_LABEL}</button>
-        <div class="output-group" id="outputGroup" style="display:none">
-          <label class="input-label">${OUTPUT_LABEL}</label>
-          <div id="toolOutput" class="output-area"></div>
-        </div>
-      </section>
-    </main>
-    <footer class="app-footer">
-      <span>${DAY_LABEL} — ${PUBLISH_HOOK}</span>
-      <a href="${REPO_URL}" target="_blank" rel="noopener">GitHub</a>
-    </footer>
-  </div>
-  <script type="module" src="/src/main.js"></script>
-</body>
-</html>
+  case "$SCAFFOLD_ID" in
+    card_deck_board)
+      cat > index.html <<HTML
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>${DAY_LABEL} — ${TITLE}</title><meta name="description" content="${ONE_SENTENCE}"><link rel="stylesheet" href="/src/style.css"></head>
+<body><div id="app"><div class="top"><div><div>${DAY_LABEL}</div><h1>${TITLE}</h1><p>${ONE_SENTENCE}</p></div><a href="${REPO_URL}" target="_blank" rel="noopener">GitHub</a></div>
+<div class="grid"><section class="panel"><h2>Token Pool</h2><input id="tokenInput" placeholder="${INPUT_PLACEHOLDER_HTML}"><button id="addTokenBtn">追加</button><div id="tokenList" class="tokens"></div><hr><button id="drawBtn">3枚引く</button><button id="lockBtn">ロック切替</button></section><section class="panel"><h2>Drawn Cards</h2><div id="cardStack" class="cards"></div><h3>History</h3><ul id="historyList"></ul></section></div></div><script type="module" src="/src/main.js"></script></body></html>
 HTML
+      ;;
+    wizard_stepper)
+      cat > index.html <<HTML
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>${DAY_LABEL} — ${TITLE}</title><meta name="description" content="${ONE_SENTENCE}"><link rel="stylesheet" href="/src/style.css"></head>
+<body><div id="app"><h1>${TITLE}</h1><p>${ONE_SENTENCE}</p><div class="wizard"><div id="stepBadge" class="step">Step 1/3</div><div id="questionText" class="question"></div><div id="choiceGroup" class="choices"></div><div class="actions"><button id="prevStepBtn">戻る</button><button id="nextStepBtn">次へ</button></div><h3>Decision Path</h3><pre id="wizardSummary"></pre></div><p><a href="${REPO_URL}" target="_blank" rel="noopener">GitHub</a></p></div><script type="module" src="/src/main.js"></script></body></html>
+HTML
+      ;;
+    matrix_mapper)
+      cat > index.html <<HTML
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>${DAY_LABEL} — ${TITLE}</title><meta name="description" content="${ONE_SENTENCE}"><link rel="stylesheet" href="/src/style.css"></head>
+<body><div id="app"><h1>${TITLE}</h1><p>${ONE_SENTENCE}</p><div class="layout"><section class="panel"><h2>Add Item</h2><input id="matrixItemName" placeholder="項目名"><label>Impact <input id="impactRange" type="range" min="1" max="5" value="3"></label><label>Urgency <input id="urgencyRange" type="range" min="1" max="5" value="3"></label><button id="addMatrixItemBtn">配置する</button></section><section class="matrix"><div class="quad"><h3>High Impact / High Urgency</h3><ul id="qHH"></ul></div><div class="quad"><h3>High Impact / Low Urgency</h3><ul id="qHL"></ul></div><div class="quad"><h3>Low Impact / High Urgency</h3><ul id="qLH"></ul></div><div class="quad"><h3>Low Impact / Low Urgency</h3><ul id="qLL"></ul></div></section></div><p><a href="${REPO_URL}" target="_blank" rel="noopener">GitHub</a></p></div><script type="module" src="/src/main.js"></script></body></html>
+HTML
+      ;;
+    weighted_calculator)
+      cat > index.html <<HTML
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>${DAY_LABEL} — ${TITLE}</title><meta name="description" content="${ONE_SENTENCE}"><link rel="stylesheet" href="/src/style.css"></head>
+<body><div id="app"><h1>${TITLE}</h1><p>${ONE_SENTENCE}</p><div class="dash"><section class="panel"><h2>Weights</h2><label>Speed <input id="wSpeed" type="range" min="0" max="100" value="40"></label><label>Quality <input id="wQuality" type="range" min="0" max="100" value="35"></label><label>Cost <input id="wCost" type="range" min="0" max="100" value="25"></label><p class="meter" id="weightMeter"></p></section><section class="panel"><h2>Options</h2><input id="optionName" placeholder="候補名"><input id="optionSpeed" type="number" min="1" max="5" placeholder="Speed 1-5"><input id="optionQuality" type="number" min="1" max="5" placeholder="Quality 1-5"><input id="optionCost" type="number" min="1" max="5" placeholder="Cost 1-5"><button id="addOptionBtn">候補追加</button><button id="recalcBtn">再計算</button><table><thead><tr><th>Option</th><th>Score</th></tr></thead><tbody id="scoreTable"></tbody></table></section></div><p><a href="${REPO_URL}" target="_blank" rel="noopener">GitHub</a></p></div><script type="module" src="/src/main.js"></script></body></html>
+HTML
+      ;;
+    slot_checklist_planner)
+      cat > index.html <<HTML
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>${DAY_LABEL} — ${TITLE}</title><meta name="description" content="${ONE_SENTENCE}"><link rel="stylesheet" href="/src/style.css"></head>
+<body><div id="app"><h1>${TITLE}</h1><p>${ONE_SENTENCE}</p><div class="planner"><section class="panel"><h2>Add Task</h2><input id="taskInput" placeholder="タスク名"><select id="slotSelect"><option value="morning">Morning</option><option value="afternoon">Afternoon</option><option value="evening">Evening</option></select><button id="addTaskBtn">追加</button><button id="carryBtn">未完了を次枠へ繰越</button></section><section class="slots"><div class="slot"><h3>Morning</h3><div id="slotMorning"></div></div><div class="slot"><h3>Afternoon</h3><div id="slotAfternoon"></div></div><div class="slot"><h3>Evening</h3><div id="slotEvening"></div></div></section></div><p><a href="${REPO_URL}" target="_blank" rel="noopener">GitHub</a></p></div><script type="module" src="/src/main.js"></script></body></html>
+HTML
+      ;;
+    flow_board)
+      cat > index.html <<HTML
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>${DAY_LABEL} — ${TITLE}</title><meta name="description" content="${ONE_SENTENCE}"><link rel="stylesheet" href="/src/style.css"></head>
+<body><div id="app"><h1>${TITLE}</h1><p>${ONE_SENTENCE}</p><div class="toolbar"><input id="cardTitleInput" placeholder="新しいカード"><button id="addFlowCardBtn">カード追加</button></div><div class="board"><section class="lane"><h3>Todo</h3><div id="laneTodo"></div></section><section class="lane"><h3>Doing</h3><div id="laneDoing"></div></section><section class="lane"><h3>Done</h3><div id="laneDone"></div></section></div><p><a href="${REPO_URL}" target="_blank" rel="noopener">GitHub</a></p></div><script type="module" src="/src/main.js"></script></body></html>
+HTML
+      ;;
+    roulette_game)
+      cat > index.html <<HTML
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>${DAY_LABEL} — ${TITLE}</title><meta name="description" content="${ONE_SENTENCE}"><link rel="stylesheet" href="/src/style.css"></head>
+<body><div id="app"><h1>${TITLE}</h1><p>${ONE_SENTENCE}</p><div class="game"><input id="missionInput" placeholder="${INPUT_PLACEHOLDER_HTML}"><button id="addMissionBtn">ミッション追加</button><div class="wheel" id="wheelFace">SPIN</div><div class="controls"><button id="spinBtn">スピン</button><button id="clearRoundBtn">履歴クリア</button></div><div class="score"><strong>Score: <span id="scoreValue">0</span></strong><strong>Round: <span id="roundValue">0</span></strong></div><h3>Pool</h3><ul id="missionPool"></ul><h3>History</h3><ul id="roundHistory"></ul></div><p><a href="${REPO_URL}" target="_blank" rel="noopener">GitHub</a></p></div><script type="module" src="/src/main.js"></script></body></html>
+HTML
+      ;;
+    *)
+      cat > index.html <<HTML
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>${DAY_LABEL} — ${TITLE}</title><meta name="description" content="${ONE_SENTENCE}"><link rel="stylesheet" href="/src/style.css"></head>
+<body><div id="app"><h1>${TITLE}</h1><p>${ONE_SENTENCE}</p><textarea id="toolInput" rows="6" placeholder="${INPUT_PLACEHOLDER_HTML}"></textarea><button id="actionBtn">${ACTION_LABEL}</button><pre id="toolOutput"></pre><p><a href="${REPO_URL}" target="_blank" rel="noopener">GitHub</a></p></div><script type="module" src="/src/main.js"></script></body></html>
+HTML
+      ;;
+  esac
 }
 
 write_main_script() {
@@ -609,225 +845,293 @@ write_main_script() {
     --arg audience_promise "$AUDIENCE_PROMISE" \
     --arg publish_hook "$PUBLISH_HOOK" \
     --arg engine "$ENGINE" \
-    '{day:$day,title:$title,one_sentence:$one_sentence,core_action:$core_action,family:$family,mechanic:$mechanic,input_style:$input_style,output_style:$output_style,audience_promise:$audience_promise,publish_hook:$publish_hook,engine:$engine}')
+    --arg interaction_archetype "$INTERACTION_ARCHETYPE" \
+    --arg page_archetype "$PAGE_ARCHETYPE" \
+    --arg output_shape "$OUTPUT_SHAPE" \
+    --arg state_model "$STATE_MODEL" \
+    --arg core_loop "$CORE_LOOP" \
+    --arg component_pack "$COMPONENT_PACK" \
+    --arg scaffold_id "$SCAFFOLD_ID" \
+    --arg single_shot "$SINGLE_SHOT_TEXT_GENERATOR" \
+    '{day:$day,title:$title,one_sentence:$one_sentence,core_action:$core_action,family:$family,mechanic:$mechanic,input_style:$input_style,output_style:$output_style,audience_promise:$audience_promise,publish_hook:$publish_hook,engine:$engine,interaction_archetype:$interaction_archetype,page_archetype:$page_archetype,output_shape:$output_shape,state_model:$state_model,core_loop:$core_loop,component_pack:$component_pack,scaffold_id:$scaffold_id,single_shot_text_generator:($single_shot=="true")}')
 
   {
     echo "import './style.css';"
     printf 'const PROFILE = %s;\n' "$profile_json"
     cat <<'JS'
-const actionBtn = document.getElementById('actionBtn');
-const toolInput = document.getElementById('toolInput');
-const toolOutput = document.getElementById('toolOutput');
-const outputGroup = document.getElementById('outputGroup');
+const byId = (id) => document.getElementById(id);
+const state = {
+  tokens: ['UI', 'API', 'Habit', 'Team'],
+  lock: false,
+  history: [],
+  wizardStep: 0,
+  wizardAnswers: {},
+  matrix: { HH: [], HL: [], LH: [], LL: [] },
+  options: [],
+  slots: { morning: [], afternoon: [], evening: [] },
+  board: { todo: [], doing: [], done: [] },
+  missions: ['5分で試す', '2案比較する', '短文で説明する'],
+  score: 0,
+  round: 0
+};
 
-actionBtn.addEventListener('click', () => {
-  const input = (toolInput.value || '').trim();
-  if (!input) {
-    showOutput('⚠ 入力を入れてください', 'warning');
-    return;
-  }
-  const result = processInput(input);
-  showOutput(result, 'success');
-});
+boot();
 
-function processInput(input) {
-  switch (PROFILE.engine) {
-    case 'json_paths':
-      return renderJsonPaths(input);
-    case 'agenda_builder':
-      return buildAgenda(input);
-    case 'risk_matrix':
-      return buildRiskMatrix(input);
-    case 'decision_brief':
-      return buildDecisionBrief(input);
-    case 'checklist_builder':
-      return buildChecklist(input);
-    case 'qa_rotator':
-      return buildQuestionRotation(input);
-    case 'habit_slots':
-      return buildHabitSlots(input);
-    case 'triage_router':
-      return buildTriage(input);
-    case 'copy_angle':
-      return buildCopyAngles(input);
-    case 'story_weaver':
-      return buildStoryOutline(input);
-    case 'constraint_game':
-      return buildConstraints(input);
-    case 'incident_card':
-      return buildIncidentCard(input);
-    default:
-      return fallbackAnalyze(input);
+function boot() {
+  switch (PROFILE.scaffold_id) {
+    case 'card_deck_board': return setupCardDeck();
+    case 'wizard_stepper': return setupWizard();
+    case 'matrix_mapper': return setupMatrix();
+    case 'weighted_calculator': return setupWeightedCalc();
+    case 'slot_checklist_planner': return setupSlotPlanner();
+    case 'flow_board': return setupFlowBoard();
+    case 'roulette_game': return setupRoulette();
+    default: return setupFallback();
   }
 }
 
-function renderJsonPaths(input) {
-  let obj;
-  try {
-    obj = JSON.parse(input);
-  } catch (e) {
-    return 'JSONとして解釈できませんでした。まずJSON形式で入力してください。';
-  }
-  const rows = [];
-  walk(obj, '$', rows);
-  return ['JSON path summary:', ...rows.slice(0, 80)].join('\\n');
-}
-
-function walk(node, path, rows) {
-  if (Array.isArray(node)) {
-    rows.push(`${path} : array(${node.length})`);
-    node.forEach((x, i) => walk(x, `${path}[${i}]`, rows));
-    return;
-  }
-  if (node && typeof node === 'object') {
-    rows.push(`${path} : object`);
-    Object.keys(node).forEach((k) => walk(node[k], `${path}.${k}`, rows));
-    return;
-  }
-  rows.push(`${path} : ${typeof node}`);
-}
-
-function splitLines(input) {
-  return input.split(/\\n+/).map((x) => x.trim()).filter(Boolean);
-}
-
-function buildAgenda(input) {
-  const topics = splitLines(input);
-  const per = Math.max(5, Math.floor(45 / Math.max(topics.length, 1)));
-  const lines = topics.map((t, i) => `${String(i + 1).padStart(2, '0')}. ${t} (${per}分)`);
-  return ['Agenda draft:', ...lines, 'Closing: 決定事項と担当を1分で確認'].join('\\n');
-}
-
-function buildRiskMatrix(input) {
-  const rows = splitLines(input).map((line) => {
-    const [name, impactRaw, probRaw] = line.split('|').map((x) => (x || '').trim());
-    const impact = Number(impactRaw || 3);
-    const prob = Number(probRaw || 3);
-    const score = impact * prob;
-    return { name: name || line, impact, prob, score };
-  }).sort((a, b) => b.score - a.score);
-  const out = rows.map((r, i) => `${i + 1}. ${r.name} | impact=${r.impact} prob=${r.prob} score=${r.score}`);
-  return ['Risk priority:', ...out.slice(0, 20)].join('\\n');
-}
-
-function buildDecisionBrief(input) {
-  const rows = splitLines(input);
-  const outline = rows.map((x, i) => `${i + 1}) ${x}`);
-  return [
-    'Decision memo draft',
-    '背景: 何を決めるかを1行で明記',
-    '選択肢:',
-    ...outline,
-    '採用理由: 影響と実行速度のバランス',
-    '却下理由: 維持コストまたはリスクが高い'
-  ].join('\\n');
-}
-
-function buildChecklist(input) {
-  const rows = splitLines(input);
-  const checks = rows.map((x, i) => `- [ ] ${x} を確認する (${i + 1})`);
-  return ['Checklist:', ...checks.slice(0, 30)].join('\\n');
-}
-
-function buildQuestionRotation(input) {
-  const rows = splitLines(input);
-  const out = [];
-  rows.forEach((x) => {
-    out.push(`基礎: ${x}とは?`);
-    out.push(`応用: ${x}を使う判断基準は?`);
-    out.push(`確認: ${x}を説明できるか?`);
+function setupCardDeck() {
+  const tokenInput = byId('tokenInput');
+  const tokenList = byId('tokenList');
+  const cardStack = byId('cardStack');
+  const historyList = byId('historyList');
+  byId('addTokenBtn').addEventListener('click', () => {
+    const v = (tokenInput.value || '').trim();
+    if (!v) return;
+    state.tokens.push(v);
+    tokenInput.value = '';
+    renderTokenPool(tokenList);
   });
-  return ['Question rotation:', ...out.slice(0, 24)].join('\\n');
-}
-
-function buildHabitSlots(input) {
-  const rows = splitLines(input);
-  if (rows.length === 0) {
-    return '条件を1行以上入力してください。';
-  }
-  return [
-    'Habit slots:',
-    '朝: 5分の準備タスク',
-    '昼: 進捗確認',
-    '夜: 翌日の障害を1つ潰す',
-    `メモ: ${rows[0]}`
-  ].join('\\n');
-}
-
-function buildTriage(input) {
-  const rows = splitLines(input);
-  const lanes = { now: [], later: [], delegate: [] };
-  rows.forEach((r, i) => {
-    if (i % 3 === 0) lanes.now.push(r);
-    else if (i % 3 === 1) lanes.later.push(r);
-    else lanes.delegate.push(r);
+  byId('drawBtn').addEventListener('click', () => {
+    if (state.lock) return;
+    const picks = shuffle([...state.tokens]).slice(0, Math.min(3, state.tokens.length));
+    cardStack.innerHTML = picks.map((x) => `<div class="card">${escapeHtml(x)}</div>`).join('');
+    state.history.unshift(picks.join(' × '));
+    state.history = state.history.slice(0, 12);
+    historyList.innerHTML = state.history.map((x) => `<li>${escapeHtml(x)}</li>`).join('');
   });
-  return [
-    'Triage lanes:',
-    '[Now]', ...lanes.now.map((x) => `- ${x}`),
-    '[Later]', ...lanes.later.map((x) => `- ${x}`),
-    '[Delegate]', ...lanes.delegate.map((x) => `- ${x}`)
-  ].join('\\n');
+  byId('lockBtn').addEventListener('click', () => { state.lock = !state.lock; });
+  renderTokenPool(tokenList);
 }
 
-function buildCopyAngles(input) {
-  const seed = splitLines(input).slice(0, 3).join(' / ');
-  return [
-    'Copy angles:',
-    `1) 課題起点: ${seed} で困る時間を減らす`,
-    `2) 成果起点: ${seed} を最短で形にする`,
-    `3) 安心起点: ${seed} のミスを事前に防ぐ`
-  ].join('\\n');
+function renderTokenPool(el) {
+  el.innerHTML = state.tokens.map((x) => `<span class="chip">${escapeHtml(x)}</span>`).join('');
 }
 
-function buildStoryOutline(input) {
-  const rows = splitLines(input);
-  return [
-    'STAR outline:',
-    `S: ${rows[0] || '背景を1行で記述'}`,
-    `T: ${rows[1] || '目標を1行で記述'}`,
-    `A: ${rows[2] || '取った行動を3点で記述'}`,
-    `R: ${rows[3] || '成果を数値で記述'}`
-  ].join('\\n');
+function setupWizard() {
+  const questions = [
+    { key: 'speed', q: '最優先はどれ?', c: ['速度', '品質', 'コスト'] },
+    { key: 'risk', q: '許容できるリスクは?', c: ['低い', '中くらい', '高い'] },
+    { key: 'ownership', q: '主導者は?', c: ['自分', 'チーム', '外部'] }
+  ];
+  const stepBadge = byId('stepBadge');
+  const questionText = byId('questionText');
+  const choiceGroup = byId('choiceGroup');
+  const summary = byId('wizardSummary');
+  byId('prevStepBtn').addEventListener('click', () => { state.wizardStep = Math.max(0, state.wizardStep - 1); renderStep(); });
+  byId('nextStepBtn').addEventListener('click', () => {
+    const cur = questions[state.wizardStep];
+    const selected = document.querySelector('input[name="wizardChoice"]:checked');
+    if (selected) state.wizardAnswers[cur.key] = selected.value;
+    state.wizardStep = Math.min(questions.length - 1, state.wizardStep + 1);
+    renderStep();
+  });
+  function renderStep() {
+    const cur = questions[state.wizardStep];
+    stepBadge.textContent = `Step ${state.wizardStep + 1}/${questions.length}`;
+    questionText.textContent = cur.q;
+    choiceGroup.innerHTML = cur.c.map((x) => `<label class="choice"><input type="radio" name="wizardChoice" value="${escapeHtml(x)}" ${state.wizardAnswers[cur.key]===x?'checked':''}>${escapeHtml(x)}</label>`).join('');
+    summary.textContent = Object.entries(state.wizardAnswers).map(([k,v]) => `${k}: ${v}`).join('\n') || 'まだ回答がありません';
+  }
+  renderStep();
 }
 
-function buildConstraints(input) {
-  const rows = splitLines(input);
-  const base = rows[0] || input;
-  return [
-    'Challenge cards:',
-    `- 5分: ${base} で1つ作る`,
-    `- 10分: ${base} を2通りで試す`,
-    `- 15分: ${base} を他人に説明する`
-  ].join('\\n');
+function setupMatrix() {
+  const inputName = byId('matrixItemName');
+  const impact = byId('impactRange');
+  const urgency = byId('urgencyRange');
+  byId('addMatrixItemBtn').addEventListener('click', () => {
+    const name = (inputName.value || '').trim();
+    if (!name) return;
+    const i = Number(impact.value);
+    const u = Number(urgency.value);
+    const key = i >= 3 && u >= 3 ? 'HH' : i >= 3 ? 'HL' : u >= 3 ? 'LH' : 'LL';
+    state.matrix[key].push(name);
+    inputName.value = '';
+    renderMatrix();
+  });
+  renderMatrix();
 }
 
-function buildIncidentCard(input) {
-  const rows = splitLines(input);
-  return [
-    'Incident first-response card:',
-    `1. 事象要約: ${rows[0] || '症状を1行で記述'}`,
-    '2. 影響範囲を確認',
-    '3. 一時回避策を定義',
-    '4. 恒久対応の仮説を列挙',
-    '5. 共有先と次回更新時刻を明記'
-  ].join('\\n');
+function renderMatrix() {
+  byId('qHH').innerHTML = state.matrix.HH.map((x) => `<li>${escapeHtml(x)}</li>`).join('');
+  byId('qHL').innerHTML = state.matrix.HL.map((x) => `<li>${escapeHtml(x)}</li>`).join('');
+  byId('qLH').innerHTML = state.matrix.LH.map((x) => `<li>${escapeHtml(x)}</li>`).join('');
+  byId('qLL').innerHTML = state.matrix.LL.map((x) => `<li>${escapeHtml(x)}</li>`).join('');
 }
 
-function fallbackAnalyze(input) {
-  const chars = input.length;
-  const lines = input.split('\\n').length;
-  const words = input.split(/\\s+/).filter(Boolean).length;
-  return `分析結果\\n- chars: ${chars}\\n- words: ${words}\\n- lines: ${lines}`;
+function setupWeightedCalc() {
+  const meter = byId('weightMeter');
+  const scoreTable = byId('scoreTable');
+  const recalc = () => {
+    const ws = Number(byId('wSpeed').value), wq = Number(byId('wQuality').value), wc = Number(byId('wCost').value);
+    const sum = ws + wq + wc || 1;
+    meter.textContent = `weight ratio => speed:${ws} quality:${wq} cost:${wc}`;
+    const rows = state.options.map((o) => {
+      const score = (o.speed * ws + o.quality * wq + (6 - o.cost) * wc) / sum;
+      return { name: o.name, score: score.toFixed(2) };
+    }).sort((a,b) => Number(b.score) - Number(a.score));
+    scoreTable.innerHTML = rows.map((r) => `<tr><td>${escapeHtml(r.name)}</td><td>${r.score}</td></tr>`).join('');
+  };
+  ['wSpeed','wQuality','wCost'].forEach((id) => byId(id).addEventListener('input', recalc));
+  byId('addOptionBtn').addEventListener('click', () => {
+    const name = (byId('optionName').value || '').trim();
+    const speed = Number(byId('optionSpeed').value || 0);
+    const quality = Number(byId('optionQuality').value || 0);
+    const cost = Number(byId('optionCost').value || 0);
+    if (!name || !speed || !quality || !cost) return;
+    state.options.push({ name, speed, quality, cost });
+    byId('optionName').value = '';
+    byId('optionSpeed').value = '';
+    byId('optionQuality').value = '';
+    byId('optionCost').value = '';
+    recalc();
+  });
+  byId('recalcBtn').addEventListener('click', recalc);
+  recalc();
 }
 
-function showOutput(content, type = 'info') {
-  outputGroup.style.display = '';
-  toolOutput.className = `output-area output-${type}`;
-  toolOutput.textContent = content;
-  outputGroup.style.animation = 'none';
-  outputGroup.offsetHeight;
-  outputGroup.style.animation = 'fadeSlideIn 0.3s ease';
+function setupSlotPlanner() {
+  byId('addTaskBtn').addEventListener('click', () => {
+    const task = (byId('taskInput').value || '').trim();
+    const slot = byId('slotSelect').value;
+    if (!task) return;
+    state.slots[slot].push({ text: task, done: false });
+    byId('taskInput').value = '';
+    renderSlots();
+  });
+  byId('carryBtn').addEventListener('click', () => {
+    carry('morning', 'afternoon');
+    carry('afternoon', 'evening');
+    renderSlots();
+  });
+  renderSlots();
+}
+
+function carry(from, to) {
+  const stay = [];
+  state.slots[from].forEach((t) => {
+    if (t.done) stay.push(t);
+    else state.slots[to].push({ text: t.text, done: false });
+  });
+  state.slots[from] = stay;
+}
+
+function renderSlots() {
+  renderSlot('morning', byId('slotMorning'));
+  renderSlot('afternoon', byId('slotAfternoon'));
+  renderSlot('evening', byId('slotEvening'));
+}
+
+function renderSlot(key, el) {
+  el.innerHTML = state.slots[key].map((t, i) => `<label class="task"><input type="checkbox" ${t.done?'checked':''} data-slot="${key}" data-idx="${i}">${escapeHtml(t.text)}</label>`).join('');
+  el.querySelectorAll('input[type="checkbox"]').forEach((box) => {
+    box.addEventListener('change', (e) => {
+      const slot = e.target.dataset.slot;
+      const idx = Number(e.target.dataset.idx);
+      state.slots[slot][idx].done = e.target.checked;
+    });
+  });
+}
+
+function setupFlowBoard() {
+  byId('addFlowCardBtn').addEventListener('click', () => {
+    const title = (byId('cardTitleInput').value || '').trim();
+    if (!title) return;
+    state.board.todo.push({ id: Date.now(), title });
+    byId('cardTitleInput').value = '';
+    renderBoard();
+  });
+  renderBoard();
+}
+
+function renderBoard() {
+  renderLane('todo', byId('laneTodo'), 'doing');
+  renderLane('doing', byId('laneDoing'), 'done');
+  renderLane('done', byId('laneDone'), null);
+}
+
+function renderLane(key, el, next) {
+  el.innerHTML = state.board[key].map((c, i) => `<div class="card"><div>${escapeHtml(c.title)}</div>${next ? `<button data-lane="${key}" data-idx="${i}" data-next="${next}">→ ${next}</button>` : ''}</div>`).join('');
+  el.querySelectorAll('button').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const lane = btn.dataset.lane;
+      const idx = Number(btn.dataset.idx);
+      const to = btn.dataset.next;
+      const [card] = state.board[lane].splice(idx, 1);
+      state.board[to].push(card);
+      renderBoard();
+    });
+  });
+}
+
+function setupRoulette() {
+  const wheel = byId('wheelFace');
+  const score = byId('scoreValue');
+  const round = byId('roundValue');
+  const missionPool = byId('missionPool');
+  const history = byId('roundHistory');
+
+  byId('addMissionBtn').addEventListener('click', () => {
+    const m = (byId('missionInput').value || '').trim();
+    if (!m) return;
+    state.missions.push(m);
+    byId('missionInput').value = '';
+    renderPool();
+  });
+  byId('spinBtn').addEventListener('click', () => {
+    if (state.missions.length === 0) return;
+    const picked = state.missions[Math.floor(Math.random() * state.missions.length)];
+    wheel.textContent = picked;
+    state.round += 1;
+    state.score += 10;
+    state.history.unshift(`R${state.round}: ${picked}`);
+    state.history = state.history.slice(0, 12);
+    round.textContent = String(state.round);
+    score.textContent = String(state.score);
+    history.innerHTML = state.history.map((x) => `<li>${escapeHtml(x)}</li>`).join('');
+  });
+  byId('clearRoundBtn').addEventListener('click', () => {
+    state.round = 0; state.score = 0; state.history = []; wheel.textContent = 'SPIN';
+    round.textContent = '0'; score.textContent = '0'; history.innerHTML = '';
+  });
+  function renderPool() {
+    missionPool.innerHTML = state.missions.map((x) => `<li>${escapeHtml(x)}</li>`).join('');
+  }
+  renderPool();
+}
+
+function setupFallback() {
+  const input = byId('toolInput');
+  const output = byId('toolOutput');
+  const btn = byId('actionBtn');
+  if (!input || !output || !btn) return;
+  btn.addEventListener('click', () => {
+    const txt = (input.value || '').trim();
+    output.textContent = txt ? `chars=${txt.length}` : '入力してください';
+  });
+}
+
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function escapeHtml(v) {
+  return String(v).replace(/[&<>"']/g, (c) => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
 }
 JS
   } > src/main.js
@@ -1089,6 +1393,7 @@ jq -n \
 bash "$CONTROL_DIR/scripts/validate_json.sh" "$CONTROL_DIR/schemas/meta_schema.json" "meta.json"
 
 resolve_ui_copy
+write_style_file
 write_index_file
 write_main_script
 write_story_file "STORY.md"
@@ -1211,6 +1516,14 @@ jq --arg now "$NOW" \
    --arg audience_promise "$AUDIENCE_PROMISE" \
    --arg publish_hook "$PUBLISH_HOOK" \
    --arg engine "$ENGINE" \
+   --arg interaction_archetype "$INTERACTION_ARCHETYPE" \
+   --arg page_archetype "$PAGE_ARCHETYPE" \
+   --arg output_shape "$OUTPUT_SHAPE" \
+   --arg state_model "$STATE_MODEL" \
+   --arg core_loop "$CORE_LOOP" \
+   --arg component_pack "$COMPONENT_PACK" \
+   --arg scaffold_id "$SCAFFOLD_ID" \
+   --arg single_shot_text_generator "$SINGLE_SHOT_TEXT_GENERATOR" \
    --arg original_twist "$ORIGINAL_TWIST" \
    --arg original_one_sentence "$ORIGINAL_ONE_SENTENCE" \
    --arg enhancement_source "$ENHANCEMENT_SOURCE" \
@@ -1253,6 +1566,14 @@ jq --arg now "$NOW" \
        audience_promise: $audience_promise,
        publish_hook: $publish_hook,
        engine: $engine,
+       interaction_archetype: $interaction_archetype,
+       page_archetype: $page_archetype,
+       output_shape: $output_shape,
+       state_model: $state_model,
+       core_loop: $core_loop,
+       component_pack: $component_pack,
+       scaffold_id: $scaffold_id,
+       single_shot_text_generator: ($single_shot_text_generator == "true"),
        original_twist: $original_twist,
        original_one_sentence: $original_one_sentence,
        enhancement_source: $enhancement_source,
@@ -1274,7 +1595,7 @@ jq --arg now "$NOW" \
      },
      status: "done"
    }
-   | .next_day = (($day | tonumber) + 1)
+   | .next_day = ([((.next_day // 1) | tonumber), (($day | tonumber) + 1)] | max)
    | .recent_meta = ((.recent_meta + [{
        day: $day,
        title: $title,
@@ -1284,6 +1605,13 @@ jq --arg now "$NOW" \
        input_style: $input_style,
        output_style: $output_style,
        audience_promise: $audience_promise,
+       interaction_archetype: $interaction_archetype,
+       page_archetype: $page_archetype,
+       output_shape: $output_shape,
+       state_model: $state_model,
+       component_pack: $component_pack,
+       scaffold_id: $scaffold_id,
+       single_shot_text_generator: ($single_shot_text_generator == "true"),
        core_action: $core_action,
        twist: $twist,
        one_sentence: $one_sentence

@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-03-08T06:04:13.969886+00:00",
+  "generated_at": "2026-03-08T07:38:59.577963+00:00",
   "day": "011",
   "source_competitor_scan": "reports/competitors/competitor_scan_2026-03-07_shortlist.json",
   "context": {
-    "genre": "learning",
-    "theme": "NeoLab",
+    "genre": "planning",
+    "theme": "Brutal",
     "core_action": "map"
   },
   "original": {
-    "twist": "次に読む順番を3ステップで提示する / Signal:HN Frontpage「The surprising whimsy of」",
-    "one_sentence": "つまずきポイントを前提不足として可視化する学習診断ツール。（話題:HN Frontpage）"
+    "twist": "象限ごとに対応方針テンプレを同時提示する / Signal:HN Frontpage「The surprising whimsy of」",
+    "one_sentence": "課題を4象限に配置して対応優先度を可視化するマッパー。（話題:HN Frontpage）"
   },
   "candidates": [
     {

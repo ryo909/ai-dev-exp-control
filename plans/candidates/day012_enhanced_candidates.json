@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-03-08T06:05:14.905330+00:00",
+  "generated_at": "2026-03-08T07:32:42.514792+00:00",
   "day": "012",
   "source_competitor_scan": "reports/competitors/competitor_scan_2026-03-07_shortlist.json",
   "context": {
     "genre": "productivity",
     "theme": "RetroTerminal",
-    "core_action": "estimate"
+    "core_action": "score"
   },
   "original": {
-    "twist": "似た作業を束ねる再配置案を同時提案する / Signal:HN Frontpage「SigNoz (YC W21) is hirin」",
-    "one_sentence": "タスク切替の見えない損失を可視化する生産性分析ツール。（話題:HN Frontpage）"
+    "twist": "重み変更時に順位変動の差分を即表示する / Signal:HN Frontpage「SigNoz (YC W21) is hirin」",
+    "one_sentence": "重み付き評価で候補案の順位変化を比較できる計算ツール。（話題:HN Frontpage）"
   },
   "candidates": [
     {
