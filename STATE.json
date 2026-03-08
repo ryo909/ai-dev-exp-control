@@ -1,6 +1,6 @@
 {
   "target_day": 100,
-  "next_day": 13,
+  "next_day": 14,
   "batch_size_default": 7,
   "posts": {
     "fixed_tags": [
@@ -94,6 +94,15 @@
       "core_action": "track",
       "twist": "勤務時間に合わせて飲水タイミングを均等化する / Signal:HN Frontpage「SigNoz (YC W21) is hirin」",
       "one_sentence": "目標水分量を無理なく達成するための配分プランナー。（話題:HN Frontpage）",
+      "complexity_tier": "medium",
+      "selected_components": [],
+      "complexity_prompt_hint": "Add 2 safe enhancement components from selected_components while keeping the app single-page and stable."
+    },
+    {
+      "day": "013",
+      "core_action": "generate",
+      "twist": "30秒で遊べるミニお題を即時に複数提案 / Signal:HN Frontpage「A decade of Docker conta」",
+      "one_sentence": "気分転換用の短いお題をすぐ作るライトな遊びツール。（話題:HN Frontpage）",
       "complexity_tier": "medium",
       "selected_components": [],
       "complexity_prompt_hint": "Add 2 safe enhancement components from selected_components while keeping the app single-page and stable."
@@ -511,6 +520,53 @@
         "minimal": "Day012|Hydration Pace P\nhttps://ryo909.github.io/ai-dev-day-012/\n#個人開発 #100日開発"
       },
       "status": "done"
+    },
+    "013": {
+      "repo_name": "ai-dev-day-013",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-013",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-013/",
+      "meta": {
+        "tool_name": "Tiny Prompt Play",
+        "title": "Tiny Prompt Play",
+        "description": "気分を選ぶと短いお題を3つ返す遊びツール。",
+        "genre": "fun",
+        "theme": "NeoLab",
+        "complexity_tier": "medium",
+        "selected_components": [],
+        "complexity_prompt_hint": "Add 2 safe enhancement components from selected_components while keeping the app single-page and stable.",
+        "story_summary": "作業の合間に使える短時間の遊び体験を目指した。｜Signal:HN Frontpage",
+        "core_action": "generate",
+        "twist": "30秒で遊べるミニお題を即時に複数提案 / Signal:HN Frontpage「A decade of Docker conta」",
+        "one_sentence": "気分転換用の短いお題をすぐ作るライトな遊びツール。（話題:HN Frontpage）",
+        "original_twist": "30秒で遊べるミニお題を即時に複数提案 / Signal:HN Frontpage「A decade of Docker conta」",
+        "original_one_sentence": "気分転換用の短いお題をすぐ作るライトな遊びツール。（話題:HN Frontpage）",
+        "enhancement_source": "",
+        "enhancement_candidate_id": "",
+        "enhancement_adopted": false,
+        "adopted_next_batch_complexity": false,
+        "adopted_next_batch_components": false,
+        "adopted_next_batch_enhancement": false,
+        "next_batch_plan_source": "",
+        "next_batch_slot": null,
+        "next_batch_recommended_components": [],
+        "next_batch_recommended_enhancement": false,
+        "keywords": [
+          "dev",
+          "fun",
+          "game",
+          "idea",
+          "product",
+          "prompt",
+          "startup",
+          "trend"
+        ]
+      },
+      "post_texts": {
+        "standard": "Day013｜Tiny Prompt Play\n気分転換用の短いお題をすぐ作るライトな遊びツール。（話題:HN Frontpage）\n用途: 気分を選ぶと短いお題を3つ返す遊びツール。\n👉 https://ryo909.github.io/ai-dev-day-013/\n#個人開発 #100日開発\n（経緯/一覧：固定ポストの2ツリーへ）",
+        "compact": "Day013|Tiny Prompt Play\n気分転換用の短い\nhttps://ryo909.github.io/ai-dev-day-013/\n#個人開発 #100日開発",
+        "minimal": "Day013|Tiny Prompt Play\nhttps://ryo909.github.io/ai-dev-day-013/\n#個人開発 #100日開発"
+      },
+      "status": "done"
     }
   },
   "catalog": {
@@ -737,13 +793,28 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-03-08T05:32:03Z",
+      "day": "013",
+      "repo_name": "ai-dev-day-013",
+      "genre": "fun",
+      "theme": "NeoLab",
+      "steps": [
+        "planning",
+        "implementation",
+        "build",
+        "publish",
+        "state_update"
+      ],
+      "status": "done"
     }
   ],
   "recent_genres": [
-    "planning",
     "learning",
-    "health"
+    "health",
+    "fun"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-03-08T05:31:00Z"
+  "last_run_at": "2026-03-08T05:32:03Z"
 }
