@@ -1,13 +1,5 @@
 [
   {
-    "day": "001",
-    "tool_name": "Draft Tightener",
-    "one_sentence": "文章を短く整えて、投稿しやすい形に圧縮するライティングツール。",
-    "pages_url": "https://ryo909.github.io/ai-dev-day-001/",
-    "repo_url": "https://github.com/ryo909/ai-dev-day-001",
-    "status": "posted"
-  },
-  {
     "day": "002",
     "tool_name": "JSON Key Lens",
     "one_sentence": "JSONの構造を素早く把握するための開発者向けビューア。",
@@ -54,5 +46,13 @@
     "pages_url": "https://ryo909.github.io/ai-dev-day-007/",
     "repo_url": "https://github.com/ryo909/ai-dev-day-007",
     "status": "posted"
+  },
+  {
+    "day": "008",
+    "tool_name": "Draft Tightener",
+    "one_sentence": "文章を短く整えて、投稿しやすい形に圧縮するライティングツール。",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-008/",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-008",
+    "status": "done"
   }
 ]

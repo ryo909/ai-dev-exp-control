@@ -117,5 +117,22 @@
     "repo_url": "https://github.com/ryo909/ai-dev-day-007",
     "pages_url": "https://ryo909.github.io/ai-dev-day-007/",
     "status": "posted"
+  },
+  {
+    "day": "008",
+    "tool_name": "Draft Tightener",
+    "one_sentence": "文章を短く整えて、投稿しやすい形に圧縮するライティングツール。",
+    "core_action": "rewrite",
+    "twist": "文字数の目安を表示してSNS向けの短文化を支援",
+    "keywords": [
+      "writing",
+      "edit",
+      "summary",
+      "copy"
+    ],
+    "repo_name": "ai-dev-day-008",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-008",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-008/",
+    "status": "done"
   }
 ]
