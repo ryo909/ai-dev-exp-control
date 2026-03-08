@@ -1334,6 +1334,14 @@ jq -n \
   --arg audience_promise "$AUDIENCE_PROMISE" \
   --arg publish_hook "$PUBLISH_HOOK" \
   --arg engine "$ENGINE" \
+  --arg interaction_archetype "$INTERACTION_ARCHETYPE" \
+  --arg page_archetype "$PAGE_ARCHETYPE" \
+  --arg output_shape "$OUTPUT_SHAPE" \
+  --arg state_model "$STATE_MODEL" \
+  --arg core_loop "$CORE_LOOP" \
+  --arg component_pack "$COMPONENT_PACK" \
+  --arg scaffold_id "$SCAFFOLD_ID" \
+  --arg single_shot_text_generator "$SINGLE_SHOT_TEXT_GENERATOR" \
   --arg original_twist "$ORIGINAL_TWIST" \
   --arg original_one_sentence "$ORIGINAL_ONE_SENTENCE" \
   --arg enhancement_source "$ENHANCEMENT_SOURCE" \
@@ -1372,6 +1380,14 @@ jq -n \
     audience_promise: $audience_promise,
     publish_hook: $publish_hook,
     engine: $engine,
+    interaction_archetype: $interaction_archetype,
+    page_archetype: $page_archetype,
+    output_shape: $output_shape,
+    state_model: $state_model,
+    core_loop: $core_loop,
+    component_pack: $component_pack,
+    scaffold_id: $scaffold_id,
+    single_shot_text_generator: ($single_shot_text_generator == "true"),
     original_twist: $original_twist,
     original_one_sentence: $original_one_sentence,
     enhancement_source: $enhancement_source,
@@ -1447,8 +1463,8 @@ echo "  [4.5/6] Capture demo (optional)..."
 bash "$CONTROL_DIR/scripts/capture_assets.sh" "$WORK_DIR" || echo "⚠ capture skipped"
 
 echo "  [5/6] Push & Pages..."
-git add meta.json README.md STORY.md index.html src/main.js public/media 2>/dev/null \
-  || git add meta.json README.md STORY.md index.html src/main.js
+git add meta.json README.md STORY.md index.html src/main.js src/style.css public/media 2>/dev/null \
+  || git add meta.json README.md STORY.md index.html src/main.js src/style.css
 git commit -m "${DAY_LABEL}: scaffold ${TITLE}" >/dev/null || true
 git -c credential.helper=store push origin main >/dev/null
 
