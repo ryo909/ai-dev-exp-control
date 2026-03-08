@@ -15,22 +15,6 @@
   },
   "recent_meta": [
     {
-      "day": "012",
-      "title": "Context Switch Cost Meter",
-      "genre": "productivity",
-      "family": "switch_cost",
-      "mechanic": "cost_estimation",
-      "input_style": "task_sequence",
-      "output_style": "cost_report",
-      "audience_promise": "better_time_planning",
-      "core_action": "estimate",
-      "twist": "似た作業を束ねる再配置案を同時提案する / Signal:HN Frontpage「SigNoz (YC W21) is hirin」",
-      "one_sentence": "タスク切替の見えない損失を可視化する生産性分析ツール。（話題:HN Frontpage）",
-      "complexity_tier": "medium",
-      "selected_components": [],
-      "complexity_prompt_hint": "Add 2 safe enhancement components from selected_components while keeping the app single-page and stable."
-    },
-    {
       "day": "013",
       "title": "Meal Prep Slotter",
       "genre": "health",
@@ -393,6 +377,29 @@
       "core_action": "navigate",
       "twist": "各分岐で採用しなかった選択肢の理由も残す / Signal:HN Frontpage「Autoresearch: Agents res」",
       "one_sentence": "段階質問で意思決定パスを確定するウィザード型ツール。（話題:HN Frontpage）",
+      "complexity_tier": "small",
+      "selected_components": [],
+      "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
+    },
+    {
+      "day": "011",
+      "title": "Risk Quadrant Mapper",
+      "genre": "planning",
+      "family": "quadrant_mapping",
+      "mechanic": "axis_mapping",
+      "input_style": "item_with_scores",
+      "output_style": "quadrant_matrix",
+      "audience_promise": "faster_priority_alignment",
+      "interaction_archetype": "matrix_mapper",
+      "page_archetype": "matrix_canvas",
+      "output_shape": "quadrant_board",
+      "state_model": "cells_with_draggable_items",
+      "component_pack": "matrix_grid+item_chips",
+      "scaffold_id": "matrix_mapper",
+      "single_shot_text_generator": false,
+      "core_action": "map",
+      "twist": "象限ごとに対応方針テンプレを同時提示する / Signal:HN Frontpage「The surprising whimsy of」",
+      "one_sentence": "課題を4象限に配置して対応優先度を可視化するマッパー。（話題:HN Frontpage）",
       "complexity_tier": "small",
       "selected_components": [],
       "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
@@ -1688,13 +1695,28 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-03-08T07:47:23Z",
+      "day": "011",
+      "repo_name": "ai-dev-day-011",
+      "genre": "planning",
+      "theme": "Brutal",
+      "steps": [
+        "planning",
+        "implementation",
+        "build",
+        "publish",
+        "state_update"
+      ],
+      "status": "done"
     }
   ],
   "recent_genres": [
-    "planning",
     "fun",
+    "planning",
     "planning"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-03-08T07:46:21Z"
+  "last_run_at": "2026-03-08T07:47:23Z"
 }
