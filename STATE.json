@@ -15,22 +15,6 @@
   },
   "recent_meta": [
     {
-      "day": "010",
-      "title": "API Error Narrator",
-      "genre": "devtools",
-      "family": "incident_triage",
-      "mechanic": "keyword_extraction",
-      "input_style": "error_log_paste",
-      "output_style": "triage_steps",
-      "audience_promise": "faster_first_response",
-      "core_action": "diagnose",
-      "twist": "HTTPコードとキーワードから最初の調査順を自動で提案する / Signal:HN Frontpage「Autoresearch: Agents res」",
-      "one_sentence": "API障害の初動切り分けを1分で始めるためのログ整理ツール。（話題:HN Frontpage）",
-      "complexity_tier": "small",
-      "selected_components": [],
-      "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
-    },
-    {
       "day": "011",
       "title": "Concept Gap Mapper",
       "genre": "learning",
@@ -379,6 +363,29 @@
       "core_action": "map",
       "twist": "象限ごとに対応方針テンプレを同時提示する / Signal:HN Frontpage「The surprising whimsy of」",
       "one_sentence": "課題を4象限に配置して対応優先度を可視化するマッパー。（話題:HN Frontpage）",
+      "complexity_tier": "small",
+      "selected_components": [],
+      "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
+    },
+    {
+      "day": "009",
+      "title": "Signal Card Mixer",
+      "genre": "fun",
+      "family": "idea_cards",
+      "mechanic": "random_recombination",
+      "input_style": "multi_select_tokens",
+      "output_style": "card_stack",
+      "audience_promise": "faster_idea_divergence",
+      "interaction_archetype": "card_deck_recombination",
+      "page_archetype": "deck_stage",
+      "output_shape": "stacked_cards",
+      "state_model": "deck_history_with_lock",
+      "component_pack": "deck_controls+history_panel",
+      "scaffold_id": "card_deck_board",
+      "single_shot_text_generator": false,
+      "core_action": "recombine",
+      "twist": "引いたカードを固定して再抽選できるため、方向性の収束が速い / Signal:HN Frontpage「CasNum」",
+      "one_sentence": "カードの組み合わせから次の試作案を素早く作るデッキ型ツール。（話題:HN Frontpage）",
       "complexity_tier": "small",
       "selected_components": [],
       "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
@@ -1644,13 +1651,28 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-03-08T07:45:20Z",
+      "day": "009",
+      "repo_name": "ai-dev-day-009",
+      "genre": "fun",
+      "theme": "Candy",
+      "steps": [
+        "planning",
+        "implementation",
+        "build",
+        "publish",
+        "state_update"
+      ],
+      "status": "done"
     }
   ],
   "recent_genres": [
-    "fun",
     "planning",
-    "planning"
+    "planning",
+    "fun"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-03-08T07:39:58Z"
+  "last_run_at": "2026-03-08T07:45:20Z"
 }
