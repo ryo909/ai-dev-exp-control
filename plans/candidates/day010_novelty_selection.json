@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-08T07:20:53Z",
+  "generated_at": "2026-03-08T07:37:56Z",
   "day": "Day010",
   "lookback_days": 14,
   "policy": {
@@ -171,16 +171,16 @@
       "input_style": "multi_select_tokens",
       "output_style": "card_stack",
       "audience_promise": "faster_idea_divergence",
-      "interaction_archetype": "single_shot_text_submit",
-      "page_archetype": "single_column_form",
-      "output_shape": "single_text_block",
-      "state_model": "ephemeral_result_only",
-      "component_pack": "single_form",
-      "scaffold_id": "text_generator_scaffold",
-      "single_shot_text_generator": true
+      "interaction_archetype": "card_deck_recombination",
+      "page_archetype": "deck_stage",
+      "output_shape": "stacked_cards",
+      "state_model": "deck_history_with_lock",
+      "component_pack": "deck_controls+history_panel",
+      "scaffold_id": "card_deck_board",
+      "single_shot_text_generator": false
     }
   ],
-  "recent_single_shot_count": 9,
+  "recent_single_shot_count": 8,
   "selected": {
     "id": "tradeoff_path_wizard",
     "title": "Tradeoff Path Wizard",
@@ -743,7 +743,7 @@
       "component_pack": "deck_controls+history_panel",
       "scaffold_id": "card_deck_board",
       "single_shot_text_generator": false,
-      "score": -69,
+      "score": -576,
       "penalties": [
         {
           "code": "family_overlap_recent",
@@ -764,6 +764,36 @@
           "code": "output_overlap_recent",
           "count": 1,
           "penalty": 18
+        },
+        {
+          "code": "interaction_archetype_overlap",
+          "count": 1,
+          "penalty": 95
+        },
+        {
+          "code": "page_archetype_overlap",
+          "count": 1,
+          "penalty": 85
+        },
+        {
+          "code": "output_shape_overlap",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "state_model_overlap",
+          "count": 1,
+          "penalty": 72
+        },
+        {
+          "code": "component_pack_overlap",
+          "count": 1,
+          "penalty": 55
+        },
+        {
+          "code": "scaffold_overlap",
+          "count": 1,
+          "penalty": 120
         },
         {
           "code": "genre_repeated",
@@ -803,7 +833,7 @@
       "component_pack": "deck_controls+history_panel",
       "scaffold_id": "card_deck_board",
       "single_shot_text_generator": false,
-      "score": -297,
+      "score": -804,
       "penalties": [
         {
           "code": "title_overlap_recent",
@@ -839,6 +869,36 @@
           "code": "audience_overlap_recent",
           "count": 1,
           "penalty": 35
+        },
+        {
+          "code": "interaction_archetype_overlap",
+          "count": 1,
+          "penalty": 95
+        },
+        {
+          "code": "page_archetype_overlap",
+          "count": 1,
+          "penalty": 85
+        },
+        {
+          "code": "output_shape_overlap",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "state_model_overlap",
+          "count": 1,
+          "penalty": 72
+        },
+        {
+          "code": "component_pack_overlap",
+          "count": 1,
+          "penalty": 55
+        },
+        {
+          "code": "scaffold_overlap",
+          "count": 1,
+          "penalty": 120
         },
         {
           "code": "genre_repeated",
@@ -864,7 +924,7 @@
     {
       "id": "idea_combo_deck",
       "title": "Idea Combo Deck",
-      "score": -69,
+      "score": -576,
       "penalties": [
         {
           "code": "family_overlap_recent",
@@ -887,6 +947,36 @@
           "penalty": 18
         },
         {
+          "code": "interaction_archetype_overlap",
+          "count": 1,
+          "penalty": 95
+        },
+        {
+          "code": "page_archetype_overlap",
+          "count": 1,
+          "penalty": 85
+        },
+        {
+          "code": "output_shape_overlap",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "state_model_overlap",
+          "count": 1,
+          "penalty": 72
+        },
+        {
+          "code": "component_pack_overlap",
+          "count": 1,
+          "penalty": 55
+        },
+        {
+          "code": "scaffold_overlap",
+          "count": 1,
+          "penalty": 120
+        },
+        {
           "code": "genre_repeated",
           "count": 2,
           "penalty": 8
@@ -896,7 +986,7 @@
     {
       "id": "card_signal_mixer",
       "title": "Signal Card Mixer",
-      "score": -297,
+      "score": -804,
       "penalties": [
         {
           "code": "title_overlap_recent",
@@ -932,6 +1022,36 @@
           "code": "audience_overlap_recent",
           "count": 1,
           "penalty": 35
+        },
+        {
+          "code": "interaction_archetype_overlap",
+          "count": 1,
+          "penalty": 95
+        },
+        {
+          "code": "page_archetype_overlap",
+          "count": 1,
+          "penalty": 85
+        },
+        {
+          "code": "output_shape_overlap",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "state_model_overlap",
+          "count": 1,
+          "penalty": 72
+        },
+        {
+          "code": "component_pack_overlap",
+          "count": 1,
+          "penalty": 55
+        },
+        {
+          "code": "scaffold_overlap",
+          "count": 1,
+          "penalty": 120
         },
         {
           "code": "genre_repeated",
