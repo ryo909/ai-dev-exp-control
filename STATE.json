@@ -718,7 +718,7 @@
         "compact": "Day009|Signal Card Mixe\nカードの組み合わ\nhttps://ryo909.github.io/ai-dev-day-009/\n#個人開発 #100日開発",
         "minimal": "Day009|Signal Card Mixe\nhttps://ryo909.github.io/ai-dev-day-009/\n#個人開発 #100日開発"
       },
-      "status": "done"
+      "status": "posted"
     },
     "010": {
       "repo_name": "ai-dev-day-010",
@@ -780,7 +780,7 @@
         "compact": "Day010|Tradeoff Path Wi\n段階質問で意思決\nhttps://ryo909.github.io/ai-dev-day-010/\n#個人開発 #100日開発",
         "minimal": "Day010|Tradeoff Path Wi\nhttps://ryo909.github.io/ai-dev-day-010/\n#個人開発 #100日開発"
       },
-      "status": "done"
+      "status": "posted"
     },
     "011": {
       "repo_name": "ai-dev-day-011",
@@ -842,7 +842,7 @@
         "compact": "Day011|Risk Quadrant Ma\n課題を4象限に配�\nhttps://ryo909.github.io/ai-dev-day-011/\n#個人開発 #100日開発",
         "minimal": "Day011|Risk Quadrant Ma\nhttps://ryo909.github.io/ai-dev-day-011/\n#個人開発 #100日開発"
       },
-      "status": "done"
+      "status": "posted"
     },
     "012": {
       "repo_name": "ai-dev-day-012",
@@ -904,7 +904,7 @@
         "compact": "Day012|Weighted Option \n重み付き評価で候\nhttps://ryo909.github.io/ai-dev-day-012/\n#個人開発 #100日開発",
         "minimal": "Day012|Weighted Option \nhttps://ryo909.github.io/ai-dev-day-012/\n#個人開発 #100日開発"
       },
-      "status": "done"
+      "status": "posted"
     },
     "013": {
       "repo_name": "ai-dev-day-013",
@@ -966,7 +966,7 @@
         "compact": "Day013|Slot Checklist P\n時間枠とチェック\nhttps://ryo909.github.io/ai-dev-day-013/\n#個人開発 #100日開発",
         "minimal": "Day013|Slot Checklist P\nhttps://ryo909.github.io/ai-dev-day-013/\n#個人開発 #100日開発"
       },
-      "status": "done"
+      "status": "posted"
     },
     "014": {
       "repo_name": "ai-dev-day-014",
@@ -1028,7 +1028,7 @@
         "compact": "Day014|Flow Board Build\n作業カードを流し\nhttps://ryo909.github.io/ai-dev-day-014/\n#個人開発 #100日開発",
         "minimal": "Day014|Flow Board Build\nhttps://ryo909.github.io/ai-dev-day-014/\n#個人開発 #100日開発"
       },
-      "status": "done"
+      "status": "posted"
     },
     "015": {
       "repo_name": "ai-dev-day-015",
@@ -1090,7 +1090,7 @@
         "compact": "Day015|Constraint Roule\n制約ミッションを\nhttps://ryo909.github.io/ai-dev-day-015/\n#個人開発 #100日開発",
         "minimal": "Day015|Constraint Roule\nhttps://ryo909.github.io/ai-dev-day-015/\n#個人開発 #100日開発"
       },
-      "status": "done"
+      "status": "posted"
     }
   },
   "catalog": {
@@ -1106,8 +1106,8 @@
   "notes": "",
   "post_pending": null,
   "last_make_webhook": {
-    "batch_id": "batch-20260308T053412Z-Day009-Day015",
-    "sent_at": "2026-03-08T05:34:12Z",
+    "batch_id": "manual-20260308-rererun-day009-015",
+    "sent_at": "2026-03-08T08:05:55Z",
     "posted_count": 7,
     "posted_days": [
       "015",
@@ -1798,6 +1798,22 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-03-08T08:05:55Z",
+      "phase": "buffer",
+      "batch_id": "manual-20260308-rererun-day009-015",
+      "posted_count": 7,
+      "posted_days": [
+        "015",
+        "014",
+        "013",
+        "012",
+        "011",
+        "010",
+        "009"
+      ],
+      "schedule_preview": []
     }
   ],
   "recent_genres": [
@@ -1806,5 +1822,5 @@
     "fun"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-03-08T07:51:37Z"
+  "last_run_at": "2026-03-08T08:05:55Z"
 }
