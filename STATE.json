@@ -15,22 +15,6 @@
   },
   "recent_meta": [
     {
-      "day": "009",
-      "title": "Signal Card Mixer",
-      "genre": "fun",
-      "family": "idea_cards",
-      "mechanic": "random_recombination",
-      "input_style": "multi_select_tokens",
-      "output_style": "card_stack",
-      "audience_promise": "faster_idea_divergence",
-      "core_action": "recombine",
-      "twist": "引いたカードを固定して再抽選できるため、方向性の収束が速い / Signal:HN Frontpage「CasNum」",
-      "one_sentence": "カードの組み合わせから次の試作案を素早く作るデッキ型ツール。（話題:HN Frontpage）",
-      "complexity_tier": "small",
-      "selected_components": [],
-      "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
-    },
-    {
       "day": "010",
       "title": "Tradeoff Path Wizard",
       "genre": "planning",
@@ -424,6 +408,29 @@
       "complexity_tier": "large",
       "selected_components": [],
       "complexity_prompt_hint": "Create a showpiece version by adding around 3 safe enhancement components from selected_components, but avoid risky architecture changes."
+    },
+    {
+      "day": "015",
+      "title": "Constraint Roulette",
+      "genre": "fun",
+      "family": "roulette_challenge",
+      "mechanic": "random_spin",
+      "input_style": "preset_pool",
+      "output_style": "roulette_result",
+      "audience_promise": "high_short_burst_engagement",
+      "interaction_archetype": "challenge_roulette_game",
+      "page_archetype": "game_stage",
+      "output_shape": "round_result_cards",
+      "state_model": "round_history_and_score",
+      "component_pack": "roulette_wheel+score_panel",
+      "scaffold_id": "roulette_game",
+      "single_shot_text_generator": false,
+      "core_action": "play",
+      "twist": "連続成功時に制約が段階強化される / Signal:HN Frontpage「Yoghurt delivery women c」",
+      "one_sentence": "制約ミッションをルーレットで引いて遊ぶチャレンジゲーム。（話題:HN Frontpage）",
+      "complexity_tier": "small",
+      "selected_components": [],
+      "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
     }
   ],
   "days": {
@@ -1776,13 +1783,28 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-03-08T07:51:37Z",
+      "day": "015",
+      "repo_name": "ai-dev-day-015",
+      "genre": "fun",
+      "theme": "Noir",
+      "steps": [
+        "planning",
+        "implementation",
+        "build",
+        "publish",
+        "state_update"
+      ],
+      "status": "done"
     }
   ],
   "recent_genres": [
-    "productivity",
     "health",
-    "devtools"
+    "devtools",
+    "fun"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-03-08T07:50:33Z"
+  "last_run_at": "2026-03-08T07:51:37Z"
 }
