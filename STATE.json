@@ -15,15 +15,6 @@
   },
   "recent_meta": [
     {
-      "day": "011",
-      "core_action": "generate",
-      "twist": "初回学習日から次回復習日を同時表示する / Signal:HN Frontpage「The surprising whimsy of」",
-      "one_sentence": "学習内容の復習タイミングを自動で組み立てる学習支援ツール。（話題:HN Frontpage）",
-      "complexity_tier": "small",
-      "selected_components": [],
-      "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
-    },
-    {
       "day": "012",
       "core_action": "track",
       "twist": "勤務時間に合わせて飲水タイミングを均等化する / Signal:HN Frontpage「SigNoz (YC W21) is hirin」",
@@ -305,6 +296,29 @@
       "complexity_tier": "small",
       "selected_components": [],
       "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
+    },
+    {
+      "day": "012",
+      "title": "Weighted Option Calculator",
+      "genre": "productivity",
+      "family": "weighted_scoring",
+      "mechanic": "weighted_formula",
+      "input_style": "slider_weights_and_rows",
+      "output_style": "ranked_scores",
+      "audience_promise": "transparent_tradeoff",
+      "interaction_archetype": "weighted_calculator",
+      "page_archetype": "calculator_dashboard",
+      "output_shape": "ranked_table",
+      "state_model": "weights_plus_option_rows",
+      "component_pack": "slider_panel+ranking_table",
+      "scaffold_id": "weighted_calculator",
+      "single_shot_text_generator": false,
+      "core_action": "score",
+      "twist": "重み変更時に順位変動の差分を即表示する / Signal:HN Frontpage「SigNoz (YC W21) is hirin」",
+      "one_sentence": "重み付き評価で候補案の順位変化を比較できる計算ツール。（話題:HN Frontpage）",
+      "complexity_tier": "medium",
+      "selected_components": [],
+      "complexity_prompt_hint": "Add 2 safe enhancement components from selected_components while keeping the app single-page and stable."
     }
   ],
   "days": {
@@ -726,6 +740,14 @@
         "audience_promise": "transparent_tradeoff",
         "publish_hook": "重みを動かすと順位差分が見える",
         "engine": "weighted_calc",
+        "interaction_archetype": "weighted_calculator",
+        "page_archetype": "calculator_dashboard",
+        "output_shape": "ranked_table",
+        "state_model": "weights_plus_option_rows",
+        "core_loop": "tune weights -> recalc -> compare",
+        "component_pack": "slider_panel+ranking_table",
+        "scaffold_id": "weighted_calculator",
+        "single_shot_text_generator": false,
         "original_twist": "重み変更時に順位変動の差分を即表示する / Signal:HN Frontpage「SigNoz (YC W21) is hirin」",
         "original_one_sentence": "重み付き評価で候補案の順位変化を比較できる計算ツール。（話題:HN Frontpage）",
         "enhancement_source": "",
@@ -1429,13 +1451,28 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-03-08T07:33:42Z",
+      "day": "012",
+      "repo_name": "ai-dev-day-012",
+      "genre": "productivity",
+      "theme": "RetroTerminal",
+      "steps": [
+        "planning",
+        "implementation",
+        "build",
+        "publish",
+        "state_update"
+      ],
+      "status": "done"
     }
   ],
   "recent_genres": [
-    "fun",
     "productivity",
-    "fun"
+    "fun",
+    "productivity"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-03-08T07:32:07Z"
+  "last_run_at": "2026-03-08T07:33:42Z"
 }
