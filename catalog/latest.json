@@ -1,58 +1,58 @@
 [
   {
-    "day": "002",
+    "day": "009",
     "tool_name": "JSON Key Lens",
-    "one_sentence": "JSONの構造を素早く把握するための開発者向けビューア。",
-    "pages_url": "https://ryo909.github.io/ai-dev-day-002/",
-    "repo_url": "https://github.com/ryo909/ai-dev-day-002",
+    "one_sentence": "JSONの構造を素早く把握するための開発者向けビューア。（話題:HN Frontpage）",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-009/",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-009",
     "status": "posted"
   },
   {
-    "day": "003",
+    "day": "010",
     "tool_name": "Backward Milestone Mapper",
-    "one_sentence": "締切から逆算した実行計画を即作成するプランニングツール。",
-    "pages_url": "https://ryo909.github.io/ai-dev-day-003/",
-    "repo_url": "https://github.com/ryo909/ai-dev-day-003",
+    "one_sentence": "締切から逆算した実行計画を即作成するプランニングツール。（話題:HN Frontpage）",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-010/",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-010",
     "status": "posted"
   },
   {
-    "day": "004",
+    "day": "011",
     "tool_name": "Recall Loop Builder",
-    "one_sentence": "学習内容の復習タイミングを自動で組み立てる学習支援ツール。",
-    "pages_url": "https://ryo909.github.io/ai-dev-day-004/",
-    "repo_url": "https://github.com/ryo909/ai-dev-day-004",
+    "one_sentence": "学習内容の復習タイミングを自動で組み立てる学習支援ツール。（話題:HN Frontpage）",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-011/",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-011",
     "status": "posted"
   },
   {
-    "day": "005",
+    "day": "012",
     "tool_name": "Hydration Pace Planner",
-    "one_sentence": "目標水分量を無理なく達成するための配分プランナー。",
-    "pages_url": "https://ryo909.github.io/ai-dev-day-005/",
-    "repo_url": "https://github.com/ryo909/ai-dev-day-005",
+    "one_sentence": "目標水分量を無理なく達成するための配分プランナー。（話題:HN Frontpage）",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-012/",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-012",
     "status": "posted"
   },
   {
-    "day": "006",
+    "day": "013",
     "tool_name": "Tiny Prompt Play",
-    "one_sentence": "気分転換用の短いお題をすぐ作るライトな遊びツール。",
-    "pages_url": "https://ryo909.github.io/ai-dev-day-006/",
-    "repo_url": "https://github.com/ryo909/ai-dev-day-006",
+    "one_sentence": "気分転換用の短いお題をすぐ作るライトな遊びツール。（話題:HN Frontpage）",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-013/",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-013",
     "status": "posted"
   },
   {
-    "day": "007",
+    "day": "014",
     "tool_name": "Focus Slot Composer",
-    "one_sentence": "作業時間から集中と休憩の実行順を自動で作る生産性ツール。",
-    "pages_url": "https://ryo909.github.io/ai-dev-day-007/",
-    "repo_url": "https://github.com/ryo909/ai-dev-day-007",
+    "one_sentence": "作業時間から集中と休憩の実行順を自動で作る生産性ツール。（話題:HN Frontpage）",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-014/",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-014",
     "status": "posted"
   },
   {
-    "day": "008",
+    "day": "015",
     "tool_name": "Draft Tightener",
-    "one_sentence": "文章を短く整えて、投稿しやすい形に圧縮するライティングツール。",
-    "pages_url": "https://ryo909.github.io/ai-dev-day-008/",
-    "repo_url": "https://github.com/ryo909/ai-dev-day-008",
-    "status": "done"
+    "one_sentence": "文章を短く整えて、投稿しやすい形に圧縮するライティングツール。（話題:HN Frontpage）",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-015/",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-015",
+    "status": "posted"
   }
 ]
