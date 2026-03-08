@@ -1,6 +1,6 @@
 {
   "target_day": 100,
-  "next_day": 13,
+  "next_day": 14,
   "batch_size_default": 7,
   "posts": {
     "fixed_tags": [
@@ -14,15 +14,6 @@
     }
   },
   "recent_meta": [
-    {
-      "day": "012",
-      "core_action": "track",
-      "twist": "勤務時間に合わせて飲水タイミングを均等化する / Signal:HN Frontpage「SigNoz (YC W21) is hirin」",
-      "one_sentence": "目標水分量を無理なく達成するための配分プランナー。（話題:HN Frontpage）",
-      "complexity_tier": "medium",
-      "selected_components": [],
-      "complexity_prompt_hint": "Add 2 safe enhancement components from selected_components while keeping the app single-page and stable."
-    },
     {
       "day": "013",
       "core_action": "generate",
@@ -316,6 +307,29 @@
       "core_action": "score",
       "twist": "重み変更時に順位変動の差分を即表示する / Signal:HN Frontpage「SigNoz (YC W21) is hirin」",
       "one_sentence": "重み付き評価で候補案の順位変化を比較できる計算ツール。（話題:HN Frontpage）",
+      "complexity_tier": "medium",
+      "selected_components": [],
+      "complexity_prompt_hint": "Add 2 safe enhancement components from selected_components while keeping the app single-page and stable."
+    },
+    {
+      "day": "013",
+      "title": "Slot Checklist Planner",
+      "genre": "health",
+      "family": "slot_planning",
+      "mechanic": "slot_assignment_with_check",
+      "input_style": "task_cards",
+      "output_style": "checklist_timeline",
+      "audience_promise": "better_execution_consistency",
+      "interaction_archetype": "checklist_slot_planner",
+      "page_archetype": "timeline_planner",
+      "output_shape": "slot_checklist",
+      "state_model": "slots_with_completion_flags",
+      "component_pack": "slot_grid+checklist_panel",
+      "scaffold_id": "slot_checklist_planner",
+      "single_shot_text_generator": false,
+      "core_action": "plan",
+      "twist": "未完了タスクを次スロットへ自動で繰り越せる / Signal:HN Frontpage「A decade of Docker conta」",
+      "one_sentence": "時間枠とチェックリストを一体化した実行計画プランナー。（話題:HN Frontpage）",
       "complexity_tier": "medium",
       "selected_components": [],
       "complexity_prompt_hint": "Add 2 safe enhancement components from selected_components while keeping the app single-page and stable."
@@ -802,6 +816,14 @@
         "audience_promise": "better_execution_consistency",
         "publish_hook": "未完了を次枠へ自動繰越",
         "engine": "slot_planner",
+        "interaction_archetype": "checklist_slot_planner",
+        "page_archetype": "timeline_planner",
+        "output_shape": "slot_checklist",
+        "state_model": "slots_with_completion_flags",
+        "core_loop": "assign -> check -> carry",
+        "component_pack": "slot_grid+checklist_panel",
+        "scaffold_id": "slot_checklist_planner",
+        "single_shot_text_generator": false,
         "original_twist": "未完了タスクを次スロットへ自動で繰り越せる / Signal:HN Frontpage「A decade of Docker conta」",
         "original_one_sentence": "時間枠とチェックリストを一体化した実行計画プランナー。（話題:HN Frontpage）",
         "enhancement_source": "",
@@ -1466,13 +1488,28 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-03-08T07:34:43Z",
+      "day": "013",
+      "repo_name": "ai-dev-day-013",
+      "genre": "health",
+      "theme": "Soft",
+      "steps": [
+        "planning",
+        "implementation",
+        "build",
+        "publish",
+        "state_update"
+      ],
+      "status": "done"
     }
   ],
   "recent_genres": [
-    "productivity",
     "fun",
-    "productivity"
+    "productivity",
+    "health"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-03-08T07:33:42Z"
+  "last_run_at": "2026-03-08T07:34:43Z"
 }
