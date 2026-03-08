@@ -1,6 +1,6 @@
 {
   "target_day": 100,
-  "next_day": 15,
+  "next_day": 16,
   "batch_size_default": 7,
   "posts": {
     "fixed_tags": [
@@ -14,12 +14,6 @@
     }
   },
   "recent_meta": [
-    {
-      "day": "002",
-      "core_action": "inspect",
-      "twist": "深いネストでもパス一覧を一気に展開できる",
-      "one_sentence": "JSONの構造を素早く把握するための開発者向けビューア。"
-    },
     {
       "day": "003",
       "core_action": "schedule",
@@ -214,6 +208,22 @@
       "complexity_tier": "large",
       "selected_components": [],
       "complexity_prompt_hint": "Create a showpiece version by adding around 3 safe enhancement components from selected_components, but avoid risky architecture changes."
+    },
+    {
+      "day": "015",
+      "title": "Constraint Challenge Dealer",
+      "genre": "fun",
+      "family": "constraint_game",
+      "mechanic": "rule_combination",
+      "input_style": "constraints",
+      "output_style": "challenge_cards",
+      "audience_promise": "fresh_short_breaks",
+      "core_action": "deal",
+      "twist": "難易度を3段階で切り替えてマンネリを防ぐ / Signal:HN Frontpage「Yoghurt delivery women c」",
+      "one_sentence": "制約付きのお題を瞬時に作るミニチャレンジ生成ツール。（話題:HN Frontpage）",
+      "complexity_tier": "small",
+      "selected_components": [],
+      "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
     }
   ],
   "days": {
@@ -770,20 +780,27 @@
       "repo_url": "https://github.com/ryo909/ai-dev-day-015",
       "pages_url": "https://ryo909.github.io/ai-dev-day-015/",
       "meta": {
-        "tool_name": "Draft Tightener",
-        "title": "Draft Tightener",
-        "description": "下書きを貼ると、冗長表現を減らした短文案を作る。",
-        "genre": "writing",
-        "theme": "Noir",
+        "tool_name": "Constraint Challenge Dealer",
+        "title": "Constraint Challenge Dealer",
+        "description": "制約条件を入れると、短時間で遊べるお題を配る。",
+        "genre": "fun",
+        "theme": "Candy",
         "complexity_tier": "small",
         "selected_components": [],
         "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component.",
-        "story_summary": "長い文章を公開前に圧縮する一手間を最小化した。｜Signal:HN Frontpage",
-        "core_action": "rewrite",
-        "twist": "文字数の目安を表示してSNS向けの短文化を支援 / Signal:HN Frontpage「Yoghurt delivery women c」",
-        "one_sentence": "文章を短く整えて、投稿しやすい形に圧縮するライティングツール。（話題:HN Frontpage）",
-        "original_twist": "文字数の目安を表示してSNS向けの短文化を支援 / Signal:HN Frontpage「Yoghurt delivery women c」",
-        "original_one_sentence": "文章を短く整えて、投稿しやすい形に圧縮するライティングツール。（話題:HN Frontpage）",
+        "story_summary": "遊びのネタ切れを防ぐため、制約から逆算する方式にした。｜Signal:HN Frontpage",
+        "core_action": "deal",
+        "twist": "難易度を3段階で切り替えてマンネリを防ぐ / Signal:HN Frontpage「Yoghurt delivery women c」",
+        "one_sentence": "制約付きのお題を瞬時に作るミニチャレンジ生成ツール。（話題:HN Frontpage）",
+        "family": "constraint_game",
+        "mechanic": "rule_combination",
+        "input_style": "constraints",
+        "output_style": "challenge_cards",
+        "audience_promise": "fresh_short_breaks",
+        "publish_hook": "30秒で遊べる制約チャレンジ",
+        "engine": "constraint_game",
+        "original_twist": "難易度を3段階で切り替えてマンネリを防ぐ / Signal:HN Frontpage「Yoghurt delivery women c」",
+        "original_one_sentence": "制約付きのお題を瞬時に作るミニチャレンジ生成ツール。（話題:HN Frontpage）",
         "enhancement_source": "",
         "enhancement_candidate_id": "",
         "enhancement_adopted": false,
@@ -795,22 +812,22 @@
         "next_batch_recommended_components": [],
         "next_batch_recommended_enhancement": false,
         "keywords": [
-          "copy",
+          "challenge",
           "dev",
-          "edit",
+          "fun",
+          "game",
           "product",
+          "prompt",
           "startup",
-          "summary",
-          "trend",
-          "writing"
+          "trend"
         ]
       },
       "post_texts": {
-        "standard": "Day015｜Draft Tightener\n文章を短く整えて、投稿しやすい形に圧縮するライティングツール。（話題:HN Frontpage）\n用途: 下書きを貼ると、冗長表現を減らした短文案を作る。\n👉 https://ryo909.github.io/ai-dev-day-015/\n#個人開発 #100日開発\n（経緯/一覧：固定ポストの2ツリーへ）",
-        "compact": "Day015|Draft Tightener\n文章を短く整えて\nhttps://ryo909.github.io/ai-dev-day-015/\n#個人開発 #100日開発",
-        "minimal": "Day015|Draft Tightener\nhttps://ryo909.github.io/ai-dev-day-015/\n#個人開発 #100日開発"
+        "standard": "Day015｜Constraint Challenge Dealer\n制約付きのお題を瞬時に作るミニチャレンジ生成ツール。（話題:HN Frontpage）\n用途: 制約条件を入れると、短時間で遊べるお題を配る。\n👉 https://ryo909.github.io/ai-dev-day-015/\n#個人開発 #100日開発\n（経緯/一覧：固定ポストの2ツリーへ）",
+        "compact": "Day015|Constraint Chall\n制約付きのお題を\nhttps://ryo909.github.io/ai-dev-day-015/\n#個人開発 #100日開発",
+        "minimal": "Day015|Constraint Chall\nhttps://ryo909.github.io/ai-dev-day-015/\n#個人開発 #100日開発"
       },
-      "status": "posted"
+      "status": "done"
     }
   },
   "catalog": {
@@ -1188,13 +1205,28 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-03-08T06:09:16Z",
+      "day": "015",
+      "repo_name": "ai-dev-day-015",
+      "genre": "fun",
+      "theme": "Candy",
+      "steps": [
+        "planning",
+        "implementation",
+        "build",
+        "publish",
+        "state_update"
+      ],
+      "status": "done"
     }
   ],
   "recent_genres": [
-    "productivity",
     "health",
-    "planning"
+    "planning",
+    "fun"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-03-08T06:08:14Z"
+  "last_run_at": "2026-03-08T06:09:16Z"
 }
