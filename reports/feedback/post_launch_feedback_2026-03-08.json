@@ -1,18 +1,49 @@
 {
-  "generated_at": "2026-03-08T04:54:10.635332+00:00",
+  "generated_at": "2026-03-08T05:05:32.875353+00:00",
   "summary": {
-    "records_considered": 0,
-    "posts_considered": 0,
-    "channels_considered": [],
-    "best_hook_families": [],
-    "best_post_types": [],
-    "best_tool_patterns": [],
-    "notes": [
-      "no normalized feedback records available"
-    ]
+    "records_considered": 1,
+    "posts_considered": 1,
+    "channels_considered": [
+      "x"
+    ],
+    "best_hook_families": [
+      "instant-clarity:0.0833(n=1)"
+    ],
+    "best_post_types": [
+      "hero:0.0833(n=1)"
+    ],
+    "best_tool_patterns": [
+      "Day005:hero"
+    ],
+    "notes": []
   },
   "launch_feedback": {
-    "hero_outcomes": [],
+    "hero_outcomes": [
+      {
+        "tool_day": "Day005",
+        "tool_id": "day005",
+        "repo_name": "ai-dev-day-005",
+        "channel": "x",
+        "post_type": "hero",
+        "launch_id": "launch-2026-03-08",
+        "post_id": "launch-2026-03-08_day005_x_hero_01",
+        "best_snapshot": {
+          "post_url": "https://x.com/ryo909/status/1900000000000000000",
+          "impressions": 420,
+          "engagement_simple": 35,
+          "engagement_rate_simple": 0.083333,
+          "click_through_like": 0.045238,
+          "age_hours": 3.59
+        },
+        "performance_notes": [
+          "manual_import:manual_feedback_2026-03-08.json"
+        ],
+        "recommended_future_actions": [
+          "hookを勝ちファミリーに寄せる",
+          "CTAを短く1アクションに絞る"
+        ]
+      }
+    ],
     "secondary_outcomes": [],
     "quiet_catalog_outcomes": [],
     "hold_validation_notes": [
@@ -20,18 +51,30 @@
     ]
   },
   "growth_feedback": {
-    "winning_hooks": [],
-    "weak_hooks": [],
-    "winning_ctas": [],
-    "weak_ctas": [],
+    "winning_hooks": [
+      "instant-clarity:0.0833(n=1)"
+    ],
+    "weak_hooks": [
+      "instant-clarity:0.0833(n=1)"
+    ],
+    "winning_ctas": [
+      "try-now:0.0833(n=1)"
+    ],
+    "weak_ctas": [
+      "try-now:0.0833(n=1)"
+    ],
     "positioning_notes": [
       "hookとone-lineの整合がある投稿の反応を優先採用",
       "CTAを1つに絞るとクリック誘導が安定しやすい"
     ]
   },
   "strategy_feedback": {
-    "winning_tool_shapes": [],
-    "weak_tool_shapes": [],
+    "winning_tool_shapes": [
+      "hero:0.0833(n=1)"
+    ],
+    "weak_tool_shapes": [
+      "hero:0.0833(n=1)"
+    ],
     "complexity_notes": [
       "post_type別の反応を次バッチのcomplexity配分判断に反映する"
     ],
@@ -42,7 +85,32 @@
       "導線URLが明確な投稿はclick_through_likeが改善しやすい"
     ]
   },
-  "by_tool": [],
+  "by_tool": [
+    {
+      "tool_day": "Day005",
+      "tool_id": "day005",
+      "repo_name": "ai-dev-day-005",
+      "channel": "x",
+      "post_type": "hero",
+      "launch_id": "launch-2026-03-08",
+      "post_id": "launch-2026-03-08_day005_x_hero_01",
+      "best_snapshot": {
+        "post_url": "https://x.com/ryo909/status/1900000000000000000",
+        "impressions": 420,
+        "engagement_simple": 35,
+        "engagement_rate_simple": 0.083333,
+        "click_through_like": 0.045238,
+        "age_hours": 3.59
+      },
+      "performance_notes": [
+        "manual_import:manual_feedback_2026-03-08.json"
+      ],
+      "recommended_future_actions": [
+        "hookを勝ちファミリーに寄せる",
+        "CTAを短く1アクションに絞る"
+      ]
+    }
+  ],
   "recommended_feedback_actions": [
     "勝ちhook_familyを次週のx_queueテンプレに反映",
     "弱いCTAをlaunch_export段階で置換候補化",

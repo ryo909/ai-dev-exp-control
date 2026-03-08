@@ -1,24 +1,23 @@
 {
-  "generated_at": "2026-03-08T04:55:38.987266+00:00",
+  "generated_at": "2026-03-08T05:05:33.793341+00:00",
   "summary": {
-    "overall_status": "attention",
+    "overall_status": "warn",
     "repo_cleanliness": "dirty",
     "artifact_freshness": "ok",
-    "launch_chain_status": "warn",
-    "feedback_status": "warn",
-    "manual_attention_count": 4
+    "launch_chain_status": "ok",
+    "feedback_status": "ok",
+    "manual_attention_count": 2
   },
   "checks": {
     "repo_status": {
       "status": "warn",
       "repo_cleanliness": "dirty",
       "notes": [
-        "dirty_count=3",
-        "untracked_count=29",
-        "working tree has tracked modifications",
-        "large untracked backlog"
+        "dirty_count=2",
+        "untracked_count=0",
+        "working tree has tracked modifications"
       ],
-      "git_status": "## sys-self-improve-pack...origin/sys-self-improve-pack\n M idea_bank/shortlist.json\n M plans/next_batch_plan.json\n M shared-context/SIGNALS.md\n?? plans/showcase_plan.json\n?? reports/control_tower/weekly_control_tower_2026-03-08.json\n?? reports/control_tower/weekly_control_tower_2026-03-08.md\n?? reports/evidence/evidence_2026-03-08.json\n?? reports/evidence/evidence_2026-03-08.md\n?? reports/feedback/post_launch_feedback_2026-03-08.json\n?? reports/feedback/post_launch_feedback_2026-03-08.md\n?? reports/growth/growth_brief_2026-03-08.json\n?? reports/growth/growth_brief_2026-03-08.md\n?? reports/healthcheck/healthcheck_2026-03-08.json\n?? reports/healthcheck/healthcheck_2026-03-08.md\n?? reports/launch/launch_pack_2026-03-08.json\n?? reports/launch/launch_pack_2026-03-08.md\n?? reports/portfolio/portfolio_eval_2026-03-08.json\n?? reports/portfolio/portfolio_eval_2026-03-08.md\n?? reports/reality/reality_gate_2026-03-08.json\n?? reports/reality/reality_gate_2026-03-08.md\n?? reports/showcase/showcase_plan_2026-03-08.json\n?? reports/showcase/showcase_plan_2026-03-08.md\n?? reports/strategy/strategy_brief_2026-03-08.json\n?? reports/strategy/strategy_brief_2026-03-08.md\n?? reports/weekly/learning/learning_adoption_report_2026-03-08.json\n?? reports/weekly/learning/learning_update_preview_2026-03-08.json\n?? reports/weekly/learning/learning_update_preview_2026-03-08.md\n?? reports/weekly/thesis_preview_2026-03-08.md\n?? reports/weekly/thesis_update_draft_2026-03-08.md\n?? reports/weekly/weekly_run_preview_2026-03-08.md\n?? reports/weekly/weekly_run_report_2026-03-08.json\n?? reports/weekly/weekly_run_report_2026-03-08.md"
+      "git_status": "## sys-self-improve-pack...origin/sys-self-improve-pack\n M reports/feedback/post_launch_feedback_2026-03-08.json\n M reports/feedback/post_launch_feedback_2026-03-08.md"
     },
     "required_paths": {
       "status": "ok",
@@ -43,10 +42,8 @@
       "notes": []
     },
     "launch_chain": {
-      "status": "warn",
-      "notes": [
-        "tool_id coverage is incomplete across launch/export/feedback"
-      ]
+      "status": "ok",
+      "notes": []
     },
     "imports_backlog": {
       "status": "ok",
@@ -54,10 +51,8 @@
       "notes": []
     },
     "feedback_continuity": {
-      "status": "warn",
-      "notes": [
-        "normalized jsonl exists but currently empty"
-      ]
+      "status": "ok",
+      "notes": []
     },
     "browser_dependency": {
       "status": "warn",
@@ -72,8 +67,6 @@
   },
   "manual_actions": [],
   "recommended_next_steps": [
-    "launch/export/feedback の ID 充足率を上げる",
-    "feedback raw->normalized->digest chain を再生成する",
     "Playwright 依存回収が難しい場合は manual import 運用を先に固定する"
   ]
 }
