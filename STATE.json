@@ -1,6 +1,6 @@
 {
   "target_day": 100,
-  "next_day": 10,
+  "next_day": 11,
   "batch_size_default": 7,
   "posts": {
     "fixed_tags": [
@@ -67,6 +67,15 @@
       "core_action": "inspect",
       "twist": "深いネストでもパス一覧を一気に展開できる / Signal:HN Frontpage「CasNum」",
       "one_sentence": "JSONの構造を素早く把握するための開発者向けビューア。（話題:HN Frontpage）",
+      "complexity_tier": "small",
+      "selected_components": [],
+      "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
+    },
+    {
+      "day": "010",
+      "core_action": "schedule",
+      "twist": "逆算の根拠を1行で示して計画の納得感を上げる / Signal:HN Frontpage「Autoresearch: Agents res」",
+      "one_sentence": "締切から逆算した実行計画を即作成するプランニングツール。（話題:HN Frontpage）",
       "complexity_tier": "small",
       "selected_components": [],
       "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
@@ -343,6 +352,53 @@
         "minimal": "Day009|JSON Key Lens\nhttps://ryo909.github.io/ai-dev-day-009/\n#個人開発 #100日開発"
       },
       "status": "done"
+    },
+    "010": {
+      "repo_name": "ai-dev-day-010",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-010",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-010/",
+      "meta": {
+        "tool_name": "Backward Milestone Mapper",
+        "title": "Backward Milestone Mapper",
+        "description": "締切から逆算して、中間マイルストーンを自動分割する。",
+        "genre": "planning",
+        "theme": "RetroTerminal",
+        "complexity_tier": "small",
+        "selected_components": [],
+        "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component.",
+        "story_summary": "期限直前の混乱を減らすため、逆算起点の設計を採用した。｜Signal:HN Frontpage",
+        "core_action": "schedule",
+        "twist": "逆算の根拠を1行で示して計画の納得感を上げる / Signal:HN Frontpage「Autoresearch: Agents res」",
+        "one_sentence": "締切から逆算した実行計画を即作成するプランニングツール。（話題:HN Frontpage）",
+        "original_twist": "逆算の根拠を1行で示して計画の納得感を上げる / Signal:HN Frontpage「Autoresearch: Agents res」",
+        "original_one_sentence": "締切から逆算した実行計画を即作成するプランニングツール。（話題:HN Frontpage）",
+        "enhancement_source": "",
+        "enhancement_candidate_id": "",
+        "enhancement_adopted": false,
+        "adopted_next_batch_complexity": false,
+        "adopted_next_batch_components": false,
+        "adopted_next_batch_enhancement": false,
+        "next_batch_plan_source": "",
+        "next_batch_slot": null,
+        "next_batch_recommended_components": [],
+        "next_batch_recommended_enhancement": false,
+        "keywords": [
+          "dev",
+          "milestone",
+          "planning",
+          "product",
+          "roadmap",
+          "schedule",
+          "startup",
+          "trend"
+        ]
+      },
+      "post_texts": {
+        "standard": "Day010｜Backward Milestone Mapper\n締切から逆算した実行計画を即作成するプランニングツール。（話題:HN Frontpage）\n用途: 締切から逆算して、中間マイルストーンを自動分割する。\n👉 https://ryo909.github.io/ai-dev-day-010/\n#個人開発 #100日開発\n（経緯/一覧：固定ポストの2ツリーへ）",
+        "compact": "Day010|Backward Milesto\n締切から逆算した\nhttps://ryo909.github.io/ai-dev-day-010/\n#個人開発 #100日開発",
+        "minimal": "Day010|Backward Milesto\nhttps://ryo909.github.io/ai-dev-day-010/\n#個人開発 #100日開発"
+      },
+      "status": "done"
     }
   },
   "catalog": {
@@ -524,13 +580,28 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-03-08T05:28:54Z",
+      "day": "010",
+      "repo_name": "ai-dev-day-010",
+      "genre": "planning",
+      "theme": "RetroTerminal",
+      "steps": [
+        "planning",
+        "implementation",
+        "build",
+        "publish",
+        "state_update"
+      ],
+      "status": "done"
     }
   ],
   "recent_genres": [
-    "productivity",
     "writing",
-    "devtools"
+    "devtools",
+    "planning"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-03-08T05:27:52Z"
+  "last_run_at": "2026-03-08T05:28:54Z"
 }
