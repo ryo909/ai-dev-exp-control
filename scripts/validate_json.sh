@@ -10,7 +10,7 @@ fi
 
 tmp=$(mktemp)
 set +e
-npx -y ajv-cli@5 validate -s "$SCHEMA" -d "$DATA" --errors=text >"$tmp" 2>&1
+npx -y ajv-cli@5 validate -s "$SCHEMA" -d "$DATA" --errors=text --strict=false >"$tmp" 2>&1
 code=$?
 set -e
 

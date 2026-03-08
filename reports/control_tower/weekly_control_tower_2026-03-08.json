@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-08T04:54:08.749338+00:00",
+  "generated_at": "2026-03-08T05:23:05.003802+00:00",
   "batch_summary": {
     "days_considered": [
       "001",
@@ -14,8 +14,8 @@
     "success_count": 8,
     "failure_count": 0,
     "quality_reports_count": 0,
-    "enhancement_candidates_count": 0,
-    "fallback_plans_count": 0
+    "enhancement_candidates_count": 7,
+    "fallback_plans_count": 7
   },
   "tier_performance": {
     "small": {
@@ -120,11 +120,9 @@
       "弱いCTAをlaunch_export段階で置換候補化",
       "hero判定が弱い週はlaunch_with_notes基準を厳格化"
     ],
-    "healthcheck_overall_status": "attention",
+    "healthcheck_overall_status": "warn",
     "healthcheck_manual_actions": [],
-    "id_traceability_hotspots": [
-      "tool_id coverage is incomplete across launch/export/feedback"
-    ]
+    "id_traceability_hotspots": []
   },
   "day_decisions": [
     {

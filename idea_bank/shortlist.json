@@ -1,4 +1,385 @@
 {
-  "generated_at": "2026-03-08T04:53:31.223880+00:00",
-  "items": []
+  "generated_at": "2026-03-08T05:26:51.070704+00:00",
+  "items": [
+    {
+      "id": "dc5f0b1fc5e166b4",
+      "source": "HN Frontpage",
+      "url": "https://github.com/MonoGame/MonoGame",
+      "title": "MonoGame: A .NET framework for making cross-platform games",
+      "tags": [
+        "startup",
+        "dev",
+        "product"
+      ],
+      "weight": 1.0,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    },
+    {
+      "id": "9222feff7b05c208",
+      "source": "HN Frontpage",
+      "url": "https://www.lloydslist.com/LL1156532/They-all-said-Hormuz-closure-would-be-brief-What-if-they-were-wrong",
+      "title": "They all said Hormuz closure would be brief. What if they were wrong?",
+      "tags": [
+        "startup",
+        "dev",
+        "product"
+      ],
+      "weight": 1.0,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    },
+    {
+      "id": "faff738af1758b37",
+      "source": "HN Frontpage",
+      "url": "https://github.com/astral-sh/uv/pull/17643",
+      "title": "\"Warn about PyPy being unmaintained\"",
+      "tags": [
+        "startup",
+        "dev",
+        "product"
+      ],
+      "weight": 1.0,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    },
+    {
+      "id": "501b64d71bcc5b64",
+      "source": "HN Frontpage",
+      "url": "https://devblog.ecuadors.net/cloud-vm-benchmarks-2026-performance-price-1i1m.html",
+      "title": "Cloud VM benchmarks 2026",
+      "tags": [
+        "startup",
+        "dev",
+        "product"
+      ],
+      "weight": 1.0,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    },
+    {
+      "id": "a152cac016814fc7",
+      "source": "HN Frontpage",
+      "url": "https://www.seangoedecke.com/will-my-job-still-exist/",
+      "title": "I don't know if my job will still exist in ten years",
+      "tags": [
+        "startup",
+        "dev",
+        "product"
+      ],
+      "weight": 1.0,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    },
+    {
+      "id": "a2b689faaea90e5e",
+      "source": "HN Frontpage",
+      "url": "https://zipcodefirst.com",
+      "title": "Put the zip code first",
+      "tags": [
+        "startup",
+        "dev",
+        "product"
+      ],
+      "weight": 1.0,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    },
+    {
+      "id": "64d9defe1d3e6abc",
+      "source": "HN Frontpage",
+      "url": "https://github.com/mistivia/lmp",
+      "title": "Lisp-style C++ template meta programming",
+      "tags": [
+        "startup",
+        "dev",
+        "product"
+      ],
+      "weight": 1.0,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    },
+    {
+      "id": "0bd52171c459ea85",
+      "source": "HN Frontpage",
+      "url": "https://www.honest-broker.com/p/the-day-ny-publishing-lost-its-soul",
+      "title": "The stagnancy of publishing and the disappearance of the midlist",
+      "tags": [
+        "startup",
+        "dev",
+        "product"
+      ],
+      "weight": 1.0,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    },
+    {
+      "id": "70c6ed657979f77d",
+      "source": "HN Frontpage",
+      "url": "https://tropes.fyi/tropes-md",
+      "title": "LLM Writing Tropes.md",
+      "tags": [
+        "startup",
+        "dev",
+        "product"
+      ],
+      "weight": 1.0,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    },
+    {
+      "id": "68de53fb66f0a5f3",
+      "source": "HN Frontpage",
+      "url": "https://github.com/0x0mer/CasNum",
+      "title": "CasNum",
+      "tags": [
+        "startup",
+        "dev",
+        "product"
+      ],
+      "weight": 1.0,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    },
+    {
+      "id": "f9b055a1ff23711d",
+      "source": "HN Frontpage",
+      "url": "https://github.com/karpathy/autoresearch",
+      "title": "Autoresearch: Agents researching on single-GPU nanochat training automatically",
+      "tags": [
+        "startup",
+        "dev",
+        "product"
+      ],
+      "weight": 1.0,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    },
+    {
+      "id": "e38e25dc758dc033",
+      "source": "HN Frontpage",
+      "url": "https://muddy.jprs.me/links/2026-03-06-the-surprising-whimsy-of-the-time-zone-database/",
+      "title": "The surprising whimsy of the Time Zone Database",
+      "tags": [
+        "startup",
+        "dev",
+        "product"
+      ],
+      "weight": 1.0,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    },
+    {
+      "id": "29f34728d8d27601",
+      "source": "HN Frontpage",
+      "url": "https://signoz.io/careers",
+      "title": "SigNoz (YC W21) is hiring for engineering, growth and product roles",
+      "tags": [
+        "startup",
+        "dev",
+        "product"
+      ],
+      "weight": 1.0,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    },
+    {
+      "id": "97a50a00ba98a8f9",
+      "source": "HN Frontpage",
+      "url": "https://cacm.acm.org/research/a-decade-of-docker-containers/",
+      "title": "A decade of Docker containers",
+      "tags": [
+        "startup",
+        "dev",
+        "product"
+      ],
+      "weight": 1.0,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    },
+    {
+      "id": "419af9280b4c1d60",
+      "source": "HN Frontpage",
+      "url": "https://spectrum.ieee.org/flash-radiotherapy",
+      "title": "FLASH radiotherapy's bold approach to cancer treatment",
+      "tags": [
+        "startup",
+        "dev",
+        "product"
+      ],
+      "weight": 1.0,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    },
+    {
+      "id": "b0e173d54bf71ff2",
+      "source": "HN Frontpage",
+      "url": "https://www.bbc.com/travel/article/20260302-the-yoghurt-delivery-women-combatting-loneliness-in-japan",
+      "title": "Yoghurt delivery women combatting loneliness in Japan",
+      "tags": [
+        "startup",
+        "dev",
+        "product"
+      ],
+      "weight": 1.0,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    },
+    {
+      "id": "ec92b0ca03add33e",
+      "source": "HN Frontpage",
+      "url": "https://ki-editor.org/",
+      "title": "Ki Editor - an editor that operates on the AST",
+      "tags": [
+        "startup",
+        "dev",
+        "product"
+      ],
+      "weight": 1.0,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    },
+    {
+      "id": "bada1e7c1e42cfab",
+      "source": "HN Frontpage",
+      "url": "https://arstechnica.com/science/2026/03/recreating-the-complex-cuisine-of-prehistoric-europeans/",
+      "title": "Re-creating the complex cuisine of prehistoric Europeans",
+      "tags": [
+        "startup",
+        "dev",
+        "product"
+      ],
+      "weight": 1.0,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    },
+    {
+      "id": "92a189cf5ee6802f",
+      "source": "HN Frontpage",
+      "url": "https://www.ycombinator.com/companies/multifactor/jobs/lcpd60A-engineering-lead",
+      "title": "Multifactor (YC F25) Is Hiring an Engineering Lead",
+      "tags": [
+        "startup",
+        "dev",
+        "product"
+      ],
+      "weight": 1.0,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    },
+    {
+      "id": "fde39f9f1c031b4e",
+      "source": "HN Frontpage",
+      "url": "https://blog.xoria.org/hidden-overheads/",
+      "title": "Overheads (2023)",
+      "tags": [
+        "startup",
+        "dev",
+        "product"
+      ],
+      "weight": 1.0,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    },
+    {
+      "id": "fd97a6d57c43f0ea",
+      "source": "GitHub Trending (All daily)",
+      "url": "https://github.com/toeverything/AFFiNE",
+      "title": "toeverything/AFFiNE",
+      "tags": [
+        "oss",
+        "tools"
+      ],
+      "weight": 0.9,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    },
+    {
+      "id": "a4c670db592db63c",
+      "source": "GitHub Trending (All daily)",
+      "url": "https://github.com/GoogleCloudPlatform/generative-ai",
+      "title": "GoogleCloudPlatform/generative-ai",
+      "tags": [
+        "oss",
+        "tools"
+      ],
+      "weight": 0.9,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    },
+    {
+      "id": "62c7a5d1f9f35d49",
+      "source": "GitHub Trending (All daily)",
+      "url": "https://github.com/666ghj/MiroFish",
+      "title": "666ghj/MiroFish",
+      "tags": [
+        "oss",
+        "tools"
+      ],
+      "weight": 0.9,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    },
+    {
+      "id": "3b23309d9289b252",
+      "source": "GitHub Trending (All daily)",
+      "url": "https://github.com/virattt/ai-hedge-fund",
+      "title": "virattt/ai-hedge-fund",
+      "tags": [
+        "oss",
+        "tools"
+      ],
+      "weight": 0.9,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    },
+    {
+      "id": "4aff7db928cd1cdc",
+      "source": "GitHub Trending (All daily)",
+      "url": "https://github.com/openai/skills",
+      "title": "openai/skills",
+      "tags": [
+        "oss",
+        "tools"
+      ],
+      "weight": 0.9,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    },
+    {
+      "id": "1fe2ad8b1f56db54",
+      "source": "GitHub Trending (All daily)",
+      "url": "https://github.com/shadcn-ui/ui",
+      "title": "shadcn-ui/ui",
+      "tags": [
+        "oss",
+        "tools"
+      ],
+      "weight": 0.9,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    },
+    {
+      "id": "7c95635412aeaf23",
+      "source": "GitHub Trending (All daily)",
+      "url": "https://github.com/QwenLM/Qwen-Agent",
+      "title": "QwenLM/Qwen-Agent",
+      "tags": [
+        "oss",
+        "tools"
+      ],
+      "weight": 0.9,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    },
+    {
+      "id": "3ab6aff8a57a2493",
+      "source": "GitHub Trending (All daily)",
+      "url": "https://github.com/microsoft/hve-core",
+      "title": "microsoft/hve-core",
+      "tags": [
+        "oss",
+        "tools"
+      ],
+      "weight": 0.9,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    },
+    {
+      "id": "b4f3eb265949a7cc",
+      "source": "GitHub Trending (All daily)",
+      "url": "https://github.com/agentjido/jido",
+      "title": "agentjido/jido",
+      "tags": [
+        "oss",
+        "tools"
+      ],
+      "weight": 0.9,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    },
+    {
+      "id": "ec643c90aca4ac8d",
+      "source": "GitHub Trending (All daily)",
+      "url": "https://github.com/msitarzewski/agency-agents",
+      "title": "msitarzewski/agency-agents",
+      "tags": [
+        "oss",
+        "tools"
+      ],
+      "weight": 0.9,
+      "collected_at": "2026-03-08T05:26:45.334692+00:00"
+    }
+  ]
 }

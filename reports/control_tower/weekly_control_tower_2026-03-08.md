@@ -3,8 +3,8 @@
 ## 今週の要約
 - success/failure: 8/0
 - quality reports: 0
-- enhancement candidates: 0
-- fallback plans: 0
+- enhancement candidates: 7
+- fallback plans: 7
 
 ## tier別成績
 - small: count=8, avg_score=0.0, fallback_count=0, confidence={}
@@ -58,8 +58,7 @@
 - hero判定が弱い週はlaunch_with_notes基準を厳格化
 
 ## healthcheck / ID traceability
-- healthcheck: attention
-- id_trace: tool_id coverage is incomplete across launch/export/feedback
+- healthcheck: warn
 
 ## dayごとの decision summary
 - Day001: enhance (tier=small, score=0.0, confidence=low) / default to enhancement recommendation
@@ -117,6 +116,7 @@
 
 ## Context sources
 - shared-context/SIGNALS.md
+- reports/coverage.json
 - reports/competitors/competitor_scan_2026-03-07_shortlist.json
 - reports/showcase/showcase_plan_2026-03-08.json
 - reports/portfolio/portfolio_eval_2026-03-08.json

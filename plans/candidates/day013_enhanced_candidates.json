@@ -1,0 +1,56 @@
+{
+  "generated_at": "2026-03-08T05:31:02.853177+00:00",
+  "day": "013",
+  "source_competitor_scan": "reports/competitors/competitor_scan_2026-03-07_shortlist.json",
+  "context": {
+    "genre": "fun",
+    "theme": "NeoLab",
+    "core_action": "generate"
+  },
+  "original": {
+    "twist": "30秒で遊べるミニお題を即時に複数提案 / Signal:HN Frontpage「A decade of Docker conta」",
+    "one_sentence": "気分転換用の短いお題をすぐ作るライトな遊びツール。（話題:HN Frontpage）"
+  },
+  "candidates": [
+    {
+      "id": "cand_1",
+      "twist": "冒頭1文で結論、2文目で根拠を示す『主張+証拠』導入を固定化する",
+      "one_sentence": "最初の1文で結論、次の1文で根拠まで示すから価値がすぐ伝わる。",
+      "why": [
+        "冒頭で主張や問題設定を先に提示する構成が多い",
+        "CTAは購読・続きを読む・議論参加など次行動を明示する形式が中心"
+      ],
+      "dont_copy": [
+        "verificationページや媒体UIノイズを本文洞察として扱わない"
+      ],
+      "adoption_score": 0.84
+    },
+    {
+      "id": "cand_2",
+      "twist": "CTAを『すぐ試す』と『背景を読む』の2導線に分けて離脱を減らす",
+      "one_sentence": "試す導線と学ぶ導線を同時に置き、速く動く人と深く読む人を両立する。",
+      "why": [
+        "冒頭で主張や問題設定を先に提示する構成が多い",
+        "CTAは購読・続きを読む・議論参加など次行動を明示する形式が中心"
+      ],
+      "dont_copy": [
+        "verificationページや媒体UIノイズを本文洞察として扱わない"
+      ],
+      "adoption_score": 0.78
+    },
+    {
+      "id": "cand_3",
+      "twist": "頻出キーワード3語をヘッダ直下に固定表示し、焦点を即認識させる",
+      "one_sentence": "最初の1文で結論、次の1文で根拠まで示すから価値がすぐ伝わる。",
+      "why": [
+        "冒頭で主張や問題設定を先に提示する構成が多い",
+        "CTAは購読・続きを読む・議論参加など次行動を明示する形式が中心"
+      ],
+      "dont_copy": [
+        "verificationページや媒体UIノイズを本文洞察として扱わない"
+      ],
+      "adoption_score": 0.72
+    }
+  ],
+  "recommended_candidate_id": "cand_1"
+}

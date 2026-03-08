@@ -282,10 +282,12 @@ jq ".last_run = \"${NOW}\"" "$STATE_FILE" > "${STATE_FILE}.tmp" && mv "${STATE_F
 echo ""
 echo "▶ control repo を commit & push..."
 cd "$CONTROL_DIR"
+CONTROL_PUSH_BRANCH="${CONTROL_PUSH_BRANCH:-$(git branch --show-current 2>/dev/null || true)}"
+[ -n "$CONTROL_PUSH_BRANCH" ] || CONTROL_PUSH_BRANCH="main"
 git add -A
 git commit -m "batch: Day$(printf '%03d' "$START_DAY")-Day$(printf '%03d' $((START_DAY + COMPLETED - 1))) completed" || true
-git -c credential.helper=store push origin main || {
-  echo "⚠ git push失敗。手動でpushしてください。"
+git -c credential.helper=store push origin "$CONTROL_PUSH_BRANCH" || {
+  echo "⚠ git push失敗（branch=${CONTROL_PUSH_BRANCH}）。手動でpushしてください。"
 }
 
 echo ""

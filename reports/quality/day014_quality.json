@@ -1,0 +1,72 @@
+{
+  "generated_at": "2026-03-08T05:33:08.701996+00:00",
+  "day": "014",
+  "complexity_tier": "large",
+  "selected_components": [],
+  "expected_components": [
+    "comparison_view",
+    "export_suite",
+    "history_panel"
+  ],
+  "rendered_components": [],
+  "detected_components": [
+    "comparison_view",
+    "export_suite",
+    "history_panel",
+    "local_storage",
+    "reason_panel",
+    "sample_inputs",
+    "step_ui"
+  ],
+  "missing_components": [],
+  "unexpected_components": [
+    "local_storage",
+    "reason_panel",
+    "sample_inputs",
+    "step_ui"
+  ],
+  "detection_method": {
+    "manifest": true,
+    "markers": true,
+    "heuristic": false
+  },
+  "quality_signal_sources": [
+    "../.workdays/ai-dev-day-014-0bcZlt/dist/assets/index-B53_Jd09.js:data-quality-marker",
+    "../.workdays/ai-dev-day-014-0bcZlt/dist/component-pack-manifest.json",
+    "../.workdays/ai-dev-day-014-0bcZlt/src/components/packs/comparisonView.js:data-quality-marker",
+    "../.workdays/ai-dev-day-014-0bcZlt/src/components/packs/exportSuite.js:data-quality-marker",
+    "../.workdays/ai-dev-day-014-0bcZlt/src/components/packs/historyPanel.js:data-quality-marker",
+    "../.workdays/ai-dev-day-014-0bcZlt/src/components/packs/localStorage.js:data-quality-marker",
+    "../.workdays/ai-dev-day-014-0bcZlt/src/components/packs/reasonPanel.js:data-quality-marker",
+    "../.workdays/ai-dev-day-014-0bcZlt/src/components/packs/sampleInputs.js:data-quality-marker",
+    "../.workdays/ai-dev-day-014-0bcZlt/src/components/packs/stepUi.js:data-quality-marker"
+  ],
+  "tier_expectation_score": 1.0,
+  "confidence": "high",
+  "notes": [
+    "manifest detected from json file",
+    "marker signals detected in ../.workdays/ai-dev-day-014-0bcZlt/dist/assets/index-B53_Jd09.js",
+    "marker signals detected in ../.workdays/ai-dev-day-014-0bcZlt/src/components/packs/comparisonView.js",
+    "marker signals detected in ../.workdays/ai-dev-day-014-0bcZlt/src/components/packs/exportSuite.js",
+    "marker signals detected in ../.workdays/ai-dev-day-014-0bcZlt/src/components/packs/historyPanel.js",
+    "marker signals detected in ../.workdays/ai-dev-day-014-0bcZlt/src/components/packs/localStorage.js",
+    "marker signals detected in ../.workdays/ai-dev-day-014-0bcZlt/src/components/packs/reasonPanel.js",
+    "marker signals detected in ../.workdays/ai-dev-day-014-0bcZlt/src/components/packs/sampleInputs.js",
+    "marker signals detected in ../.workdays/ai-dev-day-014-0bcZlt/src/components/packs/stepUi.js"
+  ],
+  "recommendation": {
+    "keep_components": [
+      "comparison_view",
+      "export_suite",
+      "history_panel"
+    ],
+    "add_components": [],
+    "remove_components": [],
+    "retry_same_tier": true,
+    "suggest_downgrade": false
+  },
+  "upgrade_candidates": [],
+  "downgrade_recommendation": false,
+  "threshold": 0.7,
+  "repo_path": "../.workdays/ai-dev-day-014-0bcZlt"
+}

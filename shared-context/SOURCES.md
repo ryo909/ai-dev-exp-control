@@ -10,5 +10,12 @@
 - (例) GoogleNews note: 競合把握◎ → “見出し構成を真似しすぎない”
 
 <!-- AUTO_STATS_START -->
-(AUTO統計は未生成)
+## AUTO統計（shortlist内の件数）
+- generated_at: 2026-03-08T05:23:04Z
+
+| source | count |
+|---|---:|
+| HN Frontpage | 20 |
+| GitHub Trending (All daily) | 10 |
 <!-- AUTO_STATS_END -->
+
