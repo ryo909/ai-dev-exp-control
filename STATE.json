@@ -15,22 +15,6 @@
   },
   "recent_meta": [
     {
-      "day": "015",
-      "title": "Constraint Challenge Dealer",
-      "genre": "fun",
-      "family": "constraint_game",
-      "mechanic": "rule_combination",
-      "input_style": "constraints",
-      "output_style": "challenge_cards",
-      "audience_promise": "fresh_short_breaks",
-      "core_action": "deal",
-      "twist": "難易度を3段階で切り替えてマンネリを防ぐ / Signal:HN Frontpage「Yoghurt delivery women c」",
-      "one_sentence": "制約付きのお題を瞬時に作るミニチャレンジ生成ツール。（話題:HN Frontpage）",
-      "complexity_tier": "small",
-      "selected_components": [],
-      "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
-    },
-    {
       "day": "009",
       "title": "Signal Card Mixer",
       "genre": "fun",
@@ -417,6 +401,29 @@
       "complexity_tier": "medium",
       "selected_components": [],
       "complexity_prompt_hint": "Add 2 safe enhancement components from selected_components while keeping the app single-page and stable."
+    },
+    {
+      "day": "014",
+      "title": "Flow Board Builder",
+      "genre": "devtools",
+      "family": "flow_board",
+      "mechanic": "lane_movement",
+      "input_style": "card_creation",
+      "output_style": "lane_board",
+      "audience_promise": "clearer_flow_visibility",
+      "interaction_archetype": "board_flow_builder",
+      "page_archetype": "kanban_board",
+      "output_shape": "lane_columns",
+      "state_model": "cards_by_lane",
+      "component_pack": "lane_columns+bottleneck_hint",
+      "scaffold_id": "flow_board",
+      "single_shot_text_generator": false,
+      "core_action": "flow",
+      "twist": "詰まりレーンを検知すると改善ヒントを表示する / Signal:HN Frontpage「FLASH radiotherapy's bol」",
+      "one_sentence": "作業カードを流しながらボトルネックを見つけるボード型ツール。（話題:HN Frontpage）",
+      "complexity_tier": "large",
+      "selected_components": [],
+      "complexity_prompt_hint": "Create a showpiece version by adding around 3 safe enhancement components from selected_components, but avoid risky architecture changes."
     }
   ],
   "days": {
@@ -1754,13 +1761,28 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-03-08T07:50:33Z",
+      "day": "014",
+      "repo_name": "ai-dev-day-014",
+      "genre": "devtools",
+      "theme": "Paper",
+      "steps": [
+        "planning",
+        "implementation",
+        "build",
+        "publish",
+        "state_update"
+      ],
+      "status": "done"
     }
   ],
   "recent_genres": [
-    "planning",
     "productivity",
-    "health"
+    "health",
+    "devtools"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-03-08T07:49:30Z"
+  "last_run_at": "2026-03-08T07:50:33Z"
 }
