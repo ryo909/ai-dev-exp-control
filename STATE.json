@@ -15,22 +15,6 @@
   },
   "recent_meta": [
     {
-      "day": "013",
-      "title": "Meal Prep Slotter",
-      "genre": "health",
-      "family": "meal_batching",
-      "mechanic": "process_ordering",
-      "input_style": "ingredient_list",
-      "output_style": "prep_timeline",
-      "audience_promise": "lower_daily_friction",
-      "core_action": "plan",
-      "twist": "調理順を洗い物最小の順番で並べる / Signal:HN Frontpage「A decade of Docker conta」",
-      "one_sentence": "平日の食事準備を短時間で回すための作り置き計画ツール。（話題:HN Frontpage）",
-      "complexity_tier": "medium",
-      "selected_components": [],
-      "complexity_prompt_hint": "Add 2 safe enhancement components from selected_components while keeping the app single-page and stable."
-    },
-    {
       "day": "014",
       "title": "Onboarding Checklist Smith",
       "genre": "planning",
@@ -403,6 +387,29 @@
       "complexity_tier": "small",
       "selected_components": [],
       "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
+    },
+    {
+      "day": "012",
+      "title": "Weighted Option Calculator",
+      "genre": "productivity",
+      "family": "weighted_scoring",
+      "mechanic": "weighted_formula",
+      "input_style": "slider_weights_and_rows",
+      "output_style": "ranked_scores",
+      "audience_promise": "transparent_tradeoff",
+      "interaction_archetype": "weighted_calculator",
+      "page_archetype": "calculator_dashboard",
+      "output_shape": "ranked_table",
+      "state_model": "weights_plus_option_rows",
+      "component_pack": "slider_panel+ranking_table",
+      "scaffold_id": "weighted_calculator",
+      "single_shot_text_generator": false,
+      "core_action": "score",
+      "twist": "重み変更時に順位変動の差分を即表示する / Signal:HN Frontpage「SigNoz (YC W21) is hirin」",
+      "one_sentence": "重み付き評価で候補案の順位変化を比較できる計算ツール。（話題:HN Frontpage）",
+      "complexity_tier": "medium",
+      "selected_components": [],
+      "complexity_prompt_hint": "Add 2 safe enhancement components from selected_components while keeping the app single-page and stable."
     }
   ],
   "days": {
@@ -1710,13 +1717,28 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-03-08T07:48:25Z",
+      "day": "012",
+      "repo_name": "ai-dev-day-012",
+      "genre": "productivity",
+      "theme": "RetroTerminal",
+      "steps": [
+        "planning",
+        "implementation",
+        "build",
+        "publish",
+        "state_update"
+      ],
+      "status": "done"
     }
   ],
   "recent_genres": [
-    "fun",
     "planning",
-    "planning"
+    "planning",
+    "productivity"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-03-08T07:47:23Z"
+  "last_run_at": "2026-03-08T07:48:25Z"
 }
