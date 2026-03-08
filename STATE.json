@@ -15,22 +15,6 @@
   },
   "recent_meta": [
     {
-      "day": "014",
-      "title": "Onboarding Checklist Smith",
-      "genre": "planning",
-      "family": "onboarding_flow",
-      "mechanic": "milestone_chunking",
-      "input_style": "role_and_tasks",
-      "output_style": "onboarding_plan",
-      "audience_promise": "faster_team_rampup",
-      "core_action": "compose",
-      "twist": "Day1/Day3/Day7の節目で確認質問を自動添付する / Signal:HN Frontpage「FLASH radiotherapy's bol」",
-      "one_sentence": "新メンバーの初週導線を迷わず回すためのオンボーディング設計ツール。（話題:HN Frontpage）",
-      "complexity_tier": "large",
-      "selected_components": [],
-      "complexity_prompt_hint": "Create a showpiece version by adding around 3 safe enhancement components from selected_components, but avoid risky architecture changes."
-    },
-    {
       "day": "015",
       "title": "Constraint Challenge Dealer",
       "genre": "fun",
@@ -407,6 +391,29 @@
       "core_action": "score",
       "twist": "重み変更時に順位変動の差分を即表示する / Signal:HN Frontpage「SigNoz (YC W21) is hirin」",
       "one_sentence": "重み付き評価で候補案の順位変化を比較できる計算ツール。（話題:HN Frontpage）",
+      "complexity_tier": "medium",
+      "selected_components": [],
+      "complexity_prompt_hint": "Add 2 safe enhancement components from selected_components while keeping the app single-page and stable."
+    },
+    {
+      "day": "013",
+      "title": "Slot Checklist Planner",
+      "genre": "health",
+      "family": "slot_planning",
+      "mechanic": "slot_assignment_with_check",
+      "input_style": "task_cards",
+      "output_style": "checklist_timeline",
+      "audience_promise": "better_execution_consistency",
+      "interaction_archetype": "checklist_slot_planner",
+      "page_archetype": "timeline_planner",
+      "output_shape": "slot_checklist",
+      "state_model": "slots_with_completion_flags",
+      "component_pack": "slot_grid+checklist_panel",
+      "scaffold_id": "slot_checklist_planner",
+      "single_shot_text_generator": false,
+      "core_action": "plan",
+      "twist": "未完了タスクを次スロットへ自動で繰り越せる / Signal:HN Frontpage「A decade of Docker conta」",
+      "one_sentence": "時間枠とチェックリストを一体化した実行計画プランナー。（話題:HN Frontpage）",
       "complexity_tier": "medium",
       "selected_components": [],
       "complexity_prompt_hint": "Add 2 safe enhancement components from selected_components while keeping the app single-page and stable."
@@ -1732,13 +1739,28 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-03-08T07:49:30Z",
+      "day": "013",
+      "repo_name": "ai-dev-day-013",
+      "genre": "health",
+      "theme": "Soft",
+      "steps": [
+        "planning",
+        "implementation",
+        "build",
+        "publish",
+        "state_update"
+      ],
+      "status": "done"
     }
   ],
   "recent_genres": [
     "planning",
-    "planning",
-    "productivity"
+    "productivity",
+    "health"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-03-08T07:48:25Z"
+  "last_run_at": "2026-03-08T07:49:30Z"
 }

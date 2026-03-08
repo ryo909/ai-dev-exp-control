@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-08T07:33:44Z",
+  "generated_at": "2026-03-08T07:48:29Z",
   "day": "Day013",
   "lookback_days": 14,
   "policy": {
@@ -190,13 +190,13 @@
       "input_style": "step_choices",
       "output_style": "path_summary",
       "audience_promise": "clearer_decisions",
-      "interaction_archetype": "single_shot_text_submit",
-      "page_archetype": "single_column_form",
-      "output_shape": "single_text_block",
-      "state_model": "ephemeral_result_only",
-      "component_pack": "single_form",
-      "scaffold_id": "text_generator_scaffold",
-      "single_shot_text_generator": true
+      "interaction_archetype": "decision_tree_wizard",
+      "page_archetype": "stepper_wizard",
+      "output_shape": "decision_path",
+      "state_model": "step_index_and_answers",
+      "component_pack": "stepper+branch_map",
+      "scaffold_id": "wizard_stepper",
+      "single_shot_text_generator": false
     },
     {
       "day": "011",
@@ -209,13 +209,13 @@
       "input_style": "item_with_scores",
       "output_style": "quadrant_matrix",
       "audience_promise": "faster_priority_alignment",
-      "interaction_archetype": "single_shot_text_submit",
-      "page_archetype": "single_column_form",
-      "output_shape": "single_text_block",
-      "state_model": "ephemeral_result_only",
-      "component_pack": "single_form",
-      "scaffold_id": "text_generator_scaffold",
-      "single_shot_text_generator": true
+      "interaction_archetype": "matrix_mapper",
+      "page_archetype": "matrix_canvas",
+      "output_shape": "quadrant_board",
+      "state_model": "cells_with_draggable_items",
+      "component_pack": "matrix_grid+item_chips",
+      "scaffold_id": "matrix_mapper",
+      "single_shot_text_generator": false
     },
     {
       "day": "012",
@@ -237,7 +237,7 @@
       "single_shot_text_generator": false
     }
   ],
-  "recent_single_shot_count": 10,
+  "recent_single_shot_count": 8,
   "selected": {
     "id": "slot_checklist_planner",
     "title": "Slot Checklist Planner",
@@ -485,51 +485,6 @@
       ]
     },
     {
-      "id": "incident_response_wizard",
-      "title": "Incident Response Wizard",
-      "description": "障害状況の選択入力から一次対応フローを確定する。",
-      "genre": "devtools",
-      "theme": "Noir",
-      "core_action": "triage",
-      "twist": "重大度と影響範囲で通知先を自動分岐する",
-      "one_sentence": "障害初動フローをステップ分岐で確定する運用ウィザード。",
-      "story_summary": "初動の遅れを減らすため、分岐型で通知手順を固定化した。",
-      "keywords": [
-        "incident",
-        "wizard",
-        "ops",
-        "triage"
-      ],
-      "family": "incident_wizard",
-      "mechanic": "branching_triage",
-      "input_style": "step_choices",
-      "output_style": "response_flow",
-      "audience_promise": "faster_incident_response",
-      "publish_hook": "初動手順を分岐で迷わず確定",
-      "engine": "wizard_tree",
-      "interaction_archetype": "decision_tree_wizard",
-      "page_archetype": "stepper_wizard",
-      "output_shape": "decision_path",
-      "state_model": "step_index_and_answers",
-      "core_loop": "classify -> branch -> assign",
-      "component_pack": "stepper+severity_badges",
-      "scaffold_id": "wizard_stepper",
-      "single_shot_text_generator": false,
-      "score": 37,
-      "penalties": [
-        {
-          "code": "theme_overlap_recent",
-          "count": 1,
-          "penalty": 28
-        },
-        {
-          "code": "input_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        }
-      ]
-    },
-    {
       "id": "challenge_chain_roulette",
       "title": "Challenge Chain Roulette",
       "description": "抽選された連続ミッションをこなし、チェイン倍率を伸ばす。",
@@ -575,37 +530,37 @@
       ]
     },
     {
-      "id": "stakeholder_matrix_mapper",
-      "title": "Stakeholder Matrix Mapper",
-      "description": "利害関係者を影響力×関心度で整理し、対話順を決める。",
-      "genre": "planning",
-      "theme": "Paper",
-      "core_action": "organize",
-      "twist": "象限ごとに推奨コミュニケーション頻度を付与する",
-      "one_sentence": "関係者調整を4象限で整理するステークホルダーマトリクス。",
-      "story_summary": "調整の漏れを減らすため、関係者配置と頻度を一体化した。",
+      "id": "incident_response_wizard",
+      "title": "Incident Response Wizard",
+      "description": "障害状況の選択入力から一次対応フローを確定する。",
+      "genre": "devtools",
+      "theme": "Noir",
+      "core_action": "triage",
+      "twist": "重大度と影響範囲で通知先を自動分岐する",
+      "one_sentence": "障害初動フローをステップ分岐で確定する運用ウィザード。",
+      "story_summary": "初動の遅れを減らすため、分岐型で通知手順を固定化した。",
       "keywords": [
-        "matrix",
-        "stakeholder",
-        "communication",
-        "planning"
+        "incident",
+        "wizard",
+        "ops",
+        "triage"
       ],
-      "family": "stakeholder_mapping",
-      "mechanic": "axis_mapping",
-      "input_style": "item_with_scores",
-      "output_style": "quadrant_matrix",
-      "audience_promise": "clearer_communication_plan",
-      "publish_hook": "誰にいつ話すかを4象限で可視化",
-      "engine": "matrix_mapper",
-      "interaction_archetype": "matrix_mapper",
-      "page_archetype": "matrix_canvas",
-      "output_shape": "quadrant_board",
-      "state_model": "cells_with_draggable_items",
-      "core_loop": "add person -> position -> plan cadence",
-      "component_pack": "matrix_grid+cadence_panel",
-      "scaffold_id": "matrix_mapper",
+      "family": "incident_wizard",
+      "mechanic": "branching_triage",
+      "input_style": "step_choices",
+      "output_style": "response_flow",
+      "audience_promise": "faster_incident_response",
+      "publish_hook": "初動手順を分岐で迷わず確定",
+      "engine": "wizard_tree",
+      "interaction_archetype": "decision_tree_wizard",
+      "page_archetype": "stepper_wizard",
+      "output_shape": "decision_path",
+      "state_model": "step_index_and_answers",
+      "core_loop": "classify -> branch -> assign",
+      "component_pack": "stepper+severity_badges",
+      "scaffold_id": "wizard_stepper",
       "single_shot_text_generator": false,
-      "score": -32,
+      "score": -415,
       "penalties": [
         {
           "code": "theme_overlap_recent",
@@ -613,174 +568,34 @@
           "penalty": 28
         },
         {
-          "code": "mechanic_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        },
-        {
           "code": "input_overlap_recent",
           "count": 1,
           "penalty": 35
         },
         {
-          "code": "output_overlap_recent",
+          "code": "interaction_archetype_overlap",
           "count": 1,
-          "penalty": 18
+          "penalty": 95
         },
         {
-          "code": "genre_repeated",
-          "count": 3,
-          "penalty": 16
-        }
-      ]
-    },
-    {
-      "id": "risk_quadrant_mapper",
-      "title": "Risk Quadrant Mapper",
-      "description": "項目をimpact×urgencyの4象限に配置して優先順を作る。",
-      "genre": "planning",
-      "theme": "Brutal",
-      "core_action": "map",
-      "twist": "象限ごとに対応方針テンプレを同時提示する",
-      "one_sentence": "課題を4象限に配置して対応優先度を可視化するマッパー。",
-      "story_summary": "優先度の議論を短くするため、象限配置で意思統一できる形にした。",
-      "keywords": [
-        "matrix",
-        "risk",
-        "prioritization",
-        "planning"
-      ],
-      "family": "quadrant_mapping",
-      "mechanic": "axis_mapping",
-      "input_style": "item_with_scores",
-      "output_style": "quadrant_matrix",
-      "audience_promise": "faster_priority_alignment",
-      "publish_hook": "4象限で優先度の議論を短縮",
-      "engine": "matrix_mapper",
-      "interaction_archetype": "matrix_mapper",
-      "page_archetype": "matrix_canvas",
-      "output_shape": "quadrant_board",
-      "state_model": "cells_with_draggable_items",
-      "core_loop": "add item -> place quadrant -> rebalance",
-      "component_pack": "matrix_grid+item_chips",
-      "scaffold_id": "matrix_mapper",
-      "single_shot_text_generator": false,
-      "score": -305,
-      "penalties": [
-        {
-          "code": "title_overlap_recent",
+          "code": "page_archetype_overlap",
           "count": 1,
-          "penalty": 130
+          "penalty": 85
         },
         {
-          "code": "family_overlap_recent",
+          "code": "output_shape_overlap",
           "count": 1,
           "penalty": 80
         },
         {
-          "code": "theme_overlap_recent",
-          "count": 2,
-          "penalty": 56
-        },
-        {
-          "code": "mechanic_overlap_recent",
+          "code": "state_model_overlap",
           "count": 1,
-          "penalty": 35
+          "penalty": 72
         },
         {
-          "code": "input_overlap_recent",
+          "code": "scaffold_overlap",
           "count": 1,
-          "penalty": 35
-        },
-        {
-          "code": "output_overlap_recent",
-          "count": 1,
-          "penalty": 18
-        },
-        {
-          "code": "audience_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        },
-        {
-          "code": "genre_repeated",
-          "count": 3,
-          "penalty": 16
-        }
-      ]
-    },
-    {
-      "id": "tradeoff_path_wizard",
-      "title": "Tradeoff Path Wizard",
-      "description": "質問に答えると、優先すべき選択肢へ分岐誘導する。",
-      "genre": "planning",
-      "theme": "NeoLab",
-      "core_action": "navigate",
-      "twist": "各分岐で採用しなかった選択肢の理由も残す",
-      "one_sentence": "段階質問で意思決定パスを確定するウィザード型ツール。",
-      "story_summary": "意思決定の迷いを減らすため、分岐理由を明示する設計にした。",
-      "keywords": [
-        "wizard",
-        "decision",
-        "tradeoff",
-        "planning"
-      ],
-      "family": "decision_wizard",
-      "mechanic": "branching_questionnaire",
-      "input_style": "step_choices",
-      "output_style": "path_summary",
-      "audience_promise": "clearer_decisions",
-      "publish_hook": "質問に答えるだけで判断パスが固まる",
-      "engine": "wizard_tree",
-      "interaction_archetype": "decision_tree_wizard",
-      "page_archetype": "stepper_wizard",
-      "output_shape": "decision_path",
-      "state_model": "step_index_and_answers",
-      "core_loop": "answer -> branch -> finalize",
-      "component_pack": "stepper+branch_map",
-      "scaffold_id": "wizard_stepper",
-      "single_shot_text_generator": false,
-      "score": -305,
-      "penalties": [
-        {
-          "code": "title_overlap_recent",
-          "count": 1,
-          "penalty": 130
-        },
-        {
-          "code": "family_overlap_recent",
-          "count": 1,
-          "penalty": 80
-        },
-        {
-          "code": "theme_overlap_recent",
-          "count": 2,
-          "penalty": 56
-        },
-        {
-          "code": "mechanic_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        },
-        {
-          "code": "input_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        },
-        {
-          "code": "output_overlap_recent",
-          "count": 1,
-          "penalty": 18
-        },
-        {
-          "code": "audience_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        },
-        {
-          "code": "genre_repeated",
-          "count": 3,
-          "penalty": 16
+          "penalty": 120
         }
       ]
     },
@@ -861,6 +676,91 @@
           "code": "genre_repeated",
           "count": 2,
           "penalty": 8
+        }
+      ]
+    },
+    {
+      "id": "stakeholder_matrix_mapper",
+      "title": "Stakeholder Matrix Mapper",
+      "description": "利害関係者を影響力×関心度で整理し、対話順を決める。",
+      "genre": "planning",
+      "theme": "Paper",
+      "core_action": "organize",
+      "twist": "象限ごとに推奨コミュニケーション頻度を付与する",
+      "one_sentence": "関係者調整を4象限で整理するステークホルダーマトリクス。",
+      "story_summary": "調整の漏れを減らすため、関係者配置と頻度を一体化した。",
+      "keywords": [
+        "matrix",
+        "stakeholder",
+        "communication",
+        "planning"
+      ],
+      "family": "stakeholder_mapping",
+      "mechanic": "axis_mapping",
+      "input_style": "item_with_scores",
+      "output_style": "quadrant_matrix",
+      "audience_promise": "clearer_communication_plan",
+      "publish_hook": "誰にいつ話すかを4象限で可視化",
+      "engine": "matrix_mapper",
+      "interaction_archetype": "matrix_mapper",
+      "page_archetype": "matrix_canvas",
+      "output_shape": "quadrant_board",
+      "state_model": "cells_with_draggable_items",
+      "core_loop": "add person -> position -> plan cadence",
+      "component_pack": "matrix_grid+cadence_panel",
+      "scaffold_id": "matrix_mapper",
+      "single_shot_text_generator": false,
+      "score": -484,
+      "penalties": [
+        {
+          "code": "theme_overlap_recent",
+          "count": 1,
+          "penalty": 28
+        },
+        {
+          "code": "mechanic_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "input_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "output_overlap_recent",
+          "count": 1,
+          "penalty": 18
+        },
+        {
+          "code": "interaction_archetype_overlap",
+          "count": 1,
+          "penalty": 95
+        },
+        {
+          "code": "page_archetype_overlap",
+          "count": 1,
+          "penalty": 85
+        },
+        {
+          "code": "output_shape_overlap",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "state_model_overlap",
+          "count": 1,
+          "penalty": 72
+        },
+        {
+          "code": "scaffold_overlap",
+          "count": 1,
+          "penalty": 120
+        },
+        {
+          "code": "genre_repeated",
+          "count": 3,
+          "penalty": 16
         }
       ]
     },
@@ -1163,6 +1063,216 @@
           "penalty": 8
         }
       ]
+    },
+    {
+      "id": "risk_quadrant_mapper",
+      "title": "Risk Quadrant Mapper",
+      "description": "項目をimpact×urgencyの4象限に配置して優先順を作る。",
+      "genre": "planning",
+      "theme": "Brutal",
+      "core_action": "map",
+      "twist": "象限ごとに対応方針テンプレを同時提示する",
+      "one_sentence": "課題を4象限に配置して対応優先度を可視化するマッパー。",
+      "story_summary": "優先度の議論を短くするため、象限配置で意思統一できる形にした。",
+      "keywords": [
+        "matrix",
+        "risk",
+        "prioritization",
+        "planning"
+      ],
+      "family": "quadrant_mapping",
+      "mechanic": "axis_mapping",
+      "input_style": "item_with_scores",
+      "output_style": "quadrant_matrix",
+      "audience_promise": "faster_priority_alignment",
+      "publish_hook": "4象限で優先度の議論を短縮",
+      "engine": "matrix_mapper",
+      "interaction_archetype": "matrix_mapper",
+      "page_archetype": "matrix_canvas",
+      "output_shape": "quadrant_board",
+      "state_model": "cells_with_draggable_items",
+      "core_loop": "add item -> place quadrant -> rebalance",
+      "component_pack": "matrix_grid+item_chips",
+      "scaffold_id": "matrix_mapper",
+      "single_shot_text_generator": false,
+      "score": -812,
+      "penalties": [
+        {
+          "code": "title_overlap_recent",
+          "count": 1,
+          "penalty": 130
+        },
+        {
+          "code": "family_overlap_recent",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "theme_overlap_recent",
+          "count": 2,
+          "penalty": 56
+        },
+        {
+          "code": "mechanic_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "input_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "output_overlap_recent",
+          "count": 1,
+          "penalty": 18
+        },
+        {
+          "code": "audience_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "interaction_archetype_overlap",
+          "count": 1,
+          "penalty": 95
+        },
+        {
+          "code": "page_archetype_overlap",
+          "count": 1,
+          "penalty": 85
+        },
+        {
+          "code": "output_shape_overlap",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "state_model_overlap",
+          "count": 1,
+          "penalty": 72
+        },
+        {
+          "code": "component_pack_overlap",
+          "count": 1,
+          "penalty": 55
+        },
+        {
+          "code": "scaffold_overlap",
+          "count": 1,
+          "penalty": 120
+        },
+        {
+          "code": "genre_repeated",
+          "count": 3,
+          "penalty": 16
+        }
+      ]
+    },
+    {
+      "id": "tradeoff_path_wizard",
+      "title": "Tradeoff Path Wizard",
+      "description": "質問に答えると、優先すべき選択肢へ分岐誘導する。",
+      "genre": "planning",
+      "theme": "NeoLab",
+      "core_action": "navigate",
+      "twist": "各分岐で採用しなかった選択肢の理由も残す",
+      "one_sentence": "段階質問で意思決定パスを確定するウィザード型ツール。",
+      "story_summary": "意思決定の迷いを減らすため、分岐理由を明示する設計にした。",
+      "keywords": [
+        "wizard",
+        "decision",
+        "tradeoff",
+        "planning"
+      ],
+      "family": "decision_wizard",
+      "mechanic": "branching_questionnaire",
+      "input_style": "step_choices",
+      "output_style": "path_summary",
+      "audience_promise": "clearer_decisions",
+      "publish_hook": "質問に答えるだけで判断パスが固まる",
+      "engine": "wizard_tree",
+      "interaction_archetype": "decision_tree_wizard",
+      "page_archetype": "stepper_wizard",
+      "output_shape": "decision_path",
+      "state_model": "step_index_and_answers",
+      "core_loop": "answer -> branch -> finalize",
+      "component_pack": "stepper+branch_map",
+      "scaffold_id": "wizard_stepper",
+      "single_shot_text_generator": false,
+      "score": -812,
+      "penalties": [
+        {
+          "code": "title_overlap_recent",
+          "count": 1,
+          "penalty": 130
+        },
+        {
+          "code": "family_overlap_recent",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "theme_overlap_recent",
+          "count": 2,
+          "penalty": 56
+        },
+        {
+          "code": "mechanic_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "input_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "output_overlap_recent",
+          "count": 1,
+          "penalty": 18
+        },
+        {
+          "code": "audience_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "interaction_archetype_overlap",
+          "count": 1,
+          "penalty": 95
+        },
+        {
+          "code": "page_archetype_overlap",
+          "count": 1,
+          "penalty": 85
+        },
+        {
+          "code": "output_shape_overlap",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "state_model_overlap",
+          "count": 1,
+          "penalty": 72
+        },
+        {
+          "code": "component_pack_overlap",
+          "count": 1,
+          "penalty": 55
+        },
+        {
+          "code": "scaffold_overlap",
+          "count": 1,
+          "penalty": 120
+        },
+        {
+          "code": "genre_repeated",
+          "count": 3,
+          "penalty": 16
+        }
+      ]
     }
   ],
   "rejected_candidates": [
@@ -1191,23 +1301,6 @@
       ]
     },
     {
-      "id": "incident_response_wizard",
-      "title": "Incident Response Wizard",
-      "score": 37,
-      "penalties": [
-        {
-          "code": "theme_overlap_recent",
-          "count": 1,
-          "penalty": 28
-        },
-        {
-          "code": "input_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        }
-      ]
-    },
-    {
       "id": "challenge_chain_roulette",
       "title": "Challenge Chain Roulette",
       "score": 36,
@@ -1225,9 +1318,9 @@
       ]
     },
     {
-      "id": "stakeholder_matrix_mapper",
-      "title": "Stakeholder Matrix Mapper",
-      "score": -32,
+      "id": "incident_response_wizard",
+      "title": "Incident Response Wizard",
+      "score": -415,
       "penalties": [
         {
           "code": "theme_overlap_recent",
@@ -1235,118 +1328,34 @@
           "penalty": 28
         },
         {
-          "code": "mechanic_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        },
-        {
           "code": "input_overlap_recent",
           "count": 1,
           "penalty": 35
         },
         {
-          "code": "output_overlap_recent",
+          "code": "interaction_archetype_overlap",
           "count": 1,
-          "penalty": 18
+          "penalty": 95
         },
         {
-          "code": "genre_repeated",
-          "count": 3,
-          "penalty": 16
-        }
-      ]
-    },
-    {
-      "id": "risk_quadrant_mapper",
-      "title": "Risk Quadrant Mapper",
-      "score": -305,
-      "penalties": [
-        {
-          "code": "title_overlap_recent",
+          "code": "page_archetype_overlap",
           "count": 1,
-          "penalty": 130
+          "penalty": 85
         },
         {
-          "code": "family_overlap_recent",
+          "code": "output_shape_overlap",
           "count": 1,
           "penalty": 80
         },
         {
-          "code": "theme_overlap_recent",
-          "count": 2,
-          "penalty": 56
-        },
-        {
-          "code": "mechanic_overlap_recent",
+          "code": "state_model_overlap",
           "count": 1,
-          "penalty": 35
+          "penalty": 72
         },
         {
-          "code": "input_overlap_recent",
+          "code": "scaffold_overlap",
           "count": 1,
-          "penalty": 35
-        },
-        {
-          "code": "output_overlap_recent",
-          "count": 1,
-          "penalty": 18
-        },
-        {
-          "code": "audience_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        },
-        {
-          "code": "genre_repeated",
-          "count": 3,
-          "penalty": 16
-        }
-      ]
-    },
-    {
-      "id": "tradeoff_path_wizard",
-      "title": "Tradeoff Path Wizard",
-      "score": -305,
-      "penalties": [
-        {
-          "code": "title_overlap_recent",
-          "count": 1,
-          "penalty": 130
-        },
-        {
-          "code": "family_overlap_recent",
-          "count": 1,
-          "penalty": 80
-        },
-        {
-          "code": "theme_overlap_recent",
-          "count": 2,
-          "penalty": 56
-        },
-        {
-          "code": "mechanic_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        },
-        {
-          "code": "input_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        },
-        {
-          "code": "output_overlap_recent",
-          "count": 1,
-          "penalty": 18
-        },
-        {
-          "code": "audience_overlap_recent",
-          "count": 1,
-          "penalty": 35
-        },
-        {
-          "code": "genre_repeated",
-          "count": 3,
-          "penalty": 16
+          "penalty": 120
         }
       ]
     },
@@ -1399,6 +1408,63 @@
           "code": "genre_repeated",
           "count": 2,
           "penalty": 8
+        }
+      ]
+    },
+    {
+      "id": "stakeholder_matrix_mapper",
+      "title": "Stakeholder Matrix Mapper",
+      "score": -484,
+      "penalties": [
+        {
+          "code": "theme_overlap_recent",
+          "count": 1,
+          "penalty": 28
+        },
+        {
+          "code": "mechanic_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "input_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "output_overlap_recent",
+          "count": 1,
+          "penalty": 18
+        },
+        {
+          "code": "interaction_archetype_overlap",
+          "count": 1,
+          "penalty": 95
+        },
+        {
+          "code": "page_archetype_overlap",
+          "count": 1,
+          "penalty": 85
+        },
+        {
+          "code": "output_shape_overlap",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "state_model_overlap",
+          "count": 1,
+          "penalty": 72
+        },
+        {
+          "code": "scaffold_overlap",
+          "count": 1,
+          "penalty": 120
+        },
+        {
+          "code": "genre_repeated",
+          "count": 3,
+          "penalty": 16
         }
       ]
     },
@@ -1615,6 +1681,160 @@
           "code": "genre_repeated",
           "count": 2,
           "penalty": 8
+        }
+      ]
+    },
+    {
+      "id": "risk_quadrant_mapper",
+      "title": "Risk Quadrant Mapper",
+      "score": -812,
+      "penalties": [
+        {
+          "code": "title_overlap_recent",
+          "count": 1,
+          "penalty": 130
+        },
+        {
+          "code": "family_overlap_recent",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "theme_overlap_recent",
+          "count": 2,
+          "penalty": 56
+        },
+        {
+          "code": "mechanic_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "input_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "output_overlap_recent",
+          "count": 1,
+          "penalty": 18
+        },
+        {
+          "code": "audience_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "interaction_archetype_overlap",
+          "count": 1,
+          "penalty": 95
+        },
+        {
+          "code": "page_archetype_overlap",
+          "count": 1,
+          "penalty": 85
+        },
+        {
+          "code": "output_shape_overlap",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "state_model_overlap",
+          "count": 1,
+          "penalty": 72
+        },
+        {
+          "code": "component_pack_overlap",
+          "count": 1,
+          "penalty": 55
+        },
+        {
+          "code": "scaffold_overlap",
+          "count": 1,
+          "penalty": 120
+        },
+        {
+          "code": "genre_repeated",
+          "count": 3,
+          "penalty": 16
+        }
+      ]
+    },
+    {
+      "id": "tradeoff_path_wizard",
+      "title": "Tradeoff Path Wizard",
+      "score": -812,
+      "penalties": [
+        {
+          "code": "title_overlap_recent",
+          "count": 1,
+          "penalty": 130
+        },
+        {
+          "code": "family_overlap_recent",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "theme_overlap_recent",
+          "count": 2,
+          "penalty": 56
+        },
+        {
+          "code": "mechanic_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "input_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "output_overlap_recent",
+          "count": 1,
+          "penalty": 18
+        },
+        {
+          "code": "audience_overlap_recent",
+          "count": 1,
+          "penalty": 35
+        },
+        {
+          "code": "interaction_archetype_overlap",
+          "count": 1,
+          "penalty": 95
+        },
+        {
+          "code": "page_archetype_overlap",
+          "count": 1,
+          "penalty": 85
+        },
+        {
+          "code": "output_shape_overlap",
+          "count": 1,
+          "penalty": 80
+        },
+        {
+          "code": "state_model_overlap",
+          "count": 1,
+          "penalty": 72
+        },
+        {
+          "code": "component_pack_overlap",
+          "count": 1,
+          "penalty": 55
+        },
+        {
+          "code": "scaffold_overlap",
+          "count": 1,
+          "penalty": 120
+        },
+        {
+          "code": "genre_repeated",
+          "count": 3,
+          "penalty": 16
         }
       ]
     }
