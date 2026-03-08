@@ -1,6 +1,6 @@
 {
   "target_day": 100,
-  "next_day": 10,
+  "next_day": 11,
   "batch_size_default": 7,
   "posts": {
     "fixed_tags": [
@@ -137,6 +137,22 @@
       "core_action": "analogize",
       "twist": "初心者向け/上級者向けで比喩の粒度を切り替える / Signal:HN Frontpage「CasNum」",
       "one_sentence": "難しい話題を比喩で伝えやすくする発想支援ツール。（話題:HN Frontpage）",
+      "complexity_tier": "small",
+      "selected_components": [],
+      "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
+    },
+    {
+      "day": "010",
+      "title": "API Error Narrator",
+      "genre": "devtools",
+      "family": "incident_triage",
+      "mechanic": "keyword_extraction",
+      "input_style": "error_log_paste",
+      "output_style": "triage_steps",
+      "audience_promise": "faster_first_response",
+      "core_action": "diagnose",
+      "twist": "HTTPコードとキーワードから最初の調査順を自動で提案する / Signal:HN Frontpage「Autoresearch: Agents res」",
+      "one_sentence": "API障害の初動切り分けを1分で始めるためのログ整理ツール。（話題:HN Frontpage）",
       "complexity_tier": "small",
       "selected_components": [],
       "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
@@ -426,20 +442,27 @@
       "repo_url": "https://github.com/ryo909/ai-dev-day-010",
       "pages_url": "https://ryo909.github.io/ai-dev-day-010/",
       "meta": {
-        "tool_name": "Backward Milestone Mapper",
-        "title": "Backward Milestone Mapper",
-        "description": "締切から逆算して、中間マイルストーンを自動分割する。",
-        "genre": "planning",
-        "theme": "RetroTerminal",
+        "tool_name": "API Error Narrator",
+        "title": "API Error Narrator",
+        "description": "エラーログを貼ると、再現手順と切り分け順を短く整理する。",
+        "genre": "devtools",
+        "theme": "Noir",
         "complexity_tier": "small",
         "selected_components": [],
         "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component.",
-        "story_summary": "期限直前の混乱を減らすため、逆算起点の設計を採用した。｜Signal:HN Frontpage",
-        "core_action": "schedule",
-        "twist": "逆算の根拠を1行で示して計画の納得感を上げる / Signal:HN Frontpage「Autoresearch: Agents res」",
-        "one_sentence": "締切から逆算した実行計画を即作成するプランニングツール。（話題:HN Frontpage）",
-        "original_twist": "逆算の根拠を1行で示して計画の納得感を上げる / Signal:HN Frontpage「Autoresearch: Agents res」",
-        "original_one_sentence": "締切から逆算した実行計画を即作成するプランニングツール。（話題:HN Frontpage）",
+        "story_summary": "障害調査の初手迷いを減らすため、再現手順を先に固定した。｜Signal:HN Frontpage",
+        "core_action": "diagnose",
+        "twist": "HTTPコードとキーワードから最初の調査順を自動で提案する / Signal:HN Frontpage「Autoresearch: Agents res」",
+        "one_sentence": "API障害の初動切り分けを1分で始めるためのログ整理ツール。（話題:HN Frontpage）",
+        "family": "incident_triage",
+        "mechanic": "keyword_extraction",
+        "input_style": "error_log_paste",
+        "output_style": "triage_steps",
+        "audience_promise": "faster_first_response",
+        "publish_hook": "障害調査の最初の10分を短縮",
+        "engine": "incident_card",
+        "original_twist": "HTTPコードとキーワードから最初の調査順を自動で提案する / Signal:HN Frontpage「Autoresearch: Agents res」",
+        "original_one_sentence": "API障害の初動切り分けを1分で始めるためのログ整理ツール。（話題:HN Frontpage）",
         "enhancement_source": "",
         "enhancement_candidate_id": "",
         "enhancement_adopted": false,
@@ -451,22 +474,22 @@
         "next_batch_recommended_components": [],
         "next_batch_recommended_enhancement": false,
         "keywords": [
+          "api",
+          "debug",
           "dev",
-          "milestone",
-          "planning",
+          "error",
+          "incident",
           "product",
-          "roadmap",
-          "schedule",
           "startup",
           "trend"
         ]
       },
       "post_texts": {
-        "standard": "Day010｜Backward Milestone Mapper\n締切から逆算した実行計画を即作成するプランニングツール。（話題:HN Frontpage）\n用途: 締切から逆算して、中間マイルストーンを自動分割する。\n👉 https://ryo909.github.io/ai-dev-day-010/\n#個人開発 #100日開発\n（経緯/一覧：固定ポストの2ツリーへ）",
-        "compact": "Day010|Backward Milesto\n締切から逆算した\nhttps://ryo909.github.io/ai-dev-day-010/\n#個人開発 #100日開発",
-        "minimal": "Day010|Backward Milesto\nhttps://ryo909.github.io/ai-dev-day-010/\n#個人開発 #100日開発"
+        "standard": "Day010｜API Error Narrator\nAPI障害の初動切り分けを1分で始めるためのログ整理ツール。（話題:HN Frontpage）\n用途: エラーログを貼ると、再現手順と切り分け順を短く整理する。\n👉 https://ryo909.github.io/ai-dev-day-010/\n#個人開発 #100日開発\n（経緯/一覧：固定ポストの2ツリーへ）",
+        "compact": "Day010|API Error Narrat\nAPI障害の初動切り\nhttps://ryo909.github.io/ai-dev-day-010/\n#個人開発 #100日開発",
+        "minimal": "Day010|API Error Narrat\nhttps://ryo909.github.io/ai-dev-day-010/\n#個人開発 #100日開発"
       },
-      "status": "posted"
+      "status": "done"
     },
     "011": {
       "repo_name": "ai-dev-day-011",
@@ -1004,13 +1027,28 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-03-08T06:04:11Z",
+      "day": "010",
+      "repo_name": "ai-dev-day-010",
+      "genre": "devtools",
+      "theme": "Noir",
+      "steps": [
+        "planning",
+        "implementation",
+        "build",
+        "publish",
+        "state_update"
+      ],
+      "status": "done"
     }
   ],
   "recent_genres": [
-    "productivity",
     "writing",
-    "fun"
+    "fun",
+    "devtools"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-03-08T06:02:27Z"
+  "last_run_at": "2026-03-08T06:04:11Z"
 }
