@@ -15,22 +15,6 @@
   },
   "recent_meta": [
     {
-      "day": "011",
-      "title": "Concept Gap Mapper",
-      "genre": "learning",
-      "family": "knowledge_gap",
-      "mechanic": "dependency_mapping",
-      "input_style": "confusion_notes",
-      "output_style": "gap_map",
-      "audience_promise": "clearer_study_path",
-      "core_action": "map",
-      "twist": "次に読む順番を3ステップで提示する / Signal:HN Frontpage「The surprising whimsy of」",
-      "one_sentence": "つまずきポイントを前提不足として可視化する学習診断ツール。（話題:HN Frontpage）",
-      "complexity_tier": "small",
-      "selected_components": [],
-      "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
-    },
-    {
       "day": "012",
       "title": "Context Switch Cost Meter",
       "genre": "productivity",
@@ -386,6 +370,29 @@
       "core_action": "recombine",
       "twist": "引いたカードを固定して再抽選できるため、方向性の収束が速い / Signal:HN Frontpage「CasNum」",
       "one_sentence": "カードの組み合わせから次の試作案を素早く作るデッキ型ツール。（話題:HN Frontpage）",
+      "complexity_tier": "small",
+      "selected_components": [],
+      "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
+    },
+    {
+      "day": "010",
+      "title": "Tradeoff Path Wizard",
+      "genre": "planning",
+      "family": "decision_wizard",
+      "mechanic": "branching_questionnaire",
+      "input_style": "step_choices",
+      "output_style": "path_summary",
+      "audience_promise": "clearer_decisions",
+      "interaction_archetype": "decision_tree_wizard",
+      "page_archetype": "stepper_wizard",
+      "output_shape": "decision_path",
+      "state_model": "step_index_and_answers",
+      "component_pack": "stepper+branch_map",
+      "scaffold_id": "wizard_stepper",
+      "single_shot_text_generator": false,
+      "core_action": "navigate",
+      "twist": "各分岐で採用しなかった選択肢の理由も残す / Signal:HN Frontpage「Autoresearch: Agents res」",
+      "one_sentence": "段階質問で意思決定パスを確定するウィザード型ツール。（話題:HN Frontpage）",
       "complexity_tier": "small",
       "selected_components": [],
       "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
@@ -1666,13 +1673,28 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-03-08T07:46:21Z",
+      "day": "010",
+      "repo_name": "ai-dev-day-010",
+      "genre": "planning",
+      "theme": "NeoLab",
+      "steps": [
+        "planning",
+        "implementation",
+        "build",
+        "publish",
+        "state_update"
+      ],
+      "status": "done"
     }
   ],
   "recent_genres": [
     "planning",
-    "planning",
-    "fun"
+    "fun",
+    "planning"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-03-08T07:45:20Z"
+  "last_run_at": "2026-03-08T07:46:21Z"
 }
