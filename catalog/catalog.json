@@ -1,1 +1,285 @@
-[{"day":"001","tool_name":"Draft Tightener","one_sentence":"文章を短く整えて、投稿しやすい形に圧縮するライティングツール。","core_action":"rewrite","twist":"文字数の目安を表示してSNS向けの短文化を支援","keywords":["writing","edit","summary","copy"],"repo_name":"ai-dev-day-001","repo_url":"https://github.com/ryo909/ai-dev-day-001","pages_url":"https://ryo909.github.io/ai-dev-day-001/","status":"posted"},{"day":"002","tool_name":"JSON Key Lens","one_sentence":"JSONの構造を素早く把握するための開発者向けビューア。","core_action":"inspect","twist":"深いネストでもパス一覧を一気に展開できる","keywords":["json","devtools","inspect","debug"],"repo_name":"ai-dev-day-002","repo_url":"https://github.com/ryo909/ai-dev-day-002","pages_url":"https://ryo909.github.io/ai-dev-day-002/","status":"posted"},{"day":"003","tool_name":"Backward Milestone Mapper","one_sentence":"締切から逆算した実行計画を即作成するプランニングツール。","core_action":"schedule","twist":"逆算の根拠を1行で示して計画の納得感を上げる","keywords":["planning","milestone","schedule","roadmap"],"repo_name":"ai-dev-day-003","repo_url":"https://github.com/ryo909/ai-dev-day-003","pages_url":"https://ryo909.github.io/ai-dev-day-003/","status":"posted"},{"day":"004","tool_name":"Recall Loop Builder","one_sentence":"学習内容の復習タイミングを自動で組み立てる学習支援ツール。","core_action":"generate","twist":"初回学習日から次回復習日を同時表示する","keywords":["learning","review","memory","study"],"repo_name":"ai-dev-day-004","repo_url":"https://github.com/ryo909/ai-dev-day-004","pages_url":"https://ryo909.github.io/ai-dev-day-004/","status":"posted"},{"day":"005","tool_name":"Hydration Pace Planner","one_sentence":"目標水分量を無理なく達成するための配分プランナー。","core_action":"track","twist":"勤務時間に合わせて飲水タイミングを均等化する","keywords":["health","hydration","habit","wellness"],"repo_name":"ai-dev-day-005","repo_url":"https://github.com/ryo909/ai-dev-day-005","pages_url":"https://ryo909.github.io/ai-dev-day-005/","status":"posted"},{"day":"006","tool_name":"Tiny Prompt Play","one_sentence":"気分転換用の短いお題をすぐ作るライトな遊びツール。","core_action":"generate","twist":"30秒で遊べるミニお題を即時に複数提案","keywords":["fun","prompt","game","idea"],"repo_name":"ai-dev-day-006","repo_url":"https://github.com/ryo909/ai-dev-day-006","pages_url":"https://ryo909.github.io/ai-dev-day-006/","status":"posted"},{"day":"007","tool_name":"Focus Slot Composer","one_sentence":"作業時間から集中と休憩の実行順を自動で作る生産性ツール。","core_action":"plan","twist":"開始時刻つきでそのまま実行できるタイムスロットを提示","keywords":["focus","pomodoro","timebox","productivity"],"repo_name":"ai-dev-day-007","repo_url":"https://github.com/ryo909/ai-dev-day-007","pages_url":"https://ryo909.github.io/ai-dev-day-007/","status":"posted"},{"day":"008","tool_name":"Draft Tightener","one_sentence":"文章を短く整えて、投稿しやすい形に圧縮するライティングツール。","core_action":"rewrite","twist":"文字数の目安を表示してSNS向けの短文化を支援","keywords":["writing","edit","summary","copy"],"repo_name":"ai-dev-day-008","repo_url":"https://github.com/ryo909/ai-dev-day-008","pages_url":"https://ryo909.github.io/ai-dev-day-008/","status":"done"},{"day":"009","tool_name":"Signal Card Mixer","one_sentence":"カードの組み合わせから次の試作案を素早く作るデッキ型ツール。（話題:HN Frontpage）","core_action":"inspect","twist":"深いネストでもパス一覧を一気に展開できる / Signal:HN Frontpage「CasNum」","keywords":["debug","dev","devtools","inspect","json","product","startup","trend"],"repo_name":"ai-dev-day-009","repo_url":"https://github.com/ryo909/ai-dev-day-009","pages_url":"https://ryo909.github.io/ai-dev-day-009/","status":"posted"},{"day":"010","tool_name":"Tradeoff Path Wizard","one_sentence":"段階質問で意思決定パスを確定するウィザード型ツール。（話題:HN Frontpage）","core_action":"schedule","twist":"逆算の根拠を1行で示して計画の納得感を上げる / Signal:HN Frontpage「Autoresearch: Agents res」","keywords":["dev","milestone","planning","product","roadmap","schedule","startup","trend"],"repo_name":"ai-dev-day-010","repo_url":"https://github.com/ryo909/ai-dev-day-010","pages_url":"https://ryo909.github.io/ai-dev-day-010/","status":"posted"},{"day":"011","tool_name":"Risk Quadrant Mapper","one_sentence":"課題を4象限に配置して対応優先度を可視化するマッパー。（話題:HN Frontpage）","core_action":"generate","twist":"初回学習日から次回復習日を同時表示する / Signal:HN Frontpage「The surprising whimsy of」","keywords":["dev","learning","memory","product","review","startup","study","trend"],"repo_name":"ai-dev-day-011","repo_url":"https://github.com/ryo909/ai-dev-day-011","pages_url":"https://ryo909.github.io/ai-dev-day-011/","status":"posted"},{"day":"012","tool_name":"Weighted Option Calculator","one_sentence":"重み付き評価で候補案の順位変化を比較できる計算ツール。（話題:HN Frontpage）","core_action":"track","twist":"勤務時間に合わせて飲水タイミングを均等化する / Signal:HN Frontpage「SigNoz (YC W21) is hirin」","keywords":["dev","habit","health","hydration","product","startup","trend","wellness"],"repo_name":"ai-dev-day-012","repo_url":"https://github.com/ryo909/ai-dev-day-012","pages_url":"https://ryo909.github.io/ai-dev-day-012/","status":"posted"},{"day":"013","tool_name":"Slot Checklist Planner","one_sentence":"時間枠とチェックリストを一体化した実行計画プランナー。（話題:HN Frontpage）","core_action":"generate","twist":"30秒で遊べるミニお題を即時に複数提案 / Signal:HN Frontpage「A decade of Docker conta」","keywords":["dev","fun","game","idea","product","prompt","startup","trend"],"repo_name":"ai-dev-day-013","repo_url":"https://github.com/ryo909/ai-dev-day-013","pages_url":"https://ryo909.github.io/ai-dev-day-013/","status":"posted"},{"day":"014","tool_name":"Flow Board Builder","one_sentence":"作業カードを流しながらボトルネックを見つけるボード型ツール。（話題:HN Frontpage）","core_action":"plan","twist":"開始時刻つきでそのまま実行できるタイムスロットを提示 / Signal:HN Frontpage「FLASH radiotherapy's bol」","keywords":["dev","focus","pomodoro","product","productivity","startup","timebox","trend"],"repo_name":"ai-dev-day-014","repo_url":"https://github.com/ryo909/ai-dev-day-014","pages_url":"https://ryo909.github.io/ai-dev-day-014/","status":"posted"},{"day":"015","tool_name":"Constraint Roulette","one_sentence":"制約ミッションをルーレットで引いて遊ぶチャレンジゲーム。（話題:HN Frontpage）","core_action":"rewrite","twist":"文字数の目安を表示してSNS向けの短文化を支援 / Signal:HN Frontpage「Yoghurt delivery women c」","keywords":["copy","dev","edit","product","startup","summary","trend","writing"],"repo_name":"ai-dev-day-015","repo_url":"https://github.com/ryo909/ai-dev-day-015","pages_url":"https://ryo909.github.io/ai-dev-day-015/","status":"posted"}]
+[
+  {
+    "day": "001",
+    "tool_name": "Draft Tightener",
+    "one_sentence": "文章を短く整えて、投稿しやすい形に圧縮するライティングツール。",
+    "core_action": "rewrite",
+    "twist": "文字数の目安を表示してSNS向けの短文化を支援",
+    "keywords": [
+      "writing",
+      "edit",
+      "summary",
+      "copy"
+    ],
+    "repo_name": "ai-dev-day-001",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-001",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-001/",
+    "status": "posted"
+  },
+  {
+    "day": "002",
+    "tool_name": "JSON Key Lens",
+    "one_sentence": "JSONの構造を素早く把握するための開発者向けビューア。",
+    "core_action": "inspect",
+    "twist": "深いネストでもパス一覧を一気に展開できる",
+    "keywords": [
+      "json",
+      "devtools",
+      "inspect",
+      "debug"
+    ],
+    "repo_name": "ai-dev-day-002",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-002",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-002/",
+    "status": "posted"
+  },
+  {
+    "day": "003",
+    "tool_name": "Backward Milestone Mapper",
+    "one_sentence": "締切から逆算した実行計画を即作成するプランニングツール。",
+    "core_action": "schedule",
+    "twist": "逆算の根拠を1行で示して計画の納得感を上げる",
+    "keywords": [
+      "planning",
+      "milestone",
+      "schedule",
+      "roadmap"
+    ],
+    "repo_name": "ai-dev-day-003",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-003",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-003/",
+    "status": "posted"
+  },
+  {
+    "day": "004",
+    "tool_name": "Recall Loop Builder",
+    "one_sentence": "学習内容の復習タイミングを自動で組み立てる学習支援ツール。",
+    "core_action": "generate",
+    "twist": "初回学習日から次回復習日を同時表示する",
+    "keywords": [
+      "learning",
+      "review",
+      "memory",
+      "study"
+    ],
+    "repo_name": "ai-dev-day-004",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-004",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-004/",
+    "status": "posted"
+  },
+  {
+    "day": "005",
+    "tool_name": "Hydration Pace Planner",
+    "one_sentence": "目標水分量を無理なく達成するための配分プランナー。",
+    "core_action": "track",
+    "twist": "勤務時間に合わせて飲水タイミングを均等化する",
+    "keywords": [
+      "health",
+      "hydration",
+      "habit",
+      "wellness"
+    ],
+    "repo_name": "ai-dev-day-005",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-005",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-005/",
+    "status": "posted"
+  },
+  {
+    "day": "006",
+    "tool_name": "Tiny Prompt Play",
+    "one_sentence": "気分転換用の短いお題をすぐ作るライトな遊びツール。",
+    "core_action": "generate",
+    "twist": "30秒で遊べるミニお題を即時に複数提案",
+    "keywords": [
+      "fun",
+      "prompt",
+      "game",
+      "idea"
+    ],
+    "repo_name": "ai-dev-day-006",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-006",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-006/",
+    "status": "posted"
+  },
+  {
+    "day": "007",
+    "tool_name": "Focus Slot Composer",
+    "one_sentence": "作業時間から集中と休憩の実行順を自動で作る生産性ツール。",
+    "core_action": "plan",
+    "twist": "開始時刻つきでそのまま実行できるタイムスロットを提示",
+    "keywords": [
+      "focus",
+      "pomodoro",
+      "timebox",
+      "productivity"
+    ],
+    "repo_name": "ai-dev-day-007",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-007",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-007/",
+    "status": "posted"
+  },
+  {
+    "day": "008",
+    "tool_name": "Draft Tightener",
+    "one_sentence": "文章を短く整えて、投稿しやすい形に圧縮するライティングツール。",
+    "core_action": "rewrite",
+    "twist": "文字数の目安を表示してSNS向けの短文化を支援",
+    "keywords": [
+      "writing",
+      "edit",
+      "summary",
+      "copy"
+    ],
+    "repo_name": "ai-dev-day-008",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-008",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-008/",
+    "status": "done"
+  },
+  {
+    "day": "009",
+    "tool_name": "Signal Card Mixer",
+    "one_sentence": "カードの組み合わせから次の試作案を素早く作るデッキ型ツール。（話題:HN Frontpage）",
+    "core_action": "recombine",
+    "twist": "引いたカードを固定して再抽選できるため、方向性の収束が速い / Signal:HN Frontpage「CasNum」",
+    "keywords": [
+      "cards",
+      "dev",
+      "fun",
+      "ideation",
+      "product",
+      "recombine",
+      "startup",
+      "trend"
+    ],
+    "repo_name": "ai-dev-day-009",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-009",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-009/",
+    "status": "posted"
+  },
+  {
+    "day": "010",
+    "tool_name": "Tradeoff Path Wizard",
+    "one_sentence": "段階質問で意思決定パスを確定するウィザード型ツール。（話題:HN Frontpage）",
+    "core_action": "navigate",
+    "twist": "各分岐で採用しなかった選択肢の理由も残す / Signal:HN Frontpage「Autoresearch: Agents res」",
+    "keywords": [
+      "decision",
+      "dev",
+      "planning",
+      "product",
+      "startup",
+      "tradeoff",
+      "trend",
+      "wizard"
+    ],
+    "repo_name": "ai-dev-day-010",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-010",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-010/",
+    "status": "posted"
+  },
+  {
+    "day": "011",
+    "tool_name": "Risk Quadrant Mapper",
+    "one_sentence": "課題を4象限に配置して対応優先度を可視化するマッパー。（話題:HN Frontpage）",
+    "core_action": "map",
+    "twist": "象限ごとに対応方針テンプレを同時提示する / Signal:HN Frontpage「The surprising whimsy of」",
+    "keywords": [
+      "dev",
+      "matrix",
+      "planning",
+      "prioritization",
+      "product",
+      "risk",
+      "startup",
+      "trend"
+    ],
+    "repo_name": "ai-dev-day-011",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-011",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-011/",
+    "status": "posted"
+  },
+  {
+    "day": "012",
+    "tool_name": "Weighted Option Calculator",
+    "one_sentence": "重み付き評価で候補案の順位変化を比較できる計算ツール。（話題:HN Frontpage）",
+    "core_action": "score",
+    "twist": "重み変更時に順位変動の差分を即表示する / Signal:HN Frontpage「SigNoz (YC W21) is hirin」",
+    "keywords": [
+      "calculator",
+      "dev",
+      "product",
+      "productivity",
+      "ranking",
+      "startup",
+      "trend",
+      "weights"
+    ],
+    "repo_name": "ai-dev-day-012",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-012",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-012/",
+    "status": "posted"
+  },
+  {
+    "day": "013",
+    "tool_name": "Slot Checklist Planner",
+    "one_sentence": "時間枠とチェックリストを一体化した実行計画プランナー。（話題:HN Frontpage）",
+    "core_action": "plan",
+    "twist": "未完了タスクを次スロットへ自動で繰り越せる / Signal:HN Frontpage「A decade of Docker conta」",
+    "keywords": [
+      "checklist",
+      "dev",
+      "habit",
+      "planner",
+      "product",
+      "slots",
+      "startup",
+      "trend"
+    ],
+    "repo_name": "ai-dev-day-013",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-013",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-013/",
+    "status": "posted"
+  },
+  {
+    "day": "014",
+    "tool_name": "Flow Board Builder",
+    "one_sentence": "作業カードを流しながらボトルネックを見つけるボード型ツール。（話題:HN Frontpage）",
+    "core_action": "flow",
+    "twist": "詰まりレーンを検知すると改善ヒントを表示する / Signal:HN Frontpage「FLASH radiotherapy's bol」",
+    "keywords": [
+      "board",
+      "dev",
+      "devtools",
+      "flow",
+      "kanban",
+      "product",
+      "startup",
+      "trend"
+    ],
+    "repo_name": "ai-dev-day-014",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-014",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-014/",
+    "status": "posted"
+  },
+  {
+    "day": "015",
+    "tool_name": "Constraint Roulette",
+    "one_sentence": "制約ミッションをルーレットで引いて遊ぶチャレンジゲーム。（話題:HN Frontpage）",
+    "core_action": "play",
+    "twist": "連続成功時に制約が段階強化される / Signal:HN Frontpage「Yoghurt delivery women c」",
+    "keywords": [
+      "challenge",
+      "dev",
+      "fun",
+      "game",
+      "product",
+      "roulette",
+      "startup",
+      "trend"
+    ],
+    "repo_name": "ai-dev-day-015",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-015",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-015/",
+    "status": "posted"
+  }
+]

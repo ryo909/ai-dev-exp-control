@@ -1,7 +1,7 @@
 # CATALOG.md — Day一覧（人間向け）
 
 > 進捗: **Day 15 / 100**  
-> 最終更新: 2026-03-08
+> 最終更新: 2026-03-15
 
 ---
 
@@ -17,13 +17,13 @@
 | Day006 | Tiny Prompt Play | 気分転換用の短いお題をすぐ作るライトな遊びツール。 | [Demo](https://ryo909.github.io/ai-dev-day-006/) | [Repo](https://github.com/ryo909/ai-dev-day-006) | ✅ |
 | Day007 | Focus Slot Composer | 作業時間から集中と休憩の実行順を自動で作る生産性ツール。 | [Demo](https://ryo909.github.io/ai-dev-day-007/) | [Repo](https://github.com/ryo909/ai-dev-day-007) | ✅ |
 | Day008 | Draft Tightener | 文章を短く整えて、投稿しやすい形に圧縮するライティングツール。 | [Demo](https://ryo909.github.io/ai-dev-day-008/) | [Repo](https://github.com/ryo909/ai-dev-day-008) | ✅ |
-| Day009 | JSON Key Lens | JSONの構造を素早く把握するための開発者向けビューア。（話題:HN Frontpage） | [Demo](https://ryo909.github.io/ai-dev-day-009/) | [Repo](https://github.com/ryo909/ai-dev-day-009) | ✅ |
-| Day010 | Backward Milestone Mapper | 締切から逆算した実行計画を即作成するプランニングツール。（話題:HN Frontpage） | [Demo](https://ryo909.github.io/ai-dev-day-010/) | [Repo](https://github.com/ryo909/ai-dev-day-010) | ✅ |
-| Day011 | Recall Loop Builder | 学習内容の復習タイミングを自動で組み立てる学習支援ツール。（話題:HN Frontpage） | [Demo](https://ryo909.github.io/ai-dev-day-011/) | [Repo](https://github.com/ryo909/ai-dev-day-011) | ✅ |
-| Day012 | Hydration Pace Planner | 目標水分量を無理なく達成するための配分プランナー。（話題:HN Frontpage） | [Demo](https://ryo909.github.io/ai-dev-day-012/) | [Repo](https://github.com/ryo909/ai-dev-day-012) | ✅ |
-| Day013 | Tiny Prompt Play | 気分転換用の短いお題をすぐ作るライトな遊びツール。（話題:HN Frontpage） | [Demo](https://ryo909.github.io/ai-dev-day-013/) | [Repo](https://github.com/ryo909/ai-dev-day-013) | ✅ |
-| Day014 | Focus Slot Composer | 作業時間から集中と休憩の実行順を自動で作る生産性ツール。（話題:HN Frontpage） | [Demo](https://ryo909.github.io/ai-dev-day-014/) | [Repo](https://github.com/ryo909/ai-dev-day-014) | ✅ |
-| Day015 | Draft Tightener | 文章を短く整えて、投稿しやすい形に圧縮するライティングツール。（話題:HN Frontpage） | [Demo](https://ryo909.github.io/ai-dev-day-015/) | [Repo](https://github.com/ryo909/ai-dev-day-015) | ✅ |
+| Day009 | Signal Card Mixer | カードの組み合わせから次の試作案を素早く作るデッキ型ツール。（話題:HN Frontpage） | [Demo](https://ryo909.github.io/ai-dev-day-009/) | [Repo](https://github.com/ryo909/ai-dev-day-009) | ✅ |
+| Day010 | Tradeoff Path Wizard | 段階質問で意思決定パスを確定するウィザード型ツール。（話題:HN Frontpage） | [Demo](https://ryo909.github.io/ai-dev-day-010/) | [Repo](https://github.com/ryo909/ai-dev-day-010) | ✅ |
+| Day011 | Risk Quadrant Mapper | 課題を4象限に配置して対応優先度を可視化するマッパー。（話題:HN Frontpage） | [Demo](https://ryo909.github.io/ai-dev-day-011/) | [Repo](https://github.com/ryo909/ai-dev-day-011) | ✅ |
+| Day012 | Weighted Option Calculator | 重み付き評価で候補案の順位変化を比較できる計算ツール。（話題:HN Frontpage） | [Demo](https://ryo909.github.io/ai-dev-day-012/) | [Repo](https://github.com/ryo909/ai-dev-day-012) | ✅ |
+| Day013 | Slot Checklist Planner | 時間枠とチェックリストを一体化した実行計画プランナー。（話題:HN Frontpage） | [Demo](https://ryo909.github.io/ai-dev-day-013/) | [Repo](https://github.com/ryo909/ai-dev-day-013) | ✅ |
+| Day014 | Flow Board Builder | 作業カードを流しながらボトルネックを見つけるボード型ツール。（話題:HN Frontpage） | [Demo](https://ryo909.github.io/ai-dev-day-014/) | [Repo](https://github.com/ryo909/ai-dev-day-014) | ✅ |
+| Day015 | Constraint Roulette | 制約ミッションをルーレットで引いて遊ぶチャレンジゲーム。（話題:HN Frontpage） | [Demo](https://ryo909.github.io/ai-dev-day-015/) | [Repo](https://github.com/ryo909/ai-dev-day-015) | ✅ |
 
 ---
 
