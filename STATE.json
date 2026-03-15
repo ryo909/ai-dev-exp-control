@@ -1,6 +1,6 @@
 {
   "target_day": 100,
-  "next_day": 20,
+  "next_day": 21,
   "batch_size_default": 7,
   "posts": {
     "fixed_tags": [
@@ -14,22 +14,6 @@
     }
   },
   "recent_meta": [
-    {
-      "day": "015",
-      "title": "Constraint Roulette",
-      "genre": "fun",
-      "family": "roulette_challenge",
-      "mechanic": "random_spin",
-      "input_style": "preset_pool",
-      "output_style": "roulette_result",
-      "audience_promise": "high_short_burst_engagement",
-      "core_action": "play",
-      "twist": "連続成功時に制約が段階強化される / Signal:HN Frontpage「Yoghurt delivery women c」",
-      "one_sentence": "制約ミッションをルーレットで引いて遊ぶチャレンジゲーム。（話題:HN Frontpage）",
-      "complexity_tier": "small",
-      "selected_components": [],
-      "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
-    },
     {
       "day": "012",
       "title": "Weighted Option Calculator",
@@ -456,6 +440,29 @@
       "core_action": "chain",
       "twist": "失敗時は倍率リセット、成功時はボーナスチャレンジを解放 / Signal:HN Frontpage「9 Mothers Defense (YC P2」",
       "one_sentence": "連続ミッション達成で倍率を伸ばすルーレットゲーム。（話題:HN Frontpage）",
+      "complexity_tier": "medium",
+      "selected_components": [],
+      "complexity_prompt_hint": "Add 2 safe enhancement components from selected_components while keeping the app single-page and stable."
+    },
+    {
+      "day": "020",
+      "title": "Dependency Flow Board",
+      "genre": "devtools",
+      "family": "dependency_board",
+      "mechanic": "constrained_lane_movement",
+      "input_style": "card_creation",
+      "output_style": "lane_board",
+      "audience_promise": "fewer_rework_cycles",
+      "interaction_archetype": "board_flow_builder",
+      "page_archetype": "kanban_board",
+      "output_shape": "lane_columns",
+      "state_model": "cards_by_lane",
+      "component_pack": "lane_columns+dependency_lock",
+      "scaffold_id": "flow_board",
+      "single_shot_text_generator": false,
+      "core_action": "sequence",
+      "twist": "依存未解決カードは移動制限し、順序ミスを防ぐ / Signal:GitHub Trending (A「fishaudio/fish-speech」",
+      "one_sentence": "依存関係を崩さず着手順を整理するフローボード。（話題:GitHub Trending (A）",
       "complexity_tier": "medium",
       "selected_components": [],
       "complexity_prompt_hint": "Add 2 safe enhancement components from selected_components while keeping the app single-page and stable."
@@ -1367,6 +1374,67 @@
         "minimal": "Day019|Challenge Chain \nhttps://ryo909.github.io/ai-dev-day-019/\n#個人開発 #100日開発"
       },
       "status": "done"
+    },
+    "020": {
+      "repo_name": "ai-dev-day-020",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-020",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-020/",
+      "meta": {
+        "tool_name": "Dependency Flow Board",
+        "title": "Dependency Flow Board",
+        "description": "依存関係付きカードをボードで整理し、着手順を整える。",
+        "genre": "devtools",
+        "theme": "Brutal",
+        "complexity_tier": "medium",
+        "selected_components": [],
+        "complexity_prompt_hint": "Add 2 safe enhancement components from selected_components while keeping the app single-page and stable.",
+        "story_summary": "順序ミスによる手戻りを防ぐため、依存制約をUIに組み込んだ。｜Signal:GitHub Trending (A",
+        "core_action": "sequence",
+        "twist": "依存未解決カードは移動制限し、順序ミスを防ぐ / Signal:GitHub Trending (A「fishaudio/fish-speech」",
+        "one_sentence": "依存関係を崩さず着手順を整理するフローボード。（話題:GitHub Trending (A）",
+        "family": "dependency_board",
+        "mechanic": "constrained_lane_movement",
+        "input_style": "card_creation",
+        "output_style": "lane_board",
+        "audience_promise": "fewer_rework_cycles",
+        "publish_hook": "依存関係を守って流せるボード",
+        "engine": "flow_board",
+        "interaction_archetype": "board_flow_builder",
+        "page_archetype": "kanban_board",
+        "output_shape": "lane_columns",
+        "state_model": "cards_by_lane",
+        "core_loop": "add dependency -> move only ready cards",
+        "component_pack": "lane_columns+dependency_lock",
+        "scaffold_id": "flow_board",
+        "single_shot_text_generator": false,
+        "original_twist": "依存未解決カードは移動制限し、順序ミスを防ぐ / Signal:GitHub Trending (A「fishaudio/fish-speech」",
+        "original_one_sentence": "依存関係を崩さず着手順を整理するフローボード。（話題:GitHub Trending (A）",
+        "enhancement_source": "",
+        "enhancement_candidate_id": "",
+        "enhancement_adopted": false,
+        "adopted_next_batch_complexity": true,
+        "adopted_next_batch_components": false,
+        "adopted_next_batch_enhancement": false,
+        "next_batch_plan_source": "plans/next_batch_plan.json",
+        "next_batch_slot": 6,
+        "next_batch_recommended_components": [],
+        "next_batch_recommended_enhancement": true,
+        "keywords": [
+          "board",
+          "dependency",
+          "devtools",
+          "flow",
+          "oss",
+          "tools",
+          "trend"
+        ]
+      },
+      "post_texts": {
+        "standard": "Day020｜Dependency Flow Board\n依存関係を崩さず着手順を整理するフローボード。（話題:GitHub Trending (A）\n用途: 依存関係付きカードをボードで整理し、着手順を整える。\n👉 https://ryo909.github.io/ai-dev-day-020/\n#個人開発 #100日開発\n（経緯/一覧：固定ポストの2ツリーへ）",
+        "compact": "Day020|Dependency Flow \n依存関係を崩さず\nhttps://ryo909.github.io/ai-dev-day-020/\n#個人開発 #100日開発",
+        "minimal": "Day020|Dependency Flow \nhttps://ryo909.github.io/ai-dev-day-020/\n#個人開発 #100日開発"
+      },
+      "status": "done"
     }
   },
   "catalog": {
@@ -2214,13 +2282,28 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-03-15T00:11:30Z",
+      "day": "020",
+      "repo_name": "ai-dev-day-020",
+      "genre": "devtools",
+      "theme": "Brutal",
+      "steps": [
+        "planning",
+        "implementation",
+        "build",
+        "publish",
+        "state_update"
+      ],
+      "status": "done"
     }
   ],
   "recent_genres": [
-    "devtools",
     "health",
-    "fun"
+    "fun",
+    "devtools"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-03-15T00:11:03Z"
+  "last_run_at": "2026-03-15T00:11:30Z"
 }
