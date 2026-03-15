@@ -167,7 +167,7 @@
     },
     {
       "day": "018",
-      "videoUrl": "https://ryo909.github.io/ai-dev-day-018/media/demo_youtube_retry_v3.mp4",
+      "videoUrl": "https://ryo909.github.io/ai-dev-day-018/media/demo_youtube_retry_v4.mp4",
       "titleOverride": "Daily Routine Slotter",
       "descriptionOverride": "習慣タスクを朝昼夜の枠へ配置し、継続率を可視化する。",
       "thumbnailUrl": "",
@@ -178,7 +178,7 @@
       "playlistCandidate": "",
       "audience": "general",
       "shortsCandidate": false,
-      "videoSource": "https://ryo909.github.io/ai-dev-day-018/media/demo_youtube_retry_v3.mp4",
+      "videoSource": "https://ryo909.github.io/ai-dev-day-018/media/demo_youtube_retry_v4.mp4",
       "assetStatus": "ready"
     },
     {
