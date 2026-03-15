@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-15T05:56:51Z",
+  "generated_at": "2026-03-15T06:31:57Z",
   "date": "2026-03-15",
   "dry_run": false,
   "publish_mode": "send",
@@ -26,10 +26,10 @@
   "reports": {
     "combined_preview": "",
     "x_preview": "reports/publish/publish_preview_2026-03-15T05-30-25-5349.json",
-    "youtube_preview": "reports/publish/publish_preview_2026-03-15T05-56-49-15843.json",
+    "youtube_preview": "reports/publish/publish_preview_2026-03-15T06-31-20-32543.json",
     "gallery_apply": "reports/publish/gallery_apply_2026-03-15.json",
     "x_send": "reports/publish/make_webhook_send_2026-03-15T05-30-27-5950.json",
-    "youtube_send": "reports/publish/make_webhook_send_2026-03-15T05-56-51-26911.json"
+    "youtube_send": "reports/publish/make_webhook_send_2026-03-15T06-31-57-21899.json"
   },
   "readiness": {
     "x_ready_count": 7,
@@ -192,9 +192,10 @@
   "sent_target_count": 14,
   "batch_ids": [
     "weekly-2026-03-15-x",
-    "weekly-2026-03-15-youtube"
+    "youtube-day016-mp4-retry-20260315",
+    "youtube-day017-022-mp4-send-20260315"
   ],
   "notes": [
-    "Consolidated from separate X and YouTube send batches for current target Day016-022."
+    "Consolidated from the X send, the Day016 safe-mp4 retry, and the Day017-022 remaining YouTube batch for current target Day016-022."
   ]
 }
