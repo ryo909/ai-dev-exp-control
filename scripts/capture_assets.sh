@@ -62,24 +62,50 @@ else
   FFMPEG_BIN="$(find "$HOME/.cache/ms-playwright" -maxdepth 2 -type f -path '*/ffmpeg-*/ffmpeg-linux' 2>/dev/null | head -n 1 || true)"
 fi
 
-if [ -n "$FFMPEG_BIN" ]; then
-  "$FFMPEG_BIN" -y -i "$TMP_DIR/demo.webm" -an -c:v libx264 -pix_fmt yuv420p \
-    -movflags +faststart "$TMP_DIR/demo.mp4" >/dev/null 2>&1 || true
+supports_encoder() {
+  local ffmpeg_bin="$1"
+  local encoder="$2"
+  "$ffmpeg_bin" -hide_banner -encoders 2>/dev/null | grep -Eq "[[:space:]]${encoder}([[:space:]]|$)"
+}
+
+YOUTUBE_DEMO_SECONDS="${YOUTUBE_DEMO_SECONDS:-5}"
+if [ -n "$FFMPEG_BIN" ] && [ -f "$TMP_DIR/cover.png" ] \
+  && supports_encoder "$FFMPEG_BIN" "libx264" \
+  && supports_encoder "$FFMPEG_BIN" "aac"; then
+  "$FFMPEG_BIN" -y \
+    -loop 1 -framerate 30 -i "$TMP_DIR/cover.png" \
+    -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=48000 \
+    -t "$YOUTUBE_DEMO_SECONDS" -shortest \
+    -vf "scale=720:1280:flags=lanczos,setsar=1,format=yuv420p" \
+    -r 30 \
+    -c:v libx264 -preset medium -profile:v high -level 4.1 -pix_fmt yuv420p \
+    -c:a aac -b:a 128k -ar 48000 \
+    -movflags +faststart \
+    "$TMP_DIR/demo.mp4" >/dev/null 2>&1 || true
 fi
 
 MEDIA_DIR="$WORK_DIR/public/media"
 mkdir -p "$MEDIA_DIR"
 cp "$TMP_DIR/cover.png" "$MEDIA_DIR/cover.png"
 
+if [ -f "$TMP_DIR/demo.webm" ]; then
+  cp "$TMP_DIR/demo.webm" "$MEDIA_DIR/demo.webm"
+fi
+
 if [ -f "$TMP_DIR/demo.mp4" ]; then
   cp "$TMP_DIR/demo.mp4" "$MEDIA_DIR/demo.mp4"
-  rm -f "$MEDIA_DIR/demo.webm"
-elif [ -f "$TMP_DIR/demo.webm" ]; then
-  cp "$TMP_DIR/demo.webm" "$MEDIA_DIR/demo.webm"
-  rm -f "$MEDIA_DIR/demo.mp4"
 else
+  rm -f "$MEDIA_DIR/demo.mp4"
+fi
+
+if [ ! -f "$MEDIA_DIR/demo.webm" ] && [ ! -f "$MEDIA_DIR/demo.mp4" ]; then
   echo "⚠ capture: demo video not found"
   exit 1
 fi
 
-echo "✅ capture: saved to $MEDIA_DIR"
+if [ -f "$MEDIA_DIR/demo.webm" ] || [ -f "$MEDIA_DIR/demo.mp4" ]; then
+  echo "✅ capture: saved to $MEDIA_DIR"
+else
+  echo "⚠ capture: demo video not found"
+  exit 1
+fi

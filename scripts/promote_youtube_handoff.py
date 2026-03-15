@@ -152,14 +152,17 @@ def load_state_lookup(path):
         if not d or not isinstance(rec, dict):
             continue
         pages_url = str(rec.get("pages_url") or "").strip()
-        derived = ""
+        derived_mp4 = ""
+        derived_webm = ""
         if pages_url:
             base = pages_url if pages_url.endswith("/") else f"{pages_url}/"
-            derived = f"{base}media/demo.webm"
+            derived_mp4 = f"{base}media/demo.mp4"
+            derived_webm = f"{base}media/demo.webm"
         out[d] = {
             "state_video": pick_text(rec, ["youtube_video_url", "youtube_url", "video_url", "videoUrl"]),
             "state_thumb": pick_text(rec, ["youtube_thumbnail_url", "thumbnail_url", "thumbnailUrl"]),
-            "derived_webm": derived,
+            "derived_mp4": derived_mp4,
+            "derived_webm": derived_webm,
         }
     return out
 
@@ -251,6 +254,7 @@ def main():
                 ("exports/launch/youtube_upload_handoff_<date>.json", src_export_dated.get("videoUrl")),
                 ("exports/launch/youtube_upload_handoff_latest.json", src_export_latest.get("videoUrl")),
                 ("STATE.json", src_state.get("state_video")),
+                ("STATE.pages_url/media/demo.mp4", src_state.get("derived_mp4")),
                 ("STATE.pages_url/media/demo.webm", src_state.get("derived_webm")),
             ]
         )

@@ -135,7 +135,7 @@
     },
     {
       "day": "016",
-      "videoUrl": "https://raw.githubusercontent.com/ryo909/ai-dev-day-016/main/public/media/demo.webm",
+      "videoUrl": "https://ryo909.github.io/ai-dev-day-016/media/demo.mp4",
       "titleOverride": "Budget Tradeoff Calculator",
       "descriptionOverride": "予算配分を動かして達成率と余剰リスクを比較する。",
       "thumbnailUrl": "",
@@ -146,12 +146,12 @@
       "playlistCandidate": "",
       "audience": "general",
       "shortsCandidate": false,
-      "videoSource": "raw.githubusercontent.com/ryo909/ai-dev-day-016/main/public/media/demo.webm",
+      "videoSource": "https://ryo909.github.io/ai-dev-day-016/media/demo.mp4",
       "assetStatus": "ready"
     },
     {
       "day": "017",
-      "videoUrl": "https://raw.githubusercontent.com/ryo909/ai-dev-day-017/main/public/media/demo.webm",
+      "videoUrl": "https://ryo909.github.io/ai-dev-day-017/media/demo.mp4",
       "titleOverride": "Incident Response Wizard",
       "descriptionOverride": "障害状況の選択入力から一次対応フローを確定する。",
       "thumbnailUrl": "",
@@ -162,12 +162,12 @@
       "playlistCandidate": "",
       "audience": "general",
       "shortsCandidate": false,
-      "videoSource": "raw.githubusercontent.com/ryo909/ai-dev-day-017/main/public/media/demo.webm",
+      "videoSource": "https://ryo909.github.io/ai-dev-day-017/media/demo.mp4",
       "assetStatus": "ready"
     },
     {
       "day": "018",
-      "videoUrl": "https://raw.githubusercontent.com/ryo909/ai-dev-day-018/main/public/media/demo.webm",
+      "videoUrl": "https://ryo909.github.io/ai-dev-day-018/media/demo.mp4",
       "titleOverride": "Daily Routine Slotter",
       "descriptionOverride": "習慣タスクを朝昼夜の枠へ配置し、継続率を可視化する。",
       "thumbnailUrl": "",
@@ -178,12 +178,12 @@
       "playlistCandidate": "",
       "audience": "general",
       "shortsCandidate": false,
-      "videoSource": "raw.githubusercontent.com/ryo909/ai-dev-day-018/main/public/media/demo.webm",
+      "videoSource": "https://ryo909.github.io/ai-dev-day-018/media/demo.mp4",
       "assetStatus": "ready"
     },
     {
       "day": "019",
-      "videoUrl": "https://raw.githubusercontent.com/ryo909/ai-dev-day-019/main/public/media/demo.webm",
+      "videoUrl": "https://ryo909.github.io/ai-dev-day-019/media/demo.mp4",
       "titleOverride": "Challenge Chain Roulette",
       "descriptionOverride": "抽選された連続ミッションをこなし、チェイン倍率を伸ばす。",
       "thumbnailUrl": "",
@@ -194,12 +194,12 @@
       "playlistCandidate": "",
       "audience": "general",
       "shortsCandidate": false,
-      "videoSource": "raw.githubusercontent.com/ryo909/ai-dev-day-019/main/public/media/demo.webm",
+      "videoSource": "https://ryo909.github.io/ai-dev-day-019/media/demo.mp4",
       "assetStatus": "ready"
     },
     {
       "day": "020",
-      "videoUrl": "https://raw.githubusercontent.com/ryo909/ai-dev-day-020/main/public/media/demo.webm",
+      "videoUrl": "https://ryo909.github.io/ai-dev-day-020/media/demo.mp4",
       "titleOverride": "Dependency Flow Board",
       "descriptionOverride": "依存関係付きカードをボードで整理し、着手順を整える。",
       "thumbnailUrl": "",
@@ -210,12 +210,12 @@
       "playlistCandidate": "",
       "audience": "general",
       "shortsCandidate": false,
-      "videoSource": "raw.githubusercontent.com/ryo909/ai-dev-day-020/main/public/media/demo.webm",
+      "videoSource": "https://ryo909.github.io/ai-dev-day-020/media/demo.mp4",
       "assetStatus": "ready"
     },
     {
       "day": "021",
-      "videoUrl": "https://raw.githubusercontent.com/ryo909/ai-dev-day-021/main/public/media/demo.webm",
+      "videoUrl": "https://ryo909.github.io/ai-dev-day-021/media/demo.mp4",
       "titleOverride": "Stakeholder Matrix Mapper",
       "descriptionOverride": "利害関係者を影響力×関心度で整理し、対話順を決める。",
       "thumbnailUrl": "",
@@ -226,12 +226,12 @@
       "playlistCandidate": "",
       "audience": "general",
       "shortsCandidate": false,
-      "videoSource": "raw.githubusercontent.com/ryo909/ai-dev-day-021/main/public/media/demo.webm",
+      "videoSource": "https://ryo909.github.io/ai-dev-day-021/media/demo.mp4",
       "assetStatus": "ready"
     },
     {
       "day": "022",
-      "videoUrl": "https://raw.githubusercontent.com/ryo909/ai-dev-day-022/main/public/media/demo.webm",
+      "videoUrl": "https://ryo909.github.io/ai-dev-day-022/media/demo.mp4",
       "titleOverride": "Idea Combo Deck",
       "descriptionOverride": "目的カードと制約カードを混ぜ、実行可能な組み合わせを作る。",
       "thumbnailUrl": "",
@@ -242,7 +242,7 @@
       "playlistCandidate": "",
       "audience": "general",
       "shortsCandidate": false,
-      "videoSource": "raw.githubusercontent.com/ryo909/ai-dev-day-022/main/public/media/demo.webm",
+      "videoSource": "https://ryo909.github.io/ai-dev-day-022/media/demo.mp4",
       "assetStatus": "ready"
     }
   ]
