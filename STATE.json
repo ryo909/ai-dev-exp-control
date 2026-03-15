@@ -1579,8 +1579,8 @@
   "notes": "",
   "post_pending": null,
   "last_make_webhook": {
-    "batch_id": "youtube-day016-022-mp4-final-20260315",
-    "sent_at": "2026-03-15T06:31:57Z",
+    "batch_id": "youtube-day018-retry-v2-20260315",
+    "sent_at": "2026-03-15T08:08:25Z",
     "posted_count": 7,
     "posted_days": [
       "016",
@@ -1591,13 +1591,23 @@
       "021",
       "022"
     ],
-    "posted_item_count": 7,
-    "posted_target_count": 7,
+    "posted_item_count": 14,
+    "posted_target_count": 14,
     "posted_targets": [
+      {
+        "day": "016",
+        "platform": "x",
+        "key": "016-x"
+      },
       {
         "day": "016",
         "platform": "youtube",
         "key": "016-youtube"
+      },
+      {
+        "day": "017",
+        "platform": "x",
+        "key": "017-x"
       },
       {
         "day": "017",
@@ -1606,8 +1616,18 @@
       },
       {
         "day": "018",
+        "platform": "x",
+        "key": "018-x"
+      },
+      {
+        "day": "018",
         "platform": "youtube",
         "key": "018-youtube"
+      },
+      {
+        "day": "019",
+        "platform": "x",
+        "key": "019-x"
       },
       {
         "day": "019",
@@ -1616,8 +1636,18 @@
       },
       {
         "day": "020",
+        "platform": "x",
+        "key": "020-x"
+      },
+      {
+        "day": "020",
         "platform": "youtube",
         "key": "020-youtube"
+      },
+      {
+        "day": "021",
+        "platform": "x",
+        "key": "021-x"
       },
       {
         "day": "021",
@@ -1626,24 +1656,53 @@
       },
       {
         "day": "022",
+        "platform": "x",
+        "key": "022-x"
+      },
+      {
+        "day": "022",
         "platform": "youtube",
         "key": "022-youtube"
       }
     ],
     "posted_target_keys": [
+      "016-x",
       "016-youtube",
+      "017-x",
       "017-youtube",
+      "018-x",
       "018-youtube",
+      "019-x",
       "019-youtube",
+      "020-x",
       "020-youtube",
+      "021-x",
       "021-youtube",
+      "022-x",
       "022-youtube"
     ],
     "target_platforms": [
+      "x",
       "youtube"
     ],
     "schedule_preview": [],
-    "response_body": "Accepted"
+    "response_body": "Accepted",
+    "latest_batch_posted_count": 1,
+    "latest_batch_posted_days": [
+      "018"
+    ],
+    "latest_batch_posted_item_count": 1,
+    "latest_batch_posted_target_count": 1,
+    "latest_batch_posted_targets": [
+      {
+        "day": "018",
+        "platform": "youtube",
+        "key": "018-youtube"
+      }
+    ],
+    "latest_batch_target_platforms": [
+      "youtube"
+    ]
   },
   "execution_logs": [
     {
@@ -2719,6 +2778,50 @@
         "youtube"
       ],
       "schedule_preview": []
+    },
+    {
+      "executed_at": "2026-03-15T06:45:51Z",
+      "phase": "buffer",
+      "batch_id": "youtube-day018-retry-asset-test-20260315",
+      "posted_count": 1,
+      "posted_days": [
+        "018"
+      ],
+      "posted_item_count": 1,
+      "posted_target_count": 1,
+      "posted_targets": [
+        {
+          "day": "018",
+          "platform": "youtube",
+          "key": "018-youtube"
+        }
+      ],
+      "target_platforms": [
+        "youtube"
+      ],
+      "schedule_preview": []
+    },
+    {
+      "executed_at": "2026-03-15T08:08:25Z",
+      "phase": "buffer",
+      "batch_id": "youtube-day018-retry-v2-20260315",
+      "posted_count": 1,
+      "posted_days": [
+        "018"
+      ],
+      "posted_item_count": 1,
+      "posted_target_count": 1,
+      "posted_targets": [
+        {
+          "day": "018",
+          "platform": "youtube",
+          "key": "018-youtube"
+        }
+      ],
+      "target_platforms": [
+        "youtube"
+      ],
+      "schedule_preview": []
     }
   ],
   "recent_genres": [
@@ -2727,5 +2830,5 @@
     "fun"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-03-15T06:31:57Z"
+  "last_run_at": "2026-03-15T08:08:25Z"
 }

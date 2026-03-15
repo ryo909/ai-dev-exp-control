@@ -563,22 +563,45 @@ jq --arg now "$now" \
    ($posts | map(.day) | unique) as $posted_days
    | ($posts | map((.platform // "x") | ascii_downcase) | unique) as $target_platforms
    | ($posts | map({day: (.day | tostring), platform: ((.platform // "x") | ascii_downcase), key: ((.day | tostring) + "-" + ((.platform // "x") | ascii_downcase))}) | unique_by(.key) | sort_by(.day, .platform)) as $posted_targets
+   | (
+       [
+         (.last_make_webhook.posted_targets[]?),
+         (.execution_logs[]?.posted_targets[]?)
+       ]
+       | map(select(type == "object"))
+       | map({
+           day: (.day | tostring),
+           platform: ((.platform // "x") | ascii_downcase),
+           key: ((.day | tostring) + "-" + ((.platform // "x") | ascii_downcase))
+         })
+       | unique_by(.key)
+       | sort_by(.day, .platform)
+     ) as $historical_targets
+   | (($historical_targets + $posted_targets) | unique_by(.key) | sort_by(.day, .platform)) as $aggregate_targets
+   | ($aggregate_targets | map(.day) | unique) as $aggregate_days
+   | ($aggregate_targets | map(.platform) | unique) as $aggregate_platforms
    | reduce $posts[] as $p (.;
      if .days[$p.day] then .days[$p.day].status = "posted" else . end
    )
-   | .last_make_webhook = {
+   | .last_make_webhook = ((.last_make_webhook // {}) + {
        batch_id: $batch_id,
        sent_at: $now,
-       posted_count: ($posted_days | length),
-       posted_days: $posted_days,
-       posted_item_count: ($posts | length),
-       posted_target_count: ($posted_targets | length),
-       posted_targets: $posted_targets,
-       posted_target_keys: ($posted_targets | map(.key)),
-       target_platforms: $target_platforms,
+       posted_count: ($aggregate_days | length),
+       posted_days: $aggregate_days,
+       posted_item_count: ($aggregate_targets | length),
+       posted_target_count: ($aggregate_targets | length),
+       posted_targets: $aggregate_targets,
+       posted_target_keys: ($aggregate_targets | map(.key)),
+       target_platforms: $aggregate_platforms,
+       latest_batch_posted_count: ($posted_days | length),
+       latest_batch_posted_days: $posted_days,
+       latest_batch_posted_item_count: ($posts | length),
+       latest_batch_posted_target_count: ($posted_targets | length),
+       latest_batch_posted_targets: $posted_targets,
+       latest_batch_target_platforms: $target_platforms,
        schedule_preview: $schedule_preview,
        response_body: ($response_body | .[0:400])
-     }
+     })
    | .last_run_at = $now
    | .execution_logs = ((.execution_logs // []) + [{
        executed_at: $now,
