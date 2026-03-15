@@ -1,6 +1,6 @@
 {
   "target_day": 100,
-  "next_day": 17,
+  "next_day": 18,
   "batch_size_default": 7,
   "posts": {
     "fixed_tags": [
@@ -14,22 +14,6 @@
     }
   },
   "recent_meta": [
-    {
-      "day": "011",
-      "title": "Risk Quadrant Mapper",
-      "genre": "planning",
-      "family": "quadrant_mapping",
-      "mechanic": "axis_mapping",
-      "input_style": "item_with_scores",
-      "output_style": "quadrant_matrix",
-      "audience_promise": "faster_priority_alignment",
-      "core_action": "map",
-      "twist": "象限ごとに対応方針テンプレを同時提示する / Signal:HN Frontpage「The surprising whimsy of」",
-      "one_sentence": "課題を4象限に配置して対応優先度を可視化するマッパー。（話題:HN Frontpage）",
-      "complexity_tier": "small",
-      "selected_components": [],
-      "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
-    },
     {
       "day": "013",
       "title": "Slot Checklist Planner",
@@ -435,6 +419,29 @@
       "core_action": "optimize",
       "twist": "予算制約を超えた場合は自動で代替配分案を提示する / Signal:HN Frontpage「Sunsetting Jazzband」",
       "one_sentence": "予算配分の妥協点を重み付きで可視化する計算ダッシュボード。（話題:HN Frontpage）",
+      "complexity_tier": "small",
+      "selected_components": [],
+      "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
+    },
+    {
+      "day": "017",
+      "title": "Incident Response Wizard",
+      "genre": "devtools",
+      "family": "incident_wizard",
+      "mechanic": "branching_triage",
+      "input_style": "step_choices",
+      "output_style": "response_flow",
+      "audience_promise": "faster_incident_response",
+      "interaction_archetype": "decision_tree_wizard",
+      "page_archetype": "stepper_wizard",
+      "output_shape": "decision_path",
+      "state_model": "step_index_and_answers",
+      "component_pack": "stepper+severity_badges",
+      "scaffold_id": "wizard_stepper",
+      "single_shot_text_generator": false,
+      "core_action": "triage",
+      "twist": "重大度と影響範囲で通知先を自動分岐する / Signal:HN Frontpage「An ode to bzip」",
+      "one_sentence": "障害初動フローをステップ分岐で確定する運用ウィザード。（話題:HN Frontpage）",
       "complexity_tier": "small",
       "selected_components": [],
       "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
@@ -1158,6 +1165,68 @@
         "standard": "Day016｜Budget Tradeoff Calculator\n予算配分の妥協点を重み付きで可視化する計算ダッシュボード。（話題:HN Frontpage）\n用途: 予算配分を動かして達成率と余剰リスクを比較する。\n👉 https://ryo909.github.io/ai-dev-day-016/\n#個人開発 #100日開発\n（経緯/一覧：固定ポストの2ツリーへ）",
         "compact": "Day016|Budget Tradeoff \n予算配分の妥協点\nhttps://ryo909.github.io/ai-dev-day-016/\n#個人開発 #100日開発",
         "minimal": "Day016|Budget Tradeoff \nhttps://ryo909.github.io/ai-dev-day-016/\n#個人開発 #100日開発"
+      },
+      "status": "done"
+    },
+    "017": {
+      "repo_name": "ai-dev-day-017",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-017",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-017/",
+      "meta": {
+        "tool_name": "Incident Response Wizard",
+        "title": "Incident Response Wizard",
+        "description": "障害状況の選択入力から一次対応フローを確定する。",
+        "genre": "devtools",
+        "theme": "Noir",
+        "complexity_tier": "small",
+        "selected_components": [],
+        "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component.",
+        "story_summary": "初動の遅れを減らすため、分岐型で通知手順を固定化した。｜Signal:HN Frontpage",
+        "core_action": "triage",
+        "twist": "重大度と影響範囲で通知先を自動分岐する / Signal:HN Frontpage「An ode to bzip」",
+        "one_sentence": "障害初動フローをステップ分岐で確定する運用ウィザード。（話題:HN Frontpage）",
+        "family": "incident_wizard",
+        "mechanic": "branching_triage",
+        "input_style": "step_choices",
+        "output_style": "response_flow",
+        "audience_promise": "faster_incident_response",
+        "publish_hook": "初動手順を分岐で迷わず確定",
+        "engine": "wizard_tree",
+        "interaction_archetype": "decision_tree_wizard",
+        "page_archetype": "stepper_wizard",
+        "output_shape": "decision_path",
+        "state_model": "step_index_and_answers",
+        "core_loop": "classify -> branch -> assign",
+        "component_pack": "stepper+severity_badges",
+        "scaffold_id": "wizard_stepper",
+        "single_shot_text_generator": false,
+        "original_twist": "重大度と影響範囲で通知先を自動分岐する / Signal:HN Frontpage「An ode to bzip」",
+        "original_one_sentence": "障害初動フローをステップ分岐で確定する運用ウィザード。（話題:HN Frontpage）",
+        "enhancement_source": "",
+        "enhancement_candidate_id": "",
+        "enhancement_adopted": false,
+        "adopted_next_batch_complexity": true,
+        "adopted_next_batch_components": false,
+        "adopted_next_batch_enhancement": false,
+        "next_batch_plan_source": "plans/next_batch_plan.json",
+        "next_batch_slot": 3,
+        "next_batch_recommended_components": [],
+        "next_batch_recommended_enhancement": false,
+        "keywords": [
+          "dev",
+          "incident",
+          "ops",
+          "product",
+          "startup",
+          "trend",
+          "triage",
+          "wizard"
+        ]
+      },
+      "post_texts": {
+        "standard": "Day017｜Incident Response Wizard\n障害初動フローをステップ分岐で確定する運用ウィザード。（話題:HN Frontpage）\n用途: 障害状況の選択入力から一次対応フローを確定する。\n👉 https://ryo909.github.io/ai-dev-day-017/\n#個人開発 #100日開発\n（経緯/一覧：固定ポストの2ツリーへ）",
+        "compact": "Day017|Incident Respons\n障害初動フローを\nhttps://ryo909.github.io/ai-dev-day-017/\n#個人開発 #100日開発",
+        "minimal": "Day017|Incident Respons\nhttps://ryo909.github.io/ai-dev-day-017/\n#個人開発 #100日開発"
       },
       "status": "done"
     }
@@ -1962,13 +2031,28 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-03-15T00:10:10Z",
+      "day": "017",
+      "repo_name": "ai-dev-day-017",
+      "genre": "devtools",
+      "theme": "Noir",
+      "steps": [
+        "planning",
+        "implementation",
+        "build",
+        "publish",
+        "state_update"
+      ],
+      "status": "done"
     }
   ],
   "recent_genres": [
-    "devtools",
     "fun",
-    "productivity"
+    "productivity",
+    "devtools"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-03-15T00:09:42Z"
+  "last_run_at": "2026-03-15T00:10:10Z"
 }
