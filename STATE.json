@@ -1,6 +1,6 @@
 {
   "target_day": 100,
-  "next_day": 22,
+  "next_day": 23,
   "batch_size_default": 7,
   "posts": {
     "fixed_tags": [
@@ -14,29 +14,6 @@
     }
   },
   "recent_meta": [
-    {
-      "day": "009",
-      "title": "Signal Card Mixer",
-      "genre": "fun",
-      "family": "idea_cards",
-      "mechanic": "random_recombination",
-      "input_style": "multi_select_tokens",
-      "output_style": "card_stack",
-      "audience_promise": "faster_idea_divergence",
-      "interaction_archetype": "card_deck_recombination",
-      "page_archetype": "deck_stage",
-      "output_shape": "stacked_cards",
-      "state_model": "deck_history_with_lock",
-      "component_pack": "deck_controls+history_panel",
-      "scaffold_id": "card_deck_board",
-      "single_shot_text_generator": false,
-      "core_action": "recombine",
-      "twist": "引いたカードを固定して再抽選できるため、方向性の収束が速い / Signal:HN Frontpage「CasNum」",
-      "one_sentence": "カードの組み合わせから次の試作案を素早く作るデッキ型ツール。（話題:HN Frontpage）",
-      "complexity_tier": "small",
-      "selected_components": [],
-      "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
-    },
     {
       "day": "012",
       "title": "Weighted Option Calculator",
@@ -473,6 +450,29 @@
       "complexity_tier": "medium",
       "selected_components": [],
       "complexity_prompt_hint": "Add 2 safe enhancement components from selected_components while keeping the app single-page and stable."
+    },
+    {
+      "day": "022",
+      "title": "Idea Combo Deck",
+      "genre": "fun",
+      "family": "idea_cards",
+      "mechanic": "card_pairing",
+      "input_style": "multi_select_tokens",
+      "output_style": "card_stack",
+      "audience_promise": "faster_idea_filtering",
+      "interaction_archetype": "card_deck_recombination",
+      "page_archetype": "deck_stage",
+      "output_shape": "stacked_cards",
+      "state_model": "deck_history_with_lock",
+      "component_pack": "deck_controls+history_panel",
+      "scaffold_id": "card_deck_board",
+      "single_shot_text_generator": false,
+      "core_action": "combine",
+      "twist": "失敗した組み合わせを除外しながら次案を探索できる / Signal:GitHub Trending (A「AstrBotDevs/AstrBot」",
+      "one_sentence": "制約付きのアイデア探索をカード操作で進める組み合わせツール。（話題:GitHub Trending (A）",
+      "complexity_tier": "small",
+      "selected_components": [],
+      "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component."
     }
   ],
   "days": {
@@ -1503,6 +1503,67 @@
         "minimal": "Day021|Stakeholder Matr\nhttps://ryo909.github.io/ai-dev-day-021/\n#個人開発 #100日開発"
       },
       "status": "done"
+    },
+    "022": {
+      "repo_name": "ai-dev-day-022",
+      "repo_url": "https://github.com/ryo909/ai-dev-day-022",
+      "pages_url": "https://ryo909.github.io/ai-dev-day-022/",
+      "meta": {
+        "tool_name": "Idea Combo Deck",
+        "title": "Idea Combo Deck",
+        "description": "目的カードと制約カードを混ぜ、実行可能な組み合わせを作る。",
+        "genre": "fun",
+        "theme": "Soft",
+        "complexity_tier": "small",
+        "selected_components": [],
+        "complexity_prompt_hint": "Keep the tool single-purpose and stable. Add at most one safe enhancement component.",
+        "story_summary": "思考の堂々巡りを防ぐため、除外履歴を持つデッキ方式にした。｜Signal:GitHub Trending (A",
+        "core_action": "combine",
+        "twist": "失敗した組み合わせを除外しながら次案を探索できる / Signal:GitHub Trending (A「AstrBotDevs/AstrBot」",
+        "one_sentence": "制約付きのアイデア探索をカード操作で進める組み合わせツール。（話題:GitHub Trending (A）",
+        "family": "idea_cards",
+        "mechanic": "card_pairing",
+        "input_style": "multi_select_tokens",
+        "output_style": "card_stack",
+        "audience_promise": "faster_idea_filtering",
+        "publish_hook": "失敗案を除外しながら次案を出す",
+        "engine": "card_mixer",
+        "interaction_archetype": "card_deck_recombination",
+        "page_archetype": "deck_stage",
+        "output_shape": "stacked_cards",
+        "state_model": "deck_history_with_lock",
+        "core_loop": "draw -> reject -> redraw",
+        "component_pack": "deck_controls+history_panel",
+        "scaffold_id": "card_deck_board",
+        "single_shot_text_generator": false,
+        "original_twist": "失敗した組み合わせを除外しながら次案を探索できる / Signal:GitHub Trending (A「AstrBotDevs/AstrBot」",
+        "original_one_sentence": "制約付きのアイデア探索をカード操作で進める組み合わせツール。（話題:GitHub Trending (A）",
+        "enhancement_source": "",
+        "enhancement_candidate_id": "",
+        "enhancement_adopted": false,
+        "adopted_next_batch_complexity": true,
+        "adopted_next_batch_components": false,
+        "adopted_next_batch_enhancement": false,
+        "next_batch_plan_source": "plans/next_batch_plan.json",
+        "next_batch_slot": 1,
+        "next_batch_recommended_components": [],
+        "next_batch_recommended_enhancement": false,
+        "keywords": [
+          "cards",
+          "combination",
+          "constraints",
+          "fun",
+          "oss",
+          "tools",
+          "trend"
+        ]
+      },
+      "post_texts": {
+        "standard": "Day022｜Idea Combo Deck\n制約付きのアイデア探索をカード操作で進める組み合わせツール。（話題:GitHub Trending (A）\n用途: 目的カードと制約カードを混ぜ、実行可能な組み合わせを作る。\n👉 https://ryo909.github.io/ai-dev-day-022/\n#個人開発 #100日開発\n（経緯/一覧：固定ポストの2ツリーへ）",
+        "compact": "Day022|Idea Combo Deck\n制約付きのアイデ\nhttps://ryo909.github.io/ai-dev-day-022/\n#個人開発 #100日開発",
+        "minimal": "Day022|Idea Combo Deck\nhttps://ryo909.github.io/ai-dev-day-022/\n#個人開発 #100日開発"
+      },
+      "status": "done"
     }
   },
   "catalog": {
@@ -2380,13 +2441,28 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-03-15T00:12:25Z",
+      "day": "022",
+      "repo_name": "ai-dev-day-022",
+      "genre": "fun",
+      "theme": "Soft",
+      "steps": [
+        "planning",
+        "implementation",
+        "build",
+        "publish",
+        "state_update"
+      ],
+      "status": "done"
     }
   ],
   "recent_genres": [
-    "fun",
     "devtools",
-    "planning"
+    "planning",
+    "fun"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-03-15T00:11:58Z"
+  "last_run_at": "2026-03-15T00:12:25Z"
 }
