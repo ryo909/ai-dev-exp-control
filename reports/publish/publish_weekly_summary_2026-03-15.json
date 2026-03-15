@@ -1,0 +1,200 @@
+{
+  "generated_at": "2026-03-15T05:56:51Z",
+  "date": "2026-03-15",
+  "dry_run": false,
+  "publish_mode": "send",
+  "allow_external_send": true,
+  "external_send_requested": true,
+  "external_send_executed": true,
+  "target_days": [
+    "016",
+    "017",
+    "018",
+    "019",
+    "020",
+    "021",
+    "022"
+  ],
+  "target_platforms": [
+    "x",
+    "youtube"
+  ],
+  "no_current_preview": false,
+  "blocked_reason": null,
+  "missing_target_days": [],
+  "target_count": 14,
+  "reports": {
+    "combined_preview": "",
+    "x_preview": "reports/publish/publish_preview_2026-03-15T05-30-25-5349.json",
+    "youtube_preview": "reports/publish/publish_preview_2026-03-15T05-56-49-15843.json",
+    "gallery_apply": "reports/publish/gallery_apply_2026-03-15.json",
+    "x_send": "reports/publish/make_webhook_send_2026-03-15T05-30-27-5950.json",
+    "youtube_send": "reports/publish/make_webhook_send_2026-03-15T05-56-51-26911.json"
+  },
+  "readiness": {
+    "x_ready_count": 7,
+    "youtube_ready_count": 7,
+    "youtube_pending_asset_count": 0,
+    "youtube_blocked_count": 0,
+    "youtube_invalid_count": 0,
+    "youtube_missing_video_count": 0
+  },
+  "gallery_apply_count": 7,
+  "dueAt_summary": {
+    "x": [
+      {
+        "day": "016",
+        "dueAt": "2026-03-16T21:00:00+09:00"
+      },
+      {
+        "day": "017",
+        "dueAt": "2026-03-17T08:30:00+09:00"
+      },
+      {
+        "day": "018",
+        "dueAt": "2026-03-18T12:10:00+09:00"
+      },
+      {
+        "day": "019",
+        "dueAt": "2026-03-19T09:00:00+09:00"
+      },
+      {
+        "day": "020",
+        "dueAt": "2026-03-20T08:30:00+09:00"
+      },
+      {
+        "day": "021",
+        "dueAt": "2026-03-21T10:00:00+09:00"
+      },
+      {
+        "day": "022",
+        "dueAt": "2026-03-22T21:00:00+09:00"
+      }
+    ],
+    "youtube": [
+      {
+        "day": "016",
+        "dueAt": "2026-03-16T21:00:00+09:00",
+        "readiness": "ready"
+      },
+      {
+        "day": "017",
+        "dueAt": "2026-03-17T08:30:00+09:00",
+        "readiness": "ready"
+      },
+      {
+        "day": "018",
+        "dueAt": "2026-03-18T12:10:00+09:00",
+        "readiness": "ready"
+      },
+      {
+        "day": "019",
+        "dueAt": "2026-03-19T09:00:00+09:00",
+        "readiness": "ready"
+      },
+      {
+        "day": "020",
+        "dueAt": "2026-03-20T08:30:00+09:00",
+        "readiness": "ready"
+      },
+      {
+        "day": "021",
+        "dueAt": "2026-03-21T10:00:00+09:00",
+        "readiness": "ready"
+      },
+      {
+        "day": "022",
+        "dueAt": "2026-03-22T21:00:00+09:00",
+        "readiness": "ready"
+      }
+    ]
+  },
+  "duplicate_targets": [],
+  "duplicate_target_count": 0,
+  "blocked_targets": [],
+  "blocked_target_count": 0,
+  "skipped_targets": [],
+  "skipped_target_count": 0,
+  "x_sent_targets": [
+    {
+      "day": "016",
+      "platform": "x",
+      "key": "016-x"
+    },
+    {
+      "day": "017",
+      "platform": "x",
+      "key": "017-x"
+    },
+    {
+      "day": "018",
+      "platform": "x",
+      "key": "018-x"
+    },
+    {
+      "day": "019",
+      "platform": "x",
+      "key": "019-x"
+    },
+    {
+      "day": "020",
+      "platform": "x",
+      "key": "020-x"
+    },
+    {
+      "day": "021",
+      "platform": "x",
+      "key": "021-x"
+    },
+    {
+      "day": "022",
+      "platform": "x",
+      "key": "022-x"
+    }
+  ],
+  "youtube_sent_targets": [
+    {
+      "day": "016",
+      "platform": "youtube",
+      "key": "016-youtube"
+    },
+    {
+      "day": "017",
+      "platform": "youtube",
+      "key": "017-youtube"
+    },
+    {
+      "day": "018",
+      "platform": "youtube",
+      "key": "018-youtube"
+    },
+    {
+      "day": "019",
+      "platform": "youtube",
+      "key": "019-youtube"
+    },
+    {
+      "day": "020",
+      "platform": "youtube",
+      "key": "020-youtube"
+    },
+    {
+      "day": "021",
+      "platform": "youtube",
+      "key": "021-youtube"
+    },
+    {
+      "day": "022",
+      "platform": "youtube",
+      "key": "022-youtube"
+    }
+  ],
+  "sent_target_count": 14,
+  "batch_ids": [
+    "weekly-2026-03-15-x",
+    "weekly-2026-03-15-youtube"
+  ],
+  "notes": [
+    "Consolidated from separate X and YouTube send batches for current target Day016-022."
+  ]
+}

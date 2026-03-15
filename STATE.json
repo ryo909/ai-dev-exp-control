@@ -1194,7 +1194,7 @@
         "compact": "Day016|Budget Tradeoff \n予算配分の妥協点\nhttps://ryo909.github.io/ai-dev-day-016/\n#個人開発 #100日開発",
         "minimal": "Day016|Budget Tradeoff \nhttps://ryo909.github.io/ai-dev-day-016/\n#個人開発 #100日開発"
       },
-      "status": "done"
+      "status": "posted"
     },
     "017": {
       "repo_name": "ai-dev-day-017",
@@ -1256,7 +1256,7 @@
         "compact": "Day017|Incident Respons\n障害初動フローを\nhttps://ryo909.github.io/ai-dev-day-017/\n#個人開発 #100日開発",
         "minimal": "Day017|Incident Respons\nhttps://ryo909.github.io/ai-dev-day-017/\n#個人開発 #100日開発"
       },
-      "status": "done"
+      "status": "posted"
     },
     "018": {
       "repo_name": "ai-dev-day-018",
@@ -1318,7 +1318,7 @@
         "compact": "Day018|Daily Routine Sl\n習慣タスクを時間\nhttps://ryo909.github.io/ai-dev-day-018/\n#個人開発 #100日開発",
         "minimal": "Day018|Daily Routine Sl\nhttps://ryo909.github.io/ai-dev-day-018/\n#個人開発 #100日開発"
       },
-      "status": "done"
+      "status": "posted"
     },
     "019": {
       "repo_name": "ai-dev-day-019",
@@ -1380,7 +1380,7 @@
         "compact": "Day019|Challenge Chain \n連続ミッション達\nhttps://ryo909.github.io/ai-dev-day-019/\n#個人開発 #100日開発",
         "minimal": "Day019|Challenge Chain \nhttps://ryo909.github.io/ai-dev-day-019/\n#個人開発 #100日開発"
       },
-      "status": "done"
+      "status": "posted"
     },
     "020": {
       "repo_name": "ai-dev-day-020",
@@ -1441,7 +1441,7 @@
         "compact": "Day020|Dependency Flow \n依存関係を崩さず\nhttps://ryo909.github.io/ai-dev-day-020/\n#個人開発 #100日開発",
         "minimal": "Day020|Dependency Flow \nhttps://ryo909.github.io/ai-dev-day-020/\n#個人開発 #100日開発"
       },
-      "status": "done"
+      "status": "posted"
     },
     "021": {
       "repo_name": "ai-dev-day-021",
@@ -1502,7 +1502,7 @@
         "compact": "Day021|Stakeholder Matr\n関係者調整を4象�\nhttps://ryo909.github.io/ai-dev-day-021/\n#個人開発 #100日開発",
         "minimal": "Day021|Stakeholder Matr\nhttps://ryo909.github.io/ai-dev-day-021/\n#個人開発 #100日開発"
       },
-      "status": "done"
+      "status": "posted"
     },
     "022": {
       "repo_name": "ai-dev-day-022",
@@ -1563,7 +1563,7 @@
         "compact": "Day022|Idea Combo Deck\n制約付きのアイデ\nhttps://ryo909.github.io/ai-dev-day-022/\n#個人開発 #100日開発",
         "minimal": "Day022|Idea Combo Deck\nhttps://ryo909.github.io/ai-dev-day-022/\n#個人開発 #100日開発"
       },
-      "status": "done"
+      "status": "posted"
     }
   },
   "catalog": {
@@ -1571,7 +1571,7 @@
     "catalog_json_path": "catalog/catalog.json",
     "catalog_html_path": "catalog/index.html"
   },
-  "last_run": "2026-03-15T00:08:55Z",
+  "last_run": "2026-03-15T00:12:29Z",
   "integrations": {
     "buffer_mode": "queue",
     "make_webhook_env": "MAKE_WEBHOOK_URL"
@@ -1579,17 +1579,68 @@
   "notes": "",
   "post_pending": null,
   "last_make_webhook": {
-    "batch_id": "manual-20260308T090337Z-Day009-Day015",
-    "sent_at": "2026-03-08T09:03:38Z",
+    "batch_id": "weekly-2026-03-15-youtube",
+    "sent_at": "2026-03-15T05:56:51Z",
     "posted_count": 7,
     "posted_days": [
-      "015",
-      "014",
-      "013",
-      "012",
-      "011",
-      "010",
-      "009"
+      "016",
+      "017",
+      "018",
+      "019",
+      "020",
+      "021",
+      "022"
+    ],
+    "posted_item_count": 7,
+    "posted_target_count": 7,
+    "posted_targets": [
+      {
+        "day": "016",
+        "platform": "youtube",
+        "key": "016-youtube"
+      },
+      {
+        "day": "017",
+        "platform": "youtube",
+        "key": "017-youtube"
+      },
+      {
+        "day": "018",
+        "platform": "youtube",
+        "key": "018-youtube"
+      },
+      {
+        "day": "019",
+        "platform": "youtube",
+        "key": "019-youtube"
+      },
+      {
+        "day": "020",
+        "platform": "youtube",
+        "key": "020-youtube"
+      },
+      {
+        "day": "021",
+        "platform": "youtube",
+        "key": "021-youtube"
+      },
+      {
+        "day": "022",
+        "platform": "youtube",
+        "key": "022-youtube"
+      }
+    ],
+    "posted_target_keys": [
+      "016-youtube",
+      "017-youtube",
+      "018-youtube",
+      "019-youtube",
+      "020-youtube",
+      "021-youtube",
+      "022-youtube"
+    ],
+    "target_platforms": [
+      "youtube"
     ],
     "schedule_preview": [],
     "response_body": "Accepted"
@@ -2456,6 +2507,122 @@
         "state_update"
       ],
       "status": "done"
+    },
+    {
+      "executed_at": "2026-03-15T05:30:27Z",
+      "phase": "buffer",
+      "batch_id": "weekly-2026-03-15-x",
+      "posted_count": 7,
+      "posted_days": [
+        "016",
+        "017",
+        "018",
+        "019",
+        "020",
+        "021",
+        "022"
+      ],
+      "posted_item_count": 7,
+      "posted_target_count": 7,
+      "posted_targets": [
+        {
+          "day": "016",
+          "platform": "x",
+          "key": "016-x"
+        },
+        {
+          "day": "017",
+          "platform": "x",
+          "key": "017-x"
+        },
+        {
+          "day": "018",
+          "platform": "x",
+          "key": "018-x"
+        },
+        {
+          "day": "019",
+          "platform": "x",
+          "key": "019-x"
+        },
+        {
+          "day": "020",
+          "platform": "x",
+          "key": "020-x"
+        },
+        {
+          "day": "021",
+          "platform": "x",
+          "key": "021-x"
+        },
+        {
+          "day": "022",
+          "platform": "x",
+          "key": "022-x"
+        }
+      ],
+      "target_platforms": [
+        "x"
+      ],
+      "schedule_preview": []
+    },
+    {
+      "executed_at": "2026-03-15T05:56:51Z",
+      "phase": "buffer",
+      "batch_id": "weekly-2026-03-15-youtube",
+      "posted_count": 7,
+      "posted_days": [
+        "016",
+        "017",
+        "018",
+        "019",
+        "020",
+        "021",
+        "022"
+      ],
+      "posted_item_count": 7,
+      "posted_target_count": 7,
+      "posted_targets": [
+        {
+          "day": "016",
+          "platform": "youtube",
+          "key": "016-youtube"
+        },
+        {
+          "day": "017",
+          "platform": "youtube",
+          "key": "017-youtube"
+        },
+        {
+          "day": "018",
+          "platform": "youtube",
+          "key": "018-youtube"
+        },
+        {
+          "day": "019",
+          "platform": "youtube",
+          "key": "019-youtube"
+        },
+        {
+          "day": "020",
+          "platform": "youtube",
+          "key": "020-youtube"
+        },
+        {
+          "day": "021",
+          "platform": "youtube",
+          "key": "021-youtube"
+        },
+        {
+          "day": "022",
+          "platform": "youtube",
+          "key": "022-youtube"
+        }
+      ],
+      "target_platforms": [
+        "youtube"
+      ],
+      "schedule_preview": []
     }
   ],
   "recent_genres": [
@@ -2464,5 +2631,5 @@
     "fun"
   ],
   "theme_mode": "seeded",
-  "last_run_at": "2026-03-15T00:12:25Z"
+  "last_run_at": "2026-03-15T05:56:51Z"
 }
