@@ -281,5 +281,149 @@
     "repo_url": "https://github.com/ryo909/ai-dev-day-015",
     "pages_url": "https://ryo909.github.io/ai-dev-day-015/",
     "status": "posted"
+  },
+  {
+    "day": "016",
+    "tool_name": "Budget Tradeoff Calculator",
+    "one_sentence": "予算配分の妥協点を重み付きで可視化する計算ダッシュボード。（話題:HN Frontpage）",
+    "core_action": "optimize",
+    "twist": "予算制約を超えた場合は自動で代替配分案を提示する / Signal:HN Frontpage「Sunsetting Jazzband」",
+    "keywords": [
+      "budget",
+      "calculator",
+      "dev",
+      "product",
+      "productivity",
+      "startup",
+      "tradeoff",
+      "trend"
+    ],
+    "repo_name": "ai-dev-day-016",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-016",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-016/",
+    "status": "done"
+  },
+  {
+    "day": "017",
+    "tool_name": "Incident Response Wizard",
+    "one_sentence": "障害初動フローをステップ分岐で確定する運用ウィザード。（話題:HN Frontpage）",
+    "core_action": "triage",
+    "twist": "重大度と影響範囲で通知先を自動分岐する / Signal:HN Frontpage「An ode to bzip」",
+    "keywords": [
+      "dev",
+      "incident",
+      "ops",
+      "product",
+      "startup",
+      "trend",
+      "triage",
+      "wizard"
+    ],
+    "repo_name": "ai-dev-day-017",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-017",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-017/",
+    "status": "done"
+  },
+  {
+    "day": "018",
+    "tool_name": "Daily Routine Slotter",
+    "one_sentence": "習慣タスクを時間枠で回しやすくするルーティンプランナー。（話題:HN Frontpage）",
+    "core_action": "schedule",
+    "twist": "連続達成日数を自動集計して維持モチベーションを可視化する / Signal:HN Frontpage「Montana passes Right to」",
+    "keywords": [
+      "dev",
+      "habit",
+      "health",
+      "planner",
+      "product",
+      "routine",
+      "startup",
+      "trend"
+    ],
+    "repo_name": "ai-dev-day-018",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-018",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-018/",
+    "status": "done"
+  },
+  {
+    "day": "019",
+    "tool_name": "Challenge Chain Roulette",
+    "one_sentence": "連続ミッション達成で倍率を伸ばすルーレットゲーム。（話題:HN Frontpage）",
+    "core_action": "chain",
+    "twist": "失敗時は倍率リセット、成功時はボーナスチャレンジを解放 / Signal:HN Frontpage「9 Mothers Defense (YC P2」",
+    "keywords": [
+      "chain",
+      "dev",
+      "fun",
+      "game",
+      "product",
+      "roulette",
+      "startup",
+      "trend"
+    ],
+    "repo_name": "ai-dev-day-019",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-019",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-019/",
+    "status": "done"
+  },
+  {
+    "day": "020",
+    "tool_name": "Dependency Flow Board",
+    "one_sentence": "依存関係を崩さず着手順を整理するフローボード。（話題:GitHub Trending (A）",
+    "core_action": "sequence",
+    "twist": "依存未解決カードは移動制限し、順序ミスを防ぐ / Signal:GitHub Trending (A「fishaudio/fish-speech」",
+    "keywords": [
+      "board",
+      "dependency",
+      "devtools",
+      "flow",
+      "oss",
+      "tools",
+      "trend"
+    ],
+    "repo_name": "ai-dev-day-020",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-020",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-020/",
+    "status": "done"
+  },
+  {
+    "day": "021",
+    "tool_name": "Stakeholder Matrix Mapper",
+    "one_sentence": "関係者調整を4象限で整理するステークホルダーマトリクス。（話題:GitHub Trending (A）",
+    "core_action": "organize",
+    "twist": "象限ごとに推奨コミュニケーション頻度を付与する / Signal:GitHub Trending (A「google/A2UI」",
+    "keywords": [
+      "communication",
+      "matrix",
+      "oss",
+      "planning",
+      "stakeholder",
+      "tools",
+      "trend"
+    ],
+    "repo_name": "ai-dev-day-021",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-021",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-021/",
+    "status": "done"
+  },
+  {
+    "day": "022",
+    "tool_name": "Idea Combo Deck",
+    "one_sentence": "制約付きのアイデア探索をカード操作で進める組み合わせツール。（話題:GitHub Trending (A）",
+    "core_action": "combine",
+    "twist": "失敗した組み合わせを除外しながら次案を探索できる / Signal:GitHub Trending (A「AstrBotDevs/AstrBot」",
+    "keywords": [
+      "cards",
+      "combination",
+      "constraints",
+      "fun",
+      "oss",
+      "tools",
+      "trend"
+    ],
+    "repo_name": "ai-dev-day-022",
+    "repo_url": "https://github.com/ryo909/ai-dev-day-022",
+    "pages_url": "https://ryo909.github.io/ai-dev-day-022/",
+    "status": "done"
   }
 ]

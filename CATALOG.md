@@ -1,6 +1,6 @@
 # CATALOG.md — Day一覧（人間向け）
 
-> 進捗: **Day 15 / 100**  
+> 進捗: **Day 22 / 100**  
 > 最終更新: 2026-03-15
 
 ---
@@ -24,6 +24,13 @@
 | Day013 | Slot Checklist Planner | 時間枠とチェックリストを一体化した実行計画プランナー。（話題:HN Frontpage） | [Demo](https://ryo909.github.io/ai-dev-day-013/) | [Repo](https://github.com/ryo909/ai-dev-day-013) | ✅ |
 | Day014 | Flow Board Builder | 作業カードを流しながらボトルネックを見つけるボード型ツール。（話題:HN Frontpage） | [Demo](https://ryo909.github.io/ai-dev-day-014/) | [Repo](https://github.com/ryo909/ai-dev-day-014) | ✅ |
 | Day015 | Constraint Roulette | 制約ミッションをルーレットで引いて遊ぶチャレンジゲーム。（話題:HN Frontpage） | [Demo](https://ryo909.github.io/ai-dev-day-015/) | [Repo](https://github.com/ryo909/ai-dev-day-015) | ✅ |
+| Day016 | Budget Tradeoff Calculator | 予算配分の妥協点を重み付きで可視化する計算ダッシュボード。（話題:HN Frontpage） | [Demo](https://ryo909.github.io/ai-dev-day-016/) | [Repo](https://github.com/ryo909/ai-dev-day-016) | ✅ |
+| Day017 | Incident Response Wizard | 障害初動フローをステップ分岐で確定する運用ウィザード。（話題:HN Frontpage） | [Demo](https://ryo909.github.io/ai-dev-day-017/) | [Repo](https://github.com/ryo909/ai-dev-day-017) | ✅ |
+| Day018 | Daily Routine Slotter | 習慣タスクを時間枠で回しやすくするルーティンプランナー。（話題:HN Frontpage） | [Demo](https://ryo909.github.io/ai-dev-day-018/) | [Repo](https://github.com/ryo909/ai-dev-day-018) | ✅ |
+| Day019 | Challenge Chain Roulette | 連続ミッション達成で倍率を伸ばすルーレットゲーム。（話題:HN Frontpage） | [Demo](https://ryo909.github.io/ai-dev-day-019/) | [Repo](https://github.com/ryo909/ai-dev-day-019) | ✅ |
+| Day020 | Dependency Flow Board | 依存関係を崩さず着手順を整理するフローボード。（話題:GitHub Trending (A） | [Demo](https://ryo909.github.io/ai-dev-day-020/) | [Repo](https://github.com/ryo909/ai-dev-day-020) | ✅ |
+| Day021 | Stakeholder Matrix Mapper | 関係者調整を4象限で整理するステークホルダーマトリクス。（話題:GitHub Trending (A） | [Demo](https://ryo909.github.io/ai-dev-day-021/) | [Repo](https://github.com/ryo909/ai-dev-day-021) | ✅ |
+| Day022 | Idea Combo Deck | 制約付きのアイデア探索をカード操作で進める組み合わせツール。（話題:GitHub Trending (A） | [Demo](https://ryo909.github.io/ai-dev-day-022/) | [Repo](https://github.com/ryo909/ai-dev-day-022) | ✅ |
 
 ---
 
